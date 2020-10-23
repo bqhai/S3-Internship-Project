@@ -59,6 +59,21 @@ CREATE TABLE SmartphoneVersion
 )
 GO
 
+CREATE TABLE Orders
+(
+	OrderID NVARCHAR(50) PRIMARY KEY,
+	Payments NVARCHAR(100),
+	Delivery NVARCHAR(100),
+	Notes NVARCHAR(500),
+	OrderDate DATE,
+	TotalPrice INT,
+	CustomerID NVARCHAR(50),
+	Status BIT, --0: 
+
+
+)
+GO
+
 CREATE TABLE Role
 (
 	RoleID NVARCHAR(50) PRIMARY KEY,
@@ -72,6 +87,38 @@ CREATE TABLE Account
 	Username NVARCHAR(50) PRIMARY KEY,
 	Password NVARCHAR(50) NOT NULL,
 	RoleID NVARCHAR(50) NOT NULL,
-	Status NVARCHAR(100),
+	Status BIT, --0: Block, 1: Active
+
+	FOREIGN KEY(RoleID) REFERENCES Role(RoleID)
+)
+GO
+
+CREATE TABLE Customer
+(
+	CustomerID NVARCHAR(50) PRIMARY KEY,
+	Name NVARCHAR(100),
+	Username NVARCHAR(50),
+	Email NVARCHAR(100),
+	Address NVARCHAR(500),
+	PhoneNumber NVARCHAR(50),
+	Sex NVARCHAR(50),
+	DateOfBirth DATE,
+
+	FOREIGN KEY(Username) REFERENCES Account(Username)
+)
+GO
+
+CREATE TABLE Employee
+(
+	EmployeeID NVARCHAR(50) PRIMARY KEY,
+	Name NVARCHAR(100),
+	Username NVARCHAR(50),
+	Email NVARCHAR(100),
+	Address NVARCHAR(500),
+	PhoneNumber NVARCHAR(50),
+	Sex NVARCHAR(50),
+	DateOfBirth DATE,
+	Status BIT, --0:Stop working
+	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
