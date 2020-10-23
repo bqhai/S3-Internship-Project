@@ -48,7 +48,7 @@ CREATE TABLE Employee
 	PhoneNumber NVARCHAR(50),
 	Sex NVARCHAR(50),
 	DateOfBirth DATE,
-	Status BIT, --0:Stop working
+	Status BIT, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
@@ -57,6 +57,8 @@ CREATE TABLE Brand
 	BrandID NVARCHAR(50) PRIMARY KEY,
 	BrandName NVARCHAR(100),
 	Country NVARCHAR(100),
+	Phone BIT, --0: 
+	Laptop BIT,
 )
 GO
 
@@ -202,3 +204,15 @@ CREATE TABLE ProductIntroduce
 GO
 
 -------------INSERT DATA----------------
+--Brand--
+INSERT INTO Brand VALUES(N'AP', N'Apple', N'Mỹ')
+INSERT INTO Brand VALUES(N'SA', N'Samsung', N'Hàn Quốc')
+INSERT INTO Brand VALUES(N'OP', N'Oppo', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'XI', N'Xiaomi', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'NO', N'Nokia', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'RE', N'Realme', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'AS', N'Asus', N'Đài Loan')
+INSERT INTO Brand VALUES(N'HU', N'Huawei', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'VI', N'Vivo', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'VS', N'Vsmart', N'Việt Nam')
+
