@@ -1,0 +1,77 @@
+﻿CREATE DATABASE DbCellPhoneStore
+GO
+
+USE DbCellPhoneStore
+GO
+
+CREATE TABLE Brand
+(
+	BrandID NVARCHAR(50) PRIMARY KEY,
+	BrandName NVARCHAR(100),
+	Country NVARCHAR(100),
+)
+GO
+
+CREATE TABLE Smartphone
+(
+	SmartphoneID NVARCHAR(50) PRIMARY KEY,
+	BrandID NVARCHAR(50),
+	Origin NVARCHAR(100), 
+	Accessories NVARCHAR(500),
+	ScreenType NVARCHAR(500),
+	ScreenSize NVARCHAR(100),
+	ScreenResolution NVARCHAR(100),
+	FrontCamera NVARCHAR(100),
+	BackCamera NVARCHAR(100),
+	OperatingSystem NVARCHAR(100),
+	Chipset NVARCHAR(100),
+	CPU NVARCHAR(100),
+	GPU NVARCHAR(100),
+	RAM NVARCHAR(100),
+	ROM NVARCHAR(100),
+	SDCard NVARCHAR(100) DEFAULT N'Không hỗ trợ',
+	Network NVARCHAR(200),
+	WLAN NVARCHAR(100),
+	Bluetooth NVARCHAR(100),
+	GPS NVARCHAR(100),
+	NFC NVARCHAR(100) DEFAULT N'Không hỗ trợ',
+	USB NVARCHAR(100),
+	Sensor NVARCHAR(500),
+	Battery NVARCHAR(100),
+	Status NVARCHAR(100),
+	Image NVARCHAR(500),
+	
+	FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
+)
+GO
+
+CREATE TABLE SmartphoneVersion
+(
+	SmartphoneVersionID NVARCHAR(50) PRIMARY KEY,
+	SmartphoneID NVARCHAR(50),
+	RAM NVARCHAR(100),
+	ROM NVARCHAR(100),
+	Color NVARCHAR(100),
+	Price INT,
+	QuantityInStock INT,
+
+	FOREIGN KEY(SmartphoneID) REFERENCES Smartphone(SmartphoneID)
+)
+GO
+
+CREATE TABLE Role
+(
+	RoleID NVARCHAR(50) PRIMARY KEY,
+	RoleName NVARCHAR(100),
+)
+GO
+
+
+CREATE TABLE Account
+(
+	Username NVARCHAR(50) PRIMARY KEY,
+	Password NVARCHAR(50) NOT NULL,
+	RoleID NVARCHAR(50) NOT NULL,
+	Status NVARCHAR(100),
+)
+GO
