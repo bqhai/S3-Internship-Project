@@ -12676,25 +12676,25 @@ N'SMP10004',
 N'iPhone 7 Plus Chính hãng (VN/A)', 
 N'AP', 
 N'158.2 x 77.9 x 7.3 mm ', 
-N'188g', -------Pause here--------
+N'188g', 
 N'Nano-SIM', 
 N'Cảm ứng điện dung LED-backlit IPS LCD, 16 triệu màu', 
 N'5.5 inches', 
 N'1920 x 1080 pixels', 
 N'iOS', 
-N'Apple A11 Bionic APL1W72', 
-N'2x 2.39 GHz Monsoon, 4x 2.39 GHz Mistral', 
-N'Apple GPU (3 lõi đồ họa)', 
+N'Apple A10 Fusion APL1W24', 
+N'2x 2.34 GHz Hurricane, 2x 2.34 GHz Zephyr', 
+N'PowerVR Series7XT Plus (6 lõi đồ họa)', 
 N'Không', 
 N'12 MP (f/1.8, 28mm, OIS) + 12 MP (f/2.8, 57mm), tự động lấy nét nhận diện theo giai đoạn, zoom quang 2x, 4 LED flash (2 tone)', 
 N'7 MP f/2.2, 1080p30fps,', 
 N'Wi-Fi 802.11 a/b/g/n/ac, dual-band, hotspot', 
 N'v5.0, A2DP, LE', 
-N'A-GPS, GLONASS, BDS, GALILEO', 
+N'A-GPS, GLONASS, GALILEO, QZSS', 
 N'Yes', 
 N'2.0', 
 N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
-N'Li-ion 2691 mAh')
+N'Li-ion 2900 mAh')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
@@ -12726,6 +12726,7 @@ INSERT INTO ProductVersion VALUES(N'SMPV10022', N'SMP10003', N'IPhone 8 Plus Ch�
 INSERT INTO ProductVersion VALUES(N'SMPV10023', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Gold (VN/A)', N'3 GB', N'128 GB', N'Gold', 16000000, 13300000, 10, 1, N'SMPV10023.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10024', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Xám (VN/A)', N'3 GB', N'128 GB', N'Xám', 16000000, 13300000, 10, 1, N'SMPV10024.jpg')
 
+INSERT INTO ProductVersion VALUES(N'SMPV10025', N'SMP10004', N'IPhone 7 Plus Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 10990000, 10000000, 10, 1, N'SMPV10025.jpg')
 
 
 
@@ -12843,4 +12844,35 @@ N'PI10026.jpg',
 N'Mua điện thoại iPhone 8 Plus 128GB giá bao nhiêu trên thị trường',
 N'Một chiếc smartphone tuyệt vời, đẳng cấp như Apple iPhone 8 Plus 128GB sẽ là một chiếc smartphone đáng sở hữu, giúp mang đến cho người dùng những trải nghiệm thú vị. Mua ngay điện thoại iPhone 8 Plus 128GB chính hãng tại cửa hàng CellphoneS với mức giá vô cùng hấp dẫn. CellphoneS luôn cam kết sản phẩm chính hãng có chất lượng cao cấp và có kèm theo bảo hành chính hãng nên bạn có thể yên tâm khi mua sắm tại đây.')
 
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10004',
+N'iPhone 7 Plus 128Gb',
+N'iPhone 7 Plus 128GB với thiết kế không quá nhiều thay đổi, vẫn bảo tồn vẻ đẹp truyền thống từ thời iPhone 6 Plus. Tuy nhiên, phần cứng iPhone 7 Plus đã được nâng cấp đáng kể như camera kép cùng cấu hình cực mạnh.',
+N'Tại sao iPhone 7 Plus 128Gb VN/A là sự lựa chọn tốt nhất',
+N'Đây là những chiếc iPhone 7 Plus 128GB được sản xuất dành riêng cho thị trường Việt Nam (mã VN/A) được CellphoneS phân phối dưới hình thức máy mới, chính hãng 100%, thích hợp cho người có nhu cầu tìm mua 1 chiếc điện thoại để sử dụng lâu dài do nền tảng hệ điều hành iOS mang lại.',
+N'',
+N'Bộ nhớ trong trên iPhone 7 Plus 128GB được nâng cấp đáng kể',
+N'Với bộ nhớ được nâng cấp lên 128Gb, iPhone 7 Plus 128Gb xóa tan nỗi lo cạn kiệt bộ nhớ của bạn, giúp bạn thỏa sức chụp ảnh, quay phim cùng trải nghiệm những tựa game mới nhất một cách thoải mái mà không phải lo lắng đến việc thiếu hụt bộ nhớ cho các nhu cầu phát sinh sau này.',
+N'',
+N'Thiết kế khắc phục được những điểm yếu trên iPhone 6',
+N'Khắc phục được sự thiếu liền mạch trong thiết kế mặt lưng từ đời iPhone 6/6s Plus, smartphone iPhone 7 Plus 128gb đã  cho thấy sự thay đổi trong thiết kế nhắm đến trải nghiệm của Apple - di chuyển 2 dãy anten lên phía đỉnh máy, để lại một mặt lưng liền mạch, cho cảm giác cầm mát lạnh từ thiết kế kim loại nguyên khối.',
+N'',
+N'Thiết kế phím Home cảm ứng lực mang đến độ bền tuyệt hảo',
+N'Việc loại bỏ phím home vật lý giúp Apple nâng cao trải nghiệm người dùng, cùng với hệ điều hành iOS đã áp dụng cơ chế nhấn phím Home để mở khóa, iPhone 7 Plus đã nhận được sự đánh giá cao từ phía người dùng khi việc sử dụng phím Home cảm ứng lực sẽ giúp tăng độ bền cho máy.',
+N'',
+N'Âm thanh được nâng cấp mang trải nghiệm chân thực',
+N'Bằng việc loại bỏ jack tai nghe 3.5mm, iPhone 7 Plus 128gb hướng người dùng đến một tương lai không dây, đồng thời Apple đã giới thiệu mẫu tai nghe Airpods mới của hãng để nâng cao trải nghiệm không dây này.',
+N'',
+N'Màn hình 5.5 inch với khả năng hiển thị tuyệt vời',
+N'Những chiếc máy đến từ Apple luôn được biết đến với khả năng hiển thị tốt về góc nhìn, độ sáng, màu sắc trung thực của hình ảnh.',
+N'',
+N'Cấu hình cao cấp mang đến trải nghiệm mượt mà cho người dùng',
+N'Mang trái tim là con chip A10 Fusion 64 bit 2.3GHz, cùng với bộ nhớ ram lên đến 3Gb, Apple iPhone 7 Plus mang đến cho người dùng trải nghiệm mượt mà trong mọi thao tác sử dụng hằng ngày, từ duyệt web, xem phim đến trải nghiệm các tựa game nặng.',
+N'',
+N'Lựa chọn mua iPhone 7 Plus 128Gb Vn/A đảm bảo chất lượng tại CellphoneS',
+N'Tại CellphoneS, iPhone 7 Plus 128Gb chính hãng Vn/a và iPhone 7 32GB chính hãng VN/A đang được cung cấp với mức giá hợp lý cùng dịch vụ bảo hành chính hãng 1 đổi 1 trong vòng 12 tháng. Bên cạnh đó, CellphoneS còn mang đến ưu đãi trả góp 0% lãi suất cùng với những ưu đãi cho Smember khi khách hàng sử dụng dịch vụ tại đây.')
+
 GO
+
+
+-------Pause here--------
