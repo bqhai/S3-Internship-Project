@@ -6,7 +6,7 @@ GO
 -------------CREATE TABLE----------------
 CREATE TABLE Role
 (
-	RoleID NVARCHAR(50) PRIMARY KEY,
+	RoleID INT PRIMARY KEY,
 	RoleName NVARCHAR(100) NOT NULL,
 )
 GO
@@ -15,8 +15,8 @@ GO
 CREATE TABLE Account
 (
 	Username NVARCHAR(50) PRIMARY KEY,
-	Password NVARCHAR(50) NOT NULL,
-	RoleID NVARCHAR(50) NOT NULL,
+	Password NVARCHAR(MAX) NOT NULL,
+	RoleID INT NOT NULL,
 	Status BIT, --0: Block, 1: Active
 
 	FOREIGN KEY(RoleID) REFERENCES Role(RoleID)
@@ -27,12 +27,12 @@ CREATE TABLE Customer
 (
 	CustomerID NVARCHAR(50) PRIMARY KEY,
 	Name NVARCHAR(100),
-	Username NVARCHAR(50),
-	Email NVARCHAR(100),
+	Username NVARCHAR(50) UNIQUE,
+	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
-	PhoneNumber NVARCHAR(50),
+	PhoneNumber NVARCHAR(50) UNIQUE,
 	Sex NVARCHAR(50),
-	DateOfBirth DATE,
+	DateOfBirth NVARCHAR(50),
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -42,12 +42,12 @@ CREATE TABLE Employee
 (
 	EmployeeID NVARCHAR(50) PRIMARY KEY,
 	Name NVARCHAR(100),
-	Username NVARCHAR(50),
-	Email NVARCHAR(100),
+	Username NVARCHAR(50) UNIQUE,
+	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
-	PhoneNumber NVARCHAR(50),
+	PhoneNumber NVARCHAR(50) UNIQUE,
 	Sex NVARCHAR(50),
-	DateOfBirth DATE,
+	DateOfBirth NVARCHAR(50),
 	Status BIT, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -204,6 +204,22 @@ CREATE TABLE ProductIntroduce
 GO
 
 -------------INSERT DATA----------------
+--Role--
+INSERT INTO Role VALUES(1, N'Quản trị hệ thống')
+INSERT INTO Role VALUES(2, N'Nhân viên')
+INSERT INTO Role VALUES(3, N'Khách hàng')
+
+--Account--
+INSERT INTO Account VALUES(N'bqhai1205', N'123456', 1, 1)
+INSERT INTO Account VALUES(N'hdhieu2610', N'123456', 2, 1)
+INSERT INTO Account VALUES(N'dtqnhu', N'123456', 3, 1)
+
+--Employee--
+INSERT INTO Employee VALUES(N'EMP100', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
+INSERT INTO Employee VALUES(N'EMP101', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
+
+--Customer--
+INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu', N'dtqnhu@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
 --Brand--
 INSERT INTO Brand VALUES(N'AP', N'Apple', N'Mỹ')
 INSERT INTO Brand VALUES(N'SA', N'Samsung', N'Hàn Quốc')
@@ -216,4 +232,13 @@ INSERT INTO Brand VALUES(N'HU', N'Huawei', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VI', N'Vivo', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VS', N'Vsmart', N'Việt Nam')
 INSERT INTO Brand VALUES(N'BK', N'BKAV', N'Việt Nam')
+
+INSERT INTO Brand VALUES(N'MS', N'Microsoft', N'Mỹ')
+INSERT INTO Brand VALUES(N'LE', N'Lenovo', N'Trung Quốc')
+INSERT INTO Brand VALUES(N'HP', N'HP', N'Mỹ')
+INSERT INTO Brand VALUES(N'DE', N'DELL', N'Mỹ')
+INSERT INTO Brand VALUES(N'LG', N'LG', N'Hàn Quốc')
+INSERT INTO Brand VALUES(N'AC', N'Acer', N'Đài Loan')
+INSERT INTO Brand VALUES(N'MI', N'MSI', N'Đài Loan')
+
 
