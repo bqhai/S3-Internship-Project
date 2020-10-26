@@ -215,4 +215,5 @@ INSERT INTO Brand VALUES(N'AS', N'Asus', N'Đài Loan')
 INSERT INTO Brand VALUES(N'HU', N'Huawei', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VI', N'Vivo', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VS', N'Vsmart', N'Việt Nam')
+INSERT INTO Brand VALUES(N'BK', N'BKAV', N'Việt Nam')
 
