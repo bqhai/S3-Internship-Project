@@ -12671,6 +12671,30 @@ N'2.0',
 N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
 N'Li-ion 2691 mAh')
 
+INSERT INTO Product VALUES(
+N'SMP10004', 
+N'iPhone 7 Plus Chính hãng (VN/A)', 
+N'AP', 
+N'158.2 x 77.9 x 7.3 mm ', 
+N'188g', -------Pause here--------
+N'Nano-SIM', 
+N'Cảm ứng điện dung LED-backlit IPS LCD, 16 triệu màu', 
+N'5.5 inches', 
+N'1920 x 1080 pixels', 
+N'iOS', 
+N'Apple A11 Bionic APL1W72', 
+N'2x 2.39 GHz Monsoon, 4x 2.39 GHz Mistral', 
+N'Apple GPU (3 lõi đồ họa)', 
+N'Không', 
+N'12 MP (f/1.8, 28mm, OIS) + 12 MP (f/2.8, 57mm), tự động lấy nét nhận diện theo giai đoạn, zoom quang 2x, 4 LED flash (2 tone)', 
+N'7 MP f/2.2, 1080p30fps,', 
+N'Wi-Fi 802.11 a/b/g/n/ac, dual-band, hotspot', 
+N'v5.0, A2DP, LE', 
+N'A-GPS, GLONASS, BDS, GALILEO', 
+N'Yes', 
+N'2.0', 
+N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
+N'Li-ion 2691 mAh')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
