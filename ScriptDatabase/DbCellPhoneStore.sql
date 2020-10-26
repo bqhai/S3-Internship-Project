@@ -12404,26 +12404,26 @@ CREATE TABLE Product
 	ProductID NVARCHAR(50) PRIMARY KEY,
 	ProductName NVARCHAR(100),
 	BrandID NVARCHAR(50),
-	Size NVARCHAR(100),
-	Weight NVARCHAR(100),
-	SIM NVARCHAR(100),
+	Size NVARCHAR(200),
+	Weight NVARCHAR(200),
+	SIM NVARCHAR(200),
 	ScreenType NVARCHAR(500),
-	ScreenSize NVARCHAR(100),
-	ScreenResolution NVARCHAR(100),
-	OperatingSystem NVARCHAR(100),
-	Chipset NVARCHAR(100),
-	CPU NVARCHAR(100),
-	GPU NVARCHAR(100),	
+	ScreenSize NVARCHAR(200),
+	ScreenResolution NVARCHAR(200),
+	OperatingSystem NVARCHAR(200),
+	Chipset NVARCHAR(200),
+	CPU NVARCHAR(200),
+	GPU NVARCHAR(200),	
 	SDCard NVARCHAR(100) DEFAULT N'Không hỗ trợ',
-	BackCamera NVARCHAR(100),
-	FrontCamera NVARCHAR(100),
-	WLAN NVARCHAR(100),
-	Bluetooth NVARCHAR(100),
-	GPS NVARCHAR(100),
-	NFC NVARCHAR(100) DEFAULT N'Không hỗ trợ',
-	USB NVARCHAR(100),	
+	BackCamera NVARCHAR(300),
+	FrontCamera NVARCHAR(300),
+	WLAN NVARCHAR(200),
+	Bluetooth NVARCHAR(200),
+	GPS NVARCHAR(200),
+	NFC NVARCHAR(200) DEFAULT N'Không hỗ trợ',
+	USB NVARCHAR(200),	
 	Sensor NVARCHAR(500),
-	Battery NVARCHAR(100),
+	Battery NVARCHAR(200),
 	FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
 )
 GO
@@ -12431,7 +12431,7 @@ CREATE TABLE ProductVersion
 (
 	ProductVersionID NVARCHAR(50) PRIMARY KEY,
 	ProductID NVARCHAR(50),
-	ProductVersionName NVARCHAR(100),
+	ProductVersionName NVARCHAR(200),
 	RAM NVARCHAR(100),
 	ROM NVARCHAR(100),
 	Color NVARCHAR(100),
@@ -12595,6 +12595,7 @@ N'Yes',
 NULL, 
 N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
 N'3110 mAh')
+
 INSERT INTO Product VALUES(
 N'SMP10001', 
 N'iPhone 11 Pro Max Chính hãng (VN/A)', 
@@ -12619,6 +12620,7 @@ N'Yes',
 NULL, 
 N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
 N'3969 mAh')
+
 INSERT INTO Product VALUES(
 N'SMP10002', 
 N'iPhone XR Chính hãng(VN/A)', 
@@ -12643,6 +12645,32 @@ N'Yes',
 NULL, 
 NULL, 
 N'2942 mAh')
+
+INSERT INTO Product VALUES(
+N'SMP10003', 
+N'iPhone 8 Plus Chính hãng (VN/A)', 
+N'AP', 
+N'158.4 x 78.1 x 7.5 mm', 
+N'202g', 
+N'Nano-SIM', 
+N'Cảm ứng điện dung LED-backlit IPS LCD, 16 triệu màu', 
+N'5.5 inches', 
+N'1920 x 1080 pixels', 
+N'iOS', 
+N'Apple A11 Bionic APL1W72', 
+N'2x 2.39 GHz Monsoon, 4x 2.39 GHz Mistral', 
+N'Apple GPU (3 lõi đồ họa)', 
+N'Không', 
+N'12 MP (f/1.8, 28mm, OIS) + 12 MP (f/2.8, 57mm), tự động lấy nét nhận diện theo giai đoạn, zoom quang 2x, 4 LED flash (2 tone)', 
+N'7 MP f/2.2, 1080p30fps,', 
+N'Wi-Fi 802.11 a/b/g/n/ac, dual-band, hotspot', 
+N'v5.0, A2DP, LE', 
+N'A-GPS, GLONASS, BDS, GALILEO', 
+N'Yes', 
+N'2.0', 
+N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
+N'Li-ion 2691 mAh')
+
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
@@ -12669,6 +12697,12 @@ INSERT INTO ProductVersion VALUES(N'SMPV10019', N'SMP10001', N'IPhone 11 Pro Max
 
 INSERT INTO ProductVersion VALUES(N'SMPV10020', N'SMP10002', N'IPhone XR Chính hãng - 64GB - Đỏ (VN/A)', N'3 GB', N'64 GB', N'Đỏ', 14990000, 12990000, 10, 1, N'SMPV10020.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10021', N'SMP10002', N'IPhone XR Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 16990000, 14990000, 10, 1, N'SMPV10021.jpg')
+
+INSERT INTO ProductVersion VALUES(N'SMPV10022', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Bạc (VN/A)', N'3 GB', N'128 GB', N'Bạc', 16000000, 13300000, 10, 1, N'SMPV10022.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10023', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Gold (VN/A)', N'3 GB', N'128 GB', N'Gold', 16000000, 13300000, 10, 1, N'SMPV10023.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10024', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Xám (VN/A)', N'3 GB', N'128 GB', N'Xám', 16000000, 13300000, 10, 1, N'SMPV10024.jpg')
+
+
 
 
 GO
@@ -12756,5 +12790,33 @@ N'iPhone XR 64GB được cho là chiếc iPhone có thời lượng pin “trâ
 N'PI10019.jpg',
 N'Mua iPhone XR giá rẻ, chính hãng VN/A tại CellphoneS',
 N'Điện thoại iPhone XR chính hãng hiện đã có mặt tại CellphoneS - hệ thống cửa hàng chuyên bán lẻ điện thoại di động, máy tính bảng và các phụ kiện chính hãng trên toàn quốc. Quý khách có thể mua sản phẩm tại CellphoneS với mức giá vô cùng cạnh tranh và hợp lý. Điện thoại iPhone XR được bảo hành 12 tháng tại trung tâm bảo hành Chính hãng và bảo hành 1 đổi 1 trong 30 ngày nếu có lỗi nhà sản xuất. Bên cạnh đó, CellphoneS còn cung cấp dịch vụ giao hàng và thanh toán tận nơi miễn phí cho người dùng ở xa khi mua hàng.')
+
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10003',
+N'Điện thoại iPhone 8 Plus 128GB chính hãng – Bộ nhớ lưu trữ lớn, camera kép nâng cấp trải nghiệm',
+N'Kế thừa sự thành công của iPhone 7/7 Plus, Apple lại tiếp tục làm cộng đồng yêu công nghệ phải chú ý khi cho ra mắt mẫu điện thoại iPhone 12 và kế tiếp của họ - iPhone 8 Plus 128GB. iPhone 8 Plus 128GB sở hữu thiết kế đẳng cấp với mặt lưng làm từ kính hoàn toàn mới lạ, độc đáo và sang trọng hơn người anh em tiền nhiệm. Bên cạnh đó, iPhone 8 Plus cũng có nhiều nâng cấp từ camera, hiệu năng,… để mang đến cho người dùng những trải nghiệm đỉnh cao hơn.',
+N'Bộ nhớ trong 128GB lưu trữ nhiều tập tin dữ liệu',
+N'Bộ nhớ trong dung lượng đến 128GB chính là một phần sức mạnh của smartphone. Với mức dung lượng này, bạn có thể lưu trữ đến hàng nghìn tập tin bài hát, hình ảnh, video, cài đặt các ứng dụng một cách thoải mái.',
+N'PI10020.jpg',
+N'Thiết kế đẳng cấp từ chất liệu kính kết hợp với kim loại cùng các gam màu thời thượng',
+N'Apple iPhone 8 Plus 128GB đã thể hiện được sự đẳng cấp và sang trọng, chứng minh phong cách thiết kế hoàn toàn thời thượng từ nhà “Táo khuyết”. Vẫn là thiết kế nguyên khối với chất liệu kim loại nhôm, tuy nhiên iPhone 8 Plus 128GB lại mang đến làn gió mới trong các thiết kế nhờ mặt lưng được làm từ kính mang đến sự bóng bẩy, sang trọng. Mặt kính cường lực bo cong đã mang đến sự hiện đại và sang trọng hơn cho iPhone 8 Plus.',
+N'PI10021.jpg',
+N'Màn hình IPS LCD 5.5 inch chuẩn Retina và công nghệ True Tone, 3D Touch tiện lợi',
+N'Để mang đến cho người dùng những trải nghiệm tốt hơn, Apple đã trang bị cho điện thoại iPhone 8 Plus 128GB màn hình có kích thước lớn 5.5 inch. Tấm nền IPS LCD cao cấp với độ phân giải Full HD và tỉ lệ chuẩn 16:9 như truyền thống cho hình ảnh hiển thị có màu sắc chân thực, sát với thực tế, sắc nét cùng với độ tương phản cao. Mật độ điểm ảnh đến 401ppi vượt chuẩn công nghệ Retina chắc chắn sẽ mang đến cho bạn những trải nghiệm hình ảnh thú vị, tuyệt hảo.',
+N'PI10022.jpg',
+N'Hệ thống camera kép với camera chính 12MP chụp ảnh thiếu sáng ấn tượng, sắc nét',
+N'Hệ thống camera kép của iPhone 8 Plus 128GB gồm camera chính góc rộng và camera tele với độ phân giải 12MP, khẩu độ f/1.8 hỗ trợ chống rung quang học OIS cùng với những cảm biến thông minh để mang đến chất lượng ảnh chụp tuyệt vời. Chỉ với iPhone 8 Plus, bạn có thể ghi lại những khoảnh khắc vô cùng chân thực, màu sắc chính xác ngay cả khi đang trong điều kiện thiếu sáng. Nhờ đó, bạn có thể sử dụng chính smartphone của mình như một chiếc máy ảnh chuyên nghiệp, ghi lại những khoảnh khắc đáng nhớ.',
+N'PI10023.jpg',
+N'Camera trước độ phân giải 7MP hỗ trợ selfie ngược sáng cho ảnh selfie xinh đẹp',
+N'Camera trước của iPhone 8 Plus 128GB cũng sở hữu những tính năng không thua gì hệ thống camera sau. Độ phân giải 7MP nhưng vẫn cho ảnh chụp sắc nét với màu sắc tươi sáng. Khác với những tính năng làm đẹp của những dòng smartphone khác sẽ giúp làm mịn da, làm sáng da,…thì iPhone 8 Plus lại mang đến những bức ảnh selfie chân thực hơn.',
+N'PI10024.jpg',
+N'Hiệu năng ấn tượng, tốc độ xử lý nhanh chóng với chip A11 Bionic',
+N'Để mang đến sức mạnh cho chiếc smartphone của mình, nhà sản xuất cũng đã trang bị cho iPhone 8 Plus 128GB con chip xử lý A11 Bionic của Apple và hệ điều hành iOS để tạo nên sức mạnh vượt trội cho smartphone. Bạn có thể thực hiện nhiều thao tác một cách mượt mà, thỏa sức chơi các tựa game kể cả game 3D trên smartphone một cách trơn tru.',
+N'PI10025.jpg',
+N'Pin dung lượng 2691mAh hỗ trợ sạc nhanh và sạc không dây hiện đại',
+N'iPhone 8 Plus 128GB sở hữu viên pin có dung lượng 2691mAh và nhờ vào hệ điều hành cùng bộ xử lý mà iPhone 8 Plus có thể mang đến thời lượng sử dụng đến 2 ngày sau mỗi lần sử dụng tùy vào tần suất dùng máy.',
+N'PI10026.jpg',
+N'Mua điện thoại iPhone 8 Plus 128GB giá bao nhiêu trên thị trường',
+N'Một chiếc smartphone tuyệt vời, đẳng cấp như Apple iPhone 8 Plus 128GB sẽ là một chiếc smartphone đáng sở hữu, giúp mang đến cho người dùng những trải nghiệm thú vị. Mua ngay điện thoại iPhone 8 Plus 128GB chính hãng tại cửa hàng CellphoneS với mức giá vô cùng hấp dẫn. CellphoneS luôn cam kết sản phẩm chính hãng có chất lượng cao cấp và có kèm theo bảo hành chính hãng nên bạn có thể yên tâm khi mua sắm tại đây.')
 
 GO
