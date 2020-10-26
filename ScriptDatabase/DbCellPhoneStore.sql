@@ -12547,7 +12547,8 @@ INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bq
 INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu', N'dtqnhu@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
+INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu2610', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
+INSERT INTO Customer VALUES(N'CUS101', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
 GO
 --Brand--
 INSERT INTO Brand VALUES(N'AP', N'Apple', N'Mỹ')
@@ -12618,6 +12619,30 @@ N'Yes',
 NULL, 
 N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
 N'3969 mAh')
+INSERT INTO Product VALUES(
+N'SMP10002', 
+N'iPhone XR Chính hãng(VN/A)', 
+N'AP', 
+N'150,9 x 75,7 x 8,3 mm', 
+N'194g', 
+N'Nano-SIM', 
+N'Liquid Retina LCD', 
+N'6.1 inches', 
+N'1792 x 828 pixels', 
+N'iOS', 
+N'A12 Bionic', 
+NULL, 
+N'8 lõi', 
+N'Không', 
+N'12MP', 
+N'7 MP', 
+N'802.11 a/b/g/n/ac, 2 ăng-ten, điểm truy cập cá nhân', 
+N'v5.0, A2DP, LE', 
+N'A-GPS, GLONASS', 
+N'Yes', 
+NULL, 
+NULL, 
+N'2942 mAh')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
@@ -12641,6 +12666,10 @@ INSERT INTO ProductVersion VALUES(N'SMPV10016', N'SMP10001', N'IPhone 11 Pro Max
 INSERT INTO ProductVersion VALUES(N'SMPV10017', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Gold (VN/A)', N'4 GB', N'256 GB', N'Gold', 34500000, 31400000, 10, 1, N'SMPV10013.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10018', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Bạc (VN/A)', N'4 GB', N'256 GB', N'Bạc', 34500000, 31400000, 10, 1, N'SMPV10014.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10019', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xanh lá (VN/A)', N'4 GB', N'256 GB', N'Xanh lá', 34500000, 31400000, 10, 1, N'SMPV10015.jpg')
+
+INSERT INTO ProductVersion VALUES(N'SMPV10020', N'SMP10002', N'IPhone XR Chính hãng - 64GB - Đỏ (VN/A)', N'3 GB', N'64 GB', N'Đỏ', 14990000, 12990000, 10, 1, N'SMPV10020.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10021', N'SMP10002', N'IPhone XR Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 16990000, 14990000, 10, 1, N'SMPV10021.jpg')
+
 
 GO
 --ProductIntroduce--
@@ -12671,6 +12700,7 @@ N'Với viên pin 3110 mAh, người dùng có thể sử dụng để lướt w
 N'PI10006.jpg',
 N'Mua điện thoại iPhone 11 chính hãng, giá rẻ nhất tại CellphoneS',
 N'Với những gì mà Apple đã mang đến, đây là thực sự là chiếc điện thoại đáng sở hữu hàng. Nếu bạn muốn mua hàng chính hãng VN/A và đang không biết iPhone 11 giá bao nhiêu tiền và nên mua ở đâu tốt nhất thì CellphoneS sẽ là một địa chỉ mà bạn nên cân nhắc. Giá iPhone 11 chính hãng VN/A rất hấp dẫn, chưa đến 18 triệu đồng, hỗ trợ trả góp với thủ tục nhanh gọn, lãi suất ưu đãi và nhiều hình thức thanh toán mang lại sự tiện lợi. Máy sẽ được bảo hành 12 tháng tại trung tâm bảo hành Apple tại Việt Nam bạn có thể hoàn toàn yên tâm khi sử dụng.')
+
 INSERT INTO ProductIntroduce VALUES(
 N'SMP10001',
 N'iPhone 11 Pro Max – Bộ ba camera sau chụp ảnh đỉnh cao',
@@ -12679,24 +12709,52 @@ N'Kích thước to hơn với chất liệu thép không gỉ bền bỉ',
 N'Điện thoại có thiết kế tương tự như iPhone 11 Pro nhưng kích thước thì to hơn với kích thước màn hình 6.5 inch và toàn bộ máy có kích thước 158 x 77.8 x 8.1 mm. Thiết kế không có nhiều thay đổi trừ hệ thống camera sau được nâng cấp thành 3 camera. Màn hình tai thỏ vẫn được giữ nguyên và chất liệu thép không gỉ giúp 11 Pro Max bền bỉ hơn.',
 N'PI10007.jpg',
 N'Màn hình 6.5 inch, công nghệ màn hình Super Retina XDR cho khả năng hiển thị tuyệt vời',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'',
-N'')
+N'iPhone 11 Pro Max có màn hình lớn với kích thước màn hình 6.5 inch, độ phân giải 1242 x 2688 pixels cho hình ảnh hiển thị sắc nét. Màn hình đạt chuẩn Super Retina XDR mang đến khả năng hiển thị tuyệt vời, hình ảnh chân thật, màu sắc sinh động, độ tương phản màu cao, hình ảnh chi tiết cao. Với màn hình này, bạn có thể tận hưởng những bộ phim hấp dẫn, các game đỉnh cao với chất lượng hình ảnh vô cùng tuyệt vời.',
+N'PI10008.jpg',
+N'Hệ thống 3 camera 12MP sau được nâng cấp đáng kể',
+N'Apple đã nâng cấp hệ thống camera cho iPhone 11 Pro Max thành cụm 3 camera và được đặt gọn trong một hình vuông. Với 1 camera góc siêu rộng mà ở các thế hệ iPhone trước đây chưa từng có, giúp khả năng chụp ảnh đỉnh hơn và chuyên nghiệp hơn.',
+N'PI10009.jpg',
+N'Cấu hính mạnh mẽ với chip A13 Bionic, RAM đến 4GB xử lý nhanh chóng mọi tác vụ',
+N'Con chip A13 Bionic là một bộ vi xử lý tuyệt vời, mang sức mạnh vượt trội hơn hẳn chip A12 cũ. Được trang bị con chip A13, máy sở hữu cấu hình mạnh mẽ, ấn tượng và kèm với RAM dung lượng đến 4GB, mọi thao tác tác vụ iPhone 11 Pro Max đều có thể xử lý nhanh chóng, cho bạn trải nghiệm mượt mà, ổn định tất cả các tác vụ, đa nhiệm.',
+N'PI10010.jpg',
+N'FaceID được nâng cấp cho bảo mật an toàn, mở khóa nhanh hơn',
+N'Tính năng nhận diện khuôn mặt FaceID vẫn được ứng dụng cho iPhone Pro Max để bạn có thể sử dụng điện thoại an toàn hơn. Khả năng nhận diện khuôn mặt chuẩn xác với camera hồng ngoại vì vậy bạn có thể yên tâm về độ bảo mật. Với FaceID, bạn có thể nhanh chóng mở khóa đăng nhập vào điện thoại mà không cần phải nhập mật khẩu cho mỗi lần đăng nhập.',
+N'PI10011.jpg',
+N'Dung lượng pin 3969 mAh, công nghệ sạc nhanh 18W',
+N'Pin của iPhone 11 Pro Max có dung lượng 3969 mAh, lớn hơn pin của iPhone Xs Max chỉ có 3174 mAh vì thế điện thoại mang đến thời gian sử dụng lâu hơn. Bên cạnh đó, sự hỗ trợ từ chip A13 Bionic còn giúp thời lượng pin tăng lên chính vì thế bạn sẽ có thể trải nghiệm điện thoại lâu hơn, nghe nhạc, xem phim, chơi game, làm việc...trong thời gian dài hơn.',
+N'PI10012.jpg',
+NULL,
+NULL,
+NULL,
+N'Mua điện thoại iPhone 11 Pro Max giá tốt tại CellphoneS',
+N'Có thể nói đây chính là một chiếc siêu phẩm cao cấp nhất của Apple tính đến thời điểm hiện tại với nhiều cải tiến vượt trội. Nếu bạn yêu thích và mong muốn sở hữu ngay điện thoại iPhone 11 Pro Max chính hãng VN/A, bạn có thể mua ngay tại CellphoneS với cam kết sản phẩm chính hãng và có chất lượng tốt. Khi mua sản phẩm tại CellphoneS, bạn còn được hưởng chính sách bảo hành chuyên nghiệp, uy tín và mức giá bán tại CellphoneS cũng vô cùng hấp dẫn.')
+
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10002',
+N'Điện thoại iPhone XR - Sang trọng, trẻ trung với nhiều màu sắc',
+N'Được ra mắt cùng Apple iPhone XS và XS Max, iPhone XR không chỉ được thừa kế những tính năng đặc trưng nổi trội của người tiền nhiệm iPhone X được ra mắt một năm trước đó và còn có những cải tiến nhằm mang lại trải nghiệm mới lạ và thú vị cho người dùng.',
+N'iPhone XR chính hãng (VN/A) là gì? Vì sao khách hàng nên chọn mã VN/A',
+N'Đầu tiên, VN/A là mã trên sản phẩm Apple phân phối trực tiếp cho các đại lý ủy quyền Apple tại Việt Nam và iPhone XR 64GB chính hãng (VN/A) là hàng chính hãng do Apple sản xuất theo tiêu chuẩn của thị trường Việt Nam.',
+N'PI10013.jpg',
+N'Thiết kế sang trọng và màu sắc trẻ trung',
+N'Về ngoại hình, iPhone XR không quá khác biệt so với iPhone X với vẻ đẹp đến từ thiết kế viền siêu mỏng, tai thỏ mặt trước, và các cạnh được bo tròn. Máy cũng được có tiêu chuẩn chống nước chống bụi IP67 như các dòng siêu phẩm mới sau này của Apple.',
+N'PI10014.jpg',
+N'Màn hình kích thước 6.1 inch, hiển thị sắc nét',
+N'iPhone XR sử dụng tấm nền Liquid Retina, đồng thời tăng kích thước màn hình so với iPhone X (6.1 inch so với 5.8 inch), độ phân giải 828 x 1792 pixels cùng mật độ điểm ảnh 324 ppi. Khác với iPhone XS hay XS Max, dòng smartphone này sở hữu màn hình LCD - Apple cho biết đây là màn hình LCD tiên tiến nhất trên bất kỳ điện thoại thông minh nào.',
+N'PI10015.jpg',
+N'Dung lượng 64GB giúp người dùng lưu trữ thoải mái',
+N'iPhone XR được Apple trang bị 2 tùy chọn bộ nhớ trong là 64GB và 256GB, trong khi 256GB là quá nhiều với nhu cầu sử dụng bình thường của người dùng thì 64GB là dung lượng lưu trữ khá tốt và thoải mái. Hiện nay có rất nhiều ứng dụng cung cấp dịch vụ lưu trữ lên đám mây nên bạn không cần phải lo hết dung lượng.',
+N'PI10016.jpg',
+N'Hiệu năng mạnh mẽ nhờ chip Apple A12 Bionic tiên tiến',
+N'Mỗi lần ra mắt sản phẩm mới, Apple lại trình làng một con chip mới và Apple A12 Bionic mà iPhone XR sử dụng là con chip đầu tiên sản xuất trên nền tảng 7nm, gồm CPU, GPU và Neural Engine. Chip A12 Bionic được đánh giá là có nhiều cải tiến so với tiền nhiệm chip A11 khi xử lý dữ liệu mạnh mẽ hơn 15%, xử lý đồ họa nhanh hơn 40% và tiết kiệm điện năng hơn 50%.',
+N'PI10017.jpg',
+N'Camera đơn 12 MP xóa phông tuyệt đỉnh và camera trước độ phân giải 7 MP',
+N'Đừng nghĩ rằng chỉ có camera kép mới có thể xóa phông đẹp, iPhone XR với camera sau 12 MP khẩu độ f/1.8 duy nhất vẫn có khả năng tạo hiệu ứng bokeh huyền ảo, làm nổi bận chân dung nhân vật chính và cho những hình ảnh vô cùng sắc nét và chi tiết. Ngoài ra, camera trước với độ phân giải 7 MP, khẩu độ f/2.2 mang công nghệ TrueDepth mới nhất cùng Animoji, Memoji thông minh sẽ cho bạn những tấm ảnh selfie với hiệu ứng ánh sáng studio có chiều sâu và những biểu tượng cảm xúc sinh động.',
+N'PI10018.jpg',
+N'Dung lượng pin, hệ thống FaceID và Haptic Touch',
+N'iPhone XR 64GB được cho là chiếc iPhone có thời lượng pin “trâu bò” 2.942 mAh, lâu hơn 1 tiếng rưỡi so với thời lượng của iPhone 8 Plus. Ngoài ra, chiếc smartphone này có hỗ trợ sạc pin nhanh và sạc pin không dây Qi, do đó việc nạp năng lượng cho thiết bị không còn là vấn đề tốn nhiều thời gian nữa.',
+N'PI10019.jpg',
+N'Mua iPhone XR giá rẻ, chính hãng VN/A tại CellphoneS',
+N'Điện thoại iPhone XR chính hãng hiện đã có mặt tại CellphoneS - hệ thống cửa hàng chuyên bán lẻ điện thoại di động, máy tính bảng và các phụ kiện chính hãng trên toàn quốc. Quý khách có thể mua sản phẩm tại CellphoneS với mức giá vô cùng cạnh tranh và hợp lý. Điện thoại iPhone XR được bảo hành 12 tháng tại trung tâm bảo hành Chính hãng và bảo hành 1 đổi 1 trong 30 ngày nếu có lỗi nhà sản xuất. Bên cạnh đó, CellphoneS còn cung cấp dịch vụ giao hàng và thanh toán tận nơi miễn phí cho người dùng ở xa khi mua hàng.')
 
 GO
