@@ -3,10 +3,7 @@ GO
 
 USE DbCellPhoneStore
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 
 -------------CREATE TABLE----------------
 CREATE TABLE [dbo].[Country](
@@ -35,11 +32,6 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[District]    Script Date: 1/9/2017 8:50:03 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[District](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](250) NULL,
@@ -55,11 +47,6 @@ CREATE TABLE [dbo].[District](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-GO
-/****** Object:  Table [dbo].[Province]    Script Date: 1/9/2017 8:50:03 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Province](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -78,11 +65,6 @@ CREATE TABLE [dbo].[Province](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-GO
-/****** Object:  Table [dbo].[Ward]    Script Date: 1/9/2017 8:50:03 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Ward](
 	[Id] [int] NOT NULL,
@@ -12366,15 +12348,12 @@ ALTER TABLE [dbo].[Ward] CHECK CONSTRAINT [FK_Ward_District]
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Kinh độ, vĩ độ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'District', @level2type=N'COLUMN',@level2name=N'LatiLongTude'
 GO
-
 CREATE TABLE Role
 (
 	RoleID INT PRIMARY KEY,
 	RoleName NVARCHAR(100) NOT NULL,
 )
 GO
-
-
 CREATE TABLE Account
 (
 	Username NVARCHAR(50) PRIMARY KEY,
@@ -12385,7 +12364,6 @@ CREATE TABLE Account
 	FOREIGN KEY(RoleID) REFERENCES Role(RoleID)
 )
 GO
-
 CREATE TABLE Customer
 (
 	CustomerID NVARCHAR(50) PRIMARY KEY,
@@ -12400,7 +12378,6 @@ CREATE TABLE Customer
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
-
 CREATE TABLE Employee
 (
 	EmployeeID NVARCHAR(50) PRIMARY KEY,
@@ -12420,96 +12397,63 @@ CREATE TABLE Brand
 	BrandID NVARCHAR(50) PRIMARY KEY,
 	BrandName NVARCHAR(100),
 	Country NVARCHAR(100),
-	Phone BIT, --0: 
-	Laptop BIT,
 )
 GO
-
-CREATE TABLE Smartphone
+CREATE TABLE Product
 (
-	SmartphoneID NVARCHAR(50) PRIMARY KEY,
-	Name NVARCHAR(100),
+	ProductID NVARCHAR(50) PRIMARY KEY,
+	ProductName NVARCHAR(100),
 	BrandID NVARCHAR(50),
 	Size NVARCHAR(100),
 	Weight NVARCHAR(100),
+	SIM NVARCHAR(100),
 	ScreenType NVARCHAR(500),
 	ScreenSize NVARCHAR(100),
 	ScreenResolution NVARCHAR(100),
-	FrontCamera NVARCHAR(100),
-	BackCamera NVARCHAR(100),
 	OperatingSystem NVARCHAR(100),
 	Chipset NVARCHAR(100),
 	CPU NVARCHAR(100),
-	GPU NVARCHAR(100),
+	GPU NVARCHAR(100),	
 	SDCard NVARCHAR(100) DEFAULT N'Không hỗ trợ',
-	Network NVARCHAR(200),
+	BackCamera NVARCHAR(100),
+	FrontCamera NVARCHAR(100),
 	WLAN NVARCHAR(100),
 	Bluetooth NVARCHAR(100),
 	GPS NVARCHAR(100),
 	NFC NVARCHAR(100) DEFAULT N'Không hỗ trợ',
-	USB NVARCHAR(100),
-	SIM NVARCHAR(100),
+	USB NVARCHAR(100),	
 	Sensor NVARCHAR(500),
 	Battery NVARCHAR(100),
-	Image NVARCHAR(500),
-	
 	FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
 )
 GO
-
-CREATE TABLE SmartphoneVersion
+CREATE TABLE ProductVersion
 (
-	SmartphoneVersionID NVARCHAR(50) PRIMARY KEY,
-	SmartphoneID NVARCHAR(50),
+	ProductVersionID NVARCHAR(50) PRIMARY KEY,
+	ProductID NVARCHAR(50),
+	ProductVersionName NVARCHAR(100),
 	RAM NVARCHAR(100),
 	ROM NVARCHAR(100),
 	Color NVARCHAR(100),
+	ListPrice INT,
 	Price INT,
 	QuantityInStock INT,
-	Status NVARCHAR(100),
-	
-	FOREIGN KEY(SmartphoneID) REFERENCES Smartphone(SmartphoneID)
-)
-GO
-
-CREATE TABLE Laptop
-(
-	LaptopID NVARCHAR(50) PRIMARY KEY,
-	Name NVARCHAR(100),
-	BrandID NVARCHAR(50),
-	Size NVARCHAR(100),
-	Weight NVARCHAR(100),
-	ScreenType NVARCHAR(500),
-	ScreenSize NVARCHAR(100),
-	ScreenResolution NVARCHAR(100),
-	OperatingSystem NVARCHAR(100),
-	OSVersion NVARCHAR(100),	
-	WLAN NVARCHAR(100),
-	Bluetooth NVARCHAR(100),
-	Port NVARCHAR(100),
-	Battery NVARCHAR(100),
+	Status BIT, --0: hết hàng, 1: còn hàng
 	Image NVARCHAR(500),
-
-	FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
+	
+	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
 )
 GO
-
-CREATE TABLE LaptopVersion
+CREATE TABLE Favorite
 (
-	LaptopVersionID NVARCHAR(50) PRIMARY KEY,
-	LaptopID NVARCHAR(50),
-	CPU NVARCHAR(100),
-	VGA NVARCHAR(100),
-	RAM NVARCHAR(100),
-	HardDrive NVARCHAR(100),
-	Price INT,
-	QuantityInStock INT,
-	Status NVARCHAR(100),
+	CustomerID NVARCHAR(50),
+	ProductVersionID NVARCHAR(50),
 
-	FOREIGN KEY(LaptopID) REFERENCES Laptop(LaptopID)
+	PRIMARY KEY(CustomerID, ProductVersionID),
+	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
 )
 GO
-
 CREATE TABLE Orders
 (
 	OrderID NVARCHAR(50) PRIMARY KEY,
@@ -12524,65 +12468,87 @@ CREATE TABLE Orders
 	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
 )
 GO
-
 CREATE TABLE OrderDetail
 (
 	OrderID NVARCHAR(50),
 	ProductVersionID NVARCHAR(50),
 	Amount INT,
 	Price INT,
-
 	PRIMARY KEY(OrderID, ProductVersionID),
 	FOREIGN KEY(OrderID) REFERENCES Orders(OrderID),
-	FOREIGN KEY(ProductVersionID) REFERENCES SmartphoneVersion(SmartphoneVersionID),
-	FOREIGN KEY(ProductVersionID) REFERENCES LaptopVersion(LaptopVersionID)
+	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
+)
+GO
 
+CREATE TABLE PromotionCode
+(
+	Code NVARCHAR(50) PRIMARY KEY,
+	Description NVARCHAR(100),
+	Value FLOAT,
+	Expries DATE
+)
+GO
+
+CREATE TABLE PromotionCodeUsed
+(
+	Code NVARCHAR(50),
+	CustomerID NVARCHAR(50),
+	PRIMARY KEY(Code, CustomerID),
+	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+	FOREIGN KEY(Code) REFERENCES PromotionCode(Code)
 )
 GO
 
 CREATE TABLE ProductIntroduce
 (
 	ProductID NVARCHAR(50) PRIMARY KEY,
+	Header0 NVARCHAR(MAX),
+	Text0 NVARCHAR(MAX),
 	Header1 NVARCHAR(MAX),
 	Text1 NVARCHAR(MAX),
-	Image1 NVARCHAR(100),
+	Image1 NVARCHAR(500),
 	Header2 NVARCHAR(MAX),
 	Text2 NVARCHAR(MAX),
-	Image2 NVARCHAR(100),
+	Image2 NVARCHAR(500),
 	Header3 NVARCHAR(MAX),
 	Text3 NVARCHAR(MAX),
-	Image3 NVARCHAR(100),
+	Image3 NVARCHAR(500),
 	Header4 NVARCHAR(MAX),
 	Text4 NVARCHAR(MAX),
-	Image4 NVARCHAR(100),
+	Image4 NVARCHAR(500),
 	Header5 NVARCHAR(MAX),
 	Text5 NVARCHAR(MAX),
-	Image5 NVARCHAR(100),
+	Image5 NVARCHAR(500),
+	Header6 NVARCHAR(MAX),
 	Text6 NVARCHAR(MAX),
-	Image7 NVARCHAR(100),
-
-	FOREIGN KEY(ProductID) REFERENCES Smartphone(SmartphoneID),
-	FOREIGN KEY(ProductID) REFERENCES Laptop(LaptopID)
+	Image6 NVARCHAR(500),
+	Header7 NVARCHAR(MAX),
+	Text7 NVARCHAR(MAX),
+	Image7 NVARCHAR(500),
+	Footer NVARCHAR(MAX),
+	FooterText NVARCHAR(MAX),
+	
+	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
 )
 GO
-
 -------------INSERT DATA----------------
 --Role--
 INSERT INTO Role VALUES(1, N'Quản trị hệ thống')
 INSERT INTO Role VALUES(2, N'Nhân viên')
 INSERT INTO Role VALUES(3, N'Khách hàng')
-
+GO
 --Account--
 INSERT INTO Account VALUES(N'bqhai1205', N'123456', 1, 1)
 INSERT INTO Account VALUES(N'hdhieu2610', N'123456', 2, 1)
 INSERT INTO Account VALUES(N'dtqnhu', N'123456', 3, 1)
-
+GO
 --Employee--
-INSERT INTO Employee VALUES(N'EMP100', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
-INSERT INTO Employee VALUES(N'EMP101', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
-
+INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
+INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
+GO
 --Customer--
 INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu', N'dtqnhu@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
+GO
 --Brand--
 INSERT INTO Brand VALUES(N'AP', N'Apple', N'Mỹ')
 INSERT INTO Brand VALUES(N'SA', N'Samsung', N'Hàn Quốc')
@@ -12595,7 +12561,6 @@ INSERT INTO Brand VALUES(N'HU', N'Huawei', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VI', N'Vivo', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'VS', N'Vsmart', N'Việt Nam')
 INSERT INTO Brand VALUES(N'BK', N'BKAV', N'Việt Nam')
-
 INSERT INTO Brand VALUES(N'MS', N'Microsoft', N'Mỹ')
 INSERT INTO Brand VALUES(N'LE', N'Lenovo', N'Trung Quốc')
 INSERT INTO Brand VALUES(N'HP', N'HP', N'Mỹ')
@@ -12603,5 +12568,135 @@ INSERT INTO Brand VALUES(N'DE', N'DELL', N'Mỹ')
 INSERT INTO Brand VALUES(N'LG', N'LG', N'Hàn Quốc')
 INSERT INTO Brand VALUES(N'AC', N'Acer', N'Đài Loan')
 INSERT INTO Brand VALUES(N'MI', N'MSI', N'Đài Loan')
+GO
+--Product--
+INSERT INTO Product VALUES(
+N'SMP10000', 
+N'IPhone 11 Chính hãng (VN/A)', 
+N'AP', 
+N'150.9mm - 75.7mm - 8.3mm', 
+N'194g', 
+N'Nano-SIM + eSIM', 
+N'IPS LCD', 
+N'6.1 inches', 
+N'1792 x 828 pixels', 
+N'iOS', 
+N'A13 Bionic', 
+NULL, 
+NULL, 
+N'Không', 
+N'Camera kép 12MP', 
+N'12 MP, ƒ/2.2 aperture', 
+N'802.11ax Wi‑Fi 6 with 2x2 MIMO', 
+N'5.0', 
+N'GPS/GNSS', 
+N'Yes', 
+NULL, 
+N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
+N'3110 mAh')
+INSERT INTO Product VALUES(
+N'SMP10001', 
+N'iPhone 11 Pro Max Chính hãng (VN/A)', 
+N'AP', 
+N'158.0mm - 77.8mm - 8.1mm', 
+N'226g', 
+N'Nano-SIM + eSIM', 
+N'Super Retina XDR', 
+N'6.5 inches', 
+N'2688 x 1242 pixels', 
+N'iOS', 
+N'A13 Bionic', 
+NULL, 
+NULL, 
+N'Không', 
+N'3 Camera 12MP', 
+N'12 MP, ƒ/2.2 aperture', 
+N'802.11ax Wi‑Fi 6 with 2x2 MIMO', 
+N'5.0', 
+N'GPS/GNSS', 
+N'Yes', 
+NULL, 
+N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
+N'3969 mAh')
+GO
+--ProductVersion--
+INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10001', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đỏ (VN/A)', N'4 GB', N'64 GB', N'Đỏ', 20000000, 18000000, 15, 1, N'SMPV10001.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10002', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 20000000, 18000000, 10, 1, N'SMPV10002.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10003', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Trắng (VN/A)', N'4 GB', N'64 GB', N'Trắng', 20000000, 18000000, 10, 1, N'SMPV10003.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10004', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Vàng (VN/A)', N'4 GB', N'64 GB', N'Vàng', 20000000, 18000000, 10, 1, N'SMPV10004.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10005', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Tím (VN/A)', N'4 GB', N'64 GB', N'Tím', 20000000, 18000000, 10, 1, N'SMPV10005.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10006', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đen (VN/A)', N'4 GB', N'128 GB', N'Đen', 21500000, 20000000, 10, 1, N'SMPV10000.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10007', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đỏ (VN/A)', N'4 GB', N'128 GB', N'Đỏ', 21500000, 20000000, 15, 1, N'SMPV10001.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10008', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Xanh lá (VN/A)', N'4 GB', N'128 GB', N'Xanh lá', 21500000, 20000000, 10, 1, N'SMPV10002.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10009', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Trắng (VN/A)', N'4 GB', N'128 GB', N'Trắng', 21500000, 20000000, 10, 1, N'SMPV10003.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10010', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Vàng (VN/A)', N'4 GB', N'128 GB', N'Vàng', 21500000, 20000000, 10, 1, N'SMPV10004.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10011', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Tím (VN/A)', N'4 GB', N'128 GB', N'Tím', 21500000, 20000000, 10, 1, N'SMPV10005.jpg')
 
+INSERT INTO ProductVersion VALUES(N'SMPV10012', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xám (VN/A)', N'4 GB', N'64 GB', N'Xám', 29500000, 27200000, 10, 1, N'SMPV10012.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10013', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Gold (VN/A)', N'4 GB', N'64 GB', N'Gold', 29500000, 27200000, 10, 1, N'SMPV10013.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10014', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Bạc (VN/A)', N'4 GB', N'64 GB', N'Bạc', 29500000, 27200000, 10, 1, N'SMPV10014.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10015', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 29500000, 27200000, 10, 1, N'SMPV10015.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10016', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xám (VN/A)', N'4 GB', N'256 GB', N'Xám', 34500000, 31400000, 10, 1, N'SMPV10012.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10017', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Gold (VN/A)', N'4 GB', N'256 GB', N'Gold', 34500000, 31400000, 10, 1, N'SMPV10013.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10018', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Bạc (VN/A)', N'4 GB', N'256 GB', N'Bạc', 34500000, 31400000, 10, 1, N'SMPV10014.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10019', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xanh lá (VN/A)', N'4 GB', N'256 GB', N'Xanh lá', 34500000, 31400000, 10, 1, N'SMPV10015.jpg')
 
+GO
+--ProductIntroduce--
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10000',
+N'iPhone 11 chính hãng VN/A – Chiếc điện thoại nhiều màu sắc, camera nâng cấp',
+N'iPhone 11 là model có nhiều màu sắc nhất và có giá rẻ nhất trong bộ 3 iPhone 11 series được Apple ra mắt trong năm 2019. Bên cạnh đó, cấu hình iPhone 11 cũng được nâng cấp đặc biệt về cụm camera sau và Face ID, viên pin dung lượng lớn hơn.', 
+N'Đa dạng sự lựa chọn với 6 phiên bản màu sắc', 
+N'Điểm nổi bật của iPhone 11 2019 đó là bên cạnh hai phiên bản đen và trắng quen thuộc thì máy còn có thêm bốn phiên bản khác đó là tím, vàng, xanh lá, đỏ. Với tất cả các phiên bản, bao gồm cả điện thoại iPhone 12 sắp ra mắt thì Apple đều thiết kế cạnh bên trùng màu với thân máy, tạo nên một thể thống nhất.', 
+N'PI10000.jpg', 
+N'Thiết kế từ nhôm và vỏ kính, chuẩn chống nước IP68', 
+N'iPhone 11 có kiểu dáng đẹp mắt khi được hoàn thiện từ nhôm và vỏ kính bền nhất trong thế giới smartphone. Máy được sử dụng tới 7 tầm nền màu sắc giúp màu sơn có độ sâu đầy ấn tượng phản chiếu qua lớp kính sang trọng.', 
+N'PI10001.jpg', 
+N'Nhận diện khuôn mặt Face ID được nâng cấp, âm thanh sống động', 
+N'Bảo mật đơn giản và an toàn hơn bao giờ hết khi mật khẩu chính là khuôn mặt của bạn. Bạn có thể mở khóa iPhone, đăng nhập vào ứng dụng hay thanh toán chỉ trong nháy mắt mà không cần nhập mật khẩu. Đây là phương thức bảo mật an toàn nhất trên smartphone và nó còn nhanh hơn nữa trên iPhone 11.', 
+N'PI10002.jpg', 
+N'Màn hình LCD 6,1 inch Liquid Retina cho màu sắc vô cùng chân thực', 
+N'iPhone 11 sử dụng màn hình LCD tiên tiến nhất hiện nay, cũng tương tự như iPhone 11 Pro hiển thị tuyệt đẹp với kích thước lớn 6,1 inch Liquid Retina sắc nét, tràn viền cạnh. Thiết kế tràn viền giúp cho dù màn hình lớn tới 6,1 inch nhưng máy vẫn nhỏ gọn hơn so với iPhone 8 Plus, dễ dàng cầm nắm thao tác bằng một tay.', 
+N'PI10003.jpg', 
+N'Cụm camera kép góc siêu rộng 12 MP, camera selfie 12 MP', 
+N'Apple đã khéo léo thiết kế cụm camera to và nổi bật hơn trên điện thoại giúp người dùng dễ nhận dạng sản phẩm, mặt khác Apple muốn mang đến một làn gió mới trên thiết bị này với cụm camera vuông độc đáo. Apple iPhone 11 được tích cảm biến góc rộng 12 MP và cảm biến góc siêu rộng 12 MP. Thiết kế của camera kép này cũng to hơn thông thường.', 
+N'PI10004.jpg', 
+N'Hoạt động mượt mà với chip A13 Bionic mạnh mẽ cùng hệ điều hành iOS 13', 
+N'Một trong những nâng cấp khác đáng chú ý trên iPhone 11 chính là chip xử lý Apple A13 Bionic. Đây là con chip nhanh nhất từng có trong điện thoại thông minh, cung cấp hiệu năng vô song cho mọi tác vụ và có CPU cùng GPU nhanh hơn tới 20% so với A12. Chip A13 Bionic còn được chế tạo để học máy, với NPU nhanh hơn để phân tích hình ảnh và video thời gian thực và cung cấp hơn 1 nghìn tỷ hoạt động mỗi giây. A13 Bionic sẽ kết hợp với iOS 13 một cách hoàn hảo, tạo thành nền tảng máy học tốt nhất trong điện thoại thông minh. Cùng với bộ nhớ trong 64GB và dung lượng ram 4GB cho khả năng hoạt động mượt mà, đa nhiệm ấn tượng cũng như không gian lưu trữ vừa đủ với yêu cầu thông thường. Bên cạnh bản 64GB bộ nhớ trong tiêu chuẩn, Apple còn cung cấp thêm những phiên bản nâng cấp khác như iPhone 11 128GB và 256GB.', 
+N'PI10005.jpg', 
+N'Dung lượng pin tốt lướt web suốt 15 tiếng, sạc nhanh 50% trong 30 phút', 
+N'Với viên pin 3110 mAh, người dùng có thể sử dụng để lướt web suốt 15 tiếng và xem video 10 tiếng liên tục, con số này thực sự ấn tượng. Và nó nhiều hơn cả Xr cũng như thời gian sử dụng của iPhone 11 còn lâu hơn 1.5 tiếng so với iPhone 8 Plus. iPhone 11 còn có khả năng sạc nhanh tới 50% trong 30 phút với bộ chuyển đổi 18W trở lên (được bán riêng) và hỗ trợ sạc không dây chuẩn Qi.', 
+N'PI10006.jpg',
+N'Mua điện thoại iPhone 11 chính hãng, giá rẻ nhất tại CellphoneS',
+N'Với những gì mà Apple đã mang đến, đây là thực sự là chiếc điện thoại đáng sở hữu hàng. Nếu bạn muốn mua hàng chính hãng VN/A và đang không biết iPhone 11 giá bao nhiêu tiền và nên mua ở đâu tốt nhất thì CellphoneS sẽ là một địa chỉ mà bạn nên cân nhắc. Giá iPhone 11 chính hãng VN/A rất hấp dẫn, chưa đến 18 triệu đồng, hỗ trợ trả góp với thủ tục nhanh gọn, lãi suất ưu đãi và nhiều hình thức thanh toán mang lại sự tiện lợi. Máy sẽ được bảo hành 12 tháng tại trung tâm bảo hành Apple tại Việt Nam bạn có thể hoàn toàn yên tâm khi sử dụng.')
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10001',
+N'iPhone 11 Pro Max – Bộ ba camera sau chụp ảnh đỉnh cao',
+N'Ra mắt cùng với iPhone 11 và 11 Pro là iPhone 11 Pro Max, đây mẫu smartphone cao cấp nhất của iPhone 11 Series được ra mắt năm 2019 và sắp tới là điện thoại iPhone 12 trong năm 2020. Với thiết kế cao cấp, hệ thống camera 3 camera cùng cấu hình siêu mạnh mẽ thì đây chính là một chiếc smartphone đáp ứng mọi trải nghiệm của người dùng.',
+N'Kích thước to hơn với chất liệu thép không gỉ bền bỉ',
+N'Điện thoại có thiết kế tương tự như iPhone 11 Pro nhưng kích thước thì to hơn với kích thước màn hình 6.5 inch và toàn bộ máy có kích thước 158 x 77.8 x 8.1 mm. Thiết kế không có nhiều thay đổi trừ hệ thống camera sau được nâng cấp thành 3 camera. Màn hình tai thỏ vẫn được giữ nguyên và chất liệu thép không gỉ giúp 11 Pro Max bền bỉ hơn.',
+N'PI10007.jpg',
+N'Màn hình 6.5 inch, công nghệ màn hình Super Retina XDR cho khả năng hiển thị tuyệt vời',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'',
+N'')
+
+GO
