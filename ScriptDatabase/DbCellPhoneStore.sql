@@ -12306,16 +12306,20 @@ INSERT INTO AccountType VALUES(3, N'Khách hàng')
 GO
 --Account--
 INSERT INTO Account VALUES(N'bqhai1205', N'123456', 1, 1)
-INSERT INTO Account VALUES(N'hdhieu2610', N'123456', 2, 1)
-INSERT INTO Account VALUES(N'dtqnhu', N'123456', 3, 1)
+INSERT INTO Account VALUES(N'hdhieu2610', N'26101999', 2, 1)
+INSERT INTO Account VALUES(N'dtqnhu2601', N'26011999', 3, 1)
+INSERT INTO Account VALUES(N'ntttu1707', N'17071999', 3, 1)
+INSERT INTO Account VALUES(N'pvquan2603', N'26031999', 3, 1)
 GO
 --Employee--
 INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
 INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu2610', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
+INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
 INSERT INTO Customer VALUES(N'CUS101', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
+INSERT INTO Customer VALUES(N'CUS102', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'26/03/1999')
+
 GO
 --Brand--
 INSERT INTO Brand VALUES(N'AP', N'Apple', N'Mỹ')
@@ -12512,6 +12516,31 @@ N'Yes',
 N'3.2, Type-C 1.0 reversible connector, USB On-The-Go', 
 N'Cảm biến vân tay siêu âm, cảm biến gia tốc, con quay hồi chuyển, cảm biến tiệm cận, la bàn, cảm biến áp kế', 
 N'Li-Ion 4500 mAh, Fast charging 25W, USB Power Delivery 3.0, Fast Qi/PMA wireless charging, Reverse wireless charging 9W')
+
+INSERT INTO Product VALUES(
+N'SMP10007', 
+N'Samsung Galaxy Note 10+ (Plus)', 
+N'SA', 
+N'77.2 mm x 162.3 mm x 7.9 mm', 
+N'196g', 
+N'2 SIM (Nano-SIM)', 
+N'Dynamic AMOLED QHD+ Infinity-O', 
+N'6.8 inches', 
+N'3040 x 1440 pixels', 
+N'Android', 
+N'Exynos 9825', 
+N'2 nhân 2.7 GHz, 2 nhân 2.3 GHz và 4 nhân 1.9 GHz', 
+N'Mali-G76', 
+N'MicroSD, hỗ trợ tối đa 512 GB', 
+N'16MP (F2.2), 12MP OIS (F.15/F2.4), 12MP OIS (F2.1), Ống kính cảm biến chiều sâu TOF', 
+N'10 MP (F2.2)', 
+N'Wi-Fi 802.11 a/b/g/n/ac, Dual-band, Wi-Fi Direct, Wi-Fi hotspot', 
+N'LE, apt-X, A2DP, v5.0', 
+N'A-GPS, GLONASS, BDS, GALILEO', 
+N'Yes', 
+N'USB Type-C', 
+N'Mở khóa bằng khuôn mặt, Mở khoá vân tay dưới màn hình', 
+N'4300 mAh, Quick Charge 45W')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
@@ -12552,8 +12581,14 @@ INSERT INTO ProductVersion VALUES(N'SMPV10028', N'SMP10005', N'Samsung Galaxy No
 INSERT INTO ProductVersion VALUES(N'SMPV10029', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Vàng đồng', N'8 GB', N'256 GB', N'Vàng đồng', 29990000, 25700000, 10, 1, N'SMPV10029.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10030', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Đen', N'8 GB', N'256 GB', N'Đen', 29990000, 25700000, 10, 1, N'SMPV10030.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10031', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Trắng', N'8 GB', N'256 GB', N'Trắng', 29990000, 25700000, 10, 1, N'SMPV10031.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10032', N'SMP10006', N'Samsung Galaxy Note 20 Ultra 5G - Vàng đồng', N'12 GB', N'256 GB', N'Vàng đồng', 32990000, 28500000, 10, 1, N'SMPV10029.jpg')
 
--------Pause here--------
+INSERT INTO ProductVersion VALUES(N'SMPV10033', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Đen', N'12 GB', N'256 GB', N'Đen', 26990000, 16300000, 10, 1, N'SMPV10033.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10034', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Bạc', N'12 GB', N'256 GB', N'Bạc', 26990000, 16300000, 10, 1, N'SMPV10034.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10035', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Trắng', N'12 GB', N'256 GB', N'Trắng', 26990000, 16300000, 10, 1, N'SMPV10035.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10036', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Xanh', N'12 GB', N'256 GB', N'Xanh', 26990000, 16300000, 10, 1, N'SMPV10036.jpg')
+
+
 GO
 --ProductIntroduce--
 INSERT INTO ProductIntroduce VALUES(
@@ -12724,6 +12759,64 @@ N'PI10040.jpg',
 N'Mua điện thoại Galaxy Note 20 giá tốt, ưu đãi khủng tại CellphoneS',
 N'Samsung Galaxy Note 20 chính hãng sẽ là chiếc siêu phẩm đáng sở hữu nhất trong năm 2020 này khi sở hữu thiết kế thu hút cùng với những tính năng vô cùng tuyệt vời. Bạn có thể đến ngay các cửa hàng của CellphoneS tại Hà Nội và TP.HCM để sở hữu ngay chiếc siêu phẩm này với mức giá vô cùng hấp dẫn. Cam kết sản phẩm chính hãng, có bảo hành và đổi trả chính hãng nên bạn có thể tin tưởng và yên tâm khi mua hàng. Ngoài ra, CellphoneS còn hỗ trợ giao hàng miễn phí tận nơi toàn quốc và hỗ trợ thanh toán online cho khách hàng ở xa mua sản phẩm thuận tiện hơn.')
 
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10006',
+N'Samsung Note 20 Ultra: Thiết kế sang trọng và nhiều công nghệ cực tốt',
+N'Samsung là gã khổng lồ công nghệ cực kỳ nổi tiếng đến từ đất nước Hàn Quốc, mỗi chiếc điện thoại của hãng đều mang thiết kế hiện đại, sang trọng đi kèm với đa dạng công nghệ cực kỳ nổi bật. Note 20 Ultra là một trong những chiếc smartphone nổi tiếng và đang được nhiều người quan tâm, đón nhận. Samsung hứa hẹn sẽ chiều lòng khách hàng với thiết kế lộng lẫy, cùng với vô vàng công nghệ, chip xử lý mới mẻ, thật hiện đại. Ngoài ra, bạn cũng có thể tham khảo thêm Note 20 Ultra 5G.',
+N'Màn hình AMOLED cực sống động kèm với hệ điều hành Android, One UI 2.1',
+N'Điều đầu tiên mà chắc hẳn nhiều người sẽ thích thú ở chiếc điện thoại Samsung Galaxy Note 20 Ultra đó chính là sự trang bị màn hình AMOLED. Với Dynamic AMOLED được trang bị lên đến 16M colors, kích thước màn hình lên đến 6.9 inches và độ phân giải Quad-HD+. Tạo ra mọi màu sắc chân thật nhất, sống động và sắc nét cho người dùng trải nghiệm thích thú.',
+N'PI10041.jpg',
+N'Trang bị chip Exynos 990 cực kỳ hiện đại cùng với cấu hình CPU nổi bật',
+N'Điều khiến mọi người bất ngờ nhất trên Samsung Note 20 Ultra đó là chip Exynos 990, mà Samsung đã nghiên cứu và áp dụng ngay trên điện thoại này. Đây dường như là con chip mạnh mẽ và hiện đại bậc nhất, khiến người dùng hoàn toàn hài lòng. Bên cạnh đó là không còn sự hổ thẹn đến từ phía Samsung.',
+N'PI10042.jpg',
+N'Trang bị 3 camera sau cuốn hút cùng với camera trước selfie cực kỳ sắc nét',
+N'Đương nhiên trên Note 20 Ultra chắc chắn sẽ không thể thiếu ba camera bắt kịp xu hướng. Với sự cuốn hút từ camera cảm biến chính lấy nét bằng laser độ phân giải lên đến 108MP. Tiếp theo là camera siêu rộng 12MP và camera telephoto 12MP. Sự trang bị cực kỳ đầy đủ này hứa hẹn giúp cho người dùng thỏa mãn hết niềm đam mê chụp ảnh của mình.',
+N'PI10043.jpg',
+N'Khả năng quay video cực kỳ ổn định cùng với bộ nhớ dung lượng cực khủng',
+N'Ngoài khả năng tạo ra những khung hình chất lượng tuyệt mỹ thì Note 20 Ultra còn khiến người dùng kinh ngạc với chất lượng quay video. Video được tạo ra từ camera trước có lên đến 4K, tạo ra sự sắc nét trong những video thú vị. Đối với camera sau, khả năng quay video của nó lên đến 8K cùng với vô vàng công nghệ hiện đại. Thật sự bạn sẽ choáng ngợp với độ trang bị hoàn hảo này.',
+N'PI10044.jpg',
+N'Trang bị đa dạng cảm biến hiện đại cùng dung lượng pin thoải mái, hoàn hảo',
+N'Cảm biến sẽ là công nghệ mà nhiều người thích thú khi nhắc đến Samsung Galaxy Note 20 Ultra. Với cảm biến vân tay, cảm biến gia tốc đi cùng với cảm biến tiệm cận, cảm biến sáng và con quay hồi chuyển cùng la bàn là sự đầy đủ đối với một chiếc điện thoại hiện đại bậc nhất. Bạn sẽ thích thú với nhiều công cụ được trang bị như thế, giúp sử dụng nhanh nhẹn và dễ dàng. Dung lượng pin cũng là một điều mà nhiều người quan tâm khi đi mua điện thoại. Ở Galaxy Note 20 Ultra là viên pin Li-Ion 4500mAh. Đi kèm với USB Power Delivery 3.0, Fast Qi/PMA wireless charging 15W, Reverse wireless charging 9W tạo nên sự mạnh mẽ, sử dụng bền lâu.',
+N'PI10045.jpg',
+N'Trang bị 2 sim sử dụng tiện lợi cùng khả năng kết nối Bluetooth dễ dàng',
+N'Việc trang bị 2 sim thật sự là một điều cần thiết. Điều này giúp người dùng sử dụng cực kỳ tiện lợi với chỉ một chiếc smartphone. Cùng với khả năng A-GPS, GLONASS, BDS, GALILEO cực kỳ tiện lợi. Những sự trang bị này thật sự đầy đủ và cần thiết trên một chiếc điện thoại hiện đại ngày nay. Đi kèm với đó là khả năng kết nối Bluetooth 5,0 cực kỳ hiện đại, giúp bạn kết nối truyền tải dữ liệu dễ dàng.',
+NULL,
+N'Nhiều màu sắc lựa chọn',
+N'Màu sắc và thiết kế luôn là một trong những điều mà Samsung làm tốt nhất, với một màu sắc mới nhất trên Note 20 Ultra giúp cho máy trở nên thu hút hơn. Màu xanh bạc hà là một màu sắc mới lạ và bắt mát người dùng, tăng trải nghiệm khách hàng hơn.',
+N'PI10046.jpg',
+N'Mua Galaxy Note 20 Ultra chính hãng, giá tốt tại CellphoneS',
+N'Có thể nói đây là một chiếc siêu phẩm cao cấp nhất của Samsung với nhiều hiệu năng, công nghệ tiên tiến Nếu bạn yêu thích và mong muốn sở hữu ngay Samsung Galaxy Note 20 Ultra chính hãng, bạn có thể mua ngay tại CellphoneS với chất lượng đảm bảo và chính hãng. Khi mua điện thoại tại CellphoneS, bạn sẽ luôn được hưởng chính sách bảo hành chuyên nghiệp, mức giá bán tại CellphoneS cũng vô cùng hợp lý.')
+
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10007',
+N'Samsung Note 10 Plus – Màn hình lớn cho trải nghiệm tuyệt đỉnh, S-Pen tiện dụng',
+N'Là phiên bản nâng cấp đáng giá ra đời cùng thời điểm với Samsung Galaxy Note 10, Samsung Galaxy Note 10 Plus là sự lựa chọn tuyệt vời cho người dùng đam mê công nghệ có nhu cầu sở hữu một chiếc điện thoại hoàn hảo về mọi mặt. Với Note 10 Plus, Samsung đã thật sự mang đến một chiếc điện thoại có sức mạnh vượt trội, đáp ứng toàn diện các nhu cầu về làm việc và giải trí của người dùng. Ngoài ra, bạn có thể tham khảo thêm Galaxy Note 20 sắp được ra mắt.',
+N'Samsung Note 10 Plus có thiết kế vuông vắn, chất liệu kim loại kết hợp thủy tinh cao cấp',
+N'Galaxy Note 10 Plus tạo nên ấn tượng đặc biệt từ ban đầu bởi vẻ ngoài đẳng cấp. Kế thừa trọn vẹn tinh hoa thiết kế của dòng sản phẩm Galaxy Note nhà Samsung, Note 10 Plus có ngoại hình vuông vứt đầy mạnh mẽ và tinh tế. Viền màn hình cực kỳ mỏng cùng với độ dày mảnh mai không kém, giúp Note 10 Plus dùng có kích thước lớn nhưng vẫn giữ được sự thanh thoát, sang trọng.',
+N'PI10047.jpg',
+N'Màn hình AMOLED Infinity-O 6.8 inch siêu ấn tượng',
+N'Samsung Galaxy Note 10 Plus sở hữu màn hình được xem là lớn nhất thị trường hiện tại với thông số chính thức được công bố lên đến 6.8 inch. Màn hình này sử dụng công nghệ AMOLED Infinity-O với độ phân giải 3.040 x 1.440 pixels cho phép điện thoại hiển thị những khung màu cực kỳ ấn tượng, chân thực và sắc nét với góc nhìn gần như toàn vẹn nhất.',
+N'PI10048.jpg',
+N'Galaxy Note 10 Plus có hiệu năng vượt trội cùng vi xử lý Exynos 9825',
+N'Samsung Note 10 Plus có hiệu năng vô cùng mạnh mẽ, xứng tầm chiếc flagship cao cấp nhất năm 2019 của Samsung. Cụ thể, Note 10 Plus được trang bị vi xử lý Exynos 9825 8 nhân 64-bit kết hợp với 12 GB RAM và 256 GB bộ nhớ trong.',
+N'PI10049.jpg',
+N'Camera tốt nhất thế giới theo đánh giá của chuyên trang DxOmark',
+N'Camera là điểm nhấn nổi bật của Galaxy Note 10 Plus. Điện thoại sở hữu camera chính gồm 3 ống kính, trong đó, camera chính 12 MP với khẩu độ có thể thay đổi từ F/1.5 – F/2.4, hỗ trợ chống rung quang học OIS và tự động lấy nét dual-pixel. Cùng với đó, 2 ống kính còn lại là camera góc siêu rộng 16 MP khẩu độ F/2.2 cùng ống kính tele 12 MP khẩu độ F/2.1. Ngoài ra, Note 10 Plus cũng có thêm 1 cảm biến 3D ToF, được xem là một nâng cấp so với Galaxy Note 10.',
+N'PI10050.jpg',
+N'Bút S-Pen siêu tiện ích cho trải nghiệm đến từ tương lai',
+N'Bút S-Pen – Linh hồn của dòng Galaxy Note được nâng cấp hoàn hảo ở phiên bản đi kèm với Note 10 Plus. Về cơ bản, S-Pen trên Samsung Note 10 Plus vẫn thừa hưởng nhiều tính năng hơn bút cảm ứng stylus thông thường, chiếc bút này có khả năng giúp người dùng ghi chú nhanh bằng cách viết trên màn hình khóa, đến chụp ảnh từ xa với S-Pen.',
+N'PI10051.jpg',
+N'Note 10 Plus sở hữu pin 4300mAh cùng sạc nhanh Superfast Charge 45W',
+N'Galaxy Note 10 Plus được sáng tạo để hướng đến đối tượng người dùng có nhu cầu làm việc lớn, yêu cầu chiếc điện thoại phải có thời lượng sử dụng đủ tốt. Do đó, viên pin trên Note 10 Plus có dung lượng khủng lên đến 4300mAh, đảm bảo cho việc người dùng sử dụng máy liên tục trong thời gian dài.',
+N'PI10052.jpg',
+NULL,
+NULL,
+NULL,
+N'Mua Samsung Galaxy Note 10 Plus đến ngay CellphoneS',
+N'Đây thật sự là sự lựa chọn không thể tuyệt vời hơn cho người hâm mộ Samsung nói riêng và người đam mê công nghệ nói chung. Nếu đang có nhu cầu sở hữu chiếc điện thoại này, bạn có thể đến trải nghiệm và mua sắm tại CellphoneS – Hệ thống bán lẻ điện thoại hàng đầu Việt Nam. Tại CellphoneS, bạn sẽ được cung cấp những chiếc Samsung Galaxy Note 10 Plus chính hãng với giá tốt nhất thị trường cùng nhiều ưu đãi cực kỳ hấp dẫn.')
+
 GO
 
 
+
+-------Pause here--------
