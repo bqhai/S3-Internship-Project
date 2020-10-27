@@ -12316,9 +12316,9 @@ INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bq
 INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS100', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
-INSERT INTO Customer VALUES(N'CUS101', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
-INSERT INTO Customer VALUES(N'CUS102', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'26/03/1999')
+INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
+INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
+INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'26/03/1999')
 
 GO
 --Brand--
@@ -12541,6 +12541,56 @@ N'Yes',
 N'USB Type-C', 
 N'Mở khóa bằng khuôn mặt, Mở khoá vân tay dưới màn hình', 
 N'4300 mAh, Quick Charge 45W')
+
+INSERT INTO Product VALUES(
+N'SMP10008', 
+N'Samsung Galaxy A71', 
+N'SA', 
+N'163.6 x 76 x 7.7 mm', 
+N'179g', 
+N'2 SIM (Nano-SIM)', 
+N'Super Amoled', 
+N'6.7 inches', 
+N'1080 x 2400 pixels', 
+N'Android', 
+N'Qualcomm Snapdragon 730', 
+N'2 Nhân 2.2Ghz, 6 nhân 1.8Ghz', 
+N'Adreno 618', 
+N'MicroSD 1 TB', 
+N'Camera chính 64MP, Camera góc siêu rộng 12MP, 2 Camera góc rộng 5MP', 
+N'32 MP', 
+N'Wi-Fi 802.11 a/b/g/n/ac, dual-band, Wi-Fi Direct, hotspot', 
+N'5.0, A2DP, LE', 
+N'A-GPS, GLONASS, GALILEO, BDS', 
+N'Yes', 
+N'USB Type-C', 
+N'Cảm biến vân tay, cảm biến tiệm cận, gia tốc kế, la bàn, con quay hồi chuyển', 
+N'4500 mAh')
+
+INSERT INTO Product VALUES(
+N'SMP10009', 
+N'Samsung Galaxy A51', 
+N'SA', 
+N'158.4mm - 73.7mm - 7.9mm', 
+N'172g', 
+N'2 SIM (Nano-SIM)', 
+N'Super Amoled', 
+N'6.5 inches', 
+N'1080 x 2340 pixels', 
+N'Android', 
+N'Exynos 9611', 
+N'4 nhân 2.3 Ghz & 4 nhân 1.7 GHz', 
+N'Mali GPU', 
+N'MicroSD 512 GB', 
+N'Triple Rear Camera (48MP + 12MP + 5MP)', 
+N'32 MP', 
+N'Wi-Fi 802.11 a/b/g/n/ac, dual-band, Wi-Fi Direct, hotspot', 
+N'5.0, A2DP, LE', 
+N'Có', 
+N'Yes', 
+N'USB Type-C', 
+N'Cảm biến vân tay, cảm biến tiệm cận, gia tốc kế, la bàn, con quay hồi chuyển', 
+N'4000 mAh')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
@@ -12587,6 +12637,18 @@ INSERT INTO ProductVersion VALUES(N'SMPV10033', N'SMP10007', N'Samsung Galaxy No
 INSERT INTO ProductVersion VALUES(N'SMPV10034', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Bạc', N'12 GB', N'256 GB', N'Bạc', 26990000, 16300000, 10, 1, N'SMPV10034.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10035', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Trắng', N'12 GB', N'256 GB', N'Trắng', 26990000, 16300000, 10, 1, N'SMPV10035.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10036', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Xanh', N'12 GB', N'256 GB', N'Xanh', 26990000, 16300000, 10, 1, N'SMPV10036.jpg')
+
+INSERT INTO ProductVersion VALUES(N'SMPV10037', N'SMP10008', N'Samsung Galaxy A71 - Đen', N'8 GB', N'128 GB', N'Đen', 10490000, 8350000, 10, 1, N'SMPV10037.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10038', N'SMP10008', N'Samsung Galaxy A71 - Bạc', N'8 GB', N'128 GB', N'Bạc', 10490000, 8350000, 10, 1, N'SMPV10038.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10039', N'SMP10008', N'Samsung Galaxy A71 - Bạc độc đáo', N'8 GB', N'128 GB', N'Bạc độc đáo', 10490000, 8350000, 10, 1, N'SMPV10039.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10040', N'SMP10008', N'Samsung Galaxy A71 - Xanh', N'8 GB', N'128 GB', N'Xanh', 10490000, 8350000, 10, 1, N'SMPV10040.jpg')
+
+INSERT INTO ProductVersion VALUES(N'SMPV10041', N'SMP10009', N'Samsung Galaxy A51 - Đen', N'6 GB', N'128 GB', N'Đen', 7990000, 7100000, 10, 1, N'SMPV10041.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10042', N'SMP10009', N'Samsung Galaxy A51 - Xanh', N'6 GB', N'128 GB', N'Xanh', 7990000, 7100000, 10, 1, N'SMPV10042.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10043', N'SMP10009', N'Samsung Galaxy A51 - Trắng', N'6 GB', N'128 GB', N'Trắng', 7990000, 7100000, 10, 1, N'SMPV10043.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10044', N'SMP10009', N'Samsung Galaxy A51 - Hồng', N'6 GB', N'128 GB', N'Hồng', 7990000, 7100000, 10, 1, N'SMPV10044.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10045', N'SMP10009', N'Samsung Galaxy A51 - Bạc độc đáo', N'6 GB', N'128 GB', N'Bạc độc đáo', 7990000, 7100000, 10, 1, N'SMPV10045.jpg')
+
 
 
 GO
@@ -12814,6 +12876,62 @@ NULL,
 NULL,
 N'Mua Samsung Galaxy Note 10 Plus đến ngay CellphoneS',
 N'Đây thật sự là sự lựa chọn không thể tuyệt vời hơn cho người hâm mộ Samsung nói riêng và người đam mê công nghệ nói chung. Nếu đang có nhu cầu sở hữu chiếc điện thoại này, bạn có thể đến trải nghiệm và mua sắm tại CellphoneS – Hệ thống bán lẻ điện thoại hàng đầu Việt Nam. Tại CellphoneS, bạn sẽ được cung cấp những chiếc Samsung Galaxy Note 10 Plus chính hãng với giá tốt nhất thị trường cùng nhiều ưu đãi cực kỳ hấp dẫn.')
+
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10008',
+N'Samsung A71 – Smartphone tầm trung của Samsung',
+N'Samsung Galaxy A71 sẽ là điện thoại giá cả phải chăng của Samsung với mục đích tiếp cận đối tượng rộng hơn. Samsung A71 là sản phẩm thuộc series Samsung Galaxy A với màn hình đục lỗ, cấu hình mạnh mẽ, cụm bốn camera sau chất lượng cao và cùng nhiều công nghệ thời thượng.',
+N'Màn hình đục lỗ 6,7 inch, Full HD với tấm nền Super AMOLED',
+N'Galaxy A71 sở hữu màn hình Super AMOLED Plus 6,7 inch. Có độ phân giải Full HD 1080 x 2400 pixel, 393ppi. Máy cũng được trang bị đầu đọc dấu vân tay dưới màn hình giống như nhiều mẫu smartphone của Samsung đã ra mắt gần đây với tốc độ nhận diện rất nhanh. Cùng với đó là chức năng mở khóa bằng nhận diện khuôn mặt.',
+N'PI10053.jpg',
+N'Samsung A71 sẽ được bán ra với 4 phiên bản màu sắc: đen, trắng, hồng, xanh.',
+NULL,
+N'PI10054.jpg',
+N'Bộ bốn camera sau với cảm biến chính 64MP',
+N'Galaxy A71 sở hữu camera selfie có độ phân giải khủng 32MP cùng đèn LED Flash tự động trợ sáng hỗ trợ selfie trong điều kiện thiếu sáng. Với nhiều tính năng hữu ích như: Sticker hay AR Emoji, hỗ trợ tuyệt vời cho nhu cầu selfie của người dùng.',
+N'PI10055.jpg',
+N'Con chip Snapdragon 730 cho hiệu năng mạnh mẽ',
+N'Samsung Galaxy A71 hoạt động trên hệ điều hành Android 10 cùng One UI 2. Điện thoại được trang bị bộ vi xử lý Octa-core (2x2.2 GHz Kryo 470 Gold & 6x1.8 GHz Kryo 470 Silver). Samsung Galaxy A71 còn được trang bị chipset Snapdragon 730 mới. Cùng với đó là Chip GPU Adreno 618 cho trải nghiệm đồ họa khá tốt, đáp ứng nhu cầu khi chơi những game đồ họa cao. Ngoài ra, Galaxy A71 cũng được hỗ trợ hệ sinh thái thông minh của SamSung như Bixby, Samsung Health,… và được bảo vệ với nên tảng bảo mật Samsung Knox.',
+N'PI10056.jpg',
+N'Ram 4GB, bộ nhớ trong 128GB cùng viên pin 4500 mAh hỗ trợ sạc nhanh 25W',
+N'Samsung A71 được trang bị bộ nhớ RAM khổng lồ 8GB giúp tăng tốc độ xử lý của điện thoại. Bộ nhớ trong của máy lên đến 128GB và để có thêm dung lượng lưu trữ, có một khe chuyên dụng để hỗ trợ thẻ nhớ microSD lên tới 512 GB. Đây là dung lượng lưu trữ dồi dào để giữ tất cả dữ liệu bạn cần trên A71.',
+N'PI10057.jpg',
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+NULL,
+N'Mua điện thoại Samsung Galaxy A71 chính hãng, giá tốt nhất tại CellphoneS',
+N'Nếu đang có nhu cầu sở hữu Samsung Galaxy A71 chính hãng, bạn có thể đến trải nghiệm và mua sắm tại CellphoneS Hệ thống bán lẻ điện thoại hàng đầu Việt Nam. Khi mua điện thoại Samsung A71 tại CellphoneS, khách hàng sẽ nhận được những ưu đãi hấp dẫn như giảm tới 1% hóa đơn, 10% giá bao da, ốp, miếng dán, trả góp 0% với thẻ tín dụng, miễn phí cà thẻ và bảo hành 12 tháng tại các trung tâm chính hãng được ủy quyền, đổi mới 30 ngày đầu tiên, 1 đổi 1 phụ kiện đi kèm 12 tháng nếu lỗi do nhà sản xuất.')
+
+INSERT INTO ProductIntroduce VALUES(
+N'SMP10009',
+N'Samsung A51 – Chụp ảnh đỉnh cao, trải nghiệm tuyệt vời',
+N'Samsung A51 là một chiếc smartphone tầm trung nhưng lại sở hữu nhiều tính năng hấp dẫn, đặc biệt là hệ thống camera đỉnh cao chụp ảnh chuyên nghiệp và hiệu năng ấn tượng cùng với màn hình Super AMOLED. Thành viên mới này của gia đình Samsung Galaxy A hứa hẹn sẽ mang đến những trải nghiệm tuyệt vời cho người dùng với mức giá hấp dẫn. Bên cạnh đó, bạn cũng có thể tham khảo Samsung A71 với hệ thống camera chất lượng hơn và cấu hình mạnh mẽ hơn.',
+N'Samsung A51 sử dụng chất liệu nhựa cứng cáp và màu sắc thời thượng',
+N'Khác với những smartphone sử dụng chất liệu kim loại thì Galaxy A51 lại có chất liệu là nhựa. Với chất liệu này A51 sẽ có mức giá rẻ hơn nhưng vẫn vô cùng cứng cáp, bền bỉ. Thiết kế nguyên khối với bốn góc được bo tròn và mặt lưng hơi vát cong hai cạnh bên tạo cảm giác cầm nắm chắc chắn, thoải mái.',
+N'PI10058.jpg',
+N'Galaxy A51 ra mắt với 3 phiên bản màu sắc để người dùng lựa chọn bao gồm Xanh, Trắng, Đen. Các gam màu thời thượng, phù hợp với nhiều phong cách. Chắc chắn bạn sẽ chọn được phiên bản màu thích hợp với cá tính của mình.',
+NULL,
+N'PI10059.jpg',
+N'Samsung A51 được trang bị màn hình 6.5 inch Full HD+ Super AMOLED và thiết kế màn hình vô cực',
+N'Samsung A51 được trang bị màn hình "đục lỗ" đặc trưng của Samsung có kích thước lớn 6.5 inch và độ phân giải Full HD+ (1080 x 2400 pixels) cho hình ảnh hiển thị sắc nét, chi tiết. Bên cạnh đó, công nghệ màn hình Super AMOLED được phát triển dựa trên màn hình OLED sẽ mang đến chất lượng hình ảnh hiển thị cao cấp hơn, màu sắc có độ tương phản cao cũng như độ sáng màn hình tốt hơn.',
+N'PI10060.jpg',
+N'Hệ thống 4 camera sau 48MP và camera selfie 32MP ghi lại mọi khoảnh khắc',
+N'Samsung Galaxy A51 được xem là bản nâng cấp của Samsung Galaxy A50 đặc biệt là ở hệ thống camera. Với hệ thống 4 camera được đặt theo hình chữ “L” với độ cảm biến cao giúp người dùng có thể chụp ảnh chuyên nghiệp chỉ với một chiếc smartphone. Camera chính 48MP, camera siêu rộng 12MP, camera tele 12MP cùng với camera đo độ sâu 5MP giúp ảnh chụp có độ sắc nét cao, chi tiết với độ phân giải ảnh chụp đến 6500 x 4920 pixels.',
+N'PI10061.jpg',
+N'Samsung A51 có hiệu năng mạnh mẽ với con chip Exynos 9611 cùng RAM 6GB',
+N'Samsung Galaxy A51 được cung cấp sức mạnh bởi con chip Exynos 9611 với công nghệ AI thông minh cũng những cải tiến về tốc độ xung nhịp mang đến hiệu suất đáng kể cũng như nâng cấp tốc độ chơi game. Tốc độ xung nhịp lên tới 2.3GHz, công nghệ AI được bổ sung giúp xử lý hình ảnh chuyên nghiệp hơn, mang đến những hình ảnh có chất lượng cao. RAM 6GB giúp điện thoại có tốc độ xử lý nhanh hơn, tốc độ lưu trữ tốt hơn, mang đến những trải nghiệm mượt mà, trơn tru và mạnh mẽ.',
+N'PI10062.jpg',
+N'Dung lượng pin 4000mAh tích hợp công nghệ sạc nhanh cho khả năng sử dụng cả ngày',
+N'Samsung Galaxy A51 sở hữu pin có dung lượng thuộc hàng “khủng” là 4000mAh chính vì thế bạn sẽ không phải lo tình trạng hết pin khi phải sử dụng điện thoại suốt ngày dài. Ngoài ra, Samsung còn trang bị thêm tính năng sạc nhanh giúp cho thời lượng sử dụng của smartphone “trâu” hơn. Bạn có thể nhanh chóng nạp đầy năng lượng cho A51 để những trải nghiệm không bị gián đoạn.',
+N'PI10063.jpg',
+N'Khả năng kết nối đa dạng, kết nối WiFi chuẩn a/b/g/n/ac và kết nối Bluetooth 5.0',
+N'Sở hữu cổng kết nối tích hợp cổng sạc USB Type-C tiện dụng và có tốc độ kết nối siêu nhanh cũng như đáp ứng khả năng sạc nhanh cho smartphone vô cùng ấn tượng. Ở Galaxy A51, jack cắm tai nghe 3.5mm vẫn được tích hợp nên bạn có thể sử dụng được nhiều loại tai nghe khác nhau trên chiếc smartphone này.',
+N'PI10064.jpg',
+N'Mua điện thoại Samsung Galaxy A51 chính hãng, giá hấp dẫn tại CellphoneS',
+N'Với những tính năng tuyệt vời, hiệu năng ấn tượng cùng khả năng chụp ảnh đỉnh cao mà một chiếc smartphone tầm trung mang lại, Samsung Galaxy A51 chính hãng sẽ là một chiếc smartphone đáng sở hữu nhất. Hãy đến với CellphoneS để có thể rinh ngay chiếc smartphone này về nhà với mức giá hấp dẫn mà lại có nhiều ưu đãi. Chính sách bảo hành tuyệt vời, những tính năng mua hàng tiện ích như thanh toán online, giao hàng tận nơi miễn phí 63 tỉnh thành giúp bạn có thể mua được sản phẩm nhanh chóng và dễ dàng hơn.')
 
 GO
 
