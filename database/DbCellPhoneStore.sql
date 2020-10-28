@@ -82,11 +82,11 @@ CREATE TABLE [dbo].[Ward](
 ) ON [PRIMARY]
 
 GO
---SET IDENTITY_INSERT [dbo].[Country] ON 
+SET IDENTITY_INSERT [dbo].[Country] ON 
 
-INSERT [dbo].[Country] ([CountryCode], [CommonName], [FormalName], [CountryType], [CountrySubType], [Sovereignty], [Capital], [CurrencyCode], [CurrencyName], [TelephoneCode], [CountryCode3], [CountryNumber], [InternetCountryCode], [SortOrder], [IsPublished], [Flags], [IsDeleted]) VALUES (N'VN', N'Việt Nam', N'Socialist Republic of Vietnam', N'Independent State', NULL, NULL, N'Hanoi', N'VND', N'Dong', N'84', N'VNM', N'704', N'.vn', 1, 1, N'vn.png', 0)
+INSERT [dbo].[Country] ([Id], [CountryCode], [CommonName], [FormalName], [CountryType], [CountrySubType], [Sovereignty], [Capital], [CurrencyCode], [CurrencyName], [TelephoneCode], [CountryCode3], [CountryNumber], [InternetCountryCode], [SortOrder], [IsPublished], [Flags], [IsDeleted]) VALUES (237, N'VN', N'Việt Nam', N'Socialist Republic of Vietnam', N'Independent State', NULL, NULL, N'Hanoi', N'VND', N'Dong', N'84', N'VNM', N'704', N'.vn', 1, 1, N'vn.png', 0)
 GO
---SET IDENTITY_INSERT [dbo].[Country] OFF
+SET IDENTITY_INSERT [dbo].[Country] OFF
 SET IDENTITY_INSERT [dbo].[District] ON 
 
 INSERT [dbo].[District] ([Id], [Name], [Type], [LatiLongTude], [ProvinceId], [SortOrder], [IsPublished], [IsDeleted]) VALUES (1, N'Ba Đình', N'Quận', N'21 02 08N, 105 49 38E', 1, 1, 1, 0)
