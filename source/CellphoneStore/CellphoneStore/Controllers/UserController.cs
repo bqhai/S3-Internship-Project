@@ -6,9 +6,10 @@ using System.Web.Mvc;
 
 namespace CellphoneStore.Controllers
 {
-    public class HomeController : Controller
+    public class UserController : Controller
     {
-        public ActionResult Index()
+        // GET: User
+        public ActionResult Login()
         {
             return View();
         }

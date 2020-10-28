@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/MyCSS/myStyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/layout.css" rel="stylesheet" />
+<link href="~/Content/CSS/popup-login.css" rel="stylesheet" />
+    <script src="~/Content/JS/popup-login.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,25 +25,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">ĐIỆN THOẠI</a></li>
-                        <li><a href="#">LAPTOP</a></li>
-                        <li><a href="#">MÁY TÍNH</a></li>
-                        <li><a href="#">ÂM THANH</a></li>
-                        <li><a href="#">PHỤ KIỆN</a></li>
-                    </ul>
-
+                <div class="col-sm-5">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">ĐIỆN THOẠI</a></li>
+                            <li><a href="#">LAPTOP</a></li>
+                            <li><a href="#">TABLET</a></li>
+                            <li><a href="#">PHỤ KIỆN</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <form class="col-sm-4 form-inline">
-                    <input class="form-control mr-sm-2 search" type="text" name="txtSearch" placeholder="Bạn tìm mua gì?" />
-                    <button class="btn btn-danger search-button" type="submit" name="btnSearch"><i class="fa fa-search"></i>Tìm kiếm</button>
-                </form>
-                <div class="col-sm-1">
-                    <button class="btn btn-warning search-button" type="submit" name="btnLogin">Đăng nhập</button>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <form class="col-sm-7 form-inline">
+                            <input class="form-control mr-sm-2 search" type="text" name="txtSearch" placeholder="Bạn tìm mua gì?" />
+                            <button class="btn btn-danger search-button" type="submit" name="btnSearch"><i class="fa fa-search"></i>Tìm kiếm</button>
+                        </form>
+                        <div class="col-sm-3">
+                            <button class="btn btn-warning search-button" name="btnUser" onclick="openForm()"><i class="fa fa-user fa-fw"></i>Tài khoản</button>
+                            <div class="form-popup" id="popupLoginForm">
+                                <form class="form-container">
+                                    <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                                    <h2 style="color: white; text-align: center">Đăng nhập</h2>
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Tên đăng nhập" name="username" required>
+                                    <input class="form-control mr-sm-2" type="password" placeholder="Mật khẩu" name="password" required>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-warning">Đăng nhập</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-warning">Đăng ký</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-warning search-button" type="submit" name="btnShoppingCart"><i class="fa fa-shopping-cart fa-fw"></i>Giỏ hàng</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-1">
-                    <button class="btn btn-warning search-button" type="submit" name="btnShoppingCart">Giỏ hàng</button>                </div>
+                
+                
+                
             </div>
         </div>
     </div>
@@ -49,8 +75,11 @@
         @RenderBody()
 
         <hr />
-        <footer>
+        <footer class="footer">
             <p>Công ty TNHH Thương mại và dịch vụ kỹ thuật Minh Nguyệt. GPĐKKD: 0312289651 do sở KH & ĐT TP. HCM cấp ngày 22/05/2013. Địa chỉ: 363 Võ Văn Tần, phường 5, Quận 3, TP Hồ Chí Minh. Điện thoại: 028.7108.9666.</p>
+            <div class="row">
+
+            </div>
         </footer>
     </div>
 
