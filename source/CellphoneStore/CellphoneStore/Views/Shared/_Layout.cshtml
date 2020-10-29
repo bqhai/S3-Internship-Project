@@ -8,8 +8,6 @@
     <link href="~/Content/CSS/popup-login.css" rel="stylesheet" />
     <script src="~/Content/JS/popup-login.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -23,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div>
-                    <a href="#"><img src="~/Content/Logo/logo_cps.png" width="54" height="54" /></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/Logo/logo_cps.png" width="54" height="54" /></a>
                 </div>
             </div>
             <div class="row">
@@ -53,12 +51,28 @@
                                     <input class="form-control mr-sm-2" type="password" placeholder="Mật khẩu" name="password" required>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-warning">Đăng nhập</button>
+                                            <button type="submit" class="btn btn-warning" style="width: 100%">Đăng nhập</button>
                                         </div>
                                         <div class="col-sm-6">
-                                            <button class="btn btn-warning">Đăng ký</button>                                                                                    
+                                            <a href="@Url.Action("Register", "User")">
+                                                <input class="btn btn-warning" type="button" value="Đăng ký" style="width: 100%" />
+                                            </a>
                                         </div>
                                     </div>
+                                    <a href="#">Quên mật khẩu?</a>
+                                    <br />
+                                    <strong style="text-align: center; color: white">Hoặc</strong>
+                                    <br />
+                                    <br />
+                                    <a href="#" class="btn-login-option fb">
+                                        <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
+                                    </a>
+                                    <a href="#" class="btn-login-option twitter">
+                                        <i class="fa fa-twitter fa-fw"></i> Đăng nhập bằng Twitter
+                                    </a>
+                                    <a href="#" class="btn-login-option google">
+                                        <i class="fa fa-google fa-fw"></i> Đăng nhập bằng Google+
+                                    </a>
                                 </form>
                             </div>
                         </div>
@@ -76,7 +90,7 @@
         <hr />
 
     </div>
-    <footer class="footer">      
+    <footer class="footer">
         <div class="row" style="color: white">
             <div class="col-sm-3" style="padding-left: 50px">
                 <strong>Tìm cửa hàng</strong>

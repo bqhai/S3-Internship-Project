@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="phoneNumber">Số điện thoại</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="number" id="phoneNumber" placeholder="Nhập số điện thoại" autofocus />
+                        <input class="form-control" type="tel" id="phoneNumber" placeholder="Nhập số điện thoại" autofocus />
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,12 +57,18 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Giới tính</label>
                     <div class="col-sm-6">
-                        <label class="radio-inline">
-                            <input type="radio" name="genderRadio" value="Nam" checked>Nam
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="genderRadio" value="Nữ">Nữ
-                        </label>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input type="radio" id="maleRadio" name="genderRadio" value="Nam" checked>&emsp;&emsp;Nam
+                                </label>
+                            </div>
+                            <div class="col-sm-4">                            
+                                <label class="radio-inline">
+                                    <input type="radio" id="femaleRadio" name="genderRadio" value="Nữ">&emsp;&emsp;Nữ
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>

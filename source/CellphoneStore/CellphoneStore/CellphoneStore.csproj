@@ -128,6 +128,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Banner\GLX-Note-Series_Sliding-v4.jpg" />
+    <Content Include="Content\Banner\GT_2_PRO_Sliding-v2.jpg" />
+    <Content Include="Content\Banner\Nokia2.jpg" />
+    <Content Include="Content\Banner\Slide_800x300-a93.jpg" />
+    <Content Include="Content\Banner\Slide_800x300-v120.jpg" />
+    <Content Include="Content\Banner\Sliding-800x300_2_.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
