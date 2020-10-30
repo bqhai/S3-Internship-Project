@@ -1,0 +1,15 @@
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\BLL_CellPhoneStore.dll.config
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\BLL_CellPhoneStore.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\BLL_CellPhoneStore.pdb
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\DAL_CellPhoneStore.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\EntityFramework.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\DAL_CellPhoneStore.pdb
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\DAL_CellPhoneStore.dll.config
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\EntityFramework.xml
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\bin\Debug\EntityFramework.SqlServer.xml
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\obj\Debug\BLL_CellPhoneStore.csprojAssemblyReference.cache
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\obj\Debug\BLL_CellPhoneStore.csproj.CoreCompileInputs.cache
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\obj\Debug\BLL_CellPhoneStore.csproj.CopyComplete
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\obj\Debug\BLL_CellPhoneStore.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\BLL_CellPhoneStore\obj\Debug\BLL_CellPhoneStore.pdb

@@ -3,7 +3,7 @@
     ViewBag.Title = "AllProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model IEnumerable<DAL_CellPhoneStore.Model.Product>
 <div class="container" style="margin-left: -30px">
     <div class="banner-top">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -110,6 +110,26 @@
                             </tr>
                         </table>
                     }
+                    @*@foreach (var item in Model)
+                    {
+                        <table class="product-item">
+                            <tr>
+                                <td>
+                                    <img src="~/Content/Images/Product/@item.Image" width="185" height="185" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>@item.ProductName</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-warning">Chi tiết</button>
+                                </td>
+                            </tr>
+                        </table>
+                    }*@
                 </div>
             </div>
         </div>

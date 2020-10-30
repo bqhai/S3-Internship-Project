@@ -12190,6 +12190,7 @@ CREATE TABLE Product
 	USB NVARCHAR(500),	
 	Sensor NVARCHAR(500),
 	Battery NVARCHAR(500),
+	Image NVARCHAR(500),
 	FOREIGN KEY(BrandID) REFERENCES Brand(BrandID)
 )
 GO
@@ -12365,7 +12366,8 @@ N'GPS/GNSS',
 N'Yes', 
 NULL, 
 N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
-N'3110 mAh')
+N'3110 mAh',
+N'SMPV10000.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10001', 
@@ -12390,7 +12392,8 @@ N'GPS/GNSS',
 N'Yes', 
 NULL, 
 N'FaceID, Con quay hồi chuyển, Gia tốc kế, Cảm biến tiệm cận, Cảm biến ánh sáng xung quanh', 
-N'3969 mAh')
+N'3969 mAh',
+N'SMPV10012.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10002', 
@@ -12415,7 +12418,8 @@ N'A-GPS, GLONASS',
 N'Yes', 
 NULL, 
 NULL, 
-N'2942 mAh')
+N'2942 mAh',
+N'SMPV10020.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10003', 
@@ -12440,7 +12444,8 @@ N'A-GPS, GLONASS, BDS, GALILEO',
 N'Yes', 
 N'2.0', 
 N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
-N'Li-ion 2691 mAh')
+N'Li-ion 2691 mAh',
+N'SMPV10022.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10004', 
@@ -12465,7 +12470,8 @@ N'A-GPS, GLONASS, GALILEO, QZSS',
 N'Yes', 
 N'2.0', 
 N'Vân tay, gia tốc, la bàn, khoảng cách, con quay quy hồi, phong vũ biểu', 
-N'Li-ion 2900 mAh')
+N'Li-ion 2900 mAh',
+N'SMPV10025.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10005', 
@@ -12490,7 +12496,8 @@ N'A-GPS, GLONASS, BDS, GALILEO',
 N'Yes', 
 N'3.2, Type-C 1.0 reversible connector, USB On-The-Go', 
 N'Cảm biến vân tay siêu âm, cảm biến gia tốc, con quay hồi chuyển, cảm biến tiệm cận, la bàn, cảm biến áp kế', 
-N'Li-Ion 4300 mAh, Fast charging 25W, USB Power Delivery 3.0, Fast Qi/PMA wireless charging, Reverse wireless charging 9W')
+N'Li-Ion 4300 mAh, Fast charging 25W, USB Power Delivery 3.0, Fast Qi/PMA wireless charging, Reverse wireless charging 9W',
+N'SMPV10026.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10006', 
@@ -12515,7 +12522,8 @@ N'A-GPS, GLONASS, BDS, GALILEO',
 N'Yes', 
 N'3.2, Type-C 1.0 reversible connector, USB On-The-Go', 
 N'Cảm biến vân tay siêu âm, cảm biến gia tốc, con quay hồi chuyển, cảm biến tiệm cận, la bàn, cảm biến áp kế', 
-N'Li-Ion 4500 mAh, Fast charging 25W, USB Power Delivery 3.0, Fast Qi/PMA wireless charging, Reverse wireless charging 9W')
+N'Li-Ion 4500 mAh, Fast charging 25W, USB Power Delivery 3.0, Fast Qi/PMA wireless charging, Reverse wireless charging 9W',
+N'SMPV10029.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10007', 
@@ -12540,7 +12548,8 @@ N'A-GPS, GLONASS, BDS, GALILEO',
 N'Yes', 
 N'USB Type-C', 
 N'Mở khóa bằng khuôn mặt, Mở khoá vân tay dưới màn hình', 
-N'4300 mAh, Quick Charge 45W')
+N'4300 mAh, Quick Charge 45W',
+N'SMPV10033.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10008', 
@@ -12565,7 +12574,8 @@ N'A-GPS, GLONASS, GALILEO, BDS',
 N'Yes', 
 N'USB Type-C', 
 N'Cảm biến vân tay, cảm biến tiệm cận, gia tốc kế, la bàn, con quay hồi chuyển', 
-N'4500 mAh')
+N'4500 mAh',
+N'SMPV10037.jpg')
 
 INSERT INTO Product VALUES(
 N'SMP10009', 
@@ -12590,7 +12600,8 @@ N'Có',
 N'Yes', 
 N'USB Type-C', 
 N'Cảm biến vân tay, cảm biến tiệm cận, gia tốc kế, la bàn, con quay hồi chuyển', 
-N'4000 mAh')
+N'4000 mAh',
+N'SMPV10041.jpg')
 GO
 --ProductVersion--
 INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')

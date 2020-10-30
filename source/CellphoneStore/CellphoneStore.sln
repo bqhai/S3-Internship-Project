@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CellphoneStore", "CellphoneStore\CellphoneStore.csproj", "{87BF61CA-D933-455C-BFD5-B9EC4DFD69E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_CellphoneStore", "DAL_CellPhoneStore\DAL_CellphoneStore.csproj", "{B13F4484-014B-477C-939C-3404EA94A5A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL_CellphoneStore", "BLL_CellPhoneStore\BLL_CellphoneStore.csproj", "{9C06B519-E16E-4EEB-9688-709ADE7E569A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_CellphoneStore", "API_CellphoneStore\API_CellphoneStore.csproj", "{9C00DEAC-6EC6-4909-884E-EFB2A84EBCA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{87BF61CA-D933-455C-BFD5-B9EC4DFD69E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87BF61CA-D933-455C-BFD5-B9EC4DFD69E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87BF61CA-D933-455C-BFD5-B9EC4DFD69E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13F4484-014B-477C-939C-3404EA94A5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13F4484-014B-477C-939C-3404EA94A5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13F4484-014B-477C-939C-3404EA94A5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13F4484-014B-477C-939C-3404EA94A5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C06B519-E16E-4EEB-9688-709ADE7E569A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C06B519-E16E-4EEB-9688-709ADE7E569A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C06B519-E16E-4EEB-9688-709ADE7E569A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C06B519-E16E-4EEB-9688-709ADE7E569A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C00DEAC-6EC6-4909-884E-EFB2A84EBCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C00DEAC-6EC6-4909-884E-EFB2A84EBCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C00DEAC-6EC6-4909-884E-EFB2A84EBCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C00DEAC-6EC6-4909-884E-EFB2A84EBCA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
