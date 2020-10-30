@@ -45,7 +45,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div class="row banner-bottom">
+            <div class="row list-banner">
                 <div class="col-sm-2 banner-item">
                     <p>NOTE 20 SERIES</p>
                 </div>
@@ -73,6 +73,33 @@
         <div>
             <img src="~/Content/Banner/Home_Banner/1920x75---iPhone12_1.gif" />
         </div>
+        <div>
+            <div style="height:30px; background-color: red; color: white; text-align: center">
+                <h3>Hot sale cuối tuần</h3>
+            </div>
+            <div class="product-container">
+                @for (int i = 0; i < 6; i++)
+                {
+                    <table class="product-item">
+                        <tr>
+                            <td>
+                                <img src="~/Content/Images/Product/SMPV10000.jpg" width="185" height="185" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Tên sản phẩm</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-warning">Chi tiết</button>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
     </div>
-
+    
 </div>

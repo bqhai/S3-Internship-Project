@@ -1,6 +1,6 @@
 ﻿body {
 }
-.banner-bottom{
+.list-banner{
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -11,6 +11,7 @@
     border: solid 1px #eee;
     opacity: 1;
     padding-top: 10px;
-    border-right: none
+    border-right: none;
 }
+
 

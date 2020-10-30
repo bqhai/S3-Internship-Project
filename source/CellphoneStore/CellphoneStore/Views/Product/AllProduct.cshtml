@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<div class="container" style="margin-left: -30px">
     <div class="banner-top">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -39,6 +39,77 @@
                     <div class="col-sm-6">
                         <img src="~/Content/Banner/Product_Banner/Nokia2.4_Cate_595x100.jpg" />
                     </div>                                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row">
+            <div class="main-left col-sm-2">
+                <h4>Hãng sản xuất</h4>
+                <ul>
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <li>Thuong hiệu</li>
+                    }
+                </ul>
+                <h4>Màn hình</h4>
+                <ul>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <li>Màn hình</li>
+                    }
+                </ul>
+                <h4>Bộ nhớ trong</h4>
+                <ul>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <li>Bộ nhớ</li>
+                    }
+                </ul>
+                <h4>Hệ điều hành</h4>
+                <ul>
+                    @for (int i = 0; i < 6; i++)
+                    {
+                        <li>Hệ điều hành</li>
+                    }
+                </ul>
+            </div>
+            <div class="main-right col-sm-10">
+                <div class="product-container">
+                    <h4>Mua điện thoại giá rẻ</h4>
+                    <div>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Apple" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Samsung" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Huawei" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Xiaomi" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Nokia" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="OPPO" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Asus" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Vivo" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="Realme" /></a>
+                        <a href="#"><input class="btn btn-danger" type="button" value="VSmart" /></a>
+                    </div>
+                    @for (int i = 0; i < 20; i++)
+                    {
+                        <table class="product-item">
+                            <tr>
+                                <td>
+                                    <img src="~/Content/Images/Product/SMPV10000.jpg" width="185" height="185" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Tên sản phẩm</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-warning">Chi tiết</button>
+                                </td>
+                            </tr>
+                        </table>
+                    }
                 </div>
             </div>
         </div>

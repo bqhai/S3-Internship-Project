@@ -53,4 +53,3 @@ D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\C
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.csproj.CopyComplete
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.dll
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.pdb
-D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.csprojAssemblyReference.cache
