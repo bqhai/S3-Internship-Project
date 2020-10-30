@@ -1,0 +1,16 @@
+﻿body {
+}
+.banner-bottom{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.banner-item {
+    height: 65px;
+    background: #f00;
+    color: aliceblue;
+    border: solid 1px #eee;
+    opacity: 1;
+    padding-top: 10px;
+    border-right: none
+}
+

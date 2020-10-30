@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -128,16 +129,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Banner\GLX-Note-Series_Sliding-v4.jpg" />
-    <Content Include="Content\Banner\GT_2_PRO_Sliding-v2.jpg" />
-    <Content Include="Content\Banner\Nokia2.jpg" />
-    <Content Include="Content\Banner\Slide_800x300-a93.jpg" />
-    <Content Include="Content\Banner\Slide_800x300-v120.jpg" />
-    <Content Include="Content\Banner\Sliding-800x300_2_.jpg" />
+    <Content Include="Content\Banner\Home_Banner\1920x75---iPhone12_1.gif" />
+    <Content Include="Content\Banner\Home_Banner\GLX-Note-Series_Sliding-v4.jpg" />
+    <Content Include="Content\Banner\Home_Banner\GT_2_PRO_Sliding-v2.jpg" />
+    <Content Include="Content\Banner\Home_Banner\Nokia2.jpg" />
+    <Content Include="Content\Banner\Home_Banner\Right_banner_750x350_-_iPhone.jpg" />
+    <Content Include="Content\Banner\Home_Banner\Slide_800x300-a93.jpg" />
+    <Content Include="Content\Banner\Home_Banner\Slide_800x300-v120.jpg" />
+    <Content Include="Content\Banner\Home_Banner\Sliding-800x300_2_.jpg" />
+    <Content Include="Content\Banner\Home_Banner\tab_s7_plus_right_banner_16.jpg" />
+    <Content Include="Content\Banner\Product_Banner\11_pro_max_26.5.jpg" />
+    <Content Include="Content\Banner\Product_Banner\595x100iPhone-12-v2.jpg" />
+    <Content Include="Content\Banner\Product_Banner\Banner-chung-595x100.jpg" />
+    <Content Include="Content\Banner\Product_Banner\Cate_595x100_2.jpg" />
+    <Content Include="Content\Banner\Product_Banner\iphone_8_plus_normal_sale_1.10_c.jpg" />
+    <Content Include="Content\Banner\Product_Banner\ip_11_26.5.jpg" />
+    <Content Include="Content\Banner\Product_Banner\Nokia2.4_Cate_595x100.jpg" />
+    <Content Include="Content\Banner\Product_Banner\normal_sale_nokia_24.08.2020.jpg" />
+    <Content Include="Content\Banner\Product_Banner\oppo_normal_sale_24.08.2020.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\home.css" />
+    <Content Include="Content\CSS\product.css" />
     <Content Include="Content\JS\popup-login.js" />
     <Content Include="Content\Logo\appstore.png" />
     <Content Include="Content\Logo\graphic-map.png" />
@@ -177,6 +192,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Product\AllProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
