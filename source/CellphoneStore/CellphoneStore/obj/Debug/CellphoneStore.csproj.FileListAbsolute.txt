@@ -62,3 +62,6 @@ D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\EntityF
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\DAL_CellPhoneStore.pdb
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\DAL_CellPhoneStore.dll.config
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\EntityFramework.xml
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\Model_CellphoneStore.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\AutoMapper.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\Model_CellphoneStore.pdb

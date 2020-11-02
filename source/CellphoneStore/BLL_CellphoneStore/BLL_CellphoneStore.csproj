@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLL_Brand.cs" />
     <Compile Include="BLL\BLL_Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\DAL_CellPhoneStore\DAL_CellphoneStore.csproj">
       <Project>{b13f4484-014b-477c-939c-3404ea94a5a5}</Project>
       <Name>DAL_CellphoneStore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_CellphoneStore\Model_CellphoneStore.csproj">
+      <Project>{53908a83-bc8a-4e77-957e-185d67fdac12}</Project>
+      <Name>Model_CellphoneStore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

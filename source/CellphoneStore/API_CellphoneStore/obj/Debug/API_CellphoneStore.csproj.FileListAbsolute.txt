@@ -53,3 +53,6 @@ D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\obj\Deb
 D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\System.Web.Cors.dll
 D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\System.Web.Http.Cors.dll
 D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\System.Web.Http.Cors.xml
+D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\Model_CellphoneStore.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\AutoMapper.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\API_CellphoneStore\bin\Model_CellphoneStore.pdb

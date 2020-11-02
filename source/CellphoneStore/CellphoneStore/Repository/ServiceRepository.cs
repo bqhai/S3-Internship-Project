@@ -14,7 +14,7 @@ namespace CellphoneStore.Repository
         public ServiceRepository()
         {
             Client = new HttpClient();
-            //Client.BaseAddress = new Uri(ConfigurationManager.AppSettings["ServiceUrl"].ToString());
+            Client.BaseAddress = new Uri(ConfigurationManager.AppSettings["ServiceUrl"].ToString());
         }
         public HttpResponseMessage GetResponse(string url)
         {

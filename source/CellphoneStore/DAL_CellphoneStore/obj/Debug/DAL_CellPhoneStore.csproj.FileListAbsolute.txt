@@ -9,4 +9,3 @@ D:\Github\S3-Internship-Project\source\CellphoneStore\DAL_CellPhoneStore\obj\Deb
 D:\Github\S3-Internship-Project\source\CellphoneStore\DAL_CellPhoneStore\obj\Debug\DAL_CellPhoneStore.csproj.CopyComplete
 D:\Github\S3-Internship-Project\source\CellphoneStore\DAL_CellPhoneStore\obj\Debug\DAL_CellPhoneStore.dll
 D:\Github\S3-Internship-Project\source\CellphoneStore\DAL_CellPhoneStore\obj\Debug\DAL_CellPhoneStore.pdb
-D:\Github\S3-Internship-Project\source\CellphoneStore\DAL_CellPhoneStore\obj\Debug\DAL_CellPhoneStore.csprojAssemblyReference.cache

@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_CellPhoneStore.DAL;
 using DAL_CellPhoneStore.Model;
+using Model_CellphoneStore;
+using Model_CellphoneStore.Repository;
+
 namespace BLL_CellPhoneStore.BLL
 {
     public class BLL_Product
@@ -14,9 +17,16 @@ namespace BLL_CellPhoneStore.BLL
         {
 
         }
-        public IEnumerable<Product> GetAllProduct()
+        public List<ProductMapped> GetAllProduct()
         {
-            return dalProduct.GetAllProduct();
+            EntityMapper<Product, ProductMapped> mapObj = new EntityMapper<Product, ProductMapped>();
+            IEnumerable<Product> products = dalProduct.GetAllProduct();
+            List<ProductMapped> productMappeds = new List<ProductMapped>();
+            foreach (var item in products)
+            {
+                productMappeds.Add(mapObj.Translate(item));
+            }
+            return productMappeds;
         }
     }
 }
