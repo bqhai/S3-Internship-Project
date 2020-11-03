@@ -16,26 +16,40 @@ namespace CellphoneStore.Controllers
     public class ProductController : Controller
     {
         ServiceRepository serviceObj = new ServiceRepository();
+        HttpResponseMessage response;
         public ActionResult AllProduct(int pageIndex = 1, int pageSize = 15)
         {
-            var url = "api/API_ProductVersion";        
-            HttpResponseMessage response = serviceObj.GetResponse(url);
+            var url = "api/API_ProductVersion/GetAllProductVersion";        
+            response = serviceObj.GetResponse(url);
             response.EnsureSuccessStatusCode();
             List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;         
             ViewBag.Title = "All Products";          
             return View(productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
-        public ActionResult ProductDetails()
+        public ActionResult ProductDetails(string productVersionID)
         {
-            return View();
+            var url = "api/API_ProductVersion/GetProductVersionByID/" + productVersionID;
+            response = serviceObj.GetResponse(url);
+            response.EnsureSuccessStatusCode();
+            var productVersionMapped = response.Content.ReadAsAsync<ProductVersionMapped>().Result;
+            ViewBag.Title = "Product details";
+            return View(productVersionMapped);
         }
         public ActionResult GetAllBrand()
         {
-            var url = "api/API_Brand";
-            HttpResponseMessage response = serviceObj.GetResponse(url);
+            var url = "api/API_Brand/GetAllBrand";
+            response = serviceObj.GetResponse(url);
             response.EnsureSuccessStatusCode();
-            List<BrandMapped> brands = response.Content.ReadAsAsync<List<BrandMapped>>().Result;
-            return PartialView(brands);
+            List<BrandMapped> brandMappeds = response.Content.ReadAsAsync<List<BrandMapped>>().Result;
+            return PartialView(brandMappeds);
+        }
+        public ActionResult ListProductVersion(string productID)
+        {
+            var url = "api/API_ProductVersion/GetListProductVersionByProductID/" + productID;
+            response = serviceObj.GetResponse(url);
+            response.EnsureSuccessStatusCode();
+            List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+            return PartialView(productVersionMappeds);
         }
     }
 }

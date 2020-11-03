@@ -112,7 +112,7 @@
                             <table class="product-item">
                                 <tr>
                                     <td>
-                                        <a href="@Url.Action("ProductDetails", "Product")">
+                                        <a href="@Url.Action("ProductDetails", "Product", new {productVersionID = item.ProductVersionID})">
                                             <img src="~/Content/Images/Product/@item.Image" width="185" height="185" />
                                         </a>
                                     </td>

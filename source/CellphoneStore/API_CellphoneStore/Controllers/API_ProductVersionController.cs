@@ -12,14 +12,25 @@ using Model_CellphoneStore.Repository;
 
 namespace API_CellphoneStore.Controllers
 {
+    [RoutePrefix("api/API_ProductVersion")]
     public class API_ProductVersionController : ApiController
     {
-        BLL_ProductVersion bll = new BLL_ProductVersion();
+        BLL_ProductVersion bllProductVersion = new BLL_ProductVersion();
         [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [Route("GetAllProductVersion")]
         public List<ProductVersionMapped> GetAllProductVersion()
         {
-            return bll.GetAllProductVersion();
+            return bllProductVersion.GetAllProductVersion();
         }
-        
+        [Route("GetProductVersionByID/{productVersionID}")]
+        public ProductVersionMapped GetProductVersionByID(string productVersionID)
+        {
+            return bllProductVersion.GetProductVersionByID(productVersionID);
+        }
+        [Route("GetListProductVersionByProductID/{productID}")]
+        public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
+        {
+            return bllProductVersion.GetListProductVersionByProductID(productID);
+        }
     }
 }

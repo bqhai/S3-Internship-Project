@@ -320,6 +320,7 @@
     <Content Include="Views\Product\AllProduct.cshtml" />
     <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Product\GetAllBrand.cshtml" />
+    <Content Include="Views\Product\ListProductVersion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,10 +10,12 @@ using System.Web.Http.Cors;
 
 namespace API_CellphoneStore.Controllers
 {
+    [RoutePrefix("api/API_Brand")]
     public class API_BrandController : ApiController
     {
         BLL_Brand bllBrand = new BLL_Brand();
         [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [Route("GetAllBrand")]
         public List<BrandMapped> GetAllBrand()
         {
             return bllBrand.GetAllBrand();

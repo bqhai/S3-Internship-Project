@@ -52,16 +52,16 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 3px;
-    width: calc((100% / 3) - 10px);
     text-align: center;
     padding: 5px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-bottom: 15px;
     cursor: pointer;
     flex-direction: column;
     justify-content: center;
     float: left;  
 }
+
 .promotion-container {
     border: 1px solid #ff6a00;
     border-radius: 4px;

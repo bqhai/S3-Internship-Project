@@ -3,15 +3,16 @@
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model Model_CellphoneStore.ProductVersionMapped
 <div class="container">
     <div class="title">
-        <h3>Tên sản phẩm</h3>
+        <h3>@Model.ProductVersionName</h3>
     </div>
     <div class="row">
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="~/Content/Images/Product/SMPV10000.jpg" width="400" height="400" />
+                    <img src="~/Content/Images/Product/@Model.Image" width="400" height="400" />
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group form-inline" style="margin-left: 15px">
@@ -25,29 +26,15 @@
                     </div>
                     <div class="price-container">
                         <div class="col-sm-9">
-                            <p class="price">20000000đ</p>
-                            <p>Giá niêm yết: <strike>23000000đ</strike></p>
+                            <p class="price">@Model.Price VNĐ</p>
+                            <p>Giá niêm yết: <strike>@Model.ListPrice VNĐ</strike></p>
                         </div>
                         <div class="col-sm-3">
                             <a href="#"><input class="btn btn-danger" type="button" value="Trả góp 0%" /></a>
                         </div>
                     </div>
                     <div class="version-container">
-                        @for (int i = 0; i < 9; i++)
-                        {
-                            <div class="item">
-                                <a href="#">
-                                    <span>
-                                        <b>Bộ nhớ</b>
-                                        <br />
-                                        <i>Màu</i>
-                                        <br />
-                                        <strong>Giá tiền</strong>
-                                    </span>
-                                </a>
-                            </div>
-
-                        }
+                        @Html.Action("ListProductVersion", "Product", new { productID = Model.ProductID})
                     </div>
 
                     <div class="promotion-container">
