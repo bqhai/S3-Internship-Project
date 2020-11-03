@@ -12,13 +12,13 @@ using Model_CellphoneStore.Repository;
 
 namespace API_CellphoneStore.Controllers
 {
-    public class API_ProductController : ApiController
+    public class API_ProductVersionController : ApiController
     {
-        BLL_Product bll = new BLL_Product();
+        BLL_ProductVersion bll = new BLL_ProductVersion();
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public List<ProductMapped> GetAllProduct()
+        public List<ProductVersionMapped> GetAllProductVersion()
         {
-            return bll.GetAllProduct();
+            return bll.GetAllProductVersion();
         }
         
     }

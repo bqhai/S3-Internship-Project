@@ -128,8 +128,8 @@
     <Property Name="Size" Type="nvarchar" MaxLength="200" />
     <Property Name="Weight" Type="nvarchar" MaxLength="200" />
     <Property Name="SIM" Type="nvarchar" MaxLength="200" />
-    <Property Name="ScreenType" Type="nvarchar" MaxLength="500" />
-    <Property Name="ScreenSize" Type="nvarchar" MaxLength="200" />
+    <Property Name="ScreenType" Type="nvarchar" MaxLength="200" />
+    <Property Name="ScreenSize" Type="float" />
     <Property Name="ScreenResolution" Type="nvarchar" MaxLength="200" />
     <Property Name="OperatingSystem" Type="nvarchar" MaxLength="200" />
     <Property Name="Chipset" Type="nvarchar" MaxLength="200" />

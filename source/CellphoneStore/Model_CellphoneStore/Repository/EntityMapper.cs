@@ -16,6 +16,9 @@ namespace Model_CellphoneStore.Repository
 
             Mapper.CreateMap<BrandMapped, Brand>();
             Mapper.CreateMap<Brand, BrandMapped>();
+
+            Mapper.CreateMap<ProductVersionMapped, ProductVersion>();
+            Mapper.CreateMap<ProductVersion, ProductVersionMapped>();
         }
         public TDestination Translate(TSource obj)
         {

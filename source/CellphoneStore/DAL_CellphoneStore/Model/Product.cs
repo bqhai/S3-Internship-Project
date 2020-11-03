@@ -27,7 +27,7 @@ namespace DAL_CellPhoneStore.Model
         public string Weight { get; set; }
         public string SIM { get; set; }
         public string ScreenType { get; set; }
-        public string ScreenSize { get; set; }
+        public Nullable<double> ScreenSize { get; set; }
         public string ScreenResolution { get; set; }
         public string OperatingSystem { get; set; }
         public string Chipset { get; set; }

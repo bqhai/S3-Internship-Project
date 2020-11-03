@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbCellPhoneStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbCellPhoneStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Username" />
@@ -133,8 +133,8 @@
           <Property Name="Size" Type="nvarchar" MaxLength="200" />
           <Property Name="Weight" Type="nvarchar" MaxLength="200" />
           <Property Name="SIM" Type="nvarchar" MaxLength="200" />
-          <Property Name="ScreenType" Type="nvarchar" MaxLength="500" />
-          <Property Name="ScreenSize" Type="nvarchar" MaxLength="200" />
+          <Property Name="ScreenType" Type="nvarchar" MaxLength="200" />
+          <Property Name="ScreenSize" Type="float" />
           <Property Name="ScreenResolution" Type="nvarchar" MaxLength="200" />
           <Property Name="OperatingSystem" Type="nvarchar" MaxLength="200" />
           <Property Name="Chipset" Type="nvarchar" MaxLength="200" />
@@ -522,22 +522,94 @@
             <End Role="Ward" EntitySet="Ward" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbCellPhoneStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbCellPhoneStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="DbCellPhoneStoreModel.Account" />
+          <EntitySet Name="AccountTypes" EntityType="DbCellPhoneStoreModel.AccountType" />
+          <EntitySet Name="Brands" EntityType="DbCellPhoneStoreModel.Brand" />
+          <EntitySet Name="Countries" EntityType="DbCellPhoneStoreModel.Country" />
+          <EntitySet Name="Customers" EntityType="DbCellPhoneStoreModel.Customer" />
+          <EntitySet Name="Districts" EntityType="DbCellPhoneStoreModel.District" />
+          <EntitySet Name="Employees" EntityType="DbCellPhoneStoreModel.Employee" />
+          <EntitySet Name="OrderDetails" EntityType="DbCellPhoneStoreModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="DbCellPhoneStoreModel.Order" />
+          <EntitySet Name="Products" EntityType="DbCellPhoneStoreModel.Product" />
+          <EntitySet Name="ProductIntroduces" EntityType="DbCellPhoneStoreModel.ProductIntroduce" />
+          <EntitySet Name="ProductVersions" EntityType="DbCellPhoneStoreModel.ProductVersion" />
+          <EntitySet Name="PromotionCodes" EntityType="DbCellPhoneStoreModel.PromotionCode" />
+          <EntitySet Name="Provinces" EntityType="DbCellPhoneStoreModel.Province" />
+          <EntitySet Name="Wards" EntityType="DbCellPhoneStoreModel.Ward" />
+          <AssociationSet Name="FK__Account__Account__1ED998B2" Association="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2">
+            <End Role="AccountType" EntitySet="AccountTypes" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__Userna__24927208" Association="DbCellPhoneStoreModel.FK__Customer__Userna__24927208">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__Userna__2A4B4B5E" Association="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__BrandID__30F848ED" Association="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Country" Association="DbCellPhoneStoreModel.FK_Province_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__3A81B327" Association="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="DbCellPhoneStoreModel.FK_District_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="DbCellPhoneStoreModel.FK_Ward_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Ward" EntitySet="Wards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__3D5E1FD2" Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Produ__3E52440B" Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B">
+            <End Role="ProductVersion" EntitySet="ProductVersions" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductIn__Produ__46E78A0C" Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductIntroduce" EntitySet="ProductIntroduces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductVe__Produ__33D4B598" Association="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductVersion" EntitySet="ProductVersions" />
+          </AssociationSet>
+          <AssociationSet Name="Favorite" Association="DbCellPhoneStoreModel.Favorite">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ProductVersion" EntitySet="ProductVersions" />
+          </AssociationSet>
+          <AssociationSet Name="PromotionCodeUsed" Association="DbCellPhoneStoreModel.PromotionCodeUsed">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="PromotionCode" EntitySet="PromotionCodes" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="Username" />
           </Key>
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="AccountType" Relationship="Self.FK__Account__Account__1ED998B2" FromRole="Account" ToRole="AccountType" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Userna__24927208" FromRole="Account" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__Userna__2A4B4B5E" FromRole="Account" ToRole="Employee" />
+          <NavigationProperty Name="AccountType" Relationship="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2" FromRole="Account" ToRole="AccountType" />
+          <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Account" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Account" ToRole="Employee" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -545,23 +617,23 @@
           </Key>
           <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
           <Property Name="AccountTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__Account__1ED998B2" FromRole="AccountType" ToRole="Account" />
+          <NavigationProperty Name="Accounts" Relationship="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2" FromRole="AccountType" ToRole="Account" />
         </EntityType>
         <EntityType Name="Brand">
           <Key>
             <PropertyRef Name="BrandID" />
           </Key>
-          <Property Name="BrandID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrandID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Product__BrandID__30F848ED" FromRole="Brand" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" FromRole="Brand" ToRole="Product" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FormalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CountryType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -578,13 +650,13 @@
           <Property Name="IsPublished" Type="Boolean" />
           <Property Name="Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Provinces" Relationship="Self.FK_Province_Country" FromRole="Country" ToRole="Province" />
+          <NavigationProperty Name="Provinces" Relationship="DbCellPhoneStoreModel.FK_Province_Country" FromRole="Country" ToRole="Province" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -592,10 +664,10 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Customer__Userna__24927208" FromRole="Customer" ToRole="Account" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__3A81B327" FromRole="Customer" ToRole="Orders" />
-          <NavigationProperty Name="ProductVersions" Relationship="Self.Favorite" FromRole="Customer" ToRole="ProductVersion" />
-          <NavigationProperty Name="PromotionCodes" Relationship="Self.PromotionCodeUsed" FromRole="Customer" ToRole="PromotionCode" />
+          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Customer" ToRole="Account" />
+          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="Customer" ToRole="ProductVersion" />
+          <NavigationProperty Name="PromotionCodes" Relationship="DbCellPhoneStoreModel.PromotionCodeUsed" FromRole="Customer" ToRole="PromotionCode" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -609,14 +681,14 @@
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="IsPublished" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Province" Relationship="Self.FK_District_Province" FromRole="District" ToRole="Province" />
-          <NavigationProperty Name="Wards" Relationship="Self.FK_Ward_District" FromRole="District" ToRole="Ward" />
+          <NavigationProperty Name="Province" Relationship="DbCellPhoneStoreModel.FK_District_Province" FromRole="District" ToRole="Province" />
+          <NavigationProperty Name="Wards" Relationship="DbCellPhoneStoreModel.FK_Ward_District" FromRole="District" ToRole="Ward" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
-          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -625,25 +697,25 @@
           <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Employee__Userna__2A4B4B5E" FromRole="Employee" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Employee" ToRole="Account" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="OrderID" />
             <PropertyRef Name="ProductVersionID" />
           </Key>
-          <Property Name="OrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductVersionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Int32" />
           <Property Name="Price" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__3D5E1FD2" FromRole="OrderDetail" ToRole="Orders" />
-          <NavigationProperty Name="ProductVersion" Relationship="Self.FK__OrderDeta__Produ__3E52440B" FromRole="OrderDetail" ToRole="ProductVersion" />
+          <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B" FromRole="OrderDetail" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Payments" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Delivery" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -651,21 +723,21 @@
           <Property Name="TotalPrice" Type="Int32" />
           <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__3A81B327" FromRole="Orders" ToRole="Customer" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__3D5E1FD2" FromRole="Orders" ToRole="OrderDetail" />
+          <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BrandID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Size" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Weight" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SIM" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ScreenType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ScreenSize" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ScreenType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ScreenSize" Type="Double" />
           <Property Name="ScreenResolution" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="OperatingSystem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Chipset" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -682,15 +754,15 @@
           <Property Name="Sensor" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Battery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Brand" Relationship="Self.FK__Product__BrandID__30F848ED" FromRole="Product" ToRole="Brand" />
-          <NavigationProperty Name="ProductIntroduce" Relationship="Self.FK__ProductIn__Produ__46E78A0C" FromRole="Product" ToRole="ProductIntroduce" />
-          <NavigationProperty Name="ProductVersions" Relationship="Self.FK__ProductVe__Produ__33D4B598" FromRole="Product" ToRole="ProductVersion" />
+          <NavigationProperty Name="Brand" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="ProductIntroduce" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C" FromRole="Product" ToRole="ProductIntroduce" />
+          <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="Product" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="ProductIntroduce">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Header0" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Text0" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Header1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -716,13 +788,13 @@
           <Property Name="Image7" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FooterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__ProductIn__Produ__46E78A0C" FromRole="ProductIntroduce" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C" FromRole="ProductIntroduce" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductVersion">
           <Key>
             <PropertyRef Name="ProductVersionID" />
           </Key>
-          <Property Name="ProductVersionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductVersionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -733,27 +805,27 @@
           <Property Name="QuantityInStock" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Produ__3E52440B" FromRole="ProductVersion" ToRole="OrderDetail" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__ProductVe__Produ__33D4B598" FromRole="ProductVersion" ToRole="Product" />
-          <NavigationProperty Name="Customers" Relationship="Self.Favorite" FromRole="ProductVersion" ToRole="Customer" />
+          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B" FromRole="ProductVersion" ToRole="OrderDetail" />
+          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="ProductVersion" ToRole="Product" />
+          <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="ProductVersion" ToRole="Customer" />
         </EntityType>
         <EntityType Name="PromotionCode">
           <Key>
             <PropertyRef Name="Code" />
           </Key>
-          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="Double" />
           <Property Name="StartDate" Type="DateTime" Precision="0" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Customers" Relationship="Self.PromotionCodeUsed" FromRole="PromotionCode" ToRole="Customer" />
+          <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.PromotionCodeUsed" FromRole="PromotionCode" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TelephoneCode" Type="Int32" />
           <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -762,26 +834,26 @@
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="IsPublished" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_Province_Country" FromRole="Province" ToRole="Country" />
-          <NavigationProperty Name="Districts" Relationship="Self.FK_District_Province" FromRole="Province" ToRole="District" />
+          <NavigationProperty Name="Country" Relationship="DbCellPhoneStoreModel.FK_Province_Country" FromRole="Province" ToRole="Country" />
+          <NavigationProperty Name="Districts" Relationship="DbCellPhoneStoreModel.FK_District_Province" FromRole="Province" ToRole="District" />
         </EntityType>
         <EntityType Name="Ward">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DistrictID" Type="Int32" Nullable="false" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <Property Name="IsPublished" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="District" Relationship="Self.FK_Ward_District" FromRole="Ward" ToRole="District" />
+          <NavigationProperty Name="District" Relationship="DbCellPhoneStoreModel.FK_Ward_District" FromRole="Ward" ToRole="District" />
         </EntityType>
         <Association Name="FK__Account__Account__1ED998B2">
-          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.AccountType" Role="AccountType" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AccountType">
               <PropertyRef Name="AccountTypeID" />
@@ -792,8 +864,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__Userna__24927208">
-          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
               <PropertyRef Name="Username" />
@@ -804,8 +876,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Employee__Userna__2A4B4B5E">
-          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
               <PropertyRef Name="Username" />
@@ -816,8 +888,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Product__BrandID__30F848ED">
-          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Brand">
               <PropertyRef Name="BrandID" />
@@ -828,10 +900,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Province_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1">
+          <End Type="DbCellPhoneStoreModel.Country" Role="Country" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Province" Role="Province" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="Id" />
@@ -842,20 +914,20 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__Customer__3A81B327">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustomerID" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="Order">
               <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_District_Province">
-          <End Role="Province" Type="Self.Province" Multiplicity="1" />
-          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.District" Role="District" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Province">
               <PropertyRef Name="Id" />
@@ -866,8 +938,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ward_District">
-          <End Role="District" Type="Self.District" Multiplicity="1" />
-          <End Role="Ward" Type="Self.Ward" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.District" Role="District" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.Ward" Role="Ward" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="District">
               <PropertyRef Name="Id" />
@@ -878,10 +950,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderDeta__Order__3D5E1FD2">
-          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Orders">
+            <Principal Role="Order">
               <PropertyRef Name="OrderID" />
             </Principal>
             <Dependent Role="OrderDetail">
@@ -890,8 +962,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OrderDeta__Produ__3E52440B">
-          <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProductVersion">
               <PropertyRef Name="ProductVersionID" />
@@ -902,8 +974,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProductIn__Produ__46E78A0C">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductIntroduce" Type="Self.ProductIntroduce" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.ProductIntroduce" Role="ProductIntroduce" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -914,8 +986,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ProductVe__Produ__33D4B598">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -926,86 +998,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Favorite">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="*" />
         </Association>
         <Association Name="PromotionCodeUsed">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <End Role="PromotionCode" Type="Self.PromotionCode" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Type="DbCellPhoneStoreModel.PromotionCode" Role="PromotionCode" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DbCellPhoneStoreEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Accounts" EntityType="Self.Account" />
-          <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
-          <EntitySet Name="Brands" EntityType="Self.Brand" />
-          <EntitySet Name="Countries" EntityType="Self.Country" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Districts" EntityType="Self.District" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="ProductIntroduces" EntityType="Self.ProductIntroduce" />
-          <EntitySet Name="ProductVersions" EntityType="Self.ProductVersion" />
-          <EntitySet Name="PromotionCodes" EntityType="Self.PromotionCode" />
-          <EntitySet Name="Provinces" EntityType="Self.Province" />
-          <EntitySet Name="Wards" EntityType="Self.Ward" />
-          <AssociationSet Name="FK__Account__Account__1ED998B2" Association="Self.FK__Account__Account__1ED998B2">
-            <End Role="AccountType" EntitySet="AccountTypes" />
-            <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__Userna__24927208" Association="Self.FK__Customer__Userna__24927208">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employee__Userna__2A4B4B5E" Association="Self.FK__Employee__Userna__2A4B4B5E">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__BrandID__30F848ED" Association="Self.FK__Product__BrandID__30F848ED">
-            <End Role="Brand" EntitySet="Brands" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="Province" EntitySet="Provinces" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__Customer__3A81B327" Association="Self.FK__Orders__Customer__3A81B327">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
-            <End Role="Province" EntitySet="Provinces" />
-            <End Role="District" EntitySet="Districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
-            <End Role="District" EntitySet="Districts" />
-            <End Role="Ward" EntitySet="Wards" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__3D5E1FD2" Association="Self.FK__OrderDeta__Order__3D5E1FD2">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__3E52440B" Association="Self.FK__OrderDeta__Produ__3E52440B">
-            <End Role="ProductVersion" EntitySet="ProductVersions" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ProductIn__Produ__46E78A0C" Association="Self.FK__ProductIn__Produ__46E78A0C">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductIntroduce" EntitySet="ProductIntroduces" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ProductVe__Produ__33D4B598" Association="Self.FK__ProductVe__Produ__33D4B598">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductVersion" EntitySet="ProductVersions" />
-          </AssociationSet>
-          <AssociationSet Name="Favorite" Association="Self.Favorite">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="ProductVersion" EntitySet="ProductVersions" />
-          </AssociationSet>
-          <AssociationSet Name="PromotionCodeUsed" Association="Self.PromotionCodeUsed">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="PromotionCode" EntitySet="PromotionCodes" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1015,255 +1014,255 @@
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Account">
               <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AccountTypes">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.AccountType">
               <MappingFragment StoreEntitySet="AccountType">
-                <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
                 <ScalarProperty Name="AccountTypeName" ColumnName="AccountTypeName" />
+                <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
-                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
-                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
-                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
-                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
-                <ScalarProperty Name="Capital" ColumnName="Capital" />
-                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
-                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
-                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
-                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
-                <ScalarProperty Name="Flags" ColumnName="Flags" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.District">
               <MappingFragment StoreEntitySet="District">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
-                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="Payments" ColumnName="Payments" />
-                <ScalarProperty Name="Delivery" ColumnName="Delivery" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+                <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="SIM" ColumnName="SIM" />
-                <ScalarProperty Name="ScreenType" ColumnName="ScreenType" />
-                <ScalarProperty Name="ScreenSize" ColumnName="ScreenSize" />
-                <ScalarProperty Name="ScreenResolution" ColumnName="ScreenResolution" />
-                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
-                <ScalarProperty Name="Chipset" ColumnName="Chipset" />
-                <ScalarProperty Name="CPU" ColumnName="CPU" />
-                <ScalarProperty Name="GPU" ColumnName="GPU" />
-                <ScalarProperty Name="SDCard" ColumnName="SDCard" />
-                <ScalarProperty Name="BackCamera" ColumnName="BackCamera" />
-                <ScalarProperty Name="FrontCamera" ColumnName="FrontCamera" />
-                <ScalarProperty Name="WLAN" ColumnName="WLAN" />
-                <ScalarProperty Name="Bluetooth" ColumnName="Bluetooth" />
-                <ScalarProperty Name="GPS" ColumnName="GPS" />
-                <ScalarProperty Name="NFC" ColumnName="NFC" />
-                <ScalarProperty Name="USB" ColumnName="USB" />
-                <ScalarProperty Name="Sensor" ColumnName="Sensor" />
-                <ScalarProperty Name="Battery" ColumnName="Battery" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Battery" ColumnName="Battery" />
+                <ScalarProperty Name="Sensor" ColumnName="Sensor" />
+                <ScalarProperty Name="USB" ColumnName="USB" />
+                <ScalarProperty Name="NFC" ColumnName="NFC" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="Bluetooth" ColumnName="Bluetooth" />
+                <ScalarProperty Name="WLAN" ColumnName="WLAN" />
+                <ScalarProperty Name="FrontCamera" ColumnName="FrontCamera" />
+                <ScalarProperty Name="BackCamera" ColumnName="BackCamera" />
+                <ScalarProperty Name="SDCard" ColumnName="SDCard" />
+                <ScalarProperty Name="GPU" ColumnName="GPU" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="Chipset" ColumnName="Chipset" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="ScreenResolution" ColumnName="ScreenResolution" />
+                <ScalarProperty Name="ScreenSize" ColumnName="ScreenSize" />
+                <ScalarProperty Name="ScreenType" ColumnName="ScreenType" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductIntroduces">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.ProductIntroduce">
               <MappingFragment StoreEntitySet="ProductIntroduce">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Header0" ColumnName="Header0" />
-                <ScalarProperty Name="Text0" ColumnName="Text0" />
-                <ScalarProperty Name="Header1" ColumnName="Header1" />
-                <ScalarProperty Name="Text1" ColumnName="Text1" />
-                <ScalarProperty Name="Image1" ColumnName="Image1" />
-                <ScalarProperty Name="Header2" ColumnName="Header2" />
-                <ScalarProperty Name="Text2" ColumnName="Text2" />
-                <ScalarProperty Name="Image2" ColumnName="Image2" />
-                <ScalarProperty Name="Header3" ColumnName="Header3" />
-                <ScalarProperty Name="Text3" ColumnName="Text3" />
-                <ScalarProperty Name="Image3" ColumnName="Image3" />
-                <ScalarProperty Name="Header4" ColumnName="Header4" />
-                <ScalarProperty Name="Text4" ColumnName="Text4" />
-                <ScalarProperty Name="Image4" ColumnName="Image4" />
-                <ScalarProperty Name="Header5" ColumnName="Header5" />
-                <ScalarProperty Name="Text5" ColumnName="Text5" />
-                <ScalarProperty Name="Image5" ColumnName="Image5" />
-                <ScalarProperty Name="Header6" ColumnName="Header6" />
-                <ScalarProperty Name="Text6" ColumnName="Text6" />
-                <ScalarProperty Name="Image6" ColumnName="Image6" />
-                <ScalarProperty Name="Header7" ColumnName="Header7" />
-                <ScalarProperty Name="Text7" ColumnName="Text7" />
-                <ScalarProperty Name="Image7" ColumnName="Image7" />
-                <ScalarProperty Name="Footer" ColumnName="Footer" />
                 <ScalarProperty Name="FooterText" ColumnName="FooterText" />
+                <ScalarProperty Name="Footer" ColumnName="Footer" />
+                <ScalarProperty Name="Image7" ColumnName="Image7" />
+                <ScalarProperty Name="Text7" ColumnName="Text7" />
+                <ScalarProperty Name="Header7" ColumnName="Header7" />
+                <ScalarProperty Name="Image6" ColumnName="Image6" />
+                <ScalarProperty Name="Text6" ColumnName="Text6" />
+                <ScalarProperty Name="Header6" ColumnName="Header6" />
+                <ScalarProperty Name="Image5" ColumnName="Image5" />
+                <ScalarProperty Name="Text5" ColumnName="Text5" />
+                <ScalarProperty Name="Header5" ColumnName="Header5" />
+                <ScalarProperty Name="Image4" ColumnName="Image4" />
+                <ScalarProperty Name="Text4" ColumnName="Text4" />
+                <ScalarProperty Name="Header4" ColumnName="Header4" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Text3" ColumnName="Text3" />
+                <ScalarProperty Name="Header3" ColumnName="Header3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Text2" ColumnName="Text2" />
+                <ScalarProperty Name="Header2" ColumnName="Header2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Text1" ColumnName="Text1" />
+                <ScalarProperty Name="Header1" ColumnName="Header1" />
+                <ScalarProperty Name="Text0" ColumnName="Text0" />
+                <ScalarProperty Name="Header0" ColumnName="Header0" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductVersions">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.ProductVersion">
               <MappingFragment StoreEntitySet="ProductVersion">
-                <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ProductVersionName" ColumnName="ProductVersionName" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="ROM" ColumnName="ROM" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ROM" ColumnName="ROM" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="ProductVersionName" ColumnName="ProductVersionName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PromotionCodes">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.PromotionCode">
               <MappingFragment StoreEntitySet="PromotionCode">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Province">
               <MappingFragment StoreEntitySet="Province">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Wards">
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Ward">
               <MappingFragment StoreEntitySet="Ward">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
-                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="Favorite" TypeName="DbCellPhoneStoreModel.Favorite" StoreEntitySet="Favorite">
-            <EndProperty Name="Customer">
-              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-            </EndProperty>
             <EndProperty Name="ProductVersion">
               <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="PromotionCodeUsed" TypeName="DbCellPhoneStoreModel.PromotionCodeUsed" StoreEntitySet="PromotionCodeUsed">
             <EndProperty Name="Customer">
               <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PromotionCodeUsed" TypeName="DbCellPhoneStoreModel.PromotionCodeUsed" StoreEntitySet="PromotionCodeUsed">
             <EndProperty Name="PromotionCode">
               <ScalarProperty Name="Code" ColumnName="Code" />
+            </EndProperty>
+            <EndProperty Name="Customer">
+              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

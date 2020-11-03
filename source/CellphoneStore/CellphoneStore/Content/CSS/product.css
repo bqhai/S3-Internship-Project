@@ -10,6 +10,10 @@
 .main-left{
 
 }
+.main-left ul{
+    list-style: none;
+    margin-left: -40px;
+}
 .main-right{
 
 }
@@ -28,6 +32,9 @@
 }
 .filter-price{
     margin-top: 10px;
+}
+.filter-price-right{
+    float: right;
 }
 .price-container {
     float: left;
@@ -55,8 +62,8 @@
     justify-content: center;
     float: left;  
 }
-.promotion-container{
-    border: 1px solid red;
+.promotion-container {
+    border: 1px solid #ff6a00;
     border-radius: 4px;
     padding: 10px 0 0;
     position: relative;
@@ -64,7 +71,7 @@
     margin: 20px 0;
 }
 #promotion-header {
-    background: red;
+    background: #ff6a00;
     border-radius: 13px;
     color: #fff;
     font-size: 14px;
@@ -81,6 +88,27 @@
 .promotion-info{
     padding: 10px 10px 10px;
 }
+.promotion-info a{
+    color: orangered;
+}
 .techinfo-content table tr{
     display: none;
+}
+.techinfo-bottom{
+    display: flex;
+}
+#techinfo-expand{
+    margin:auto;
+}
+.pages{
+    float: right;
+}
+.blog-content {
+    margin-top: 10px;
+    width: 100%;
+    height: 500px;
+    background-color: black;
+}
+.checked{
+    color: orange;
 }

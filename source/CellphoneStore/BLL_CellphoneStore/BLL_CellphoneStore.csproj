@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLL_Brand.cs" />
-    <Compile Include="BLL\BLL_Product.cs" />
+    <Compile Include="BLL\BLL_ProductVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

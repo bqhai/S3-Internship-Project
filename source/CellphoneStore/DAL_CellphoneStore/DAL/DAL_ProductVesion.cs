@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace DAL_CellPhoneStore.DAL
 {
-    public class DAL_Product
+    public class DAL_ProductVesion
     {
         DbCellPhoneStoreEntities db = new DbCellPhoneStoreEntities();
-        public DAL_Product()
+        public DAL_ProductVesion()
         {
             db.Configuration.ProxyCreationEnabled = false;
         }
-        public IEnumerable<Product> GetAllProduct()
+        public IEnumerable<ProductVersion> GetAllProductVersion()
         {
-            return db.Products.Select(prd => prd);
+            return db.ProductVersions.Select(prdv => prdv);
         }
+
     }
 }

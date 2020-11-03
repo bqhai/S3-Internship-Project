@@ -65,3 +65,7 @@ D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\U
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.dll
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\CellphoneStore.pdb
 D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\obj\Debug\UI_CellphoneStore.csprojAssemblyReference.cache
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\PagedList.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\PagedList.Mvc.dll
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\PagedList.xml
+D:\Github\S3-Internship-Project\source\CellphoneStore\CellphoneStore\bin\PagedList.Mvc.xml

@@ -107,7 +107,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\API_BrandController.cs" />
-    <Compile Include="Controllers\API_ProductController.cs" />
+    <Compile Include="Controllers\API_ProductVersionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
