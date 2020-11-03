@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/CSS/layout.css" rel="stylesheet" />
+    <link href="~/Content/CSS/popup-login.css" rel="stylesheet" />
+    <link href="~/Content/CSS/home.css" rel="stylesheet" />
+    <link href="~/Content/CSS/product.css" rel="stylesheet" />
+    <script src="~/Content/JS/popup-login.js"></script>
+    <script src="~/Content/JS/techinfo-expand.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Content/Logo/logo_cps.png" width="54" height="54" /></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="@Url.Action("AllProduct", "Product")">ĐIỆN THOẠI</a></li>
+                            <li><a href="#">LAPTOP</a></li>
+                            <li><a href="#">TABLET</a></li>
+                            <li><a href="#">PHỤ KIỆN</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <form class="col-sm-7 form-inline">
+                            <input class="form-control mr-sm-2 search" type="text" name="txtSearch" placeholder="Bạn tìm mua gì?" />
+                            <button class="btn btn-danger search-button" type="submit" name="btnSearch"><i class="fa fa-search"></i>Tìm kiếm</button>
+                        </form>
+                        <div class="col-sm-3">
+                            <button class="btn btn-warning search-button" name="btnUser" onclick="openForm()"><i class="fa fa-user fa-fw"></i>Tài khoản</button>
+                            <div class="form-popup" id="popupLoginForm">
+                                <form class="form-container">
+                                    <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                                    <h2 style="color: white; text-align: center">Đăng nhập</h2>
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Tên đăng nhập" name="username" required>
+                                    <input class="form-control mr-sm-2" type="password" placeholder="Mật khẩu" name="password" required>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-warning" style="width: 100%">Đăng nhập</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href="@Url.Action("Register", "User")">
+                                                <input class="btn btn-warning" type="button" value="Đăng ký" style="width: 100%" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <a href="#">Quên mật khẩu?</a>
+                                    <br />
+                                    <strong style="text-align: center; color: white">Hoặc</strong>
+                                    <br />
+                                    <br />
+                                    <a href="#" class="btn-login-option fb">
+                                        <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
+                                    </a>
+                                    <a href="#" class="btn-login-option twitter">
+                                        <i class="fa fa-twitter fa-fw"></i> Đăng nhập bằng Twitter
+                                    </a>
+                                    <a href="#" class="btn-login-option google">
+                                        <i class="fa fa-google fa-fw"></i> Đăng nhập bằng Google+
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-warning search-button" type="submit" name="btnShoppingCart"><i class="fa fa-shopping-cart fa-fw"></i>Giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        <hr />
+
+    </div>
+    <footer class="footer">
+        <div class="row" style="color: white">
+            <div class="col-sm-3" style="padding-left: 50px">
+                <strong>Tìm cửa hàng</strong>
+                <p>Tìm cửa hàng gần nhất</p>
+                <p>Mua hàng từ xa</p>
+                <strong>Phương thức thanh toán</strong>
+                <div class="payment">
+                    <i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>
+                    <i class="fa fa-cc-paypal fa-3x" aria-hidden="true"></i>
+                    <i class="fa fa-credit-card fa-3x" aria-hidden="true"></i>
+                    <i class="fa fa-cc-mastercard fa-3x" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <p>Gọi mua hàng: 18002097 (8h00 - 22h00)</p>
+                <p>Gọi khiếu nại: 18002063 (8h00 - 21h30)</p>
+                <p>Gọi bảo hành: 18002064 (8h00 - 22h00)</p>
+                <strong>Đối tác dịch vụ bảo hành</strong>
+                <a href="#">
+                    <img src="~/Content/Logo/logo_partner.png" />
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <p>Mua hàng thanh toán Onlne</p>
+                <p>Mua hàng trả góp Online</p>
+                <p>Hủy giao dịch và đổi trả</p>
+                <p>Tra thông tin đơn hàng</p>
+                <p>Tra thông tin bảo hành</p>
+                <p>Trung tâm bảo hành chính hãng</p>
+            </div>
+            <div class="col-sm-3">
+                <strong>Kết nối với chúng tôi</strong>
+                <br />
+                <div class="social-networks">
+                    <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+                    <i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+                    <i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i>
+                </div>
+                <br />
+                <strong>Tải ứng dụng trên</strong>
+                <br />
+                <a href="#">
+                    <img src="~/Content/Logo/appstore.png" width="134" height="40" />
+                </a>
+                <a href="#">
+                    <img src="~/Content/Logo/playstore.png" width="134" height="40" />
+                </a>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

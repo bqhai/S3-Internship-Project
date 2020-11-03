@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "AllProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Model_CellphoneStore.ProductVersionMapped>
+<div class="container" style="margin-left: -30px">
+    <div class="banner-top">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/595x100iPhone-12-v2.jpg" />
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/11_pro_max_26.5.jpg" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/Cate_595x100_2.jpg" />
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/Banner-chung-595x100.jpg" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/iphone_8_plus_normal_sale_1.10_c.jpg" />
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/ip_11_26.5.jpg" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/normal_sale_nokia_24.08.2020.jpg" />
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/Content/Banner/Product_Banner/Nokia2.4_Cate_595x100.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row">
+            <div class="main-left col-sm-2">
+                <h4>Màn hình</h4>
+                <ul>
+                    <li><a href="#" style="color: orangered">Tất cả</a></li>
+                    <li><a href="#">&lt;5 inches</a></li>
+                    <li><a href="#">Từ 5 đến 5.5 inches</a></li>
+                    <li><a href="#">Từ 5.5 đến 6 inches</a></li>
+                    <li><a href="#">&gt;&#61;6 inches</a></li>
+                </ul>
+                <h4>RAM</h4>
+                <ul>
+                    <li><a href="#" style="color: orangered">Tất cả</a></li>
+                    <li><a href="#">2GB</a></li>
+                    <li><a href="#">4GB</a></li>
+                    <li><a href="#">6GB</a></li>
+                    <li><a href="#">8GB</a></li>
+                    <li><a href="#">12GB</a></li>
+                </ul>
+                <h4>ROM</h4>
+                <ul>
+                    <li><a href="#" style="color: orangered">Tất cả</a></li>
+                    <li><a href="#">4GB</a></li>
+                    <li><a href="#">8GB</a></li>
+                    <li><a href="#">16GB</a></li>
+                    <li><a href="#">32GB</a></li>
+                    <li><a href="#">64GB</a></li>
+                    <li><a href="#">128GB</a></li>
+                    <li><a href="#">256GB</a></li>
+                    <li><a href="#">512GB</a></li>
+                </ul>
+                <h4>Hệ điều hành</h4>
+                <ul>
+                    <li><a href="#" style="color: orangered">Tất cả</a></li>
+                    <li><a href="#">Android</a></li>
+                    <li><a href="#">IOS</a></li>
+                </ul>
+            </div>
+            <div class="main-right col-sm-10">
+                <div class="product-container">
+                    <h4>Mua điện thoại giá rẻ</h4>
+                    <div>
+                        @Html.Action("GetAllBrand", "Product")
+                    </div>
+                    <div class="row filter-price">
+                        <div class="col-sm-8">
+                            <strong>Chọn mức giá: </strong>
+                            <a href="#">Dưới 5 triệu&emsp;</a>
+                            <a href="#">5 - 10 triệu&emsp;</a>
+                            <a href="#">10 - 15 triệu&emsp;</a>
+                            <a href="#">15 - 20 triệu&emsp;</a>
+                            <a href="#">Trên 20 triệu</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="filter-price-right">
+                                <strong>Sắp xếp theo: </strong>
+                                <a href="#"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá cao&emsp;</i></a>
+                                <a href="#"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá thấp</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-product">
+                        @foreach (var item in Model)
+                        {
+                            <table class="product-item">
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("ProductDetails", "Product")">
+                                            <img src="~/Content/Images/Product/@item.Image" width="185" height="185" />
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr style="height: 70px">
+                                    <td>
+                                        <p>@item.ProductVersionName</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b style="color: orangered">@item.Price VNĐ</b>
+                                        <p><strike>@item.ListPrice VNĐ</strike></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <i class="fa fa-star checked" aria-hidden="true"></i>
+                                            <i class="fa fa-star checked" aria-hidden="true"></i>
+                                            <i class="fa fa-star checked" aria-hidden="true"></i>
+                                            <i class="fa fa-star checked" aria-hidden="true"></i>
+                                            <i class="fa fa-star checked" aria-hidden="true"></i>
+                                            10 đánh giá
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6 ">
+                <ul class="pagination pages">
+                    <li>@Html.PagedListPager(Model, pageIndex => Url.Action("AllProduct", "Product", new { pageIndex }))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
