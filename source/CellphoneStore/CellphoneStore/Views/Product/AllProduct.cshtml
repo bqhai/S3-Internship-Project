@@ -57,30 +57,27 @@
                 </ul>
                 <h4>RAM</h4>
                 <ul>
-                    <li><a href="#" style="color: orangered">Tất cả</a></li>
-                    <li><a href="#">2GB</a></li>
-                    <li><a href="#">4GB</a></li>
-                    <li><a href="#">6GB</a></li>
-                    <li><a href="#">8GB</a></li>
-                    <li><a href="#">12GB</a></li>
+                    <li><a href="@Url.Action("AllProduct", "Product")" style="color: orangered">Tất cả</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByRAM", "Product", new {ram = "3 GB"})">3GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByRAM", "Product", new {ram = "4 GB"})">4GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByRAM", "Product", new {ram = "6 GB"})">6GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByRAM", "Product", new {ram = "8 GB"})">8GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByRAM", "Product", new {ram = "12 GB"})">12GB</a></li>
                 </ul>
                 <h4>ROM</h4>
                 <ul>
-                    <li><a href="#" style="color: orangered">Tất cả</a></li>
-                    <li><a href="#">4GB</a></li>
-                    <li><a href="#">8GB</a></li>
-                    <li><a href="#">16GB</a></li>
-                    <li><a href="#">32GB</a></li>
-                    <li><a href="#">64GB</a></li>
-                    <li><a href="#">128GB</a></li>
-                    <li><a href="#">256GB</a></li>
-                    <li><a href="#">512GB</a></li>
+                    <li><a href="@Url.Action("AllProduct", "Product")" style="color: orangered">Tất cả</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByROM", "Product", new {rom = "32 GB"})">32GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByROM", "Product", new {rom = "64 GB"})">64GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByROM", "Product", new {rom = "128 GB"})">128GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByROM", "Product", new {rom = "256 GB"})">256GB</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByROM", "Product", new {rom = "512 GB"})">512GB</a></li>
                 </ul>
                 <h4>Hệ điều hành</h4>
                 <ul>
-                    <li><a href="#" style="color: orangered">Tất cả</a></li>
-                    <li><a href="#">Android</a></li>
-                    <li><a href="#">IOS</a></li>
+                    <li><a href="@Url.Action("AllProduct", "Product")" style="color: orangered">Tất cả</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByOS", "Product", new {os = "Android"})">Android</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByOS", "Product", new {os = "IOS"})">IOS</a></li>
                 </ul>
             </div>
             <div class="main-right col-sm-10">
@@ -101,8 +98,8 @@
                         <div class="col-sm-4">
                             <div class="filter-price-right">
                                 <strong>Sắp xếp theo: </strong>
-                                <a href="#"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá cao&emsp;</i></a>
-                                <a href="#"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá thấp</i></a>
+                                <a href="@Url.Action("SortProductVersionByPrice", "Product", new {sortOption = "desPrice"})"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá cao&emsp;</i></a>
+                                <a href="@Url.Action("SortProductVersionByPrice", "Product", new {sortOption = "ascPrice"})"><i class="fa fa-sort-amount-asc" aria-hidden="true">Giá thấp</i></a>
                             </div>
                         </div>
                     </div>
@@ -152,7 +149,27 @@
             </div>
             <div class="col-sm-6 ">
                 <ul class="pagination pages">
-                    <li>@Html.PagedListPager(Model, pageIndex => Url.Action("AllProduct", "Product", new { pageIndex }))</li>
+                    @if (ViewData["State"].Equals("AllProduct"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("AllProduct", "Product", new { pageIndex }))</li>
+                    }
+                    else if (ViewData["State"].Equals("SortByPrice"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("SortProductVersionByPrice", "Product", new { pageIndex, sortOption = ViewData["SortOption"] }))</li>
+                    }
+                    else if (ViewData["State"].Equals("FilterByRam"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByRAM", "Product", new { pageIndex, ram = ViewData["RAM"] }))</li>
+                    }
+                    else if (ViewData["State"].Equals("FilterByRom"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, rom = ViewData["ROM"] }))</li>
+                    }
+                    else
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, os = ViewData["OS"] }))</li>
+
+                    }
                 </ul>
             </div>
         </div>

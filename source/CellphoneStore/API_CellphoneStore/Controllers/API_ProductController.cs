@@ -54,5 +54,23 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProductVersion.GetListHotSale();
         }
+        [HttpGet]
+        [Route("FilterProductVersionByRAM/{ram}")]
+        public List<ProductVersionMapped> FilterProductVersionByRAM(string ram)
+        {
+            return bllProductVersion.FilterProductVersionByRAM(ram);
+        }
+        [HttpGet]
+        [Route("FilterProductVersionByROM/{rom}")]
+        public List<ProductVersionMapped> FilterProductVersionByROM(string rom)
+        {
+            return bllProductVersion.FilterProductVersionByROM(rom);
+        }
+        [HttpGet]
+        [Route("FilterProductVersionByOS/{os}")]
+        public List<ProductVersionMapped> FilterProductVersionByOS(string os)
+        {
+            return bllProductVersion.FilterProductVersionByOS(os);
+        }
     }
 }

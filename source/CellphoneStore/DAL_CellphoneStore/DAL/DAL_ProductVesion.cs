@@ -68,5 +68,46 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.ProductVersions.Where(prdv => prdv.HotSale == true);
         }
+        public IEnumerable<ProductVersion> FilterProductVersionByRAM(string ram)
+        {
+            return db.ProductVersions.Where(prdv => prdv.RAM == ram);
+        }
+        public IEnumerable<ProductVersion> FilterProductVersionByROM(string rom)
+        {
+            return db.ProductVersions.Where(prdv => prdv.ROM == rom);
+        }
+        public IEnumerable<ProductVersion> FilterProductVersionByOS(string os)
+        {
+            var query = from prd in db.Products
+                        join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+                        where prd.OperatingSystem == os
+                        select prdv;
+            return query;
+        }
+        public IEnumerable<ProductVersion> FilterProductVersionByScreenSize(double min, double max)
+        {
+            //if(screenSizeOption == 1)
+            //{
+            //    var query = from prd in db.Products
+            //                join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+            //                where prd.ScreenSize < 5
+            //                select prdv;
+            //    return query;
+            //}
+            //else if(screenSizeOption == 2)
+            //{
+            //    var query = from prd in db.Products
+            //                join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+            //                where prd.ScreenSize > 5 && prd.ScreenSize <= 5.5
+            //                select prdv;
+            //    return query;
+            //}
+
+            var query = from prd in db.Products
+                        join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+                        where prd.ScreenSize < max && prd.ScreenSize > min
+                        select prdv;
+            return null;
+        }
     }
 }

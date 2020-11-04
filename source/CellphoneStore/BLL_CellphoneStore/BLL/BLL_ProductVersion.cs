@@ -59,6 +59,39 @@ namespace BLL_CellPhoneStore.BLL
             }
             return productVersionMappeds;
         }
+        public List<ProductVersionMapped> FilterProductVersionByRAM(string ram)
+        {
+            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByRAM(ram);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapObj.Translate(item));
+            }
+            return productVersionMappeds;
+        }
+        public List<ProductVersionMapped> FilterProductVersionByROM(string rom)
+        {
+            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByROM(rom);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapObj.Translate(item));
+            }
+            return productVersionMappeds;
+        }
+        public List<ProductVersionMapped> FilterProductVersionByOS(string os)
+        {
+            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByOS(os);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapObj.Translate(item));
+            }
+            return productVersionMappeds;
+        }
 
     }
 }
