@@ -1,8 +1,8 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    
-}
 
+}
+@model List<Model_CellphoneStore.ProductVersionMapped>
 
 <div class="container">
     <div class="row" style="margin-left: -50px">
@@ -78,22 +78,57 @@
                 <h3>Hot sale cuối tuần</h3>
             </div>
             <div class="product-container">
-                @for (int i = 0; i < 6; i++)
+                @*@for (int i = 0; i < 6; i++)
+                    {
+                        <table class="product-item">
+                            <tr>
+                                <td>
+                                    <img src="~/Content/Images/Product/SMPV10000.jpg" width="200" height="200" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Tên sản phẩm</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-warning">Chi tiết</button>
+                                </td>
+                            </tr>
+                        </table>
+                    }*@
+                @foreach (var item in Model)
                 {
                     <table class="product-item">
                         <tr>
                             <td>
-                                <img src="~/Content/Images/Product/SMPV10000.jpg" width="200" height="200" />
+                                <a href="@Url.Action("ProductDetails", "Product", new {productVersionID = item.ProductVersionID})">
+                                    <img src="~/Content/Images/Product/@item.Image" width="200" height="200" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr style="height: 70px">
+                            <td>
+                                <p>@item.ProductVersionName</p>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <p>Tên sản phẩm</p>
+                                <b style="color: orangered">@item.Price VNĐ</b>
+                                <p><strike>@item.ListPrice VNĐ</strike></p>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <button class="btn btn-warning">Chi tiết</button>
+                                <span>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    10 đánh giá
+                                </span>
                             </td>
                         </tr>
                     </table>
@@ -101,5 +136,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>

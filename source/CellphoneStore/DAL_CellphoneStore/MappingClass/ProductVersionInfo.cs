@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL_CellPhoneStore.MappingClass
 {
-    public class Product_ProductVersion_Brand
+    public class ProductVersionInfo
     {
-        public Product_ProductVersion_Brand()
+        public ProductVersionInfo()
         {
 
         }

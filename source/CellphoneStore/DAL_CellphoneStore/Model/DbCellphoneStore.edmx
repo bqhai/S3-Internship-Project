@@ -193,10 +193,11 @@
           <Property Name="RAM" Type="nvarchar" MaxLength="100" />
           <Property Name="ROM" Type="nvarchar" MaxLength="100" />
           <Property Name="Color" Type="nvarchar" MaxLength="100" />
-          <Property Name="ListPrice" Type="int" />
-          <Property Name="Price" Type="int" />
-          <Property Name="QuantityInStock" Type="int" />
+          <Property Name="ListPrice" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="QuantityInStock" Type="int" Nullable="false" />
           <Property Name="Status" Type="bit" />
+          <Property Name="HotSale" Type="bit" />
           <Property Name="Image" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="PromotionCode">
@@ -800,10 +801,11 @@
           <Property Name="RAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ROM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ListPrice" Type="Int32" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="QuantityInStock" Type="Int32" />
+          <Property Name="ListPrice" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="QuantityInStock" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
+          <Property Name="HotSale" Type="Boolean" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B" FromRole="ProductVersion" ToRole="OrderDetail" />
           <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="ProductVersion" ToRole="Product" />
@@ -1005,7 +1007,7 @@
           <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
           <End Type="DbCellPhoneStoreModel.PromotionCode" Role="PromotionCode" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1195,6 +1197,7 @@
             <EntityTypeMapping TypeName="DbCellPhoneStoreModel.ProductVersion">
               <MappingFragment StoreEntitySet="ProductVersion">
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="HotSale" ColumnName="HotSale" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

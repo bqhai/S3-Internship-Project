@@ -3,193 +3,191 @@
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model Model_CellphoneStore.ProductVersionMapped
-<div class="container">
-    <div class="title">
-        <h3>@Model.ProductVersionName</h3>
+@model Model_CellphoneStore.ProductVersionInfoMapped
+
+    <div class="container">
+        <div class="title">
+            <h3>@Model.ProductVersionName</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="~/Content/Images/Product/@Model.Image" width="380" height="380" />
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group form-inline" style="margin-left: 15px">
+                            <label for="storePlace">Mua hàng từ</label>
+                            <select class="form-control" id="storePlace" style="margin-left: 74px">
+                                <option selected="">Chọn nơi mua hàng</option>
+                                <option value="TPHCM">TP.Hồ Chí Minh</option>
+                                <option value="ĐN">Đà Nẵng</option>
+                                <option value="HN">Hà Nội</option>
+                            </select>
+                        </div>
+                        <div class="price-container">
+                            <div class="col-sm-9">
+                                <p class="price">@Model.Price VNĐ</p>
+                                <p>Giá niêm yết: <strike>@Model.ListPrice VNĐ</strike></p>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#"><input class="btn btn-danger" type="button" value="Trả góp 0%" /></a>
+                            </div>
+                        </div>
+                        <div class="version-container">
+                            @Html.Action("ListProductVersion", "Product", new { productID = @Model.ProductID })
+                        </div>
+
+                        <div class="promotion-container">
+                            <b id="promotion-header"><i class="fa fa-gift" aria-hidden="true">&nbsp;Khuyến mãi</i></b>
+                            <div class="promotion-info">
+                                <strong>Trả góp 0%:</strong>
+                                <br />
+                                <a href="#">Trả góp lãi suất 0% với Home Credit. Trả trước 50%, kỳ hạn 8 tháng (Áp dụng trên GIÁ NIÊM YẾT, không áp dụng cùng các khuyến mại khác)</a>
+                                <br />
+                                <strong>Chương trình khuyến mại:</strong>
+                                <br />
+                                <a href="#">[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá thêm tới 1 triệu</a>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="btn btn-primary" type="button" value="Mua ngay" />
+                            <input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" />
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    @Html.Action("ProductIntroduce", "Product", new { productID = @Model.ProductID })
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="techinfo-header">
+                    <h3 style="text-align: center">Thông số kĩ thuật</h3>
+                </div>
+                <div class="techinfo-content">
+                    <table class="table">
+                        <tbody>
+                            <tr style="display: table-row">
+                                <td class="col-sm-4">Hãng sản xuất</td>
+                                <td class="col-sm-8">@Model.BrandName</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Kích thước</td>
+                                <td>@Model.Size</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Trọng lượng</td>
+                                <td>@Model.Weight</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>RAM</td>
+                                <td>@Model.RAM</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>ROM</td>
+                                <td>@Model.ROM</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Loại SIM</td>
+                                <td>@Model.SIM</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Loại màn hình</td>
+                                <td>@Model.ScreenType</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Kích thước màn hình</td>
+                                <td>@Model.ScreenSize</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Độ phân giải</td>
+                                <td>@Model.ScreenResolution</td>
+                            </tr>
+                            <tr style="display: table-row">
+                                <td>Hệ điều hành</td>
+                                <td>@Model.OperatingSystem</td>
+                            </tr>
+                            <tr>
+                                <td>Chipset</td>
+                                <td>@Model.Chipset</td>
+                            </tr>
+                            <tr>
+                                <td>CPU</td>
+                                <td>@Model.CPU</td>
+                            </tr>
+                            <tr>
+                                <td>GPU</td>
+                                <td>@Model.GPU</td>
+                            </tr>
+                            <tr>
+                                <td>Khe cắm thẻ nhớ</td>
+                                <td>@Model.SDCard</td>
+                            </tr>
+                            <tr>
+                                <td>Camera sau</td>
+                                <td>@Model.BackCamera</td>
+                            </tr>
+                            <tr>
+                                <td>Camera trước</td>
+                                <td>@Model.FrontCamera</td>
+                            </tr>
+                            <tr>
+                                <td>WLAN</td>
+                                <td>@Model.WLAN</td>
+                            </tr>
+                            <tr>
+                                <td>Bluetooth</td>
+                                <td>@Model.Bluetooth</td>
+                            </tr>
+                            <tr>
+                                <td>GPS</td>
+                                <td>@Model.GPS</td>
+                            </tr>
+                            <tr>
+                                <td>NFC</td>
+                                <td>@Model.NFC</td>
+                            </tr>
+                            <tr>
+                                <td>USB</td>
+                                <td>@Model.USB</td>
+                            </tr>
+                            <tr>
+                                <td>Cảm biến</td>
+                                <td>@Model.Sensor</td>
+                            </tr>
+                            <tr>
+                                <td>Pin</td>
+                                <td>@Model.Battery</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="techinfo-bottom">
+                        <button id="techinfo-expand" class="btn btn-danger" onclick="expandTechInfo()">Xem thêm</button>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <b>Tình trạng</b>
+                        <br />
+                        <span>Mới, đầy đủ phụ kiện từ nhà sản xuất</span>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <b>Hộp bao gồm</b>
+                        <br />
+                        <span>Hộp, Sạc, Tai nghe, Sách hướng dẫn, Cáp, Cây lấy sim</span>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <b>Bảo hành</b>
+                        <br />
+                        <span>
+                            Bảo hành 18 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 101 ngày nếu có lỗi nhà sản xuất.
+                            <a href="#" style="color: orangered">(Chi tiết)</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-6">
-                    <img src="~/Content/Images/Product/@Model.Image" width="400" height="400" />
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group form-inline" style="margin-left: 15px">
-                        <label for="storePlace">Mua hàng từ</label>
-                        <select class="form-control" id="storePlace" style="margin-left: 74px">
-                            <option selected="">Chọn nơi mua hàng</option>
-                            <option value="TPHCM">TP.Hồ Chí Minh</option>
-                            <option value="ĐN">Đà Nẵng</option>
-                            <option value="HN">Hà Nội</option>
-                        </select>
-                    </div>
-                    <div class="price-container">
-                        <div class="col-sm-9">
-                            <p class="price">@Model.Price VNĐ</p>
-                            <p>Giá niêm yết: <strike>@Model.ListPrice VNĐ</strike></p>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="#"><input class="btn btn-danger" type="button" value="Trả góp 0%" /></a>
-                        </div>
-                    </div>
-                    <div class="version-container">
-                        @Html.Action("ListProductVersion", "Product", new { productID = Model.ProductID})
-                    </div>
-
-                    <div class="promotion-container">
-                        <b id="promotion-header"><i class="fa fa-gift" aria-hidden="true">&nbsp;Khuyến mãi</i></b>
-                        <div class="promotion-info">
-                            <strong>Trả góp 0%:</strong>
-                            <br />
-                            <a href="#">Trả góp lãi suất 0% với Home Credit. Trả trước 50%, kỳ hạn 8 tháng (Áp dụng trên GIÁ NIÊM YẾT, không áp dụng cùng các khuyến mại khác)</a>
-                            <br />
-                            <strong>Chương trình khuyến mại:</strong>
-                            <br />
-                            <a href="#">[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá thêm tới 1 triệu</a>
-                        </div>
-                    </div>
-                    <div>
-                        <input class="btn btn-primary" type="button" value="Mua ngay" />
-                        <input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" />
-                    </div>
-                </div>
-            </div>
-            <div class="blog-content">
-
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="techinfo-header">
-                <h3 style="text-align: center">Thông số kĩ thuật</h3>
-            </div>
-            <div class="techinfo-content">
-                <table class="table">
-                    <tbody>
-                        <tr style="display: table-row">
-                            <td>Hãng sản xuất</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Kích thước</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Trọng lượng</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>RAM</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>ROM</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>RAM</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Loại SIM</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Loại màn hình</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Kích thước màn hình</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Độ phân giải</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr style="display: table-row">
-                            <td>Hệ điều hành</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Chipset</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>CPU</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>GPU</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Khe cắm thẻ nhớ</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Camera sau</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Camera trước</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>WLAN</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Bluetooth</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>GPS</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>NFC</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>USB</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Cảm biến</td>
-                            <td>NA</td>
-                        </tr>
-                        <tr>
-                            <td>Pin</td>
-                            <td>NA</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="techinfo-bottom">
-                    <button id="techinfo-expand" class="btn btn-danger" onclick="expandTechInfo()">Xem thêm</button>
-                </div>
-                <div style="margin-top: 10px">
-                    <b>Tình trạng</b>
-                    <br />
-                    <span>Mới, đầy đủ phụ kiện từ nhà sản xuất</span>
-                </div>
-                <div style="margin-top: 10px">
-                    <b>Hộp bao gồm</b>
-                    <br />
-                    <span>Hộp, Sạc, Tai nghe, Sách hướng dẫn, Cáp, Cây lấy sim</span>
-                </div>
-                <div style="margin-top: 10px">
-                    <b>Bảo hành</b>
-                    <br />
-                    <span>Bảo hành 18 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 101 ngày nếu có lỗi nhà sản xuất.
-                        <a href="#" style="color: orangered">(Chi tiết)</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="review">
-
-        </div>
-    </div>
-</div>
 
 

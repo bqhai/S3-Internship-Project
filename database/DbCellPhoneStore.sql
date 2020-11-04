@@ -12202,10 +12202,11 @@ CREATE TABLE ProductVersion
 	RAM NVARCHAR(100),
 	ROM NVARCHAR(100),
 	Color NVARCHAR(100),
-	ListPrice INT,
-	Price INT,
-	QuantityInStock INT,
-	Status BIT, --0: hết hàng, 1: còn hàng
+	ListPrice INT NOT NULL,
+	Price INT NOT NULL,
+	QuantityInStock INT NOT NULL,
+	Status BIT, --0: hết hàng, 1: còn hàng 
+	HotSale BIT, --0: no, 1: yes
 	Image NVARCHAR(500),
 	
 	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
@@ -12604,61 +12605,61 @@ N'4000 mAh',
 N'SMPV10041.jpg')
 GO
 --ProductVersion--
-INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, N'SMPV10000.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10001', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đỏ (VN/A)', N'4 GB', N'64 GB', N'Đỏ', 20000000, 18000000, 15, 1, N'SMPV10001.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10002', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 20000000, 18000000, 10, 1, N'SMPV10002.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10003', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Trắng (VN/A)', N'4 GB', N'64 GB', N'Trắng', 20000000, 18000000, 10, 1, N'SMPV10003.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10004', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Vàng (VN/A)', N'4 GB', N'64 GB', N'Vàng', 20000000, 18000000, 10, 1, N'SMPV10004.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10005', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Tím (VN/A)', N'4 GB', N'64 GB', N'Tím', 20000000, 18000000, 10, 1, N'SMPV10005.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10006', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đen (VN/A)', N'4 GB', N'128 GB', N'Đen', 21500000, 20000000, 10, 1, N'SMPV10000.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10007', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đỏ (VN/A)', N'4 GB', N'128 GB', N'Đỏ', 21500000, 20000000, 15, 1, N'SMPV10001.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10008', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Xanh lá (VN/A)', N'4 GB', N'128 GB', N'Xanh lá', 21500000, 20000000, 10, 1, N'SMPV10002.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10009', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Trắng (VN/A)', N'4 GB', N'128 GB', N'Trắng', 21500000, 20000000, 10, 1, N'SMPV10003.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10010', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Vàng (VN/A)', N'4 GB', N'128 GB', N'Vàng', 21500000, 20000000, 10, 1, N'SMPV10004.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10011', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Tím (VN/A)', N'4 GB', N'128 GB', N'Tím', 21500000, 20000000, 10, 1, N'SMPV10005.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10000', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đen (VN/A)', N'4 GB', N'64 GB', N'Đen', 20000000, 18000000, 10, 1, 1, N'SMPV10000.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10001', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Đỏ (VN/A)', N'4 GB', N'64 GB', N'Đỏ', 20000000, 18000000, 15, 1, 0, N'SMPV10001.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10002', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 20000000, 18000000, 10, 1, 0, N'SMPV10002.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10003', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Trắng (VN/A)', N'4 GB', N'64 GB', N'Trắng', 20000000, 18000000, 10, 1, 0, N'SMPV10003.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10004', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Vàng (VN/A)', N'4 GB', N'64 GB', N'Vàng', 20000000, 18000000, 10, 1, 0, N'SMPV10004.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10005', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Tím (VN/A)', N'4 GB', N'64 GB', N'Tím', 20000000, 18000000, 10, 1, 0, N'SMPV10005.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10006', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đen (VN/A)', N'4 GB', N'128 GB', N'Đen', 21500000, 20000000, 10, 1, 0, N'SMPV10000.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10007', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đỏ (VN/A)', N'4 GB', N'128 GB', N'Đỏ', 21500000, 20000000, 15, 1, 1, N'SMPV10001.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10008', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Xanh lá (VN/A)', N'4 GB', N'128 GB', N'Xanh lá', 21500000, 20000000, 10, 0, 0, N'SMPV10002.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10009', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Trắng (VN/A)', N'4 GB', N'128 GB', N'Trắng', 21500000, 20000000, 10, 1, 0, N'SMPV10003.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10010', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Vàng (VN/A)', N'4 GB', N'128 GB', N'Vàng', 21500000, 20000000, 10, 1, 0, N'SMPV10004.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10011', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Tím (VN/A)', N'4 GB', N'128 GB', N'Tím', 21500000, 20000000, 10, 1, 0, N'SMPV10005.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10012', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xám (VN/A)', N'4 GB', N'64 GB', N'Xám', 29500000, 27200000, 10, 1, N'SMPV10012.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10013', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Gold (VN/A)', N'4 GB', N'64 GB', N'Gold', 29500000, 27200000, 10, 1, N'SMPV10013.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10014', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Bạc (VN/A)', N'4 GB', N'64 GB', N'Bạc', 29500000, 27200000, 10, 1, N'SMPV10014.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10015', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 29500000, 27200000, 10, 1, N'SMPV10015.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10016', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xám (VN/A)', N'4 GB', N'256 GB', N'Xám', 34500000, 31400000, 10, 1, N'SMPV10012.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10017', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Gold (VN/A)', N'4 GB', N'256 GB', N'Gold', 34500000, 31400000, 10, 1, N'SMPV10013.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10018', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Bạc (VN/A)', N'4 GB', N'256 GB', N'Bạc', 34500000, 31400000, 10, 1, N'SMPV10014.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10019', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xanh lá (VN/A)', N'4 GB', N'256 GB', N'Xanh lá', 34500000, 31400000, 10, 1, N'SMPV10015.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10012', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xám (VN/A)', N'4 GB', N'64 GB', N'Xám', 29500000, 27200000, 10, 1, 0, N'SMPV10012.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10013', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Gold (VN/A)', N'4 GB', N'64 GB', N'Gold', 29500000, 27200000, 10, 1, 0, N'SMPV10013.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10014', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Bạc (VN/A)', N'4 GB', N'64 GB', N'Bạc', 29500000, 27200000, 10, 1, 0, N'SMPV10014.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10015', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 64GB - Xanh lá (VN/A)', N'4 GB', N'64 GB', N'Xanh lá', 29500000, 27200000, 10, 1, 1, N'SMPV10015.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10016', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xám (VN/A)', N'4 GB', N'256 GB', N'Xám', 34500000, 31400000, 10, 1, 0, N'SMPV10012.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10017', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Gold (VN/A)', N'4 GB', N'256 GB', N'Gold', 34500000, 31400000, 10, 1, 0, N'SMPV10013.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10018', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Bạc (VN/A)', N'4 GB', N'256 GB', N'Bạc', 34500000, 31400000, 10, 1, 0, N'SMPV10014.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10019', N'SMP10001', N'IPhone 11 Pro Max Chính hãng - 256GB - Xanh lá (VN/A)', N'4 GB', N'256 GB', N'Xanh lá', 34500000, 31400000, 10, 1, 0, N'SMPV10015.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10020', N'SMP10002', N'IPhone XR Chính hãng - 64GB - Đỏ (VN/A)', N'3 GB', N'64 GB', N'Đỏ', 14990000, 12990000, 10, 1, N'SMPV10020.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10021', N'SMP10002', N'IPhone XR Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 16990000, 14990000, 10, 1, N'SMPV10021.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10020', N'SMP10002', N'IPhone XR Chính hãng - 64GB - Đỏ (VN/A)', N'3 GB', N'64 GB', N'Đỏ', 14990000, 12990000, 10, 1, 0, N'SMPV10020.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10021', N'SMP10002', N'IPhone XR Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 16990000, 14990000, 10, 1, 0, N'SMPV10021.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10022', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Bạc (VN/A)', N'3 GB', N'128 GB', N'Bạc', 16000000, 13300000, 10, 1, N'SMPV10022.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10023', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Gold (VN/A)', N'3 GB', N'128 GB', N'Gold', 16000000, 13300000, 10, 1, N'SMPV10023.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10024', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Xám (VN/A)', N'3 GB', N'128 GB', N'Xám', 16000000, 13300000, 10, 1, N'SMPV10024.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10022', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Bạc (VN/A)', N'3 GB', N'128 GB', N'Bạc', 16000000, 13300000, 10, 1, 1, N'SMPV10022.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10023', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Gold (VN/A)', N'3 GB', N'128 GB', N'Gold', 16000000, 13300000, 10, 1, 0, N'SMPV10023.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10024', N'SMP10003', N'IPhone 8 Plus Chính hãng - 128GB - Xám (VN/A)', N'3 GB', N'128 GB', N'Xám', 16000000, 13300000, 10, 1, 0, N'SMPV10024.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10025', N'SMP10004', N'IPhone 7 Plus Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 10990000, 10000000, 10, 1, N'SMPV10025.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10025', N'SMP10004', N'IPhone 7 Plus Chính hãng - 128GB - Đen (VN/A)', N'3 GB', N'128 GB', N'Đen', 10990000, 10000000, 10, 1, 0, N'SMPV10025.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10026', N'SMP10005', N'Samsung Galaxy Note 20 - Vàng đồng', N'8 GB', N'256 GB', N'Vàng đồng', 23990000, 18400000, 10, 1, N'SMPV10026.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10027', N'SMP10005', N'Samsung Galaxy Note 20 - Xám', N'8 GB', N'256 GB', N'Xám', 23990000, 18400000, 10, 1, N'SMPV10027.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10028', N'SMP10005', N'Samsung Galaxy Note 20 - Xanh lá', N'8 GB', N'256 GB', N'Xanh lá', 23990000, 18400000, 10, 1, N'SMPV10028.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10026', N'SMP10005', N'Samsung Galaxy Note 20 - Vàng đồng', N'8 GB', N'256 GB', N'Vàng đồng', 23990000, 18400000, 10, 1, 1, N'SMPV10026.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10027', N'SMP10005', N'Samsung Galaxy Note 20 - Xám', N'8 GB', N'256 GB', N'Xám', 23990000, 18400000, 10, 1, 0, N'SMPV10027.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10028', N'SMP10005', N'Samsung Galaxy Note 20 - Xanh lá', N'8 GB', N'256 GB', N'Xanh lá', 23990000, 18400000, 10, 1, 0, N'SMPV10028.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10029', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Vàng đồng', N'8 GB', N'256 GB', N'Vàng đồng', 29990000, 25700000, 10, 1, N'SMPV10029.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10030', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Đen', N'8 GB', N'256 GB', N'Đen', 29990000, 25700000, 10, 1, N'SMPV10030.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10031', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Trắng', N'8 GB', N'256 GB', N'Trắng', 29990000, 25700000, 10, 1, N'SMPV10031.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10032', N'SMP10006', N'Samsung Galaxy Note 20 Ultra 5G - Vàng đồng', N'12 GB', N'256 GB', N'Vàng đồng', 32990000, 28500000, 10, 1, N'SMPV10029.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10029', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Vàng đồng', N'8 GB', N'256 GB', N'Vàng đồng', 29990000, 25700000, 10, 1, 0, N'SMPV10029.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10030', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Đen', N'8 GB', N'256 GB', N'Đen', 29990000, 25700000, 10, 1, 0, N'SMPV10030.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10031', N'SMP10006', N'Samsung Galaxy Note 20 Ultra - Trắng', N'8 GB', N'256 GB', N'Trắng', 29990000, 25700000, 10, 1, 1, N'SMPV10031.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10032', N'SMP10006', N'Samsung Galaxy Note 20 Ultra 5G - Vàng đồng', N'12 GB', N'256 GB', N'Vàng đồng', 32990000, 28500000, 10, 1, 0, N'SMPV10029.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10033', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Đen', N'12 GB', N'256 GB', N'Đen', 26990000, 16300000, 10, 1, N'SMPV10033.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10034', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Bạc', N'12 GB', N'256 GB', N'Bạc', 26990000, 16300000, 10, 1, N'SMPV10034.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10035', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Trắng', N'12 GB', N'256 GB', N'Trắng', 26990000, 16300000, 10, 1, N'SMPV10035.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10036', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Xanh', N'12 GB', N'256 GB', N'Xanh', 26990000, 16300000, 10, 1, N'SMPV10036.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10033', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Đen', N'12 GB', N'256 GB', N'Đen', 26990000, 16300000, 10, 1, 0, N'SMPV10033.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10034', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Bạc', N'12 GB', N'256 GB', N'Bạc', 26990000, 16300000, 10, 1, 0, N'SMPV10034.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10035', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Trắng', N'12 GB', N'256 GB', N'Trắng', 26990000, 16300000, 10, 1, 0, N'SMPV10035.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10036', N'SMP10007', N'Samsung Galaxy Note 10+ (Plus) - Xanh', N'12 GB', N'256 GB', N'Xanh', 26990000, 16300000, 10, 1, 0, N'SMPV10036.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10037', N'SMP10008', N'Samsung Galaxy A71 - Đen', N'8 GB', N'128 GB', N'Đen', 10490000, 8350000, 10, 1, N'SMPV10037.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10038', N'SMP10008', N'Samsung Galaxy A71 - Bạc', N'8 GB', N'128 GB', N'Bạc', 10490000, 8350000, 10, 1, N'SMPV10038.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10039', N'SMP10008', N'Samsung Galaxy A71 - Bạc độc đáo', N'8 GB', N'128 GB', N'Bạc độc đáo', 10490000, 8350000, 10, 1, N'SMPV10039.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10040', N'SMP10008', N'Samsung Galaxy A71 - Xanh', N'8 GB', N'128 GB', N'Xanh', 10490000, 8350000, 10, 1, N'SMPV10040.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10037', N'SMP10008', N'Samsung Galaxy A71 - Đen', N'8 GB', N'128 GB', N'Đen', 10490000, 8350000, 10, 1, 0, N'SMPV10037.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10038', N'SMP10008', N'Samsung Galaxy A71 - Bạc', N'8 GB', N'128 GB', N'Bạc', 10490000, 8350000, 10, 1, 0, N'SMPV10038.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10039', N'SMP10008', N'Samsung Galaxy A71 - Bạc độc đáo', N'8 GB', N'128 GB', N'Bạc độc đáo', 10490000, 8350000, 10, 1, 0, N'SMPV10039.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10040', N'SMP10008', N'Samsung Galaxy A71 - Xanh', N'8 GB', N'128 GB', N'Xanh', 10490000, 8350000, 10, 1, 0, N'SMPV10040.jpg')
 
-INSERT INTO ProductVersion VALUES(N'SMPV10041', N'SMP10009', N'Samsung Galaxy A51 - Đen', N'6 GB', N'128 GB', N'Đen', 7990000, 7100000, 10, 1, N'SMPV10041.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10042', N'SMP10009', N'Samsung Galaxy A51 - Xanh', N'6 GB', N'128 GB', N'Xanh', 7990000, 7100000, 10, 1, N'SMPV10042.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10043', N'SMP10009', N'Samsung Galaxy A51 - Trắng', N'6 GB', N'128 GB', N'Trắng', 7990000, 7100000, 10, 1, N'SMPV10043.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10044', N'SMP10009', N'Samsung Galaxy A51 - Hồng', N'6 GB', N'128 GB', N'Hồng', 7990000, 7100000, 10, 1, N'SMPV10044.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10045', N'SMP10009', N'Samsung Galaxy A51 - Bạc độc đáo', N'6 GB', N'128 GB', N'Bạc độc đáo', 7990000, 7100000, 10, 1, N'SMPV10045.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10041', N'SMP10009', N'Samsung Galaxy A51 - Đen', N'6 GB', N'128 GB', N'Đen', 7990000, 7100000, 10, 1, 0, N'SMPV10041.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10042', N'SMP10009', N'Samsung Galaxy A51 - Xanh', N'6 GB', N'128 GB', N'Xanh', 7990000, 7100000, 10, 1, 0, N'SMPV10042.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10043', N'SMP10009', N'Samsung Galaxy A51 - Trắng', N'6 GB', N'128 GB', N'Trắng', 7990000, 7100000, 10, 1, 0, N'SMPV10043.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10044', N'SMP10009', N'Samsung Galaxy A51 - Hồng', N'6 GB', N'128 GB', N'Hồng', 7990000, 7100000, 10, 1, 0, N'SMPV10044.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10045', N'SMP10009', N'Samsung Galaxy A51 - Bạc độc đáo', N'6 GB', N'128 GB', N'Bạc độc đáo', 7990000, 7100000, 10, 1, 0, N'SMPV10045.jpg')
 
 
 

@@ -22,6 +22,7 @@ namespace Model_CellphoneStore
         public Nullable<int> Price { get; set; }
         public Nullable<int> QuantityInStock { get; set; }
         public Nullable<bool> Status { get; set; }
+        public Nullable<bool> HotSale { get; set; }
         public string Image { get; set; }
     }
 }

@@ -27,10 +27,11 @@ namespace DAL_CellPhoneStore.Model
         public string RAM { get; set; }
         public string ROM { get; set; }
         public string Color { get; set; }
-        public Nullable<int> ListPrice { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> QuantityInStock { get; set; }
+        public int ListPrice { get; set; }
+        public int Price { get; set; }
+        public int QuantityInStock { get; set; }
         public Nullable<bool> Status { get; set; }
+        public Nullable<bool> HotSale { get; set; }
         public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

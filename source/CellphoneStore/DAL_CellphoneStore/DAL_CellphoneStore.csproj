@@ -55,8 +55,9 @@
   <ItemGroup>
     <Compile Include="DAL\DAL_Brand.cs" />
     <Compile Include="DAL\DAL_Product.cs" />
+    <Compile Include="DAL\DAL_ProductIntroduce.cs" />
     <Compile Include="DAL\DAL_ProductVesion.cs" />
-    <Compile Include="MappingClass\Product_ProductVersion_Brand.cs" />
+    <Compile Include="MappingClass\ProductVersionInfo.cs" />
     <Compile Include="Model\Account.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>

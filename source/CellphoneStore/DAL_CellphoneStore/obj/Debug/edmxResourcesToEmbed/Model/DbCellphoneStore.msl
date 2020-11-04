@@ -185,6 +185,7 @@
       <EntityTypeMapping TypeName="DbCellPhoneStoreModel.ProductVersion">
         <MappingFragment StoreEntitySet="ProductVersion">
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="HotSale" ColumnName="HotSale" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
           <ScalarProperty Name="Price" ColumnName="Price" />
