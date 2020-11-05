@@ -84,30 +84,13 @@ namespace DAL_CellPhoneStore.DAL
                         select prdv;
             return query;
         }
-        public IEnumerable<ProductVersion> FilterProductVersionByScreenSize(double min, double max)
+        public IEnumerable<ProductVersion> FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize)
         {
-            //if(screenSizeOption == 1)
-            //{
-            //    var query = from prd in db.Products
-            //                join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
-            //                where prd.ScreenSize < 5
-            //                select prdv;
-            //    return query;
-            //}
-            //else if(screenSizeOption == 2)
-            //{
-            //    var query = from prd in db.Products
-            //                join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
-            //                where prd.ScreenSize > 5 && prd.ScreenSize <= 5.5
-            //                select prdv;
-            //    return query;
-            //}
-
             var query = from prd in db.Products
                         join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
-                        where prd.ScreenSize < max && prd.ScreenSize > min
+                        where prd.ScreenSize > minScreenSize && prd.ScreenSize <= maxScreenSize  
                         select prdv;
-            return null;
+            return query;
         }
     }
 }

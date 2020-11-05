@@ -72,5 +72,11 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProductVersion.FilterProductVersionByOS(os);
         }
+        [HttpGet]
+        [Route("FilterProductVersionByScreenSize/{minScreenSize}/{maxScreenSize}")]
+        public List<ProductVersionMapped> FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize)
+        {
+            return bllProductVersion.FilterProductVersionByScreenSize(minScreenSize, maxScreenSize);
+        }
     }
 }

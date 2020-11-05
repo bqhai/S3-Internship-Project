@@ -97,8 +97,15 @@
 .techinfo-bottom{
     display: flex;
 }
+.introduce-bottom {
+    display: flex;
+}
 #techinfo-expand{
     margin:auto;
+}
+#introduce-expand {
+    margin: auto;
+    margin-top: 10px;
 }
 .pages{
     float: right;
@@ -109,4 +116,7 @@
 }
 .checked{
     color: orange;
+}
+.state{
+    display: none;
 }

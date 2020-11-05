@@ -49,11 +49,11 @@
             <div class="main-left col-sm-2">
                 <h4>Màn hình</h4>
                 <ul>
-                    <li><a href="#" style="color: orangered">Tất cả</a></li>
-                    <li><a href="#">&lt;5 inches</a></li>
-                    <li><a href="#">Từ 5 đến 5.5 inches</a></li>
-                    <li><a href="#">Từ 5.5 đến 6 inches</a></li>
-                    <li><a href="#">&gt;&#61;6 inches</a></li>
+                    <li><a href="@Url.Action("AllProduct", "Product")" style="color: orangered">Tất cả</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByScreenSize", "Product", new {minScreenSize = 0, maxScreenSize = 5})">&lt;5 inches</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByScreenSize", "Product", new {minScreenSize = 5, maxScreenSize = 5.5})">Từ 5 đến 5.5 inches</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByScreenSize", "Product", new {minScreenSize = 5.5, maxScreenSize = 6})">Từ 5.5 đến 6 inches</a></li>
+                    <li><a href="@Url.Action("FilterProductVersionByScreenSize", "Product", new {minScreenSize = 6, maxScreenSize = 99})">&gt;&#61;6 inches</a></li>
                 </ul>
                 <h4>RAM</h4>
                 <ul>
@@ -155,19 +155,23 @@
                     }
                     else if (ViewData["State"].Equals("SortByPrice"))
                     {
-                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("SortProductVersionByPrice", "Product", new { pageIndex, sortOption = ViewData["SortOption"] }))</li>
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("SortProductVersionByPrice", "Product", new { pageIndex, sortOption = ViewData["Option"] }))</li>
                     }
                     else if (ViewData["State"].Equals("FilterByRam"))
                     {
-                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByRAM", "Product", new { pageIndex, ram = ViewData["RAM"] }))</li>
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByRAM", "Product", new { pageIndex, ram = ViewData["Option"] }))</li>
                     }
                     else if (ViewData["State"].Equals("FilterByRom"))
                     {
-                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, rom = ViewData["ROM"] }))</li>
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, rom = ViewData["Option"] }))</li>
+                    }
+                    else if (ViewData["State"].Equals("FilterByOS"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByOS", "Product", new { pageIndex, os = ViewData["Option"] }))</li>
                     }
                     else
                     {
-                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, os = ViewData["OS"] }))</li>
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByScreenSize", "Product", new { pageIndex, minScreenSize = ViewData["Option"], maxScreenSize = ViewData["Option2"] }))</li>
 
                     }
                 </ul>

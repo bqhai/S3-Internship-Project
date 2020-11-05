@@ -92,6 +92,17 @@ namespace BLL_CellPhoneStore.BLL
             }
             return productVersionMappeds;
         }
+        public List<ProductVersionMapped> FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize)
+        {
+            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByScreenSize(minScreenSize, maxScreenSize);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapObj.Translate(item));
+            }
+            return productVersionMappeds;
+        }
 
     }
 }

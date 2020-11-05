@@ -72,12 +72,12 @@ namespace CellphoneStore.Controllers
             if(sortOption == "desPrice")
             {
                 productVersionMappeds = productVersionMappeds.OrderByDescending(prdv => prdv.Price).ToList();
-                ViewData["SortOption"] = "desPrice";
+                ViewData["Option"] = "desPrice";
             }
             else
             {
                 productVersionMappeds = productVersionMappeds.OrderBy(prdv => prdv.Price).ToList();
-                ViewData["SortOption"] = "ascPrice";
+                ViewData["Option"] = "ascPrice";
             }
             ViewData["State"] = "SortByPrice";
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
@@ -88,7 +88,7 @@ namespace CellphoneStore.Controllers
             response = serviceObj.GetResponse(url);
             List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
             ViewData["State"] = "FilterByRam";
-            ViewData["RAM"] = ram;
+            ViewData["Option"] = ram;
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
         public ActionResult FilterProductVersionByROM(string rom, int pageIndex = 1, int pageSize = 15)
@@ -97,7 +97,7 @@ namespace CellphoneStore.Controllers
             response = serviceObj.GetResponse(url);
             List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
             ViewData["State"] = "FilterByRom";
-            ViewData["ROM"] = rom;
+            ViewData["Option"] = rom;
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
         public ActionResult FilterProductVersionByOS(string os, int pageIndex = 1, int pageSize = 15)
@@ -106,7 +106,17 @@ namespace CellphoneStore.Controllers
             response = serviceObj.GetResponse(url);
             List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
             ViewData["State"] = "FilterByOs";
-            ViewData["OS"] = os;
+            ViewData["Option"] = os;
+            return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
+        }
+        public ActionResult FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize, int pageIndex = 1, int pageSize = 15)
+        {
+            var url = "api/API_Product/FilterProductVersionByScreenSize/" + minScreenSize + "/" + maxScreenSize + "/";
+            response = serviceObj.GetResponse(url);
+            List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+            ViewData["State"] = "FilterByScreenSize";
+            ViewData["Option"] = minScreenSize;
+            ViewData["Option2"] = maxScreenSize;
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
     }

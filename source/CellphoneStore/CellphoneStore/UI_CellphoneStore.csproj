@@ -276,6 +276,7 @@
     <Content Include="Content\Images\Product\SMPV10043.jpg" />
     <Content Include="Content\Images\Product\SMPV10044.jpg" />
     <Content Include="Content\Images\Product\SMPV10045.jpg" />
+    <Content Include="Content\JS\introduce-expand.js" />
     <Content Include="Content\JS\popup-login.js" />
     <Content Include="Content\JS\techinfo-expand.js" />
     <Content Include="Content\Logo\appstore.png" />
