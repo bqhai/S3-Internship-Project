@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLL_Account.cs" />
     <Compile Include="BLL\BLL_Brand.cs" />
     <Compile Include="BLL\BLL_Product.cs" />
     <Compile Include="BLL\BLL_ProductIntroduce.cs" />
     <Compile Include="BLL\BLL_ProductVersion.cs" />
+    <Compile Include="Lib\MD5_Encryptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

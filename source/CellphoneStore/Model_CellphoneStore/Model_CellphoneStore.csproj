@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountMapped.cs" />
     <Compile Include="BrandMapped.cs" />
     <Compile Include="ProductIntroduceMapped.cs" />
     <Compile Include="ProductMapped.cs" />

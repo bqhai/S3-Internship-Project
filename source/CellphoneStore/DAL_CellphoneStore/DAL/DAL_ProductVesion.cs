@@ -92,5 +92,21 @@ namespace DAL_CellPhoneStore.DAL
                         select prdv;
             return query;
         }
+        public IEnumerable<ProductVersion> FilterProductVersionByBrand(string brandID)
+        {
+            var query = from prd in db.Products
+                        join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+                        where prd.BrandID == brandID
+                        select prdv;
+            return query;
+        }
+        public IEnumerable<ProductVersion> FilterProductVersionByPrice(int minPrice, int maxPrice)
+        {
+            var query = from prd in db.Products
+                        join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
+                        where prdv.Price > minPrice && prdv.Price <= maxPrice
+                        select prdv;
+            return query;
+        }
     }
 }

@@ -89,11 +89,11 @@
                     <div class="row filter-price">
                         <div class="col-sm-8">
                             <strong>Chọn mức giá: </strong>
-                            <a href="#">Dưới 5 triệu&emsp;</a>
-                            <a href="#">5 - 10 triệu&emsp;</a>
-                            <a href="#">10 - 15 triệu&emsp;</a>
-                            <a href="#">15 - 20 triệu&emsp;</a>
-                            <a href="#">Trên 20 triệu</a>
+                            <a href="@Url.Action("FilterProductVersionByPrice", "Product", new {minPrice = 0, maxPrice = 5000000})">Dưới 5 triệu&emsp;</a>
+                            <a href="@Url.Action("FilterProductVersionByPrice", "Product", new {minPrice = 5000000, maxPrice = 10000000})">5 - 10 triệu&emsp;</a>
+                            <a href="@Url.Action("FilterProductVersionByPrice", "Product", new {minPrice = 10000000, maxPrice = 15000000})">10 - 15 triệu&emsp;</a>
+                            <a href="@Url.Action("FilterProductVersionByPrice", "Product", new {minPrice = 15000000, maxPrice = 20000000})">15 - 20 triệu&emsp;</a>
+                            <a href="@Url.Action("FilterProductVersionByPrice", "Product", new {minPrice = 20000000, maxPrice = 99999999})">Trên 20 triệu</a>
                         </div>
                         <div class="col-sm-4">
                             <div class="filter-price-right">
@@ -169,10 +169,17 @@
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByOS", "Product", new { pageIndex, os = ViewData["Option"] }))</li>
                     }
-                    else
+                    else if (ViewData["State"].Equals("FilterByScreenSize"))
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByScreenSize", "Product", new { pageIndex, minScreenSize = ViewData["Option"], maxScreenSize = ViewData["Option2"] }))</li>
-
+                    }
+                    else if (ViewData["State"].Equals("FilterByBrand"))
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByBrand", "Product", new { pageIndex, brandID = ViewData["Option"] }))</li>
+                    }
+                    else
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByPrice", "Product", new { pageIndex, minPrice = ViewData["Option"], maxPrice = ViewData["Option2"] }))</li>
                     }
                 </ul>
             </div>

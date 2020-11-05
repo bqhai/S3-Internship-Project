@@ -15,91 +15,107 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_ProductVersion
     {
         DAL_ProductVesion dalProductVersion = new DAL_ProductVesion();
+        EntityMapper<ProductVersion, ProductVersionMapped> mapProductVersion = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> mapProductVersionInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
         public BLL_ProductVersion()
         {
 
         }
         public List<ProductVersionMapped> GetAllProductVersion()
         {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+            
             IEnumerable<ProductVersion> productVersions = dalProductVersion.GetAllProductVersion();
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public ProductVersionInfoMapped GetProductVersionByID(string productVersionID)
         {
-            EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> mapObj = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
+            
             ProductVersionInfo productVersionInfo = dalProductVersion.GetProductVersionByID(productVersionID);
-            ProductVersionInfoMapped productVersionInfoMapped = mapObj.Translate(productVersionInfo);
+            ProductVersionInfoMapped productVersionInfoMapped = mapProductVersionInfo.Translate(productVersionInfo);
             return productVersionInfoMapped;
         }
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {         
             IEnumerable<ProductVersion> productVersions = dalProductVersion.GetListProductVersionByProductID(productID);
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public List<ProductVersionMapped> GetListHotSale()
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {     
             IEnumerable<ProductVersion> productVersions = dalProductVersion.GetListHotSale();
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public List<ProductVersionMapped> FilterProductVersionByRAM(string ram)
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {           
             IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByRAM(ram);
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public List<ProductVersionMapped> FilterProductVersionByROM(string rom)
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {    
             IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByROM(rom);
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public List<ProductVersionMapped> FilterProductVersionByOS(string os)
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {         
             IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByOS(os);
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }
         public List<ProductVersionMapped> FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize)
-        {
-            EntityMapper<ProductVersion, ProductVersionMapped> mapObj = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        {        
             IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByScreenSize(minScreenSize, maxScreenSize);
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapObj.Translate(item));
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
+            }
+            return productVersionMappeds;
+        }
+        public List<ProductVersionMapped> FilterProductVersionByBrand(string brandID)
+        {
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByBrand(brandID);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
+            }
+            return productVersionMappeds;
+        }
+        public List<ProductVersionMapped> FilterProductVersionByPrice(int minPrice, int maxPrice)
+        {
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.FilterProductVersionByPrice(minPrice, maxPrice);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(mapProductVersion.Translate(item));
             }
             return productVersionMappeds;
         }

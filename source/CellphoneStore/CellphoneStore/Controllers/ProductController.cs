@@ -119,5 +119,25 @@ namespace CellphoneStore.Controllers
             ViewData["Option2"] = maxScreenSize;
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
+        public ActionResult FilterProductVersionByBrand(string brandID, int pageIndex = 1, int pageSize = 15)
+        {
+            var url = "api/API_Product/FilterProductVersionByBrand/" + brandID;
+            response = serviceObj.GetResponse(url);
+            List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+            ViewData["State"] = "FilterByBrand";
+            ViewData["Option"] = brandID;
+            return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
+        }
+        public ActionResult FilterProductVersionByPrice(int minPrice, int maxPrice, int pageIndex = 1, int pageSize = 15)
+        {
+            var url = "api/API_Product/FilterProductVersionByPrice/" + minPrice + "/" + maxPrice +"/";
+            response = serviceObj.GetResponse(url);
+            List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+            ViewData["State"] = "FilterByPrice";
+            ViewData["Option"] = minPrice;
+            ViewData["Option2"] = maxPrice;
+            return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
+        }
+
     }
 }

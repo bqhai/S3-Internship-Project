@@ -2,5 +2,5 @@
 
 @foreach (var item in Model)
 {
-    <a href="#"><input class="btn btn-danger" type="button" value="@item.BrandName" /></a>
+    <a href="@Url.Action("FilterProductVersionByBrand", "Product", new { brandID = item.BrandID })"><input class="btn btn-danger" type="button" value="@item.BrandName" /></a>
 }

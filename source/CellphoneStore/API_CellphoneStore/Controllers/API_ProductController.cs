@@ -49,34 +49,54 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProductIntroduce.GetProductIntroduceByID(productID);
         }
+        
         [Route("GetListHotSale")]
         public List<ProductVersionMapped> GetListHotSale()
         {
             return bllProductVersion.GetListHotSale();
         }
+        
         [HttpGet]
         [Route("FilterProductVersionByRAM/{ram}")]
         public List<ProductVersionMapped> FilterProductVersionByRAM(string ram)
         {
             return bllProductVersion.FilterProductVersionByRAM(ram);
         }
+        
         [HttpGet]
         [Route("FilterProductVersionByROM/{rom}")]
         public List<ProductVersionMapped> FilterProductVersionByROM(string rom)
         {
             return bllProductVersion.FilterProductVersionByROM(rom);
         }
+        
         [HttpGet]
         [Route("FilterProductVersionByOS/{os}")]
         public List<ProductVersionMapped> FilterProductVersionByOS(string os)
         {
             return bllProductVersion.FilterProductVersionByOS(os);
         }
+        
         [HttpGet]
         [Route("FilterProductVersionByScreenSize/{minScreenSize}/{maxScreenSize}")]
         public List<ProductVersionMapped> FilterProductVersionByScreenSize(double minScreenSize, double maxScreenSize)
         {
             return bllProductVersion.FilterProductVersionByScreenSize(minScreenSize, maxScreenSize);
         }
+
+        [HttpGet]
+        [Route("FilterProductVersionByBrand/{brandID}")]
+        public List<ProductVersionMapped> FilterProductVersionByBrand(string brandID)
+        {
+            return bllProductVersion.FilterProductVersionByBrand(brandID);
+        }
+        
+        [HttpGet]
+        [Route("FilterProductVersionByPrice/{minPrice}/{maxPrice}")]
+        public List<ProductVersionMapped> FilterProductVersionByPrice(int minPrice, int maxPrice)
+        {
+            return bllProductVersion.FilterProductVersionByPrice(minPrice, maxPrice);
+        }
+
     }
 }

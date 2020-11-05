@@ -27,6 +27,9 @@ namespace Model_CellphoneStore.Repository
 
             Mapper.CreateMap<ProductIntroduceMapped, ProductIntroduce>();
             Mapper.CreateMap<ProductIntroduce, ProductIntroduceMapped>();
+
+            Mapper.CreateMap<AccountMapped, Account>();
+            Mapper.CreateMap<Account, AccountMapped>();
         }
         public TDestination Translate(TSource obj)
         {

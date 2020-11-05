@@ -12307,11 +12307,11 @@ INSERT INTO AccountType VALUES(2, N'Nhân viên')
 INSERT INTO AccountType VALUES(3, N'Khách hàng')
 GO
 --Account--
-INSERT INTO Account VALUES(N'bqhai1205', N'123456', 1, 1)
-INSERT INTO Account VALUES(N'hdhieu2610', N'26101999', 2, 1)
-INSERT INTO Account VALUES(N'dtqnhu2601', N'26011999', 3, 1)
-INSERT INTO Account VALUES(N'ntttu1707', N'17071999', 3, 1)
-INSERT INTO Account VALUES(N'pvquan2603', N'26031999', 3, 1)
+INSERT INTO Account VALUES(N'bqhai1205', N'e10adc3949ba59abbe56e057f20f883e', 1, 1) --123456
+INSERT INTO Account VALUES(N'hdhieu2610', N'4c45a38dfd23d60c2b4f47c8d23ed8f0', 2, 1)
+INSERT INTO Account VALUES(N'dtqnhu2601', N'83aaba297dfb1be50320eb4c6501c8ac', 3, 1)
+INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3, 1)
+INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 1)
 GO
 --Employee--
 INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
