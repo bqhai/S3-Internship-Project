@@ -33,19 +33,17 @@ namespace CellphoneStore.Controllers
             if (resultLogin)
             {
                 int accountType = GetAccountType(accountMapped.Username);
-                if(accountType == 1)
-                {
-                    Session["Account"] = accountMapped.Username;
+                Session["Account"] = accountMapped.Username;
+                if (accountType == 1)
+                {                   
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
                 else if(accountType == 2)
                 {
-                    Session["Account"] = accountMapped.Username;
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
                 else 
                 {
-                    Session["Account"] = accountMapped.Username;
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
             }
