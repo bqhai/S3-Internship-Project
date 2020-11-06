@@ -15,8 +15,8 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_ProductVersion
     {
         DAL_ProductVesion dalProductVersion = new DAL_ProductVesion();
-        EntityMapper<ProductVersion, ProductVersionMapped> mapProductVersion = new EntityMapper<ProductVersion, ProductVersionMapped>();
-        EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> mapProductVersionInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
+        EntityMapper<ProductVersion, ProductVersionMapped> prdvToPrdvMapped = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> prdvToPrdvMappedInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
         public BLL_ProductVersion()
         {
 
@@ -28,7 +28,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -36,7 +36,7 @@ namespace BLL_CellPhoneStore.BLL
         {
             
             ProductVersionInfo productVersionInfo = dalProductVersion.GetProductVersionByID(productVersionID);
-            ProductVersionInfoMapped productVersionInfoMapped = mapProductVersionInfo.Translate(productVersionInfo);
+            ProductVersionInfoMapped productVersionInfoMapped = prdvToPrdvMappedInfo.Translate(productVersionInfo);
             return productVersionInfoMapped;
         }
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
@@ -45,7 +45,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -55,7 +55,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -65,7 +65,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -75,7 +75,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -85,7 +85,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -95,7 +95,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -105,7 +105,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -115,10 +115,19 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(mapProductVersion.Translate(item));
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
-
+        public List<ProductVersionMapped> SearchProductVersion(string keyWord)
+        {
+            IEnumerable<ProductVersion> productVersions = dalProductVersion.SearchProductVersion(keyWord);
+            List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
+            foreach (var item in productVersions)
+            {
+                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+            }
+            return productVersionMappeds;
+        }
     }
 }

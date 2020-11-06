@@ -56,7 +56,7 @@
       <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -85,7 +85,7 @@
         <MappingFragment StoreEntitySet="Employee">
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Email" ColumnName="Email" />

@@ -177,9 +177,13 @@
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByBrand", "Product", new { pageIndex, brandID = ViewData["Option"] }))</li>
                     }
-                    else
+                    else if (ViewData["State"].Equals("FilterByPrice"))
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByPrice", "Product", new { pageIndex, minPrice = ViewData["Option"], maxPrice = ViewData["Option2"] }))</li>
+                    }
+                    else
+                    {
+                        <li>@Html.PagedListPager(Model, pageIndex => Url.Action("SearchProductVersion", "Product", new { pageIndex, keyWord = ViewData["Option"] }))</li>
                     }
                 </ul>
             </div>

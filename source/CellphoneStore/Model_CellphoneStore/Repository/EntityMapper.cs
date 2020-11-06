@@ -30,6 +30,9 @@ namespace Model_CellphoneStore.Repository
 
             Mapper.CreateMap<AccountMapped, Account>();
             Mapper.CreateMap<Account, AccountMapped>();
+
+            Mapper.CreateMap<CustomerMapped, Customer>();
+            Mapper.CreateMap<Customer, CustomerMapped>();
         }
         public TDestination Translate(TSource obj)
         {

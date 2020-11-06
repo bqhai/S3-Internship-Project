@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AccountMapped.cs" />
     <Compile Include="BrandMapped.cs" />
+    <Compile Include="CustomerMapped.cs" />
     <Compile Include="ProductIntroduceMapped.cs" />
     <Compile Include="ProductMapped.cs" />
     <Compile Include="ProductVersionMapped.cs" />

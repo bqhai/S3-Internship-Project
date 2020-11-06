@@ -138,6 +138,29 @@ namespace CellphoneStore.Controllers
             ViewData["Option2"] = maxPrice;
             return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
         }
+        public ActionResult SearchProductVersion(string keyWord, int pageIndex = 1, int pageSize = 15)
+        {
+            var url = "api/API_Product/SearchProductVersion/" + keyWord;
+            response = serviceObj.GetResponse(url);         
+            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                
+                List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+                if(productVersionMappeds.Count > 0)
+                {
+                    ViewData["State"] = "Search";
+                    ViewData["Option"] = keyWord;
+                    return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
+                }
+                TempData["Message"] = "Product not found";
+                return RedirectToAction("AllProduct");
+            }
+            else
+            {
+                TempData["Message"] = "Product not found";
+                return RedirectToAction("AllProduct");
+            }            
+        }
 
     }
 }

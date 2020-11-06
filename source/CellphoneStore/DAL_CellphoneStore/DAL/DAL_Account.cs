@@ -19,5 +19,12 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Accounts.Where(acc => acc.Username == username).FirstOrDefault();
         }
+        public void AddNewUserAccount(Account account)
+        {
+            account.AccountTypeID = 3;
+            account.Status = true;
+            db.Accounts.Add(account);
+            db.SaveChanges();
+        }
     }
 }

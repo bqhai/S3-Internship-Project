@@ -97,6 +97,11 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProductVersion.FilterProductVersionByPrice(minPrice, maxPrice);
         }
-
+        [HttpGet]
+        [Route("SearchProductVersion/{keyWord}")]
+        public List<ProductVersionMapped> SearchProductVersion(string keyWord)
+        {
+            return bllProductVersion.SearchProductVersion(keyWord);
+        } 
     }
 }

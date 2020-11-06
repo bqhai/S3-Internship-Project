@@ -108,5 +108,9 @@ namespace DAL_CellPhoneStore.DAL
                         select prdv;
             return query;
         }
+        public IEnumerable<ProductVersion> SearchProductVersion(string keyWord)
+        {
+            return db.ProductVersions.Where(prdv => prdv.ProductVersionName.Contains(keyWord));
+        }
     }
 }

@@ -57,7 +57,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="100" />
     <Property Name="Address" Type="nvarchar" MaxLength="500" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
     <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="District">
@@ -83,7 +83,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="100" />
     <Property Name="Address" Type="nvarchar" MaxLength="500" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
-    <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
     <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="bit" />
   </EntityType>

@@ -12138,7 +12138,7 @@ CREATE TABLE Customer
 	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
-	Sex NVARCHAR(50),
+	Gender NVARCHAR(50),
 	DateOfBirth NVARCHAR(50),
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
@@ -12152,7 +12152,7 @@ CREATE TABLE Employee
 	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
-	Sex NVARCHAR(50),
+	Gender NVARCHAR(50),
 	DateOfBirth NVARCHAR(50),
 	Status BIT, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
