@@ -12205,7 +12205,7 @@ CREATE TABLE ProductVersion
 	ListPrice INT NOT NULL,
 	Price INT NOT NULL,
 	QuantityInStock INT NOT NULL,
-	Status BIT, --0: hết hàng, 1: còn hàng 
+	Status BIT NOT NULL, --0: hết hàng, 1: còn hàng 
 	Image NVARCHAR(500),
 	
 	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
@@ -12230,13 +12230,13 @@ GO
 CREATE TABLE Orders
 (
 	OrderID NVARCHAR(50) PRIMARY KEY,
-	Payments NVARCHAR(100),
-	Delivery NVARCHAR(100),
+	Payments NVARCHAR(100) NOT NULL,
+	Delivery NVARCHAR(100) NOT NULL,
 	Notes NVARCHAR(500),
-	OrderDate DATE,
-	TotalPrice INT,
+	OrderDate DATE NOT NULL,
+	TotalPrice INT NOT NULL,
 	CustomerID NVARCHAR(50),
-	Status BIT, --0: Unpaid --1: Paid
+	Status BIT NOT NULL, --0: Unpaid --1: Paid
 	
 	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
 )
@@ -12245,8 +12245,8 @@ CREATE TABLE OrderDetail
 (
 	OrderID NVARCHAR(50),
 	ProductVersionID NVARCHAR(50),
-	Amount INT,
-	Price INT,
+	Amount INT NOT NULL,
+	Price INT NOT NULL,
 	PRIMARY KEY(OrderID, ProductVersionID),
 	FOREIGN KEY(OrderID) REFERENCES Orders(OrderID),
 	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
@@ -12257,7 +12257,7 @@ CREATE TABLE PromotionCode
 (
 	Code NVARCHAR(50) PRIMARY KEY,
 	Description NVARCHAR(100),
-	Value FLOAT,
+	Value FLOAT NOT NULL,
 	StartDate DATE,
 	ExpiryDate DATE
 )

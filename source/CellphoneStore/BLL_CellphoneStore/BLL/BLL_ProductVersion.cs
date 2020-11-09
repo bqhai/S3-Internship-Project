@@ -32,12 +32,17 @@ namespace BLL_CellPhoneStore.BLL
             }
             return productVersionMappeds;
         }
-        public ProductVersionInfoMapped GetProductVersionByID(string productVersionID)
-        {
-            
-            ProductVersionInfo productVersionInfo = dalProductVersion.GetProductVersionByID(productVersionID);
+        public ProductVersionInfoMapped GetInfoProductVersionByID(string productVersionID)
+        {          
+            ProductVersionInfo productVersionInfo = dalProductVersion.GetInfoProductVersionByID(productVersionID);
             ProductVersionInfoMapped productVersionInfoMapped = prdvToPrdvMappedInfo.Translate(productVersionInfo);
             return productVersionInfoMapped;
+        }
+        public ProductVersionMapped GetProductVersionByID(string productVersionID)
+        {
+            ProductVersion productVersion = dalProductVersion.GetProductVersionByID(productVersionID);
+            ProductVersionMapped productVersionMapped = prdvToPrdvMapped.Translate(productVersion);
+            return productVersionMapped;
         }
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
         {         

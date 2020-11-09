@@ -52,7 +52,7 @@
                         </div>
                         <div>
                             <input class="btn btn-primary" type="button" value="Mua ngay" />
-                            <input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" />
+                            <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = Model.ProductVersionID })"><input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" /></a>                    
                         </div>
                         <div style="margin-top: 10px">
                             <a href="#" style="color:orangered">Trả góp 0% với thẻ tín dụng tại cửa hàng - Xem chi tiết</a>

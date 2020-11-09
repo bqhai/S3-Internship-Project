@@ -34,8 +34,9 @@ namespace CellphoneStore.Controllers
             {
                 int accountType = GetAccountType(accountMapped.Username);
                 Session["Account"] = accountMapped.Username;
+                TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                 if (accountType == 1)
-                {                   
+                {                  
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
                 else if(accountType == 2)
@@ -46,6 +47,7 @@ namespace CellphoneStore.Controllers
                 {
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
+                
             }
             else
             {

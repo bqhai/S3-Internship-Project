@@ -8,6 +8,7 @@
     <link href="~/Content/CSS/popup-login.css" rel="stylesheet" />
     <link href="~/Content/CSS/home.css" rel="stylesheet" />
     <link href="~/Content/CSS/product.css" rel="stylesheet" />
+    <link href="~/Content/CSS/shopping-cart.css" rel="stylesheet" />
     <script src="~/Content/JS/popup-login.js"></script>
     <script src="~/Content/JS/techinfo-expand.js"></script>
     <script src="~/Content/JS/introduce-expand.js"></script>
@@ -19,20 +20,26 @@
 <body>
     @if (TempData["DangerMessage"] != null)
     {
-        <div class="alert" role="alert">
+        <div class="alert-message" role="alert">
             <strong>Thông báo!</strong> @TempData["DangerMessage"]
         </div>
     }
     @if (TempData["SuccessMessage"] != null)
     {
-        <div class="alert success" role="alert">
+        <div class="alert-message success" role="alert">
             <strong>Thông báo!</strong> @TempData["SuccessMessage"]
         </div>
     }
     @if (TempData["WarningMessage"] != null)
     {
-        <div class="alert warning" role="alert">
+        <div class="alert-message warning" role="alert">
             <strong>Thông báo!</strong> @TempData["WarningMessage"]
+        </div>
+    }
+    @if (TempData["InfoMessage"] != null)
+    {
+        <div class="alert-message info" role="alert">
+            <strong>Thông báo!</strong> @TempData["InfoMessage"]
         </div>
     }
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -124,14 +131,16 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-warning search-button" type="submit" name="btnShoppingCart"><i class="fa fa-shopping-cart fa-fw"></i>Giỏ hàng</button>
+                            <a href="@Url.Action("Cart", "Cart")">
+                                <input class="fa fa-shopping-cart btn btn-warning search-button" type="button" value="&#xf07a Giỏ hàng" style="width: 105px"/>                               
+                            </a>                          
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="min-height: 700px">
         @RenderBody()
 
         <hr />
@@ -143,6 +152,7 @@
                 <strong>Tìm cửa hàng</strong>
                 <p>Tìm cửa hàng gần nhất</p>
                 <p>Mua hàng từ xa</p>
+                <br />
                 <strong>Phương thức thanh toán</strong>
                 <div class="payment">
                     <i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>

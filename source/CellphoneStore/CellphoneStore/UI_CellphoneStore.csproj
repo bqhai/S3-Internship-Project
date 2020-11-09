@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ServiceRepository.cs" />
   </ItemGroup>
@@ -177,6 +178,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSS\home.css" />
     <Content Include="Content\CSS\product.css" />
+    <Content Include="Content\CSS\shopping-cart.css" />
     <Content Include="Content\Images\ProductIntroduce\PI10000.jpg" />
     <Content Include="Content\Images\ProductIntroduce\PI10001.jpg" />
     <Content Include="Content\Images\ProductIntroduce\PI10002.jpg" />
@@ -324,11 +326,10 @@
     <Content Include="Views\Product\GetAllBrand.cshtml" />
     <Content Include="Views\Product\ListProductVersion.cshtml" />
     <Content Include="Views\Product\ProductIntroduce.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

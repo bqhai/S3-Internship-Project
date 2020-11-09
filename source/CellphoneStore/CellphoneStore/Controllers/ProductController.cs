@@ -31,13 +31,12 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult ProductDetails(string productVersionID)
         {
-            var url = "api/API_Product/GetProductVersionByID/" + productVersionID;
+            var url = "api/API_Product/GetInfoProductVersionByID/" + productVersionID;
             response = serviceObj.GetResponse(url);
             response.EnsureSuccessStatusCode();
             ViewBag.Title = "Product details";
             var productVersionInfo = response.Content.ReadAsAsync<ProductVersionInfoMapped>().Result;
             return View(productVersionInfo);
-
         }
         public ActionResult GetAllBrand()
         {
@@ -153,12 +152,12 @@ namespace CellphoneStore.Controllers
                     return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
                 }
                 TempData["WarningMessage"] = "Không tìm thấy sản phẩm";
-                return RedirectToAction("AllProduct");
+                return Redirect(this.Request.UrlReferrer.ToString());
             }
             else
             {
                 TempData["WarningMessage"] = "Không tìm thấy sản phẩm";
-                return RedirectToAction("AllProduct");
+                return Redirect(this.Request.UrlReferrer.ToString());
             }            
         }
 
