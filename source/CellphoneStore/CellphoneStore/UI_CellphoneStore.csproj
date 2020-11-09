@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -276,6 +277,7 @@
     <Content Include="Content\Images\Product\SMPV10043.jpg" />
     <Content Include="Content\Images\Product\SMPV10044.jpg" />
     <Content Include="Content\Images\Product\SMPV10045.jpg" />
+    <Content Include="Content\JS\alert.js" />
     <Content Include="Content\JS\introduce-expand.js" />
     <Content Include="Content\JS\popup-login.js" />
     <Content Include="Content\JS\techinfo-expand.js" />
@@ -326,6 +328,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,6 +8,7 @@
     <EntitySet Name="Customers" EntityType="DbCellPhoneStoreModel.Customer" />
     <EntitySet Name="Districts" EntityType="DbCellPhoneStoreModel.District" />
     <EntitySet Name="Employees" EntityType="DbCellPhoneStoreModel.Employee" />
+    <EntitySet Name="HotSales" EntityType="DbCellPhoneStoreModel.HotSale" />
     <EntitySet Name="OrderDetails" EntityType="DbCellPhoneStoreModel.OrderDetail" />
     <EntitySet Name="Orders" EntityType="DbCellPhoneStoreModel.Order" />
     <EntitySet Name="Products" EntityType="DbCellPhoneStoreModel.Product" />
@@ -36,7 +37,7 @@
       <End Role="Country" EntitySet="Countries" />
       <End Role="Province" EntitySet="Provinces" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Customer__3A81B327" Association="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327">
+    <AssociationSet Name="FK__Orders__Customer__3D5E1FD2" Association="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
@@ -48,15 +49,19 @@
       <End Role="District" EntitySet="Districts" />
       <End Role="Ward" EntitySet="Wards" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDeta__Order__3D5E1FD2" Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2">
+    <AssociationSet Name="FK__HotSale__Product__36B12243" Association="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243">
+      <End Role="ProductVersion" EntitySet="ProductVersions" />
+      <End Role="HotSale" EntitySet="HotSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__403A8C7D" Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D">
       <End Role="Order" EntitySet="Orders" />
       <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDeta__Produ__3E52440B" Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B">
+    <AssociationSet Name="FK__OrderDeta__Produ__412EB0B6" Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6">
       <End Role="ProductVersion" EntitySet="ProductVersions" />
       <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductIn__Produ__46E78A0C" Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C">
+    <AssociationSet Name="FK__ProductIn__Produ__49C3F6B7" Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__49C3F6B7">
       <End Role="Product" EntitySet="Products" />
       <End Role="ProductIntroduce" EntitySet="ProductIntroduces" />
     </AssociationSet>
@@ -139,7 +144,7 @@
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Customer" ToRole="Account" />
-    <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2" FromRole="Customer" ToRole="Order" />
     <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="Customer" ToRole="ProductVersion" />
     <NavigationProperty Name="PromotionCodes" Relationship="DbCellPhoneStoreModel.PromotionCodeUsed" FromRole="Customer" ToRole="PromotionCode" />
   </EntityType>
@@ -173,6 +178,13 @@
     <Property Name="Status" Type="Boolean" />
     <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Employee" ToRole="Account" />
   </EntityType>
+  <EntityType Name="HotSale">
+    <Key>
+      <PropertyRef Name="ProductVersionID" />
+    </Key>
+    <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" FromRole="HotSale" ToRole="ProductVersion" />
+  </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="OrderID" />
@@ -182,8 +194,8 @@
     <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Amount" Type="Int32" />
     <Property Name="Price" Type="Int32" />
-    <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2" FromRole="OrderDetail" ToRole="Order" />
-    <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B" FromRole="OrderDetail" ToRole="ProductVersion" />
+    <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6" FromRole="OrderDetail" ToRole="ProductVersion" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -197,8 +209,8 @@
     <Property Name="TotalPrice" Type="Int32" />
     <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" />
-    <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3A81B327" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__3D5E1FD2" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D" FromRole="Order" ToRole="OrderDetail" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -229,7 +241,7 @@
     <Property Name="Battery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Brand" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" FromRole="Product" ToRole="Brand" />
-    <NavigationProperty Name="ProductIntroduce" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C" FromRole="Product" ToRole="ProductIntroduce" />
+    <NavigationProperty Name="ProductIntroduce" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__49C3F6B7" FromRole="Product" ToRole="ProductIntroduce" />
     <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="Product" ToRole="ProductVersion" />
   </EntityType>
   <EntityType Name="ProductIntroduce">
@@ -262,7 +274,7 @@
     <Property Name="Image7" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="FooterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__46E78A0C" FromRole="ProductIntroduce" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__49C3F6B7" FromRole="ProductIntroduce" ToRole="Product" />
   </EntityType>
   <EntityType Name="ProductVersion">
     <Key>
@@ -278,9 +290,9 @@
     <Property Name="Price" Type="Int32" Nullable="false" />
     <Property Name="QuantityInStock" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="Boolean" />
-    <Property Name="HotSale" Type="Boolean" />
     <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__3E52440B" FromRole="ProductVersion" ToRole="OrderDetail" />
+    <NavigationProperty Name="HotSale" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" FromRole="ProductVersion" ToRole="HotSale" />
+    <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6" FromRole="ProductVersion" ToRole="OrderDetail" />
     <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="ProductVersion" ToRole="Product" />
     <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="ProductVersion" ToRole="Customer" />
   </EntityType>
@@ -388,7 +400,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Customer__3A81B327">
+  <Association Name="FK__Orders__Customer__3D5E1FD2">
     <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
     <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
     <ReferentialConstraint>
@@ -424,7 +436,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDeta__Order__3D5E1FD2">
+  <Association Name="FK__HotSale__Product__36B12243">
+    <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="1" />
+    <End Type="DbCellPhoneStoreModel.HotSale" Role="HotSale" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductVersion">
+        <PropertyRef Name="ProductVersionID" />
+      </Principal>
+      <Dependent Role="HotSale">
+        <PropertyRef Name="ProductVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__403A8C7D">
     <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="1" />
     <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -436,7 +460,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDeta__Produ__3E52440B">
+  <Association Name="FK__OrderDeta__Produ__412EB0B6">
     <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="1" />
     <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -448,7 +472,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductIn__Produ__46E78A0C">
+  <Association Name="FK__ProductIn__Produ__49C3F6B7">
     <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="1" />
     <End Type="DbCellPhoneStoreModel.ProductIntroduce" Role="ProductIntroduce" Multiplicity="0..1" />
     <ReferentialConstraint>

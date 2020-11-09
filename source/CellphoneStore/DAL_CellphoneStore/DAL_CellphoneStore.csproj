@@ -96,6 +96,9 @@
     <Compile Include="Model\Employee.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HotSale.cs">
+      <DependentUpon>DbCellphoneStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Order.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>

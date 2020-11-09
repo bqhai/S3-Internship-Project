@@ -11,16 +11,29 @@
     <script src="~/Content/JS/popup-login.js"></script>
     <script src="~/Content/JS/techinfo-expand.js"></script>
     <script src="~/Content/JS/introduce-expand.js"></script>
+    <script src="~/Content/JS/alert.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @if (TempData["Message"] != null)
+    @if (TempData["DangerMessage"] != null)
     {
-        <script type="text/javascript">
-            alert("@TempData["Message"]");
-        </script>
+        <div class="alert" role="alert">
+            <strong>Thông báo!</strong> @TempData["DangerMessage"]
+        </div>
+    }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert success" role="alert">
+            <strong>Thông báo!</strong> @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["WarningMessage"] != null)
+    {
+        <div class="alert warning" role="alert">
+            <strong>Thông báo!</strong> @TempData["WarningMessage"]
+        </div>
     }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -61,19 +74,19 @@
                             <div class="form-popup" id="popupLoginForm">
                                 @if (Session["Account"] != null)
                                 {
-                                <div class="form-container">
-                                    <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
-                                    <h3 style="color: white; text-align: center; margin-top: 10px">Xin chào @Session["Account"].ToString()</h3>
-                                    <a href="#">
-                                        <input class="btn btn-warning" type="button" value="Đơn hàng của tôi" style="width: 100%; margin-top: 10px" />
-                                    </a>
-                                    <a href="#">
-                                        <input class="btn btn-warning" type="button" value="Thông tin tài khoản" style="width: 100%; margin-top: 10px" />
-                                    </a>
-                                    <a href="@Url.Action("ProcessLogout", "User")">
-                                        <input class="btn btn-danger" type="button" value="Thoát tài khoản" style="width: 100%; margin-top: 10px" />
-                                    </a>
-                                </div>
+                                    <div class="form-container">
+                                        <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                                        <h3 style="color: white; text-align: center; margin-top: 10px">Xin chào @Session["Account"].ToString()</h3>
+                                        <a href="#">
+                                            <input class="btn btn-warning" type="button" value="Đơn hàng của tôi" style="width: 100%; margin-top: 10px" />
+                                        </a>
+                                        <a href="#">
+                                            <input class="btn btn-warning" type="button" value="Thông tin tài khoản" style="width: 100%; margin-top: 10px" />
+                                        </a>
+                                        <a href="@Url.Action("ProcessLogout", "User")">
+                                            <input class="btn btn-danger" type="button" value="Thoát tài khoản" style="width: 100%; margin-top: 10px" />
+                                        </a>
+                                    </div>
                                 }
                                 else
                                 {

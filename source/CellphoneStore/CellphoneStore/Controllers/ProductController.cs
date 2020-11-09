@@ -152,12 +152,12 @@ namespace CellphoneStore.Controllers
                     ViewData["Option"] = keyWord;
                     return View("~/Views/Product/AllProduct.cshtml", productVersionMappeds.ToPagedList(pageIndex, pageSize));
                 }
-                TempData["Message"] = "Product not found";
+                TempData["WarningMessage"] = "Không tìm thấy sản phẩm";
                 return RedirectToAction("AllProduct");
             }
             else
             {
-                TempData["Message"] = "Product not found";
+                TempData["WarningMessage"] = "Không tìm thấy sản phẩm";
                 return RedirectToAction("AllProduct");
             }            
         }

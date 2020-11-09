@@ -66,7 +66,14 @@ namespace DAL_CellPhoneStore.DAL
         }
         public IEnumerable<ProductVersion> GetListHotSale()
         {
-            return db.ProductVersions.Where(prdv => prdv.HotSale == true);
+            List<HotSale> hotSales = db.HotSales.Select(hs => hs).ToList();
+            List<ProductVersion> productVersions = new List<ProductVersion>();
+            foreach (var item in hotSales)
+            {
+                ProductVersion productVersion = db.ProductVersions.Where(prdv => prdv.ProductVersionID == item.ProductVersionID).FirstOrDefault();
+                productVersions.Add(productVersion);
+            }
+            return productVersions;
         }
         public IEnumerable<ProductVersion> FilterProductVersionByRAM(string ram)
         {

@@ -95,6 +95,12 @@
     <Property Name="CustomerID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductVersionID" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="HotSale">
+    <Key>
+      <PropertyRef Name="ProductVersionID" />
+    </Key>
+    <Property Name="ProductVersionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="OrderID" />
@@ -192,7 +198,6 @@
     <Property Name="Price" Type="int" Nullable="false" />
     <Property Name="QuantityInStock" Type="int" Nullable="false" />
     <Property Name="Status" Type="bit" />
-    <Property Name="HotSale" Type="bit" />
     <Property Name="Image" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="PromotionCode">
@@ -277,7 +282,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Favorite__Custom__36B12243">
+  <Association Name="FK__Favorite__Custom__398D8EEE">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
     <ReferentialConstraint>
@@ -289,7 +294,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Favorite__Produc__37A5467C">
+  <Association Name="FK__Favorite__Produc__3A81B327">
     <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
     <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
     <ReferentialConstraint>
@@ -301,7 +306,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDeta__Order__3D5E1FD2">
+  <Association Name="FK__HotSale__Product__36B12243">
+    <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
+    <End Role="HotSale" Type="Self.HotSale" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductVersion">
+        <PropertyRef Name="ProductVersionID" />
+      </Principal>
+      <Dependent Role="HotSale">
+        <PropertyRef Name="ProductVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__403A8C7D">
     <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -313,7 +330,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderDeta__Produ__3E52440B">
+  <Association Name="FK__OrderDeta__Produ__412EB0B6">
     <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
     <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -325,7 +342,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__Customer__3A81B327">
+  <Association Name="FK__Orders__Customer__3D5E1FD2">
     <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
@@ -349,7 +366,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductIn__Produ__46E78A0C">
+  <Association Name="FK__ProductIn__Produ__49C3F6B7">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="ProductIntroduce" Type="Self.ProductIntroduce" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -373,7 +390,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Promotion__Custo__4316F928">
+  <Association Name="FK__Promotion__Custo__45F365D3">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
     <End Role="PromotionCodeUsed" Type="Self.PromotionCodeUsed" Multiplicity="*" />
     <ReferentialConstraint>
@@ -385,7 +402,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PromotionC__Code__440B1D61">
+  <Association Name="FK__PromotionC__Code__46E78A0C">
     <End Role="PromotionCode" Type="Self.PromotionCode" Multiplicity="1" />
     <End Role="PromotionCodeUsed" Type="Self.PromotionCodeUsed" Multiplicity="*" />
     <ReferentialConstraint>
@@ -444,6 +461,7 @@
     <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Favorite" EntityType="Self.Favorite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HotSale" EntityType="Self.HotSale" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -465,23 +483,27 @@
       <End Role="Account" EntitySet="Account" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
-    <AssociationSet Name="FK__Favorite__Custom__36B12243" Association="Self.FK__Favorite__Custom__36B12243">
+    <AssociationSet Name="FK__Favorite__Custom__398D8EEE" Association="Self.FK__Favorite__Custom__398D8EEE">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Favorite" EntitySet="Favorite" />
     </AssociationSet>
-    <AssociationSet Name="FK__Favorite__Produc__37A5467C" Association="Self.FK__Favorite__Produc__37A5467C">
+    <AssociationSet Name="FK__Favorite__Produc__3A81B327" Association="Self.FK__Favorite__Produc__3A81B327">
       <End Role="ProductVersion" EntitySet="ProductVersion" />
       <End Role="Favorite" EntitySet="Favorite" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDeta__Order__3D5E1FD2" Association="Self.FK__OrderDeta__Order__3D5E1FD2">
+    <AssociationSet Name="FK__HotSale__Product__36B12243" Association="Self.FK__HotSale__Product__36B12243">
+      <End Role="ProductVersion" EntitySet="ProductVersion" />
+      <End Role="HotSale" EntitySet="HotSale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__403A8C7D" Association="Self.FK__OrderDeta__Order__403A8C7D">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetail" EntitySet="OrderDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderDeta__Produ__3E52440B" Association="Self.FK__OrderDeta__Produ__3E52440B">
+    <AssociationSet Name="FK__OrderDeta__Produ__412EB0B6" Association="Self.FK__OrderDeta__Produ__412EB0B6">
       <End Role="ProductVersion" EntitySet="ProductVersion" />
       <End Role="OrderDetail" EntitySet="OrderDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__Customer__3A81B327" Association="Self.FK__Orders__Customer__3A81B327">
+    <AssociationSet Name="FK__Orders__Customer__3D5E1FD2" Association="Self.FK__Orders__Customer__3D5E1FD2">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
@@ -489,7 +511,7 @@
       <End Role="Brand" EntitySet="Brand" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductIn__Produ__46E78A0C" Association="Self.FK__ProductIn__Produ__46E78A0C">
+    <AssociationSet Name="FK__ProductIn__Produ__49C3F6B7" Association="Self.FK__ProductIn__Produ__49C3F6B7">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductIntroduce" EntitySet="ProductIntroduce" />
     </AssociationSet>
@@ -497,11 +519,11 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductVersion" EntitySet="ProductVersion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Promotion__Custo__4316F928" Association="Self.FK__Promotion__Custo__4316F928">
+    <AssociationSet Name="FK__Promotion__Custo__45F365D3" Association="Self.FK__Promotion__Custo__45F365D3">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUsed" />
     </AssociationSet>
-    <AssociationSet Name="FK__PromotionC__Code__440B1D61" Association="Self.FK__PromotionC__Code__440B1D61">
+    <AssociationSet Name="FK__PromotionC__Code__46E78A0C" Association="Self.FK__PromotionC__Code__46E78A0C">
       <End Role="PromotionCode" EntitySet="PromotionCode" />
       <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUsed" />
     </AssociationSet>

@@ -49,7 +49,7 @@ namespace CellphoneStore.Controllers
             }
             else
             {
-                TempData["Message"] = "Username or password is incorrect";
+                TempData["DangerMessage"] = "Tài khoản hoặc mật khẩu không chính xác";
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
         }
@@ -74,12 +74,12 @@ namespace CellphoneStore.Controllers
             var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
             if(resultAddAcc  && resultAddCus)
             {
-                TempData["Message"] = "Register successfully";
+                TempData["SuccessMessage"] = "Đăng ký thành công!";
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                TempData["Message"] = "Register failed";
+                TempData["DangerMessage"] = "Đăng ký thất bại";
                 return RedirectToAction("Register", "User");
             }
             

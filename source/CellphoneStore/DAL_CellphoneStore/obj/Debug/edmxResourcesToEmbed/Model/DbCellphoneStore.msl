@@ -95,6 +95,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HotSales">
+      <EntityTypeMapping TypeName="DbCellPhoneStoreModel.HotSale">
+        <MappingFragment StoreEntitySet="HotSale">
+          <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="DbCellPhoneStoreModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
@@ -185,7 +192,6 @@
       <EntityTypeMapping TypeName="DbCellPhoneStoreModel.ProductVersion">
         <MappingFragment StoreEntitySet="ProductVersion">
           <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="HotSale" ColumnName="HotSale" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
           <ScalarProperty Name="Price" ColumnName="Price" />
