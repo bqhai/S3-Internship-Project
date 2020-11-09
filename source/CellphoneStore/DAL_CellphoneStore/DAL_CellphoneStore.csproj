@@ -53,8 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\DAL_Account.cs" />
     <Compile Include="DAL\DAL_Brand.cs" />
+    <Compile Include="DAL\DAL_Customer.cs" />
+    <Compile Include="DAL\DAL_Product.cs" />
+    <Compile Include="DAL\DAL_ProductIntroduce.cs" />
     <Compile Include="DAL\DAL_ProductVesion.cs" />
+    <Compile Include="MappingClass\ProductVersionInfo.cs" />
     <Compile Include="Model\Account.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
@@ -89,6 +94,9 @@
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Employee.cs">
+      <DependentUpon>DbCellphoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HotSale.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Order.cs">

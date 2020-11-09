@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_CellPhoneStore.Model;
 using AutoMapper;
+using DAL_CellPhoneStore.MappingClass;
+
 namespace Model_CellphoneStore.Repository
 {
     public class EntityMapper<TSource, TDestination> where TSource:class where TDestination:class
@@ -19,6 +21,18 @@ namespace Model_CellphoneStore.Repository
 
             Mapper.CreateMap<ProductVersionMapped, ProductVersion>();
             Mapper.CreateMap<ProductVersion, ProductVersionMapped>();
+
+            Mapper.CreateMap<ProductVersionInfoMapped, ProductVersionInfo>();
+            Mapper.CreateMap<ProductVersionInfo, ProductVersionInfoMapped>();
+
+            Mapper.CreateMap<ProductIntroduceMapped, ProductIntroduce>();
+            Mapper.CreateMap<ProductIntroduce, ProductIntroduceMapped>();
+
+            Mapper.CreateMap<AccountMapped, Account>();
+            Mapper.CreateMap<Account, AccountMapped>();
+
+            Mapper.CreateMap<CustomerMapped, Customer>();
+            Mapper.CreateMap<Customer, CustomerMapped>();
         }
         public TDestination Translate(TSource obj)
         {

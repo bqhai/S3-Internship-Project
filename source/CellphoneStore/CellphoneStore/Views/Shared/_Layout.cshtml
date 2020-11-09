@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
     <title>@ViewBag.Title</title>
     <link href="~/Content/CSS/layout.css" rel="stylesheet" />
     <link href="~/Content/CSS/popup-login.css" rel="stylesheet" />
@@ -10,11 +10,31 @@
     <link href="~/Content/CSS/product.css" rel="stylesheet" />
     <script src="~/Content/JS/popup-login.js"></script>
     <script src="~/Content/JS/techinfo-expand.js"></script>
+    <script src="~/Content/JS/introduce-expand.js"></script>
+    <script src="~/Content/JS/alert.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (TempData["DangerMessage"] != null)
+    {
+        <div class="alert" role="alert">
+            <strong>Thông báo!</strong> @TempData["DangerMessage"]
+        </div>
+    }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert success" role="alert">
+            <strong>Thông báo!</strong> @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["WarningMessage"] != null)
+    {
+        <div class="alert warning" role="alert">
+            <strong>Thông báo!</strong> @TempData["WarningMessage"]
+        </div>
+    }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -40,43 +60,67 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="row">
-                        <form class="col-sm-7 form-inline">
-                            <input class="form-control mr-sm-2 search" type="text" name="txtSearch" placeholder="Bạn tìm mua gì?" />
-                            <button class="btn btn-danger search-button" type="submit" name="btnSearch"><i class="fa fa-search"></i>Tìm kiếm</button>
-                        </form>
+                        <div class="col-sm-7 form-inline">
+                            @using (Html.BeginForm("SearchProductVersion", "Product", FormMethod.Get))
+                            {
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2 search" type="text" name="keyWord" placeholder="Bạn tìm mua gì?" required />
+                                    <button class="btn btn-danger search-button" type="submit" name="btnSearch"><i class="fa fa-search"></i>Tìm kiếm</button>
+                                </form>
+                            }
+                        </div>
                         <div class="col-sm-3">
                             <button class="btn btn-warning search-button" name="btnUser" onclick="openForm()"><i class="fa fa-user fa-fw"></i>Tài khoản</button>
                             <div class="form-popup" id="popupLoginForm">
-                                <form class="form-container">
-                                    <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
-                                    <h2 style="color: white; text-align: center">Đăng nhập</h2>
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Tên đăng nhập" name="username" required>
-                                    <input class="form-control mr-sm-2" type="password" placeholder="Mật khẩu" name="password" required>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-warning" style="width: 100%">Đăng nhập</button>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <a href="@Url.Action("Register", "User")">
-                                                <input class="btn btn-warning" type="button" value="Đăng ký" style="width: 100%" />
-                                            </a>
-                                        </div>
+                                @if (Session["Account"] != null)
+                                {
+                                    <div class="form-container">
+                                        <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                                        <h3 style="color: white; text-align: center; margin-top: 10px">Xin chào @Session["Account"].ToString()</h3>
+                                        <a href="#">
+                                            <input class="btn btn-warning" type="button" value="Đơn hàng của tôi" style="width: 100%; margin-top: 10px" />
+                                        </a>
+                                        <a href="#">
+                                            <input class="btn btn-warning" type="button" value="Thông tin tài khoản" style="width: 100%; margin-top: 10px" />
+                                        </a>
+                                        <a href="@Url.Action("ProcessLogout", "User")">
+                                            <input class="btn btn-danger" type="button" value="Thoát tài khoản" style="width: 100%; margin-top: 10px" />
+                                        </a>
                                     </div>
-                                    <a href="#">Quên mật khẩu?</a>
-                                    <br />
-                                    <strong style="text-align: center; color: white">Hoặc</strong>
-                                    <br />
-                                    <br />
-                                    <a href="#" class="btn-login-option fb">
-                                        <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
-                                    </a>
-                                    <a href="#" class="btn-login-option twitter">
-                                        <i class="fa fa-twitter fa-fw"></i> Đăng nhập bằng Twitter
-                                    </a>
-                                    <a href="#" class="btn-login-option google">
-                                        <i class="fa fa-google fa-fw"></i> Đăng nhập bằng Google+
-                                    </a>
-                                </form>
+                                }
+                                else
+                                {
+                                    <form class="form-container" method="post" action="@Url.Action("ProcessLogin", "User")">
+                                        <button type="submit" class="btn btn-danger cancel" onclick="closeForm()"><i class="fa fa-times"></i></button>
+                                        <h2 style="color: white; text-align: center">Đăng nhập</h2>
+                                        <input class="form-control mr-sm-2" type="text" placeholder="Tên đăng nhập" name="Username" required>
+                                        <input class="form-control mr-sm-2" type="password" placeholder="Mật khẩu" name="Password" required>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <button type="submit" class="btn btn-warning" style="width: 100%">Đăng nhập</button>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a href="@Url.Action("Register", "User")">
+                                                    <input class="btn btn-warning" type="button" value="Đăng ký" style="width: 100%" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <a href="#">Quên mật khẩu?</a>
+                                        <br />
+                                        <strong style="text-align: center; color: white">Hoặc</strong>
+                                        <br />
+                                        <br />
+                                        <a href="#" class="btn-login-option fb">
+                                            <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
+                                        </a>
+                                        <a href="#" class="btn-login-option twitter">
+                                            <i class="fa fa-twitter fa-fw"></i> Đăng nhập bằng Twitter
+                                        </a>
+                                        <a href="#" class="btn-login-option google">
+                                            <i class="fa fa-google fa-fw"></i> Đăng nhập bằng Google+
+                                        </a>
+                                    </form>
+                                }
                             </div>
                         </div>
                         <div class="col-sm-2">

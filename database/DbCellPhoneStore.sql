@@ -12138,7 +12138,7 @@ CREATE TABLE Customer
 	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
-	Sex NVARCHAR(50),
+	Gender NVARCHAR(50),
 	DateOfBirth NVARCHAR(50),
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
@@ -12152,7 +12152,7 @@ CREATE TABLE Employee
 	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
-	Sex NVARCHAR(50),
+	Gender NVARCHAR(50),
 	DateOfBirth NVARCHAR(50),
 	Status BIT, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
@@ -12202,13 +12202,19 @@ CREATE TABLE ProductVersion
 	RAM NVARCHAR(100),
 	ROM NVARCHAR(100),
 	Color NVARCHAR(100),
-	ListPrice INT,
-	Price INT,
-	QuantityInStock INT,
-	Status BIT, --0: hết hàng, 1: còn hàng
+	ListPrice INT NOT NULL,
+	Price INT NOT NULL,
+	QuantityInStock INT NOT NULL,
+	Status BIT, --0: hết hàng, 1: còn hàng 
 	Image NVARCHAR(500),
 	
 	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
+)
+GO
+CREATE TABLE HotSale
+(
+	ProductVersionID NVARCHAR(50) PRIMARY KEY,
+	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
 )
 GO
 CREATE TABLE Favorite
@@ -12306,11 +12312,11 @@ INSERT INTO AccountType VALUES(2, N'Nhân viên')
 INSERT INTO AccountType VALUES(3, N'Khách hàng')
 GO
 --Account--
-INSERT INTO Account VALUES(N'bqhai1205', N'123456', 1, 1)
-INSERT INTO Account VALUES(N'hdhieu2610', N'26101999', 2, 1)
-INSERT INTO Account VALUES(N'dtqnhu2601', N'26011999', 3, 1)
-INSERT INTO Account VALUES(N'ntttu1707', N'17071999', 3, 1)
-INSERT INTO Account VALUES(N'pvquan2603', N'26031999', 3, 1)
+INSERT INTO Account VALUES(N'bqhai1205', N'e10adc3949ba59abbe56e057f20f883e', 1, 1) --123456
+INSERT INTO Account VALUES(N'hdhieu2610', N'4c45a38dfd23d60c2b4f47c8d23ed8f0', 2, 1)
+INSERT INTO Account VALUES(N'dtqnhu2601', N'83aaba297dfb1be50320eb4c6501c8ac', 3, 1)
+INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3, 1)
+INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 1)
 GO
 --Employee--
 INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
@@ -12353,7 +12359,7 @@ N'Nano-SIM + eSIM',
 N'IPS LCD', 
 6.1,
 N'1792 x 828 pixels', 
-N'iOS', 
+N'IOS', 
 N'A13 Bionic', 
 NULL, 
 NULL, 
@@ -12379,7 +12385,7 @@ N'Nano-SIM + eSIM',
 N'Super Retina XDR', 
 6.5, 
 N'2688 x 1242 pixels', 
-N'iOS', 
+N'IOS', 
 N'A13 Bionic', 
 NULL, 
 NULL, 
@@ -12405,7 +12411,7 @@ N'Nano-SIM',
 N'Liquid Retina LCD', 
 6.1, 
 N'1792 x 828 pixels', 
-N'iOS', 
+N'IOS', 
 N'A12 Bionic', 
 NULL, 
 N'8 lõi', 
@@ -12431,7 +12437,7 @@ N'Nano-SIM',
 N'Cảm ứng điện dung LED-backlit IPS LCD, 16 triệu màu', 
 5.5, 
 N'1920 x 1080 pixels', 
-N'iOS', 
+N'IOS', 
 N'Apple A11 Bionic APL1W72', 
 N'2x 2.39 GHz Monsoon, 4x 2.39 GHz Mistral', 
 N'Apple GPU (3 lõi đồ họa)', 
@@ -12457,7 +12463,7 @@ N'Nano-SIM',
 N'Cảm ứng điện dung LED-backlit IPS LCD, 16 triệu màu', 
 5.5, 
 N'1920 x 1080 pixels', 
-N'iOS', 
+N'IOS', 
 N'Apple A10 Fusion APL1W24', 
 N'2x 2.34 GHz Hurricane, 2x 2.34 GHz Zephyr', 
 N'PowerVR Series7XT Plus (6 lõi đồ họa)', 
@@ -12612,7 +12618,7 @@ INSERT INTO ProductVersion VALUES(N'SMPV10004', N'SMP10000', N'IPhone 11 Chính 
 INSERT INTO ProductVersion VALUES(N'SMPV10005', N'SMP10000', N'IPhone 11 Chính hãng - 64GB - Tím (VN/A)', N'4 GB', N'64 GB', N'Tím', 20000000, 18000000, 10, 1, N'SMPV10005.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10006', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đen (VN/A)', N'4 GB', N'128 GB', N'Đen', 21500000, 20000000, 10, 1, N'SMPV10000.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10007', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Đỏ (VN/A)', N'4 GB', N'128 GB', N'Đỏ', 21500000, 20000000, 15, 1, N'SMPV10001.jpg')
-INSERT INTO ProductVersion VALUES(N'SMPV10008', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Xanh lá (VN/A)', N'4 GB', N'128 GB', N'Xanh lá', 21500000, 20000000, 10, 1, N'SMPV10002.jpg')
+INSERT INTO ProductVersion VALUES(N'SMPV10008', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Xanh lá (VN/A)', N'4 GB', N'128 GB', N'Xanh lá', 21500000, 20000000, 10, 0, N'SMPV10002.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10009', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Trắng (VN/A)', N'4 GB', N'128 GB', N'Trắng', 21500000, 20000000, 10, 1, N'SMPV10003.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10010', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Vàng (VN/A)', N'4 GB', N'128 GB', N'Vàng', 21500000, 20000000, 10, 1, N'SMPV10004.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10011', N'SMP10000', N'IPhone 11 Chính hãng - 128GB - Tím (VN/A)', N'4 GB', N'128 GB', N'Tím', 21500000, 20000000, 10, 1, N'SMPV10005.jpg')
@@ -12660,7 +12666,12 @@ INSERT INTO ProductVersion VALUES(N'SMPV10043', N'SMP10009', N'Samsung Galaxy A5
 INSERT INTO ProductVersion VALUES(N'SMPV10044', N'SMP10009', N'Samsung Galaxy A51 - Hồng', N'6 GB', N'128 GB', N'Hồng', 7990000, 7100000, 10, 1, N'SMPV10044.jpg')
 INSERT INTO ProductVersion VALUES(N'SMPV10045', N'SMP10009', N'Samsung Galaxy A51 - Bạc độc đáo', N'6 GB', N'128 GB', N'Bạc độc đáo', 7990000, 7100000, 10, 1, N'SMPV10045.jpg')
 
-
+INSERT INTO HotSale VALUES(N'SMPV10004')
+INSERT INTO HotSale VALUES(N'SMPV10019')
+INSERT INTO HotSale VALUES(N'SMPV10022')
+INSERT INTO HotSale VALUES(N'SMPV10028')
+INSERT INTO HotSale VALUES(N'SMPV10036')
+INSERT INTO HotSale VALUES(N'SMPV10041')
 
 GO
 --ProductIntroduce--

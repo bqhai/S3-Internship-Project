@@ -1,0 +1,16 @@
+﻿@model List<Model_CellphoneStore.ProductVersionMapped>
+
+@foreach (var item in Model)
+{
+    <div class="item">
+        <a href="@Url.Action("ProductDetails", "Product", new {productVersionID = item.ProductVersionID})">
+            <span>
+                <b>@item.ROM</b>
+                <br />
+                <i>@item.Color</i>
+                <br />
+                <strong>@item.Price đ</strong>
+            </span>
+        </a>
+    </div>
+}
