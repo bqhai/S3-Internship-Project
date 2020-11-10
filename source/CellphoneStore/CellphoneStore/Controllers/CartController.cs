@@ -62,6 +62,7 @@ namespace CellphoneStore.Controllers
             }
             if (buynow)
             {
+                TempData["TotalPrice"] = GetTotalPrice();
                 return RedirectToAction("Cart", "Cart");
             }
             else
