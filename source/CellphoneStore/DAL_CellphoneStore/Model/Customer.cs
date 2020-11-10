@@ -19,7 +19,6 @@ namespace DAL_CellPhoneStore.Model
         {
             this.Orders = new HashSet<Order>();
             this.ProductVersions = new HashSet<ProductVersion>();
-            this.PromotionCodes = new HashSet<PromotionCode>();
         }
     
         public string CustomerID { get; set; }
@@ -36,7 +35,5 @@ namespace DAL_CellPhoneStore.Model
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductVersion> ProductVersions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PromotionCode> PromotionCodes { get; set; }
     }
 }

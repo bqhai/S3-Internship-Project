@@ -24,10 +24,10 @@ namespace DAL_CellPhoneStore.Model
         public string Payments { get; set; }
         public string Delivery { get; set; }
         public string Notes { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<int> TotalPrice { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public int TotalPrice { get; set; }
         public string CustomerID { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

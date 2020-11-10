@@ -25,5 +25,9 @@ namespace DAL_CellPhoneStore.DAL
             db.Customers.Add(customer);
             db.SaveChanges();
         }
+        public Customer GetCustomerByUsername(string username)
+        {
+            return db.Customers.Where(cus => cus.Username == username).FirstOrDefault();
+        }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ProductMapped.cs" />
     <Compile Include="ProductVersionMapped.cs" />
     <Compile Include="ProductVersionInfoMapped.cs" />
+    <Compile Include="PromotionCodeMapped.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EntityMapper.cs" />
   </ItemGroup>

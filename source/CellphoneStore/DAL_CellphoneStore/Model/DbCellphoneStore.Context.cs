@@ -39,6 +39,7 @@ namespace DAL_CellPhoneStore.Model
         public virtual DbSet<ProductIntroduce> ProductIntroduces { get; set; }
         public virtual DbSet<ProductVersion> ProductVersions { get; set; }
         public virtual DbSet<PromotionCode> PromotionCodes { get; set; }
+        public virtual DbSet<PromotionCodeUsed> PromotionCodeUseds { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<Ward> Wards { get; set; }
     }

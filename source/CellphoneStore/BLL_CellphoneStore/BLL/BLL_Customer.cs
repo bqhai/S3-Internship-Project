@@ -23,7 +23,7 @@ namespace BLL_CellPhoneStore.BLL
         public bool AddNewCustomer(CustomerMapped customerMapped)
         {
             string lastCustomerID = dalCustomer.GetTheLastCustomerID();
-            if(lastCustomerID != null)
+            if (lastCustomerID != null)
             {
                 try
                 {
@@ -39,6 +39,13 @@ namespace BLL_CellPhoneStore.BLL
                 }
             }
             return false;
+        }
+        public CustomerMapped GetCustomerByUsername(string username)
+        {
+            Customer customer = dalCustomer.GetCustomerByUsername(username);
+            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            return customerMapped;
+
         }
     }
 }

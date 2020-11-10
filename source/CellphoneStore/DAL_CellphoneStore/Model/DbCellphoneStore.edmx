@@ -12,7 +12,7 @@
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="AccountTypeID" Type="int" Nullable="false" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -90,7 +90,7 @@
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Favorite">
           <Key>
@@ -113,21 +113,21 @@
           </Key>
           <Property Name="OrderID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductVersionID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Amount" Type="int" />
-          <Property Name="Price" Type="int" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Payments" Type="nvarchar" MaxLength="100" />
-          <Property Name="Delivery" Type="nvarchar" MaxLength="100" />
+          <Property Name="Payments" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Delivery" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
-          <Property Name="OrderDate" Type="date" />
-          <Property Name="TotalPrice" Type="int" />
-          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="TotalPrice" Type="int" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -202,7 +202,7 @@
           <Property Name="ListPrice" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="QuantityInStock" Type="int" Nullable="false" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Image" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="PromotionCode">
@@ -210,18 +210,21 @@
             <PropertyRef Name="Code" />
           </Key>
           <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="100" />
-          <Property Name="Value" Type="float" />
-          <Property Name="StartDate" Type="date" />
-          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="Maximum" Type="int" Nullable="false" />
+          <Property Name="Require" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="ExpiryDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="PromotionCodeUsed">
           <Key>
             <PropertyRef Name="Code" />
-            <PropertyRef Name="CustomerID" />
+            <PropertyRef Name="Username" />
           </Key>
           <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UsedDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -348,7 +351,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__Customer__3D5E1FD2">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
@@ -395,15 +398,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promotion__Custo__45F365D3">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+        <Association Name="FK__Promotion__Usern__45F365D3">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="PromotionCodeUsed" Type="Self.PromotionCodeUsed" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustomerID" />
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
             </Principal>
             <Dependent Role="PromotionCodeUsed">
-              <PropertyRef Name="CustomerID" />
+              <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -524,8 +527,8 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductVersion" EntitySet="ProductVersion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promotion__Custo__45F365D3" Association="Self.FK__Promotion__Custo__45F365D3">
-            <End Role="Customer" EntitySet="Customer" />
+          <AssociationSet Name="FK__Promotion__Usern__45F365D3" Association="Self.FK__Promotion__Usern__45F365D3">
+            <End Role="Account" EntitySet="Account" />
             <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUsed" />
           </AssociationSet>
           <AssociationSet Name="FK__PromotionC__Code__46E78A0C" Association="Self.FK__PromotionC__Code__46E78A0C">
@@ -564,6 +567,7 @@
           <EntitySet Name="ProductIntroduces" EntityType="DbCellPhoneStoreModel.ProductIntroduce" />
           <EntitySet Name="ProductVersions" EntityType="DbCellPhoneStoreModel.ProductVersion" />
           <EntitySet Name="PromotionCodes" EntityType="DbCellPhoneStoreModel.PromotionCode" />
+          <EntitySet Name="PromotionCodeUseds" EntityType="DbCellPhoneStoreModel.PromotionCodeUsed" />
           <EntitySet Name="Provinces" EntityType="DbCellPhoneStoreModel.Province" />
           <EntitySet Name="Wards" EntityType="DbCellPhoneStoreModel.Ward" />
           <AssociationSet Name="FK__Account__Account__1ED998B2" Association="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2">
@@ -577,6 +581,10 @@
           <AssociationSet Name="FK__Employee__Userna__2A4B4B5E" Association="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promotion__Usern__45F365D3" Association="DbCellPhoneStoreModel.FK__Promotion__Usern__45F365D3">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUseds" />
           </AssociationSet>
           <AssociationSet Name="FK__Product__BrandID__30F848ED" Association="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED">
             <End Role="Brand" EntitySet="Brands" />
@@ -618,13 +626,13 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductVersion" EntitySet="ProductVersions" />
           </AssociationSet>
+          <AssociationSet Name="FK__PromotionC__Code__46E78A0C" Association="DbCellPhoneStoreModel.FK__PromotionC__Code__46E78A0C">
+            <End Role="PromotionCode" EntitySet="PromotionCodes" />
+            <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUseds" />
+          </AssociationSet>
           <AssociationSet Name="Favorite" Association="DbCellPhoneStoreModel.Favorite">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="ProductVersion" EntitySet="ProductVersions" />
-          </AssociationSet>
-          <AssociationSet Name="PromotionCodeUsed" Association="DbCellPhoneStoreModel.PromotionCodeUsed">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="PromotionCode" EntitySet="PromotionCodes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
@@ -634,10 +642,11 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AccountType" Relationship="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2" FromRole="Account" ToRole="AccountType" />
           <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Account" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Account" ToRole="Employee" />
+          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__45F365D3" FromRole="Account" ToRole="PromotionCodeUsed" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -695,7 +704,6 @@
           <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Customer" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2" FromRole="Customer" ToRole="Order" />
           <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="Customer" ToRole="ProductVersion" />
-          <NavigationProperty Name="PromotionCodes" Relationship="DbCellPhoneStoreModel.PromotionCodeUsed" FromRole="Customer" ToRole="PromotionCode" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -724,7 +732,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Employee" ToRole="Account" />
         </EntityType>
         <EntityType Name="HotSale">
@@ -741,8 +749,8 @@
           </Key>
           <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Int32" />
-          <Property Name="Price" Type="Int32" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D" FromRole="OrderDetail" ToRole="Order" />
           <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6" FromRole="OrderDetail" ToRole="ProductVersion" />
         </EntityType>
@@ -751,13 +759,13 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Payments" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Delivery" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Payments" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Delivery" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="OrderDate" Type="DateTime" Precision="0" />
-          <Property Name="TotalPrice" Type="Int32" />
-          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalPrice" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
@@ -838,7 +846,7 @@
           <Property Name="ListPrice" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="QuantityInStock" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HotSale" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" FromRole="ProductVersion" ToRole="HotSale" />
           <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6" FromRole="ProductVersion" ToRole="OrderDetail" />
@@ -850,11 +858,24 @@
             <PropertyRef Name="Code" />
           </Key>
           <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Value" Type="Double" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.PromotionCodeUsed" FromRole="PromotionCode" ToRole="Customer" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Maximum" Type="Int32" Nullable="false" />
+          <Property Name="Require" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__46E78A0C" FromRole="PromotionCode" ToRole="PromotionCodeUsed" />
+        </EntityType>
+        <EntityType Name="PromotionCodeUsed">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UsedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__45F365D3" FromRole="PromotionCodeUsed" ToRole="Account" />
+          <NavigationProperty Name="PromotionCode" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__46E78A0C" FromRole="PromotionCodeUsed" ToRole="PromotionCode" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -923,6 +944,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Promotion__Usern__45F365D3">
+          <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.PromotionCodeUsed" Role="PromotionCodeUsed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="PromotionCodeUsed">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Product__BrandID__30F848ED">
           <End Type="DbCellPhoneStoreModel.Brand" Role="Brand" Multiplicity="0..1" />
           <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="*" />
@@ -950,7 +983,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__Customer__3D5E1FD2">
-          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
@@ -1045,13 +1078,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PromotionC__Code__46E78A0C">
+          <End Type="DbCellPhoneStoreModel.PromotionCode" Role="PromotionCode" Multiplicity="1" />
+          <End Type="DbCellPhoneStoreModel.PromotionCodeUsed" Role="PromotionCodeUsed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PromotionCode">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="PromotionCodeUsed">
+              <PropertyRef Name="Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Favorite">
           <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
           <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="*" />
-        </Association>
-        <Association Name="PromotionCodeUsed">
-          <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="*" />
-          <End Type="DbCellPhoneStoreModel.PromotionCode" Role="PromotionCode" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1268,8 +1309,19 @@
               <MappingFragment StoreEntitySet="PromotionCode">
                 <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Require" ColumnName="Require" />
+                <ScalarProperty Name="Maximum" ColumnName="Maximum" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionCodeUseds">
+            <EntityTypeMapping TypeName="DbCellPhoneStoreModel.PromotionCodeUsed">
+              <MappingFragment StoreEntitySet="PromotionCodeUsed">
+                <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1307,14 +1359,6 @@
           <AssociationSetMapping Name="Favorite" TypeName="DbCellPhoneStoreModel.Favorite" StoreEntitySet="Favorite">
             <EndProperty Name="ProductVersion">
               <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
-            </EndProperty>
-            <EndProperty Name="Customer">
-              <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="PromotionCodeUsed" TypeName="DbCellPhoneStoreModel.PromotionCodeUsed" StoreEntitySet="PromotionCodeUsed">
-            <EndProperty Name="PromotionCode">
-              <ScalarProperty Name="Code" ColumnName="Code" />
             </EndProperty>
             <EndProperty Name="Customer">
               <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />

@@ -12125,7 +12125,7 @@ CREATE TABLE Account
 	Username NVARCHAR(50) PRIMARY KEY,
 	Password NVARCHAR(MAX) NOT NULL,
 	AccountTypeID INT NOT NULL,
-	Status BIT, --0: Block, 1: Active
+	Status BIT NOT NULL, --0: Block, 1: Active
 
 	FOREIGN KEY(AccountTypeID) REFERENCES AccountType(AccountTypeID)
 )
@@ -12154,7 +12154,7 @@ CREATE TABLE Employee
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
 	DateOfBirth NVARCHAR(50),
-	Status BIT, --0:Stop working, --1: Working
+	Status BIT NOT NULL, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
@@ -12235,7 +12235,7 @@ CREATE TABLE Orders
 	Notes NVARCHAR(500),
 	OrderDate DATE NOT NULL,
 	TotalPrice INT NOT NULL,
-	CustomerID NVARCHAR(50),
+	CustomerID NVARCHAR(50) NOT NULL,
 	Status BIT NOT NULL, --0: Unpaid --1: Paid
 	
 	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
@@ -12256,19 +12256,22 @@ GO
 CREATE TABLE PromotionCode
 (
 	Code NVARCHAR(50) PRIMARY KEY,
-	Description NVARCHAR(100),
+	Description NVARCHAR(500),
 	Value FLOAT NOT NULL,
-	StartDate DATE,
-	ExpiryDate DATE
+	Maximum Int NOT NULL,
+	Require Int NOT NULL,
+	StartDate DATE NOT NULL,
+	ExpiryDate DATE NOT NULL
 )
 GO
 
 CREATE TABLE PromotionCodeUsed
 (
 	Code NVARCHAR(50),
-	CustomerID NVARCHAR(50),
-	PRIMARY KEY(Code, CustomerID),
-	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+	Username NVARCHAR(50),
+	UsedDate Date NOT NULL,
+	PRIMARY KEY(Code, Username),
+	FOREIGN KEY(Username) REFERENCES Account(Username),
 	FOREIGN KEY(Code) REFERENCES PromotionCode(Code)
 )
 GO
@@ -12348,6 +12351,20 @@ INSERT INTO Brand VALUES(N'BK', N'BKAV', N'Việt Nam')
 --INSERT INTO Brand VALUES(N'AC', N'Acer', N'Đài Loan')
 --INSERT INTO Brand VALUES(N'MI', N'MSI', N'Đài Loan')
 GO
+
+--PromotionCode--
+INSERT INTO PromotionCode VALUES(N'HELLO', N'Giảm 5% tối đa 100k, đơn tối thiểu 0đ', 0.05, 100000, 0, N'05-20-2019', N'05-20-2049')
+INSERT INTO PromotionCode VALUES(N'DSBNOV10', N'Giảm 10% tối đa 110k, đơn tối thiểu 6000000đ', 0.1, 110000, 6000000, N'05-20-2019', N'06-20-2019')
+INSERT INTO PromotionCode VALUES(N'DSBNOV11', N'Giảm 8% tối đa 100k, đơn tối thiểu 3000000đ', 0.08, 100000, 3000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV12', N'Giảm 100k, đơn tối thiểu 5000000đ', 100000, 100000, 5000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV13', N'Giảm 200k, đơn tối thiểu 10000000đ', 200000, 200000, 10000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV14', N'Giảm 500k, đơn tối thiểu 15000000đ', 500000, 500000, 15000000, N'05-20-2021', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV15', N'Giảm 10%, đơn tối thiểu 15000000đ', 1, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV16', N'Giảm 7.3%, đơn tối thiểu 15000000đ', 0.073, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV17', N'Giảm 7.3121%, đơn tối thiểu 15000000đ', 0.073121, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV18', N'Giảm 7.333%, đơn tối thiểu 15000000đ', 0.07333, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+--PromotionCodeUsed--
+INSERT INTO PromotionCodeUsed VALUES(N'HELLO', N'dtqnhu2601', N'11-10-2020')
 --Product--
 INSERT INTO Product VALUES(
 N'SMP10000', 

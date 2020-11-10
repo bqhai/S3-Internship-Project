@@ -12,14 +12,13 @@ namespace DAL_CellPhoneStore.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class PromotionCodeUsed
     {
-        public string OrderID { get; set; }
-        public string ProductVersionID { get; set; }
-        public int Amount { get; set; }
-        public int Price { get; set; }
+        public string Code { get; set; }
+        public string Username { get; set; }
+        public System.DateTime UsedDate { get; set; }
     
-        public virtual Order Order { get; set; }
-        public virtual ProductVersion ProductVersion { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual PromotionCode PromotionCode { get; set; }
     }
 }

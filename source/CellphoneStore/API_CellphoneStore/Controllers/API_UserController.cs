@@ -50,5 +50,12 @@ namespace API_CellphoneStore.Controllers
             }
             return false;
         }
+        [HttpGet]
+        [Route("GetCustomerByUsername/{username}")]
+        public CustomerMapped GetCustomerByUsername(string username)
+        {
+            return bllCustomer.GetCustomerByUsername(username);
+        }
+
     }
 }

@@ -327,6 +327,8 @@
     <Content Include="Views\Product\ListProductVersion.cshtml" />
     <Content Include="Views\Product\ProductIntroduce.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\GetResultUsingPromotionCode.cshtml" />
+    <Content Include="Views\Cart\GetShipmentDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

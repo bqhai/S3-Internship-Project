@@ -131,9 +131,10 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <a href="@Url.Action("Cart", "Cart")">
+                            @*<a href="@Url.Action("Cart", "Cart")">
                                 <input class="fa fa-shopping-cart btn btn-warning search-button" type="button" value="&#xf07a Giỏ hàng" style="width: 105px"/>                               
-                            </a>                          
+                            </a>*@  
+                            <button class="fa fa-shopping-cart btn btn-warning search-button" onclick="location.href='@Url.Action("Cart", "Cart")'">   Giỏ hàng   <span class="badge badge-light">@Session["Amount"]</span></button>
                         </div>
                     </div>
                 </div>

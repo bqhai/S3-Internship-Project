@@ -57,6 +57,7 @@
     <Compile Include="BLL\BLL_Product.cs" />
     <Compile Include="BLL\BLL_ProductIntroduce.cs" />
     <Compile Include="BLL\BLL_ProductVersion.cs" />
+    <Compile Include="BLL\BLL_PromotionCode.cs" />
     <Compile Include="Lib\Auto.cs" />
     <Compile Include="Lib\MD5_Encryptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

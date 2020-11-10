@@ -22,7 +22,7 @@ namespace DAL_CellPhoneStore.Model
         public string PhoneNumber { get; set; }
         public string Gender { get; set; }
         public string DateOfBirth { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual Account Account { get; set; }
     }

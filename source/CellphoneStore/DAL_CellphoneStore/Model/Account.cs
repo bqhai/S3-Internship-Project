@@ -19,17 +19,20 @@ namespace DAL_CellPhoneStore.Model
         {
             this.Customers = new HashSet<Customer>();
             this.Employees = new HashSet<Employee>();
+            this.PromotionCodeUseds = new HashSet<PromotionCodeUsed>();
         }
     
         public string Username { get; set; }
         public string Password { get; set; }
         public int AccountTypeID { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
     
         public virtual AccountType AccountType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PromotionCodeUsed> PromotionCodeUseds { get; set; }
     }
 }

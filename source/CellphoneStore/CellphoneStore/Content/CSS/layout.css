@@ -1,6 +1,8 @@
 ﻿body {
 }
-
+.container {
+    width: 1170px !important;
+}
 .search {
     width: 250px;
     margin-top: 10px;
@@ -58,6 +60,7 @@
     color: white;
 }
 .alert-message {
+    position: relative;
     padding: 20px;
     background-color: #f44336;
     color: white;

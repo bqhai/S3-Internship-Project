@@ -210,8 +210,19 @@
         <MappingFragment StoreEntitySet="PromotionCode">
           <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Require" ColumnName="Require" />
+          <ScalarProperty Name="Maximum" ColumnName="Maximum" />
           <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PromotionCodeUseds">
+      <EntityTypeMapping TypeName="DbCellPhoneStoreModel.PromotionCodeUsed">
+        <MappingFragment StoreEntitySet="PromotionCodeUsed">
+          <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Code" ColumnName="Code" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -249,14 +260,6 @@
     <AssociationSetMapping Name="Favorite" TypeName="DbCellPhoneStoreModel.Favorite" StoreEntitySet="Favorite">
       <EndProperty Name="ProductVersion">
         <ScalarProperty Name="ProductVersionID" ColumnName="ProductVersionID" />
-      </EndProperty>
-      <EndProperty Name="Customer">
-        <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="PromotionCodeUsed" TypeName="DbCellPhoneStoreModel.PromotionCodeUsed" StoreEntitySet="PromotionCodeUsed">
-      <EndProperty Name="PromotionCode">
-        <ScalarProperty Name="Code" ColumnName="Code" />
       </EndProperty>
       <EndProperty Name="Customer">
         <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
