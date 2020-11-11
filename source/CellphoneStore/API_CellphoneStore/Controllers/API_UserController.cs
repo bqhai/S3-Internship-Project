@@ -28,6 +28,13 @@ namespace API_CellphoneStore.Controllers
         {
             return bllAccount.GetAccountType(username);
         }
+
+        [HttpGet]
+        [Route("AccountAlreadyExists/{username}")]
+        public bool AccountAlreadyExists(string username)
+        {
+            return bllAccount.AccountAlreadyExists(username);
+        }
         [HttpPost]
         [Route("AddNewAccount")]
         public bool AddNewAccount(AccountMapped accountMapped)
@@ -55,6 +62,29 @@ namespace API_CellphoneStore.Controllers
         public CustomerMapped GetCustomerByUsername(string username)
         {
             return bllCustomer.GetCustomerByUsername(username);
+        }
+
+        [HttpPost]
+        [Route("UpdateCustomer")]
+        public bool UpdateCustomer(CustomerMapped customerMapped)
+        {
+            if (ModelState.IsValid)
+            {
+                bool updateCustomer = bllCustomer.UpdateCustomer(customerMapped);
+                return updateCustomer;
+            }
+            return false;
+        }
+        [HttpPost]
+        [Route("ChangePassword")]
+        public int ChangePassword(AccountMapped accountMapped)
+        {
+            if (ModelState.IsValid)
+            {
+                int resultChangePassword = bllAccount.ChangePassword(accountMapped);
+                return resultChangePassword;
+            }
+            return 404;
         }
 
     }

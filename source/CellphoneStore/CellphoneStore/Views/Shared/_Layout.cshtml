@@ -9,10 +9,13 @@
     <link href="~/Content/CSS/home.css" rel="stylesheet" />
     <link href="~/Content/CSS/product.css" rel="stylesheet" />
     <link href="~/Content/CSS/shopping-cart.css" rel="stylesheet" />
+    <link href="~/Content/CSS/account-info.css" rel="stylesheet" />
     <script src="~/Content/JS/popup-login.js"></script>
-    <script src="~/Content/JS/techinfo-expand.js"></script>
-    <script src="~/Content/JS/introduce-expand.js"></script>
+    <script src="~/Content/JS/expand-techinfo.js"></script>
+    <script src="~/Content/JS/expand-introduce.js"></script>
+    <script src="~/Content/JS/expand-changepassword.js"></script>
     <script src="~/Content/JS/alert.js"></script>
+    <script src="~/Content/JS/validation.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -87,7 +90,7 @@
                                         <a href="#">
                                             <input class="btn btn-warning" type="button" value="Đơn hàng của tôi" style="width: 100%; margin-top: 10px" />
                                         </a>
-                                        <a href="#">
+                                        <a href="@Url.Action("AccountInfo", "User", new { chooseOption = 1})">
                                             <input class="btn btn-warning" type="button" value="Thông tin tài khoản" style="width: 100%; margin-top: 10px" />
                                         </a>
                                         <a href="@Url.Action("ProcessLogout", "User")">

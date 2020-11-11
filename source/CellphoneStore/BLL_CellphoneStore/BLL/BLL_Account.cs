@@ -66,5 +66,36 @@ namespace BLL_CellPhoneStore.BLL
                 return false;
             }
         }
+        public bool AccountAlreadyExists(string username)
+        {
+            Account acc = dalAccount.GetAccount(username);
+            if(acc != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public int ChangePassword(AccountMapped accountMapped)
+        {
+            string oldPasswordMD5 = MD5_Encryptor.HashMD5(accountMapped.Password);
+            string newPasswordMD5 = MD5_Encryptor.HashMD5(accountMapped.NewPassword);
+            Account account = dalAccount.GetAccount(accountMapped.Username);
+            if (account != null)
+            {
+                if (account.Password == oldPasswordMD5)
+                {
+                    dalAccount.UpdateAccount(accountMapped.Username, oldPasswordMD5, newPasswordMD5);
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            return -2;
+        }
     }
 }

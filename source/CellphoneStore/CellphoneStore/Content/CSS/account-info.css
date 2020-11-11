@@ -1,0 +1,76 @@
+﻿body {
+}
+
+.account-avatar {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-left: 7px;
+    margin: 0px 0px 12px;
+    margin-top: 12px;
+}
+
+    .account-avatar .info {
+        flex: 1 1 0%;
+        font-size: 13px;
+        line-height: 15px;
+        color: rgb(51, 51, 51);
+        font-weight: 300;
+        margin-left: 10px;
+    }
+
+.account-category {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+    .account-category .icon {
+        width: 20px;
+    }
+
+    .account-category a {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 15px 18px;
+        color: rgb(74, 74, 74);
+    }
+
+        .account-category a:hover {
+            text-decoration: none;
+            color: orangered;
+        }
+
+        .account-category a span {
+            margin-left: 15px;
+        }
+.form-inline{
+    margin-bottom: 15px;
+}
+
+.borderbox{
+    box-shadow: 0 0 3px 0 rgba(51, 51, 51, .3)
+}
+#changePasswordContainer{
+    display: none;
+}
+.notification-item {
+    padding: 20px;
+    display: flex;
+    flex: 1 1 0%;
+    -webkit-box-align: center;
+    align-items: center;
+    border-top: 1px solid rgb(248, 248, 248);
+    color: rgb(102, 102, 102);
+    background-color: rgb(246, 252, 255);
+    font-size: 13px;
+    line-height: 1.5;
+}
+.notification-item .date{
+    min-width: 100px;
+}
+.notification-item .icon, .content, .read{
+    margin-right: 20px
+    
+}

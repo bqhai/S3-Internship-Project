@@ -23,6 +23,26 @@ namespace CellphoneStore.Controllers
         {
             return View();
         }
+        public ActionResult AccountInfo(int chooseOption)
+        {
+            TempData["ChooseOption"] = chooseOption;           
+            return View();
+        }
+        public ActionResult CustomerInfo()
+        {
+            var url = "api/API_User/GetCustomerByUsername/" + Session["Account"].ToString();
+            response = serviceObj.GetResponse(url);          
+            if (response.IsSuccessStatusCode)
+            {
+                CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
+                return PartialView(customerMapped);
+            }
+            return PartialView();
+        }
+        public ActionResult Notification()
+        {
+            return PartialView();
+        }
         [HttpPost]
         public ActionResult ProcessLogin(AccountMapped accountMapped)
         {
@@ -46,8 +66,7 @@ namespace CellphoneStore.Controllers
                 else 
                 {
                     return Redirect(this.Request.UrlReferrer.ToString());
-                }
-                
+                }               
             }
             else
             {
@@ -66,25 +85,93 @@ namespace CellphoneStore.Controllers
         public ActionResult ProcessLogout()
         {
             Session.Remove("Account");
-            return Redirect(this.Request.UrlReferrer.ToString());
+            Session.Remove("Cart");
+            Session.Remove("Amount");
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult ProcessRegister(AccountMapped accountMapped, CustomerMapped customerMapped)
         {
-            HttpResponseMessage resAddAcc = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);
-            HttpResponseMessage resAddCus = serviceObj.PostResponse("api/API_User/AddNewCustomer/", customerMapped);
-            var resultAddAcc = resAddAcc.Content.ReadAsAsync<bool>().Result;
-            var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
-            if(resultAddAcc  && resultAddCus)
+            response = serviceObj.GetResponse("api/API_User/AccountAlreadyExists/" + accountMapped.Username);
+            var resultCheck = response.Content.ReadAsAsync<bool>().Result;
+            if (!resultCheck)
             {
-                TempData["SuccessMessage"] = "Đăng ký thành công!";
-                return RedirectToAction("Index", "Home");
+                HttpResponseMessage resAddAcc = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);              
+                var resultAddAcc = resAddAcc.Content.ReadAsAsync<bool>().Result;
+                
+                if (resultAddAcc)
+                {                   
+                    HttpResponseMessage resAddCus = serviceObj.PostResponse("api/API_User/AddNewCustomer/", customerMapped);
+                    var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
+                    if (resultAddCus)
+                    {
+                        TempData["SuccessMessage"] = "Đăng ký thành công!";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        TempData["DangerMessage"] = "Đăng ký thất bại";
+                        return RedirectToAction("Register", "User");
+                    }
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Đăng ký thất bại";
+                    return RedirectToAction("Register", "User");
+                }
             }
             else
             {
-                TempData["DangerMessage"] = "Đăng ký thất bại";
+                TempData["DangerMessage"] = "Tài khoản này đã tồn tại";
                 return RedirectToAction("Register", "User");
             }
             
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomer(CustomerMapped customerMapped)
+        {
+            customerMapped.Username = Session["Account"].ToString();
+            customerMapped.Gender = Request.Form["Gender"].ToString();
+            response = serviceObj.PostResponse("api/API_User/UpdateCustomer/", customerMapped);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultUpdateCus = response.Content.ReadAsAsync<bool>().Result;
+                if (resultUpdateCus)
+                {
+                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công";                  
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+                }
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+            return Redirect(this.Request.UrlReferrer.ToString());
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(AccountMapped accountMapped, FormCollection c)
+        {
+            accountMapped.Username = Session["Account"].ToString();
+            accountMapped.Password = c["OldPassword"];
+            accountMapped.NewPassword = c["NewPassword"];
+            response = serviceObj.PostResponse("api/API_User/ChangePassword/", accountMapped);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultChangePass = response.Content.ReadAsAsync<int>().Result;
+                if(resultChangePass == 1)
+                {
+                    TempData["SuccessMessage"] = "Đổi mật khẩu thành công";
+                }
+                else if(resultChangePass == -1)
+                {
+                    TempData["DangerMessage"] = "Mật khẩu cũ không đúng";
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Thất bại";
+                }
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+            return Redirect(this.Request.UrlReferrer.ToString());
         }
     }
 }

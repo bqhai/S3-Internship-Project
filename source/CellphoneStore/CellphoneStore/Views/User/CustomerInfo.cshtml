@@ -1,0 +1,91 @@
+﻿<h4>Thông tin cá nhân</h4>
+@model Model_CellphoneStore.CustomerMapped
+<form class="form" method="post" action="@Url.Action("UpdateCustomer", "User")">
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="fullName">Họ tên</label>
+        <div>
+            <input class="form-control" type="text" id="fullName" name="Name" value="@Model.Name" placeholder="Nhập họ tên" style="width:300px" autofocus required />
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="phoneNumber">Số điện thoại</label>
+        <div>
+            <input class="form-control" type="tel" id="phoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="Nhập số điện thoại" style="width:300px" autofocus required />
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="email">Email</label>
+        <div>
+            <input class="form-control" type="email" id="email" name="Email" value="@Model.Email" placeholder="Nhập email" style="width:300px" autofocus required />
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="birthDate">Ngày sinh</label>
+        <div>
+            <input type="date" id="birthDate" name="DateOfBirth" class="form-control" style="width:300px" required>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label">Giới tính</label>
+        <div>
+            @if (Model.Gender == "Nam")
+            {
+                <label class="radio-inline">
+                    <input type="radio" id="maleRadio" name="Gender" value="Nam" checked>Nam
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" id="femaleRadio" name="Gender" value="Nữ">Nữ
+                </label>
+            }
+            else
+            {
+                <label class="radio-inline">
+                    <input type="radio" id="maleRadio" name="Gender" value="Nam">Nam
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" id="femaleRadio" name="Gender" value="Nữ" checked>Nữ
+                </label>
+            }
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="col-sm-2">
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-warning btn-block" style="width: 100px">Cập nhật</button>
+        </div>
+    </div>
+</form>
+<form class="form" method="post" action="@Url.Action("ChangePassword", "User")">
+    <div class="form-inline">
+        <input type="checkbox" id="changePassword" onclick="expandChangePassword()" style="margin-left: 15px" />
+        <p>Đổi mật khẩu</p>
+    </div>
+    <div class="form-inline" id="changePasswordContainer">
+        <label class="col-sm-2 control-label" for="oldPassword">Mật khẩu cũ</label>
+        <div>
+            <input class="form-control" type="password" id="oldPassword" name="OldPassword" placeholder="Nhập mật khẩu cũ" style="width:300px" disabled autofocus required />
+        </div>
+    </div>
+    <div class="form-inline" id="changePasswordContainer">
+        <label class="col-sm-2 control-label" for="newPassword">Mật khẩu mới</label>
+        <div>
+            <input class="form-control" type="password" id="newPassword" name="NewPassword" placeholder="Nhập mật khẩu mới" style="width:300px" disabled autofocus required />
+        </div>
+    </div>
+    <div class="form-inline" id="changePasswordContainer">
+        <label class="col-sm-2 control-label" for="confirmPassword">Nhập lại</label>
+        <div>
+            <input class="form-control" type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu mới" style="width:300px" disabled autofocus required />
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="col-sm-2">
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-warning btn-block" id="btnConfirmPass" onclick="ConfirmPassword()" style="width: 120px; display: none">Đổi mật khẩu</button>
+        </div>
+    </div>
+</form>

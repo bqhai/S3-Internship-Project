@@ -176,6 +176,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\account-info.css" />
     <Content Include="Content\CSS\home.css" />
     <Content Include="Content\CSS\product.css" />
     <Content Include="Content\CSS\shopping-cart.css" />
@@ -280,10 +281,13 @@
     <Content Include="Content\Images\Product\SMPV10044.jpg" />
     <Content Include="Content\Images\Product\SMPV10045.jpg" />
     <Content Include="Content\JS\alert.js" />
-    <Content Include="Content\JS\introduce-expand.js" />
+    <Content Include="Content\JS\expand-changepassword.js" />
+    <Content Include="Content\JS\expand-introduce.js" />
     <Content Include="Content\JS\popup-login.js" />
-    <Content Include="Content\JS\techinfo-expand.js" />
+    <Content Include="Content\JS\expand-techinfo.js" />
+    <Content Include="Content\JS\validation.js" />
     <Content Include="Content\Logo\appstore.png" />
+    <Content Include="Content\Logo\default-avatar.png" />
     <Content Include="Content\Logo\graphic-map.png" />
     <Content Include="Content\Logo\logo_cps.png" />
     <Content Include="Content\CSS\layout.css" />
@@ -329,6 +333,9 @@
     <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Cart\GetResultUsingPromotionCode.cshtml" />
     <Content Include="Views\Cart\GetShipmentDetails.cshtml" />
+    <Content Include="Views\User\AccountInfo.cshtml" />
+    <Content Include="Views\User\CustomerInfo.cshtml" />
+    <Content Include="Views\User\Notification.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

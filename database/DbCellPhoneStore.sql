@@ -12139,7 +12139,7 @@ CREATE TABLE Customer
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
-	DateOfBirth NVARCHAR(50),
+	DateOfBirth DATE,
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -12153,7 +12153,7 @@ CREATE TABLE Employee
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
-	DateOfBirth NVARCHAR(50),
+	DateOfBirth DATE,
 	Status BIT NOT NULL, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -12322,13 +12322,13 @@ INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3,
 INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 1)
 GO
 --Employee--
-INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
-INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
+INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'05-12-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'10-26-1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
-INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
-INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'26/03/1999')
+INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'01-26-1999')
+INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'07-17-1999')
+INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'03-26-1999')
 
 GO
 --Brand--

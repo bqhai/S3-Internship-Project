@@ -27,7 +27,20 @@ namespace DAL_CellPhoneStore.DAL
         }
         public Customer GetCustomerByUsername(string username)
         {
-            return db.Customers.Where(cus => cus.Username == username).FirstOrDefault();
+            return db.Customers.SingleOrDefault(cus => cus.Username == username);
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
+            if(cus != null)
+            {
+                cus.Name = customer.Name;
+                cus.PhoneNumber = customer.PhoneNumber;
+                cus.Email = customer.Email;
+                cus.DateOfBirth = customer.DateOfBirth;
+
+                db.SaveChanges();
+            }
         }
     }
 }
