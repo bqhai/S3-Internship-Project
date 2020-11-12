@@ -131,7 +131,7 @@ namespace CellphoneStore.Controllers
         {
             customerMapped.Username = Session["Account"].ToString();
             customerMapped.Gender = Request.Form["Gender"].ToString();
-            response = serviceObj.PostResponse("api/API_User/UpdateCustomer/", customerMapped);
+            response = serviceObj.PutResponse("api/API_User/UpdateCustomer/", customerMapped);
             if (response.IsSuccessStatusCode)
             {
                 var resultUpdateCus = response.Content.ReadAsAsync<bool>().Result;
@@ -153,7 +153,7 @@ namespace CellphoneStore.Controllers
             accountMapped.Username = Session["Account"].ToString();
             accountMapped.Password = c["OldPassword"];
             accountMapped.NewPassword = c["NewPassword"];
-            response = serviceObj.PostResponse("api/API_User/ChangePassword/", accountMapped);
+            response = serviceObj.PutResponse("api/API_User/ChangePassword/", accountMapped);
             if (response.IsSuccessStatusCode)
             {
                 var resultChangePass = response.Content.ReadAsAsync<int>().Result;
@@ -172,6 +172,17 @@ namespace CellphoneStore.Controllers
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
             return Redirect(this.Request.UrlReferrer.ToString());
+        }
+        public ActionResult CustomerAddress()
+        {
+            var url = "api/API_User/GetCustomerByUsername/" + Session["Account"].ToString();
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
+                return PartialView(customerMapped);
+            }
+            return PartialView();
         }
     }
 }

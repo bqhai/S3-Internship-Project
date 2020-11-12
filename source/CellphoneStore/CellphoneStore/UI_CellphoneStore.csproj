@@ -280,11 +280,10 @@
     <Content Include="Content\Images\Product\SMPV10043.jpg" />
     <Content Include="Content\Images\Product\SMPV10044.jpg" />
     <Content Include="Content\Images\Product\SMPV10045.jpg" />
+    <Content Include="Content\JS\ajax.js" />
     <Content Include="Content\JS\alert.js" />
-    <Content Include="Content\JS\expand-changepassword.js" />
-    <Content Include="Content\JS\expand-introduce.js" />
+    <Content Include="Content\JS\expand.js" />
     <Content Include="Content\JS\popup-login.js" />
-    <Content Include="Content\JS\expand-techinfo.js" />
     <Content Include="Content\JS\validation.js" />
     <Content Include="Content\Logo\appstore.png" />
     <Content Include="Content\Logo\default-avatar.png" />
@@ -336,6 +335,7 @@
     <Content Include="Views\User\AccountInfo.cshtml" />
     <Content Include="Views\User\CustomerInfo.cshtml" />
     <Content Include="Views\User\Notification.cshtml" />
+    <Content Include="Views\User\CustomerAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

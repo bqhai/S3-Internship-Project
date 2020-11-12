@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="@Url.Action("AccountInfo", "User", new { chooseOption = 4 })">
                         <div class="icon">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                         </div>                        
@@ -66,6 +66,10 @@
             else if (Convert.ToInt32(TempData["ChooseOption"]) == 2)
             {
                 @Html.Action("Notification", "User")
+            }
+            else if (Convert.ToInt32(TempData["ChooseOption"]) == 4)
+            {
+                @Html.Action("CustomerAddress", "User")
             }
             else
             {

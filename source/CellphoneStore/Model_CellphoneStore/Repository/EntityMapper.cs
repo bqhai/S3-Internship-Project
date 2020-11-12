@@ -33,6 +33,15 @@ namespace Model_CellphoneStore.Repository
 
             Mapper.CreateMap<CustomerMapped, Customer>();
             Mapper.CreateMap<Customer, CustomerMapped>();
+
+            Mapper.CreateMap<ProvinceMapped, Province>();
+            Mapper.CreateMap<Province, ProvinceMapped>();
+
+            Mapper.CreateMap<DistrictMapped, District>();
+            Mapper.CreateMap<District, DistrictMapped>();
+
+            Mapper.CreateMap<WardMapped, Ward>();
+            Mapper.CreateMap<Ward, WardMapped>();
         }
         public TDestination Translate(TSource obj)
         {

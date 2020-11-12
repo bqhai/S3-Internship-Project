@@ -38,6 +38,7 @@ namespace DAL_CellPhoneStore.DAL
                 cus.PhoneNumber = customer.PhoneNumber;
                 cus.Email = customer.Email;
                 cus.DateOfBirth = customer.DateOfBirth;
+                cus.Gender = customer.Gender;
 
                 db.SaveChanges();
             }

@@ -74,3 +74,23 @@
     margin-right: 20px
     
 }
+.address-item {
+    background-color: rgb(255, 255, 255);
+    padding: 17px;
+    border-radius: 4px;
+    margin: 0px 0px 10px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    font-size: 13px;
+    line-height: 19px;
+}
+.address-edit a{
+    color: orangered;
+}
+    .address-edit a:hover {
+        text-decoration: none;
+    }
+#change-address{
+    display: none;
+}

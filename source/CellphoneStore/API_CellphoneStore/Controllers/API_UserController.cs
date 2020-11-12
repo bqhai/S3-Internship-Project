@@ -15,13 +15,16 @@ namespace API_CellphoneStore.Controllers
     {
         BLL_Account bllAccount = new BLL_Account();
         BLL_Customer bllCustomer = new BLL_Customer();
+        BLL_Address bllAddress = new BLL_Address();
         [EnableCors(origins: "*", headers: "*", methods: "*")]
+
         [HttpGet]
         [Route("ProcessLogin/{username}/{password}")]
         public bool ProcessLogin(string username, string password)
         {
             return bllAccount.ProcessLogin(username, password);
         }
+
         [HttpGet]
         [Route("GetAccountType/{username}")]
         public int GetAccountType(string username)
@@ -35,6 +38,7 @@ namespace API_CellphoneStore.Controllers
         {
             return bllAccount.AccountAlreadyExists(username);
         }
+
         [HttpPost]
         [Route("AddNewAccount")]
         public bool AddNewAccount(AccountMapped accountMapped)
@@ -46,6 +50,7 @@ namespace API_CellphoneStore.Controllers
             }
             return false;
         }
+
         [HttpPost]
         [Route("AddNewCustomer")]
         public bool AddNewCustomer(CustomerMapped customerMapped)
@@ -57,6 +62,7 @@ namespace API_CellphoneStore.Controllers
             }
             return false;
         }
+
         [HttpGet]
         [Route("GetCustomerByUsername/{username}")]
         public CustomerMapped GetCustomerByUsername(string username)
@@ -64,7 +70,7 @@ namespace API_CellphoneStore.Controllers
             return bllCustomer.GetCustomerByUsername(username);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("UpdateCustomer")]
         public bool UpdateCustomer(CustomerMapped customerMapped)
         {
@@ -75,7 +81,8 @@ namespace API_CellphoneStore.Controllers
             }
             return false;
         }
-        [HttpPost]
+
+        [HttpPut]
         [Route("ChangePassword")]
         public int ChangePassword(AccountMapped accountMapped)
         {
@@ -85,6 +92,27 @@ namespace API_CellphoneStore.Controllers
                 return resultChangePassword;
             }
             return 404;
+        }
+
+        [HttpGet]
+        [Route("GetProvinces")]
+        public List<ProvinceMapped> GetProvinces()
+        {
+            return bllAddress.GetProvinces();
+        }
+
+        [HttpGet]
+        [Route("GetDistrictsByProvinceID/{provinceID}")]
+        public List<DistrictMapped> GetDistrictsByProvinceID(int provinceID)
+        {
+            return bllAddress.GetDistrictsByProvinceID(provinceID);
+        }
+
+        [HttpGet]
+        [Route("GetWardsByDistrictID/{districtID}")]
+        public List<WardMapped> GetWardsByDistrictID(int districtID)
+        {
+            return bllAddress.GetWardsByDistrictID(districtID);
         }
 
     }
