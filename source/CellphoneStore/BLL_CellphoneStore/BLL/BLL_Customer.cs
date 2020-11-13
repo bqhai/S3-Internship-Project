@@ -40,12 +40,25 @@ namespace BLL_CellPhoneStore.BLL
             }
             return false;
         }
-        public bool UpdateCustomer(CustomerMapped customerMapped)
+        public bool UpdateCustomerInfo(CustomerMapped customerMapped)
         {
             try
             {
                 Customer cus = cusMappedToCus.Translate(customerMapped);
-                dalCustomer.UpdateCustomer(cus);
+                dalCustomer.UpdateCustomerInfo(cus);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool UpdateCustomerAddress(CustomerMapped customerMapped)
+        {
+            try
+            {
+                Customer cus = cusMappedToCus.Translate(customerMapped);
+                dalCustomer.UpdateCustomerAddress(cus);
                 return true;
             }
             catch (Exception)

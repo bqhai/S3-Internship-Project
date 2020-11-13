@@ -127,17 +127,44 @@ namespace CellphoneStore.Controllers
             
         }
         [HttpPost]
-        public ActionResult UpdateCustomer(CustomerMapped customerMapped)
+        public ActionResult UpdateCustomerInfo(CustomerMapped customerMapped)
         {
             customerMapped.Username = Session["Account"].ToString();
             customerMapped.Gender = Request.Form["Gender"].ToString();
-            response = serviceObj.PutResponse("api/API_User/UpdateCustomer/", customerMapped);
+            response = serviceObj.PutResponse("api/API_User/UpdateCustomerInfo/", customerMapped);
             if (response.IsSuccessStatusCode)
             {
                 var resultUpdateCus = response.Content.ReadAsAsync<bool>().Result;
                 if (resultUpdateCus)
                 {
                     TempData["SuccessMessage"] = "Cập nhật thông tin thành công";                  
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+                }
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+            TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+            return Redirect(this.Request.UrlReferrer.ToString());
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomerAddress(CustomerMapped customerMapped)
+        {
+            customerMapped.Username = Session["Account"].ToString();
+            var houseNumber = Request.Form["HouseNumber"];
+            var ward = Request.Form["Ward"];
+            var district = Request.Form["District"];
+            var province = Request.Form["Province"];
+
+            customerMapped.Address = houseNumber + ", " + ward + ", " + district + ", " + province;
+            response = serviceObj.PutResponse("api/API_User/UpdateCustomerAddress/", customerMapped);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultUpdateAddress = response.Content.ReadAsAsync<bool>().Result;
+                if (resultUpdateAddress)
+                {
+                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công";
                 }
                 else
                 {
@@ -184,5 +211,6 @@ namespace CellphoneStore.Controllers
             }
             return PartialView();
         }
+
     }
 }

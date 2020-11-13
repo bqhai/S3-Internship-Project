@@ -1,0 +1,15 @@
+﻿body {
+}
+.payment-left {
+    flex-basis: 72%;
+    padding: 25px 15px 0px;
+    
+}
+.payment-right {
+    flex-basis: 28%;
+    padding: 40px 15px 0px;
+    
+}
+.payment-delivery{
+    opacity: 1;
+}

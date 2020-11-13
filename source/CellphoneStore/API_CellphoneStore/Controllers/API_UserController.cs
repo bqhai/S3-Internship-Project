@@ -16,7 +16,7 @@ namespace API_CellphoneStore.Controllers
         BLL_Account bllAccount = new BLL_Account();
         BLL_Customer bllCustomer = new BLL_Customer();
         BLL_Address bllAddress = new BLL_Address();
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
 
         [HttpGet]
         [Route("ProcessLogin/{username}/{password}")]
@@ -71,12 +71,24 @@ namespace API_CellphoneStore.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCustomer")]
-        public bool UpdateCustomer(CustomerMapped customerMapped)
+        [Route("UpdateCustomerInfo")]
+        public bool UpdateCustomerInfo(CustomerMapped customerMapped)
         {
             if (ModelState.IsValid)
             {
-                bool updateCustomer = bllCustomer.UpdateCustomer(customerMapped);
+                bool updateCustomer = bllCustomer.UpdateCustomerInfo(customerMapped);
+                return updateCustomer;
+            }
+            return false;
+        }
+
+        [HttpPut]
+        [Route("UpdateCustomerAddress")]
+        public bool UpdateCustomerAddress(CustomerMapped customerMapped)
+        {
+            if (ModelState.IsValid)
+            {
+                bool updateCustomer = bllCustomer.UpdateCustomerAddress(customerMapped);
                 return updateCustomer;
             }
             return false;

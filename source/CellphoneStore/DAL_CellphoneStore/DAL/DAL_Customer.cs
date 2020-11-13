@@ -29,7 +29,7 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Customers.SingleOrDefault(cus => cus.Username == username);
         }
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomerInfo(Customer customer)
         {
             Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
             if(cus != null)
@@ -39,7 +39,15 @@ namespace DAL_CellPhoneStore.DAL
                 cus.Email = customer.Email;
                 cus.DateOfBirth = customer.DateOfBirth;
                 cus.Gender = customer.Gender;
-
+                db.SaveChanges();
+            }
+        }
+        public void UpdateCustomerAddress(Customer customer)
+        {
+            Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
+            if (cus != null)
+            {
+                cus.Address = customer.Address;
                 db.SaveChanges();
             }
         }

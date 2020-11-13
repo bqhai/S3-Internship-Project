@@ -13,7 +13,7 @@ namespace API_CellphoneStore.Controllers
     public class API_CartController : ApiController
     {
         BLL_PromotionCode bllPromotionCode = new BLL_PromotionCode();        
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpGet]
         [Route("GetResultUsingPromotionCode/{code}/{username}/{totalPrice}")]
         public dynamic GetResultUsingPromotionCode(string code, string username, int totalPrice)
