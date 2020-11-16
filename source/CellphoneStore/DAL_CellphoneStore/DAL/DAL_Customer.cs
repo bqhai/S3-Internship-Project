@@ -29,10 +29,14 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Customers.SingleOrDefault(cus => cus.Username == username);
         }
+        public Customer GetCustomerByEmail(string email)
+        {
+            return db.Customers.SingleOrDefault(cus => cus.Email == email);
+        }
         public void UpdateCustomerInfo(Customer customer)
         {
             Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
-            if(cus != null)
+            if (cus != null)
             {
                 cus.Name = customer.Name;
                 cus.PhoneNumber = customer.PhoneNumber;
@@ -45,11 +49,14 @@ namespace DAL_CellPhoneStore.DAL
         public void UpdateCustomerAddress(Customer customer)
         {
             Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
-            if (cus != null)
-            {
-                cus.Address = customer.Address;
-                db.SaveChanges();
-            }
+            cus.Address = customer.Address;
+            db.SaveChanges();
+        }
+        public void AddResetPasswordCode(Customer customer)
+        {
+            Customer cus = db.Customers.SingleOrDefault(c => c.Email == customer.Email);
+            cus.ResetPasswordCode = customer.ResetPasswordCode;
+            db.SaveChanges();
         }
     }
 }

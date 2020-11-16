@@ -70,6 +70,13 @@ namespace API_CellphoneStore.Controllers
             return bllCustomer.GetCustomerByUsername(username);
         }
 
+        [HttpGet]
+        [Route("GetCustomerByEmail/{email}")]
+        public CustomerMapped GetCustomerByEmail(string email)
+        {
+            return bllCustomer.GetCustomerByEmail(email);
+        }
+
         [HttpPut]
         [Route("UpdateCustomerInfo")]
         public bool UpdateCustomerInfo(CustomerMapped customerMapped)
@@ -104,6 +111,30 @@ namespace API_CellphoneStore.Controllers
                 return resultChangePassword;
             }
             return 404;
+        }
+
+        [HttpPut]
+        [Route("AddResetPasswordCode")]
+        public bool AddResetPasswordCode(CustomerMapped customerMapped)
+        {
+            if (ModelState.IsValid)
+            {
+                bool updateCustomer = bllCustomer.AddResetPasswordCode(customerMapped);
+                return updateCustomer;
+            }
+            return false;
+        }
+
+        [HttpPut]
+        [Route("ResetPassword")]
+        public bool ResetPassword(AccountMapped accountMapped)
+        {
+            if (ModelState.IsValid)
+            {
+                bool resultResetPassword = bllAccount.ResetPassword(accountMapped);
+                return resultResetPassword;
+            }
+            return false;
         }
 
         [HttpGet]

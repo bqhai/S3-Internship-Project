@@ -73,6 +73,25 @@ namespace BLL_CellPhoneStore.BLL
             return customerMapped;
 
         }
+        public CustomerMapped GetCustomerByEmail(string email)
+        {
+            Customer customer = dalCustomer.GetCustomerByEmail(email);
+            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            return customerMapped;
+        }
+        public bool AddResetPasswordCode(CustomerMapped customerMapped)
+        {
+            try
+            {
+                Customer cus = cusMappedToCus.Translate(customerMapped);
+                dalCustomer.AddResetPasswordCode(cus);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
     }
 }

@@ -1,10 +1,13 @@
 ﻿@model Model_CellphoneStore.CustomerMapped
-<p class="shipment-item">
-    <span>Địa chỉ nhận hàng</span>
-    <a href="#">Thay đổi</a>
-</p>
-<p class="shipment-item">
-    <b class="name">@Model.Name</b>
-    <b>@Model.PhoneNumber</b>
-</p>
-<p class="shipment-detail">@Model.Address</p>
+@if (Model != null)
+{
+    <p class="shipment-item">
+        <span>Địa chỉ nhận hàng</span>
+        <a href="@Url.Action("AccountInfo", "User", new { chooseOption = 4 })">Thay đổi</a>
+    </p>
+    <p class="shipment-item">
+        <b class="name">@Model.Name</b>
+        <b>@Model.PhoneNumber</b>
+    </p>
+    <p class="shipment-detail">@Model.Address</p>
+}

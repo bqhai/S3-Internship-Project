@@ -50,7 +50,7 @@
 }
 
 .borderbox{
-    box-shadow: 0 0 3px 0 rgba(51, 51, 51, .3)
+    box-shadow: 0 0 3px 0 rgba(51, 51, 51, .5)
 }
 #changePasswordContainer{
     display: none;

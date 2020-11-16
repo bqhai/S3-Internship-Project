@@ -290,6 +290,11 @@
     <Content Include="Content\Logo\appstore.png" />
     <Content Include="Content\Logo\default-avatar.png" />
     <Content Include="Content\Logo\graphic-map.png" />
+    <Content Include="Content\Logo\icon-payment-method-atm.png" />
+    <Content Include="Content\Logo\icon-payment-method-cod.png" />
+    <Content Include="Content\Logo\icon-payment-method-credit.png" />
+    <Content Include="Content\Logo\icon-payment-method-mo-mo.png" />
+    <Content Include="Content\Logo\icon-payment-method-zalo-pay.png" />
     <Content Include="Content\Logo\logo_cps.png" />
     <Content Include="Content\CSS\layout.css" />
     <Content Include="Content\CSS\popup-login.css" />
@@ -339,6 +344,8 @@
     <Content Include="Views\User\Notification.cshtml" />
     <Content Include="Views\User\CustomerAddress.cshtml" />
     <Content Include="Views\Payment\Payment.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

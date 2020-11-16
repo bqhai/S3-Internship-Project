@@ -26,9 +26,9 @@ namespace DAL_CellPhoneStore.DAL
             db.Accounts.Add(account);
             db.SaveChanges();
         }
-        public void UpdateAccount(string username, string oldPassword, string newPassword)
+        public void UpdateAccount(string username, string newPassword)
         {
-            Account acc = db.Accounts.SingleOrDefault(a => a.Username == username && a.Password == oldPassword);
+            Account acc = db.Accounts.SingleOrDefault(a => a.Username == username);
             if(acc != null)
             {
                 acc.Password = newPassword;

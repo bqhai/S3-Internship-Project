@@ -12140,6 +12140,7 @@ CREATE TABLE Customer
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
 	DateOfBirth DATE,
+	ResetPasswordCode NVARCHAR(MAX),
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -12328,10 +12329,10 @@ INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bq
 INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'10-26-1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'01-26-1999')
-INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'07-17-1999')
-INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'03-26-1999')
-INSERT INTO Customer VALUES(N'CUS10003', N'Toàn đầu moi', N'toan123', N'toan123@gmail.com', NULL, N'0979510950', N'Nam', N'03-26-1999')
+INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'01-26-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'07-17-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'03-26-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10003', N'Toàn đầu moi', N'toan123', N'toan123@gmail.com', NULL, N'0979510950', N'Nam', N'03-26-1999', NULL)
 
 GO
 --Brand--

@@ -55,6 +55,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="DbCellPhoneStoreModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />

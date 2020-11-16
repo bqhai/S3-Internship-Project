@@ -87,15 +87,26 @@ namespace BLL_CellPhoneStore.BLL
             {
                 if (account.Password == oldPasswordMD5)
                 {
-                    dalAccount.UpdateAccount(accountMapped.Username, oldPasswordMD5, newPasswordMD5);
-                    return 1;
+                    dalAccount.UpdateAccount(accountMapped.Username, newPasswordMD5);
+                    return 1; //Success
                 }
                 else
                 {
-                    return -1;
+                    return -1; //Old password not match
                 }
             }
-            return -2;
+            return -2; //Can not find account
+        }
+        public bool ResetPassword(AccountMapped accountMapped)
+        {
+            string newPasswordMD5 = MD5_Encryptor.HashMD5(accountMapped.NewPassword);
+            Account account = dalAccount.GetAccount(accountMapped.Username);
+            if(account != null)
+            {
+                dalAccount.UpdateAccount(accountMapped.Username, newPasswordMD5);
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -5,15 +5,120 @@
 }
 <div class="container" style="display: flex">
     <div class="payment-left">
-        <div class="payment-delivery">
-            <h3>1.Chọn hình thức giao hàng</h3>
-            <div>
-
+        <h3>1.Chọn hình thức giao hàng</h3>
+        <div class="payment-left-item borderbox">
+            <div class="radio payment-delivery-item">
+                <label><input type="radio" name="Delivery" value="Giao hàng tiết kiệm" checked>Giao hàng tiết kiệm</label>
+                <div class="payment-delivery-details">
+                    <p>
+                        <span>Giao vào thứ hai, 23/11</span>
+                        <span>43000đ</span>
+                    </p>
+                </div>
+            </div>
+            <div class="radio payment-delivery-item">
+                <label><input type="radio" name="Delivery" value="Giao hàng nhanh">Giao hàng nhanh</label>
+                <div class="payment-delivery-details">
+                    <p>
+                        <span>Giao vào thứ hai, 23/11</span>
+                        <span>43000đ</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h3>2.Thanh toán bằng xu</h3>
+        <div class="payment-left-item borderbox">
+            <div class="checkbox payment-coin">
+                <label><input type="checkbox" value="">Sử dụng 3500Xu (Ứng với 3500đ) để thanh toán</label>
+            </div>
+        </div>
+        <h3>3.Chọn hình thức thanh toán</h3>
+        <div class="payment-left-item borderbox">
+            <div class="payment-option radio">
+                <label>
+                    <input type="radio" name="Payment" value="" checked>
+                    <img src="~/Content/Logo/icon-payment-method-cod.png" />
+                    Thanh toán tiền mặt khi nhận hàng
+                </label>
+            </div>
+            <div class="payment-option radio">
+                <label>
+                    <input type="radio" name="Payment" value="" disabled>
+                    <img src="~/Content/Logo/icon-payment-method-credit.png" />
+                    Thanh toán bằng thẻ quốc tế Visa, Master, JCB
+                </label>
+            </div>
+            <div class="payment-option radio">
+                <label>
+                    <input type="radio" name="Payment" value="" disabled>
+                    <img src="~/Content/Logo/icon-payment-method-atm.png" />
+                    Thanh toán bằng thẻ ATM nội địa/Internet Banking
+                </label>
+            </div>
+            <div class="payment-option radio">
+                <label>
+                    <input type="radio" name="Payment" value="" disabled>
+                    <img src="~/Content/Logo/icon-payment-method-mo-mo.png" />
+                    Thanh toán bằng ví Momo
+                </label>
+            </div>
+            <div class="payment-option radio">
+                <label>
+                    <input type="radio" name="Payment" value="" disabled>
+                    <img src="~/Content/Logo/icon-payment-method-zalo-pay.png" />
+                    Thanh toán bằng ví ZaloPay
+                </label>
             </div>
         </div>
     </div>
     <div class="payment-right">
-
+        <div class="payment-right-item borderbox">
+            @Html.Action("GetShipmentDetails", "Cart", new { username = Session["Account"] })
+        </div>
+        <div class="payment-right-item borderbox">
+            <div class="payment-title">
+                <span>Đơn hàng (1 sản phẩm)</span>
+                <a href="@Url.Action("Cart", "Cart")"><input type="button" class="btn btn-default" value="Sửa" /></a>
+            </div>
+            <div class="payment-cart">
+                <div class="payment-cart-item">
+                    <div class="payment-cart-info">
+                        <strong>1 x </strong>
+                        Tên sản phẩm Tên sản phẩm Tên sản phẩm Tên sản phẩm
+                    </div>
+                    <div class="payment-cart-price">
+                        <p>18000000 VNĐ</p>
+                    </div>
+                </div>
+                <div class="payment-sumary">
+                    <div class="payment-sumary-item">
+                        <div class="inner">
+                            <p>Tạm tính</p>
+                            <p>18000000 VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="payment-sumary-item">
+                        <div class="inner">
+                            <p>Giảm giá</p>
+                            <p>100000 VNĐ</p>
+                        </div>
+                    </div>
+                    <div class="payment-total">
+                        <p>Thành tiền</p>
+                        <p style="color: orangered">17900000 VNĐ</p>
+                    </div>
+                    <div style="text-align:end">
+                        <i>Đã bao gồm VAT(Nếu có)</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="#"><input class="btn btn-warning" type="button" value="Thanh toán" style="width: 100%" /></a>
+        </div>
+        <div>
+            <i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i>
+        </div>
     </div>
 </div>
 
