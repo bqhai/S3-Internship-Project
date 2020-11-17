@@ -12125,7 +12125,8 @@ CREATE TABLE Account
 	Username NVARCHAR(50) PRIMARY KEY,
 	Password NVARCHAR(MAX) NOT NULL,
 	AccountTypeID INT NOT NULL,
-	Status BIT, --0: Block, 1: Active
+	Coin INT,
+	Status BIT NOT NULL, --0: Block, 1: Active
 
 	FOREIGN KEY(AccountTypeID) REFERENCES AccountType(AccountTypeID)
 )
@@ -12139,7 +12140,8 @@ CREATE TABLE Customer
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
-	DateOfBirth NVARCHAR(50),
+	DateOfBirth DATE,
+	ResetPasswordCode NVARCHAR(MAX),
 
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
@@ -12153,8 +12155,8 @@ CREATE TABLE Employee
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
 	Gender NVARCHAR(50),
-	DateOfBirth NVARCHAR(50),
-	Status BIT, --0:Stop working, --1: Working
+	DateOfBirth DATE,
+	Status BIT NOT NULL, --0:Stop working, --1: Working
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
@@ -12205,7 +12207,7 @@ CREATE TABLE ProductVersion
 	ListPrice INT NOT NULL,
 	Price INT NOT NULL,
 	QuantityInStock INT NOT NULL,
-	Status BIT, --0: hết hàng, 1: còn hàng 
+	Status BIT NOT NULL, --0: hết hàng, 1: còn hàng 
 	Image NVARCHAR(500),
 	
 	FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
@@ -12227,48 +12229,66 @@ CREATE TABLE Favorite
 	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
 )
 GO
+CREATE TABLE OrderState
+(
+	OrderStateID INT PRIMARY KEY,
+	OrderDescription NVARCHAR(500),
+)
+GO
+CREATE TABLE DeliveryState
+(
+	DeliveryStateID INT PRIMARY KEY,
+	DeliveryDescription NVARCHAR(500),
+)
+GO
 CREATE TABLE Orders
 (
 	OrderID NVARCHAR(50) PRIMARY KEY,
-	Payments NVARCHAR(100),
-	Delivery NVARCHAR(100),
+	Payment NVARCHAR(200) NOT NULL,
+	Delivery NVARCHAR(200) NOT NULL,
 	Notes NVARCHAR(500),
-	OrderDate DATE,
-	TotalPrice INT,
-	CustomerID NVARCHAR(50),
-	Status BIT, --0: Unpaid --1: Paid
+	OrderDate DATE NOT NULL,
+	IntoMoney INT NOT NULL,
+	CustomerID NVARCHAR(50) NOT NULL,
+	OrderStateID INT NOT NULL,
+	DeliveryStateID INT NOT NULL,
 	
-	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID)
+	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+	FOREIGN KEY(OrderStateID) REFERENCES OrderState(OrderStateID),
+	FOREIGN KEY(DeliveryStateID) REFERENCES DeliveryState(DeliveryStateID)
 )
 GO
 CREATE TABLE OrderDetail
 (
 	OrderID NVARCHAR(50),
 	ProductVersionID NVARCHAR(50),
-	Amount INT,
-	Price INT,
+	Amount INT NOT NULL,
 	PRIMARY KEY(OrderID, ProductVersionID),
 	FOREIGN KEY(OrderID) REFERENCES Orders(OrderID),
 	FOREIGN KEY(ProductVersionID) REFERENCES ProductVersion(ProductVersionID)
 )
 GO
 
+
 CREATE TABLE PromotionCode
 (
 	Code NVARCHAR(50) PRIMARY KEY,
-	Description NVARCHAR(100),
-	Value FLOAT,
-	StartDate DATE,
-	ExpiryDate DATE
+	Description NVARCHAR(500),
+	Value FLOAT NOT NULL,
+	Maximum Int NOT NULL,
+	Require Int NOT NULL,
+	StartDate DATE NOT NULL,
+	ExpiryDate DATE NOT NULL
 )
 GO
 
 CREATE TABLE PromotionCodeUsed
 (
 	Code NVARCHAR(50),
-	CustomerID NVARCHAR(50),
-	PRIMARY KEY(Code, CustomerID),
-	FOREIGN KEY(CustomerID) REFERENCES Customer(CustomerID),
+	Username NVARCHAR(50),
+	UsedDate Date NOT NULL,
+	PRIMARY KEY(Code, Username),
+	FOREIGN KEY(Username) REFERENCES Account(Username),
 	FOREIGN KEY(Code) REFERENCES PromotionCode(Code)
 )
 GO
@@ -12312,20 +12332,23 @@ INSERT INTO AccountType VALUES(2, N'Nhân viên')
 INSERT INTO AccountType VALUES(3, N'Khách hàng')
 GO
 --Account--
-INSERT INTO Account VALUES(N'bqhai1205', N'e10adc3949ba59abbe56e057f20f883e', 1, 1) --123456
-INSERT INTO Account VALUES(N'hdhieu2610', N'4c45a38dfd23d60c2b4f47c8d23ed8f0', 2, 1)
-INSERT INTO Account VALUES(N'dtqnhu2601', N'83aaba297dfb1be50320eb4c6501c8ac', 3, 1)
-INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3, 1)
-INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 1)
+INSERT INTO Account VALUES(N'bqhai1205', N'e10adc3949ba59abbe56e057f20f883e', 1, NULL, 1) --123456
+INSERT INTO Account VALUES(N'hdhieu2610', N'4c45a38dfd23d60c2b4f47c8d23ed8f0', 2, NULL, 1)
+INSERT INTO Account VALUES(N'dtqnhu2601', N'83aaba297dfb1be50320eb4c6501c8ac', 3, 12000, 1)
+INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3, 5000, 1)
+INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 4500, 1)
+INSERT INTO Account VALUES(N'toan123', N'54b23fafc398665880ba4889183e8d1a', 3, 2000, 1)
+
 GO
 --Employee--
-INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'12/05/1999', 1)
-INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'26/10/1999', 1)
+INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'05-12-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'10-26-1999', 1)
 GO
 --Customer--
-INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'26/01/1999')
-INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'17/07/1999')
-INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'26/03/1999')
+INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'01-26-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'07-17-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'03-26-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10003', N'Toàn đầu moi', N'toan123', N'toan123@gmail.com', NULL, N'0979510950', N'Nam', N'03-26-1999', NULL)
 
 GO
 --Brand--
@@ -12348,6 +12371,33 @@ INSERT INTO Brand VALUES(N'BK', N'BKAV', N'Việt Nam')
 --INSERT INTO Brand VALUES(N'AC', N'Acer', N'Đài Loan')
 --INSERT INTO Brand VALUES(N'MI', N'MSI', N'Đài Loan')
 GO
+
+--PromotionCode--
+INSERT INTO PromotionCode VALUES(N'HELLO', N'Giảm 5% tối đa 100k, đơn tối thiểu 0đ', 0.05, 100000, 0, N'05-20-2019', N'05-20-2049')
+INSERT INTO PromotionCode VALUES(N'DSBNOV10', N'Giảm 10% tối đa 110k, đơn tối thiểu 6000000đ', 0.1, 110000, 6000000, N'05-20-2019', N'06-20-2019')
+INSERT INTO PromotionCode VALUES(N'DSBNOV11', N'Giảm 8% tối đa 100k, đơn tối thiểu 3000000đ', 0.08, 100000, 3000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV12', N'Giảm 100k, đơn tối thiểu 5000000đ', 100000, 100000, 5000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV13', N'Giảm 200k, đơn tối thiểu 10000000đ', 200000, 200000, 10000000, N'05-20-2019', N'05-20-2021')
+INSERT INTO PromotionCode VALUES(N'DSBNOV14', N'Giảm 500k, đơn tối thiểu 15000000đ', 500000, 500000, 15000000, N'05-20-2021', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV15', N'Giảm 10%, đơn tối thiểu 15000000đ', 1, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV16', N'Giảm 7.3%, đơn tối thiểu 15000000đ', 0.073, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV17', N'Giảm 7.3121%, đơn tối thiểu 15000000đ', 0.073121, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+INSERT INTO PromotionCode VALUES(N'DSBNOV18', N'Giảm 7.333%, đơn tối thiểu 15000000đ', 0.07333, 15000000, 15000000, N'05-20-2019', N'05-20-2025')
+--PromotionCodeUsed--
+INSERT INTO PromotionCodeUsed VALUES(N'HELLO', N'dtqnhu2601', N'11-10-2020')
+
+--OrderState--
+INSERT INTO OrderState VALUES(-1, N'Đã hủy')
+INSERT INTO OrderState VALUES(0, N'Chưa thanh toán')
+INSERT INTO OrderState VALUES(1, N'Đã thanh toán')
+
+--DeliveryState--
+INSERT INTO DeliveryState VALUES(-1, N'Đã hủy')
+INSERT INTO DeliveryState VALUES(0, N'Tiếp nhận đơn hàng')
+INSERT INTO DeliveryState VALUES(1, N'Đang chuẩn bị đơn hàng')
+INSERT INTO DeliveryState VALUES(2, N'Đang vận chuyển')
+INSERT INTO DeliveryState VALUES(3, N'Đang giao hàng')
+INSERT INTO DeliveryState VALUES(4, N'Đã giao hàng')
 --Product--
 INSERT INTO Product VALUES(
 N'SMP10000', 

@@ -144,11 +144,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\CartInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ServiceRepository.cs" />
   </ItemGroup>
@@ -175,8 +178,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CSS\account-info.css" />
     <Content Include="Content\CSS\home.css" />
+    <Content Include="Content\CSS\payment.css" />
     <Content Include="Content\CSS\product.css" />
+    <Content Include="Content\CSS\shopping-cart.css" />
     <Content Include="Content\Images\ProductIntroduce\PI10000.jpg" />
     <Content Include="Content\Images\ProductIntroduce\PI10001.jpg" />
     <Content Include="Content\Images\ProductIntroduce\PI10002.jpg" />
@@ -277,12 +283,19 @@
     <Content Include="Content\Images\Product\SMPV10043.jpg" />
     <Content Include="Content\Images\Product\SMPV10044.jpg" />
     <Content Include="Content\Images\Product\SMPV10045.jpg" />
+    <Content Include="Content\JS\customer-address.js" />
     <Content Include="Content\JS\alert.js" />
-    <Content Include="Content\JS\introduce-expand.js" />
+    <Content Include="Content\JS\expand.js" />
     <Content Include="Content\JS\popup-login.js" />
-    <Content Include="Content\JS\techinfo-expand.js" />
+    <Content Include="Content\JS\validation.js" />
     <Content Include="Content\Logo\appstore.png" />
+    <Content Include="Content\Logo\default-avatar.png" />
     <Content Include="Content\Logo\graphic-map.png" />
+    <Content Include="Content\Logo\icon-payment-method-atm.png" />
+    <Content Include="Content\Logo\icon-payment-method-cod.png" />
+    <Content Include="Content\Logo\icon-payment-method-credit.png" />
+    <Content Include="Content\Logo\icon-payment-method-mo-mo.png" />
+    <Content Include="Content\Logo\icon-payment-method-zalo-pay.png" />
     <Content Include="Content\Logo\logo_cps.png" />
     <Content Include="Content\CSS\layout.css" />
     <Content Include="Content\CSS\popup-login.css" />
@@ -324,11 +337,19 @@
     <Content Include="Views\Product\GetAllBrand.cshtml" />
     <Content Include="Views\Product\ListProductVersion.cshtml" />
     <Content Include="Views\Product\ProductIntroduce.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\GetResultUsingPromotionCode.cshtml" />
+    <Content Include="Views\Cart\GetShipmentDetails.cshtml" />
+    <Content Include="Views\User\AccountInfo.cshtml" />
+    <Content Include="Views\User\CustomerInfo.cshtml" />
+    <Content Include="Views\User\Notification.cshtml" />
+    <Content Include="Views\User\CustomerAddress.cshtml" />
+    <Content Include="Views\Payment\Payment.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

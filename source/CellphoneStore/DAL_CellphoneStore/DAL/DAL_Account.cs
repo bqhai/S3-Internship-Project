@@ -17,7 +17,7 @@ namespace DAL_CellPhoneStore.DAL
         }
         public Account GetAccount(string username)
         {
-            return db.Accounts.Where(acc => acc.Username == username).FirstOrDefault();
+            return db.Accounts.SingleOrDefault(acc => acc.Username == username);
         }
         public void AddNewUserAccount(Account account)
         {
@@ -25,6 +25,15 @@ namespace DAL_CellPhoneStore.DAL
             account.Status = true;
             db.Accounts.Add(account);
             db.SaveChanges();
+        }
+        public void UpdateAccount(string username, string newPassword)
+        {
+            Account acc = db.Accounts.SingleOrDefault(a => a.Username == username);
+            if(acc != null)
+            {
+                acc.Password = newPassword;
+                db.SaveChanges();
+            }
         }
     }
 }

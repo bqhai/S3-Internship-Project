@@ -25,7 +25,7 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.ProductVersions.Where(prdv => prdv.ProductID == productID);
         }
-        public ProductVersionInfo GetProductVersionByID(string productVersionID)
+        public ProductVersionInfo GetInfoProductVersionByID(string productVersionID)
         {
             var query = (from prd in db.Products
                          join prdv in db.ProductVersions on prd.ProductID equals prdv.ProductID
@@ -34,6 +34,7 @@ namespace DAL_CellPhoneStore.DAL
                          select new ProductVersionInfo
                          {
                              ProductID = prd.ProductID,
+                             ProductVersionID = prdv.ProductVersionID,
                              ProductVersionName = prdv.ProductVersionName,
                              Image = prdv.Image,
                              Price = prdv.Price,
@@ -63,6 +64,10 @@ namespace DAL_CellPhoneStore.DAL
                              Battery = prd.Battery
                          }).FirstOrDefault();
             return query;
+        }
+        public ProductVersion GetProductVersionByID(string productVersionID)
+        {
+            return db.ProductVersions.Where(prdv => prdv.ProductVersionID == productVersionID).FirstOrDefault();
         }
         public IEnumerable<ProductVersion> GetListHotSale()
         {

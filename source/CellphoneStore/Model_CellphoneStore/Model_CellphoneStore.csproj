@@ -48,12 +48,18 @@
     <Compile Include="AccountMapped.cs" />
     <Compile Include="BrandMapped.cs" />
     <Compile Include="CustomerMapped.cs" />
+    <Compile Include="DistrictMapped.cs" />
+    <Compile Include="OrderDetailMapped.cs" />
+    <Compile Include="OrderMapped.cs" />
     <Compile Include="ProductIntroduceMapped.cs" />
     <Compile Include="ProductMapped.cs" />
     <Compile Include="ProductVersionMapped.cs" />
     <Compile Include="ProductVersionInfoMapped.cs" />
+    <Compile Include="PromotionCodeMapped.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceMapped.cs" />
     <Compile Include="Repository\EntityMapper.cs" />
+    <Compile Include="WardMapped.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_CellPhoneStore\DAL_CellphoneStore.csproj">

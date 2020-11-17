@@ -23,11 +23,11 @@ namespace BLL_CellPhoneStore.BLL
         public bool AddNewCustomer(CustomerMapped customerMapped)
         {
             string lastCustomerID = dalCustomer.GetTheLastCustomerID();
-            if(lastCustomerID != null)
+            if (lastCustomerID != null)
             {
                 try
                 {
-                    string customerID = Auto.CreateID("CUS", lastCustomerID);
+                    string customerID = AutoGen.CreateID("CUS", lastCustomerID);
                     customerMapped.CustomerID = customerID;
                     Customer cus = cusMappedToCus.Translate(customerMapped);
                     dalCustomer.AddNewCustomer(cus);
@@ -40,5 +40,58 @@ namespace BLL_CellPhoneStore.BLL
             }
             return false;
         }
+        public bool UpdateCustomerInfo(CustomerMapped customerMapped)
+        {
+            try
+            {
+                Customer cus = cusMappedToCus.Translate(customerMapped);
+                dalCustomer.UpdateCustomerInfo(cus);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool UpdateCustomerAddress(CustomerMapped customerMapped)
+        {
+            try
+            {
+                Customer cus = cusMappedToCus.Translate(customerMapped);
+                dalCustomer.UpdateCustomerAddress(cus);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public CustomerMapped GetCustomerByUsername(string username)
+        {
+            Customer customer = dalCustomer.GetCustomerByUsername(username);
+            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            return customerMapped;
+
+        }
+        public CustomerMapped GetCustomerByEmail(string email)
+        {
+            Customer customer = dalCustomer.GetCustomerByEmail(email);
+            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            return customerMapped;
+        }
+        public bool AddResetPasswordCode(CustomerMapped customerMapped)
+        {
+            try
+            {
+                Customer cus = cusMappedToCus.Translate(customerMapped);
+                dalCustomer.AddResetPasswordCode(cus);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

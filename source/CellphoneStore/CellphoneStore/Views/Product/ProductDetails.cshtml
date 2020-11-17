@@ -26,11 +26,11 @@
                             </select>
                         </div>
                         <div class="price-container">
-                            <div class="col-sm-9">
+                            <div class="col-sm-8">
                                 <p class="price">@Model.Price VNĐ</p>
                                 <p>Giá niêm yết: <strike>@Model.ListPrice VNĐ</strike></p>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <a href="#"><input class="btn btn-danger" type="button" value="Trả góp 0%" /></a>
                             </div>
                         </div>
@@ -51,8 +51,9 @@
                             </div>
                         </div>
                         <div>
-                            <input class="btn btn-primary" type="button" value="Mua ngay" />
-                            <input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" />
+                            <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = Model.ProductVersionID, buynow = true })"><input class="btn btn-primary" type="button" value="Mua ngay" /></a>
+                            
+                            <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = Model.ProductVersionID, buynow = false })"><input class="btn btn-success" type="button" value="Thêm vào giỏ hàng" /></a>                    
                         </div>
                         <div style="margin-top: 10px">
                             <a href="#" style="color:orangered">Trả góp 0% với thẻ tín dụng tại cửa hàng - Xem chi tiết</a>

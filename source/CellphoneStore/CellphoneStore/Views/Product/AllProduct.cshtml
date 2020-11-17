@@ -80,7 +80,7 @@
                     <li><a href="@Url.Action("FilterProductVersionByOS", "Product", new {os = "IOS"})">IOS</a></li>
                 </ul>
             </div>
-            <div class="main-right col-sm-10">
+            <div class="main-right col-sm-10 borderbox">
                 <div class="product-container">
                     <h4>Mua điện thoại giá rẻ</h4>
                     <div>
@@ -106,38 +106,42 @@
                     <div class="list-product">
                         @foreach (var item in Model)
                         {
-                            <table class="product-item">
-                                <tr>
-                                    <td>
-                                        <a href="@Url.Action("ProductDetails", "Product", new {productVersionID = item.ProductVersionID})">
-                                            <img src="~/Content/Images/Product/@item.Image" width="185" height="185" />
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr style="height: 70px">
-                                    <td>
-                                        <p>@item.ProductVersionName</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b style="color: orangered">@item.Price VNĐ</b>
-                                        <p><strike>@item.ListPrice VNĐ</strike></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
-                                            <i class="fa fa-star checked" aria-hidden="true"></i>
-                                            <i class="fa fa-star checked" aria-hidden="true"></i>
-                                            <i class="fa fa-star checked" aria-hidden="true"></i>
-                                            <i class="fa fa-star checked" aria-hidden="true"></i>
-                                            <i class="fa fa-star checked" aria-hidden="true"></i>
-                                            10 đánh giá
-                                        </span>
-                                    </td>
-                                </tr>
-                            </table>
+                        <table class="product-item">
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("ProductDetails", "Product", new {productVersionID = item.ProductVersionID})">
+                                        <img src="~/Content/Images/Product/@item.Image" width="185" height="185" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr style="height: 70px">
+                                <td>
+                                    <p>@item.ProductVersionName</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b style="color: orangered">@item.Price VNĐ</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p><strike>@item.ListPrice VNĐ</strike></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        <i class="fa fa-star checked" aria-hidden="true"></i>
+                                        10 đánh giá
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
                         }
                     </div>
                 </div>

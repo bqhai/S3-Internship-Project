@@ -4,38 +4,44 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b1b831a33d5a45d49fdd600e9b48c715" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="b1b831a33d5a45d49fdd600e9b48c715" Name="Diagram1" ZoomLevel="47">
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Account" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.AccountType" Width="1.5" PointX="0.75" PointY="7.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Brand" Width="1.5" PointX="6" PointY="16.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Country" Width="1.5" PointX="11.75" PointY="1" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Customer" Width="1.5" PointX="5.25" PointY="5.125" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.District" Width="1.5" PointX="16.25" PointY="1.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Employee" Width="1.5" PointX="5.25" PointY="10.5" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.HotSale" Width="1.5" PointX="12.75" PointY="9.125" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderDetail" Width="1.5" PointX="9.75" PointY="4.25" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Order" Width="1.5" PointX="7.5" PointY="3.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Product" Width="1.5" PointX="8.25" PointY="14.75" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductIntroduce" Width="1.5" PointX="10.5" PointY="14.75" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductVersion" Width="1.5" PointX="10.5" PointY="7.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCode" Width="1.5" PointX="7.5" PointY="7.5" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Province" Width="1.5" PointX="14" PointY="1.75" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Ward" Width="1.5" PointX="18.5" PointY="2" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.AccountType" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Brand" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Country" Width="1.5" PointX="10.75" PointY="1" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Customer" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.DeliveryState" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.District" Width="1.5" PointX="15.25" PointY="1.875" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Employee" Width="1.5" PointX="5.25" PointY="12.125" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.HotSale" Width="1.5" PointX="9.75" PointY="13" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderDetail" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Order" Width="1.5" PointX="10.5" PointY="8" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderState" Width="1.5" PointX="8.25" PointY="16.125" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Product" Width="1.5" PointX="5.25" PointY="17.625" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductIntroduce" Width="1.5" PointX="7.5" PointY="18.625" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductVersion" Width="1.5" PointX="7.5" PointY="7.75" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCode" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCodeUsed" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Province" Width="1.5" PointX="13" PointY="1.75" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Ward" Width="1.5" PointX="17.5" PointY="2" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__Promotion__Usern__4BAC3F29" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK_Province_Country" />
-        <AssociationConnector Association="DbCellPhoneStoreModel.FK__Orders__Customer__3D5E1FD2" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__Orders__Customer__412EB0B6" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__Orders__Delivery__4316F928" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK_District_Province" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK_Ward_District" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" />
-        <AssociationConnector Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__403A8C7D" />
-        <AssociationConnector Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__412EB0B6" />
-        <AssociationConnector Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__49C3F6B7" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__45F365D3" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__46E78A0C" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__Orders__OrderSta__4222D4EF" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__4F7CD00D" />
         <AssociationConnector Association="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" />
+        <AssociationConnector Association="DbCellPhoneStoreModel.FK__PromotionC__Code__4CA06362" />
         <AssociationConnector Association="DbCellPhoneStoreModel.Favorite" />
-        <AssociationConnector Association="DbCellPhoneStoreModel.PromotionCodeUsed" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

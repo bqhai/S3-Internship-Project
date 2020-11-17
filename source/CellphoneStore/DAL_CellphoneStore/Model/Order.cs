@@ -21,16 +21,19 @@ namespace DAL_CellPhoneStore.Model
         }
     
         public string OrderID { get; set; }
-        public string Payments { get; set; }
+        public string Payment { get; set; }
         public string Delivery { get; set; }
         public string Notes { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<int> TotalPrice { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public int IntoMoney { get; set; }
         public string CustomerID { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int OrderStateID { get; set; }
+        public int DeliveryStateID { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual DeliveryState DeliveryState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual OrderState OrderState { get; set; }
     }
 }

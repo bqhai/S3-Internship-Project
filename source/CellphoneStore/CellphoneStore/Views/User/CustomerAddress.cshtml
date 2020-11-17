@@ -1,0 +1,58 @@
+﻿@{
+    <script src="~/Content/JS/customer-address.js"></script>
+}
+@model Model_CellphoneStore.CustomerMapped
+<h4>Sổ địa chỉ</h4>
+<div class="address-item">
+    <div class="info">
+        <div>
+            <p><strong>  @Model.Name</strong></p>
+        </div>
+        <div>
+            <p><strong>Địa chỉ:</strong>  @Model.Address</p>
+        </div>
+        <div>
+            <p><strong>Số điện thoại:</strong>  @Model.PhoneNumber</p>
+        </div>
+    </div>
+    <div class="address-edit">
+        <button class="btn btn-default" onclick="expandChangeAddress()"><b style="color: orangered">Chỉnh sửa</b></button>
+    </div>
+</div>
+<form id="change-address" method="post" action="@Url.Action("UpdateCustomerAddress", "User")">
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="province">Tỉnh/Thành phố</label>
+        <div>
+            <select class="form-control" id="province" name="Province" runat="server" style="width: 300px" autofocus required>
+            </select>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="district">Quận/Huyện</label>
+        <div>
+            <select class="form-control" id="district" name="District" runat="server" style="width: 300px" autofocus required>
+            </select>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="ward">Phường/Xã</label>
+        <div>
+            <select class="form-control" id="ward" name="Ward" runat="server" style="width: 300px" autofocus required>
+            </select>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="col-sm-2 control-label" for="address">Địa chỉ</label>
+        <div>
+            <textarea class="form-control" type="text" id="houseNumber" name="HouseNumber" placeholder="Nhập địa chỉ" style="width:300px" autofocus required></textarea>
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="col-sm-2">
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-warning btn-block" style="width: 100px">Cập nhật</button>
+        </div>
+    </div>
+</form>

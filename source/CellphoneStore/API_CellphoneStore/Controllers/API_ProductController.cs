@@ -19,7 +19,7 @@ namespace API_CellphoneStore.Controllers
         BLL_ProductVersion bllProductVersion = new BLL_ProductVersion();
         BLL_Brand bllBrand = new BLL_Brand();
         BLL_ProductIntroduce bllProductIntroduce = new BLL_ProductIntroduce();
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("GetAllBrand")]
         public List<BrandMapped> GetAllBrand()
         {
@@ -39,9 +39,14 @@ namespace API_CellphoneStore.Controllers
         }
 
         [Route("GetProductVersionByID/{productVersionID}")]
-        public ProductVersionInfoMapped GetProductVersionByID(string productVersionID)
+        public ProductVersionMapped GetProductVersionByID(string productVersionID)
         {
             return bllProductVersion.GetProductVersionByID(productVersionID);
+        }
+        [Route("GetInfoProductVersionByID/{productVersionID}")]
+        public ProductVersionInfoMapped GetInfoProductVersionByID(string productVersionID)
+        {
+            return bllProductVersion.GetInfoProductVersionByID(productVersionID);
         }
 
         [Route("GetProductIntroduceByID/{productID}")]

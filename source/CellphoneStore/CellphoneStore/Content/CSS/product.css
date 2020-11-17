@@ -30,7 +30,7 @@
     text-align: center;
     float: left;
 }
-.filter-price{
+.filter-price {
     margin-top: 10px;
 }
 .filter-price-right{
@@ -61,15 +61,32 @@
     justify-content: center;
     float: left;  
 }
-
-.promotion-container {
-    border: 1px solid #ff6a00;
-    border-radius: 4px;
-    padding: 10px 0 0;
-    position: relative;
-    width: 100%;
-    margin: 20px 0;
-}
+    .version-container .item:hover {
+        position: relative;
+        background: #fff;
+        border: 1px solid red;
+        border-radius: 3px;
+        text-align: center;
+        padding: 5px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        float: left;      
+    }
+    .version-container .item a:hover{
+        text-decoration: none;
+        color: red;
+    }
+    .promotion-container {
+        border: 1px solid #ff6a00;
+        border-radius: 4px;
+        padding: 10px 0 0;
+        position: relative;
+        width: 100%;
+        margin: 20px 0;
+    }
 #promotion-header {
     background: #ff6a00;
     border-radius: 13px;

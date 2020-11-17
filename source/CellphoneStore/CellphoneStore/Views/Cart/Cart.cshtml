@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model List<CellphoneStore.Models.CartItem>
+<div class="cart-title">
+    <h2>Giỏ hàng</h2>
+    @if (Convert.ToInt32(Session["Amount"]) > 0)
+    {
+        <p>(@Session["Amount"] sản phẩm)</p>
+    }
+
+</div>
+<div class="row">
+    @if (Model.Count <= 0)
+    {
+        <div>
+            <h3>Không có sản phẩm trong giỏ hàng của bạn</h3>
+            <a href="@Url.Action("AllProduct", "Product")"><input class="btn btn-warning" type="button" value="Tiếp tục mua sắm" /></a>
+        </div>
+    }
+    else
+    {
+        <div class="col-sm-8 borderbox">
+            @foreach (var item in Model)
+            {
+                <div class="cart-item">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="column">
+                                    <img src="~/Content/Images/Product/@item.Image" width="120" height="120" />
+                                </div>
+                            </td>
+                            <td style="width: 60%">
+                                <div class="column">
+                                    <table>
+                                        <tr>
+                                            <td><p>@item.ProductVersionName</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="@Url.Action("RemoveProductFromCart", "Cart", new { productVersionID = item.ProductVersionID })"><input class="btn btn-danger" type="button" value="Xóa" style="width: 50px" /></a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="width: 20%">
+                                <div class="column">
+                                    <table style="margin-left: 20px">
+                                        <tr>
+                                            <td><b style="color:orangered">@item.Price VNĐ</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b><strike>@item.ListPrice VNĐ</strike></b></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ReduceProductFromCart", "Cart", new { productVersionID = item.ProductVersionID })"><input class="btn btn-danger" type="button" value="-" style="width: 35px" /></a>
+                            </td>
+                            <td>
+                                <div class="amount">
+                                    <p>@item.Amount</p>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = item.ProductVersionID, buynow = false })"><input class="btn btn-success" type="button" value="+" style="width: 35px" /></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div>
+        <div class="col-sm-3 borderbox" style="margin-left: 90px">
+            @if (Session["Account"] != null)
+            {
+                <div class="address">
+                    @Html.Action("GetShipmentDetails", "Cart", new { username = Session["Account"] })
+                </div>
+            }
+            <div class="promotion-code">
+                <form class="form-inline" method="post" action="@Url.Action("GetResultUsingPromotionCode", "Cart")">
+                    <input class="form-control" type="text" name="Code" placeholder="Mã khuyến mãi" style="width: 160px" required />
+                    <button class="btn btn-primary" type="submit">Áp dụng</button>
+                </form>
+            </div>
+            <div>
+                <ul class="cart-price">
+                    <li class="cart-price-item">
+                        <span>Tạm tính</span>
+                        <span>@ViewBag.CartInfo.CartTotalPrice VNĐ</span>
+                    </li>
+                    <li class="cart-price-item">
+                        <span>Giảm giá</span>
+                        <span>@ViewBag.CartInfo.Discount VNĐ</span>
+                    </li>
+
+                </ul>
+                <p class="cart-price cart-price-item">
+                    <span class="cart-total-price">Thành tiền</span>
+                    <span class="cart-total-price">@ViewBag.CartInfo.IntoMoney VNĐ</span>
+                </p>
+                <p class="cart-price" style="margin-left: 75px">Đã bao gồm VAT(nếu có)</p>
+            </div>
+            <div class="cart-gotopayment">
+                @{
+                    TempData["CartInfo"] = ViewBag.CartInfo;
+                } 
+                <a href="@Url.Action("Payment", "Payment", new { cartInfo = ViewBag.CartInfo })"><input class="btn btn-warning" type="button" value="Tiến hành đặt hàng" style="width: 100%" /></a>                
+            </div>
+        </div>
+    }
+</div>
+
