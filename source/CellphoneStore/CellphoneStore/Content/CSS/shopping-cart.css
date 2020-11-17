@@ -36,6 +36,8 @@
     font-size: 13px;
 }
 .promotion-code {
+    padding-top: 15px;
+    padding-left: 10px;
 }
 .cart-price{
     list-style: none;
@@ -52,4 +54,7 @@
 .cart-total-price{
     color: red;
     font-size: 16px;
+}
+.cart-gotopayment{
+    margin-bottom: 15px;
 }

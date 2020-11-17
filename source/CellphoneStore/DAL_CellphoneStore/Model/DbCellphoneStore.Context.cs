@@ -30,11 +30,13 @@ namespace DAL_CellPhoneStore.Model
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DeliveryState> DeliveryStates { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<HotSale> HotSales { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderState> OrderStates { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductIntroduce> ProductIntroduces { get; set; }
         public virtual DbSet<ProductVersion> ProductVersions { get; set; }

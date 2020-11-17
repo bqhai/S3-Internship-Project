@@ -56,6 +56,7 @@
     <Compile Include="DAL\DAL_Account.cs" />
     <Compile Include="DAL\DAL_Brand.cs" />
     <Compile Include="DAL\DAL_Customer.cs" />
+    <Compile Include="DAL\DAL_Order.cs" />
     <Compile Include="DAL\DAL_Product.cs" />
     <Compile Include="DAL\DAL_ProductIntroduce.cs" />
     <Compile Include="DAL\DAL_ProductVesion.cs" />
@@ -92,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbCellphoneStore.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\DeliveryState.cs">
+      <DependentUpon>DbCellphoneStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\District.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
@@ -105,6 +109,9 @@
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\OrderDetail.cs">
+      <DependentUpon>DbCellphoneStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderState.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Product.cs">

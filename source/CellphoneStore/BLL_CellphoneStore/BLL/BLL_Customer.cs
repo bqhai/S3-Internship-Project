@@ -27,7 +27,7 @@ namespace BLL_CellPhoneStore.BLL
             {
                 try
                 {
-                    string customerID = Auto.CreateID("CUS", lastCustomerID);
+                    string customerID = AutoGen.CreateID("CUS", lastCustomerID);
                     customerMapped.CustomerID = customerID;
                     Customer cus = cusMappedToCus.Translate(customerMapped);
                     dalCustomer.AddNewCustomer(cus);

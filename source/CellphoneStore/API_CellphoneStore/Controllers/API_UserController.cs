@@ -39,6 +39,13 @@ namespace API_CellphoneStore.Controllers
             return bllAccount.AccountAlreadyExists(username);
         }
 
+        [HttpGet]
+        [Route("GetCoin/{username}")]
+        public int GetCoin(string username)
+        {
+            return bllAccount.GetCoin(username);
+        }
+
         [HttpPost]
         [Route("AddNewAccount")]
         public bool AddNewAccount(AccountMapped accountMapped)

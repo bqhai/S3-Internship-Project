@@ -25,6 +25,7 @@ namespace DAL_CellPhoneStore.Model
         public string Username { get; set; }
         public string Password { get; set; }
         public int AccountTypeID { get; set; }
+        public Nullable<int> Coin { get; set; }
         public bool Status { get; set; }
     
         public virtual AccountType AccountType { get; set; }

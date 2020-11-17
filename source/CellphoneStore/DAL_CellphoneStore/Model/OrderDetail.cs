@@ -17,7 +17,6 @@ namespace DAL_CellPhoneStore.Model
         public string OrderID { get; set; }
         public string ProductVersionID { get; set; }
         public int Amount { get; set; }
-        public int Price { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual ProductVersion ProductVersion { get; set; }

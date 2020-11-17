@@ -18,6 +18,10 @@ namespace DAL_CellPhoneStore.DAL
         {
             List<Customer> lstCustomer = db.Customers.Select(cus => cus).ToList();
             Customer customer = lstCustomer.LastOrDefault();
+            if(customer == null)
+            {
+                return "CUS10000";
+            }
             return customer.CustomerID;
         }
         public void AddNewCustomer(Customer customer)

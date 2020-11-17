@@ -12,28 +12,18 @@ namespace DAL_CellPhoneStore.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class DeliveryState
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public DeliveryState()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public string OrderID { get; set; }
-        public string Payment { get; set; }
-        public string Delivery { get; set; }
-        public string Notes { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public int IntoMoney { get; set; }
-        public string CustomerID { get; set; }
-        public int OrderStateID { get; set; }
         public int DeliveryStateID { get; set; }
+        public string DeliveryDescription { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual DeliveryState DeliveryState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual OrderState OrderState { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

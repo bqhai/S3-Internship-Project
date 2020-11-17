@@ -108,5 +108,10 @@ namespace BLL_CellPhoneStore.BLL
             }
             return false;
         }
+        public int GetCoin(string username)
+        {
+            Account account = dalAccount.GetAccount(username);
+            return (int)account.Coin;
+        }
     }
 }

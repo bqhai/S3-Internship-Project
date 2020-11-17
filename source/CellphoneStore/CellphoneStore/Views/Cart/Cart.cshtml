@@ -41,7 +41,7 @@
                                             <td><p>@item.ProductVersionName</p></td>
                                         </tr>
                                         <tr>
-                                            <td><a href="@Url.Action("RemoveProductFromCart", "Cart", new { productVersionID = item.ProductVersionID})"><input class="btn btn-danger" type="button" value="Xóa" style="width: 50px" /></a></td>
+                                            <td><a href="@Url.Action("RemoveProductFromCart", "Cart", new { productVersionID = item.ProductVersionID })"><input class="btn btn-danger" type="button" value="Xóa" style="width: 50px" /></a></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="@Url.Action("ReduceProductFromCart", "Cart", new { productVersionID = item.ProductVersionID})"><input class="btn btn-danger" type="button" value="-" style="width: 35px" /></a>
+                                <a href="@Url.Action("ReduceProductFromCart", "Cart", new { productVersionID = item.ProductVersionID })"><input class="btn btn-danger" type="button" value="-" style="width: 35px" /></a>
                             </td>
                             <td>
                                 <div class="amount">
@@ -67,7 +67,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = item.ProductVersionID, buynow = false})"><input class="btn btn-success" type="button" value="+" style="width: 35px" /></a>
+                                <a href="@Url.Action("AddProductToCart", "Cart", new { productVersionID = item.ProductVersionID, buynow = false })"><input class="btn btn-success" type="button" value="+" style="width: 35px" /></a>
                             </td>
                         </tr>
                     </table>
@@ -83,7 +83,7 @@
             }
             <div class="promotion-code">
                 <form class="form-inline" method="post" action="@Url.Action("GetResultUsingPromotionCode", "Cart")">
-                    <input class="form-control" type="text" name="Code" placeholder="Nhập mã khuyến mãi" style="width: 180px" required />
+                    <input class="form-control" type="text" name="Code" placeholder="Mã khuyến mãi" style="width: 160px" required />
                     <button class="btn btn-primary" type="submit">Áp dụng</button>
                 </form>
             </div>
@@ -91,24 +91,26 @@
                 <ul class="cart-price">
                     <li class="cart-price-item">
                         <span>Tạm tính</span>
-                        <span>@TempData["TotalPrice"] VNĐ</span>
+                        <span>@ViewBag.CartInfo.CartTotalPrice VNĐ</span>
                     </li>
                     <li class="cart-price-item">
                         <span>Giảm giá</span>
-                        <span>@TempData["Discount"] VNĐ</span>
+                        <span>@ViewBag.CartInfo.Discount VNĐ</span>
                     </li>
 
                 </ul>
                 <p class="cart-price cart-price-item">
                     <span class="cart-total-price">Thành tiền</span>
-                    <span class="cart-total-price">@TempData["IntoMoney"] VNĐ</span>
+                    <span class="cart-total-price">@ViewBag.CartInfo.IntoMoney VNĐ</span>
                 </p>
                 <p class="cart-price" style="margin-left: 75px">Đã bao gồm VAT(nếu có)</p>
             </div>
-            <div>
-                <a href="@Url.Action("Payment", "Payment")"><input class="btn btn-warning" type="button" value="Tiến hành đặt hàng" style="width: 100%" /></a>                
+            <div class="cart-gotopayment">
+                @{
+                    TempData["CartInfo"] = ViewBag.CartInfo;
+                } 
+                <a href="@Url.Action("Payment", "Payment", new { cartInfo = ViewBag.CartInfo })"><input class="btn btn-warning" type="button" value="Tiến hành đặt hàng" style="width: 100%" /></a>                
             </div>
-
         </div>
     }
 </div>

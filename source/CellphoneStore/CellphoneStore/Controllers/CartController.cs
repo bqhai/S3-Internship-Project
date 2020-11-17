@@ -20,17 +20,26 @@ namespace CellphoneStore.Controllers
         {
             List<CartItem> cartItems = GetCart();
             Session["Amount"] = GetItemAmount();
-            TempData["TotalPrice"] = GetTotalPrice();           
-            if(TempData["IntoMoney"] == null)
+            CartInfo cartInfo = new CartInfo();
+            cartInfo.CartTotalPrice = GetTotalPrice();        
+            if (TempData["Discount"] != null && TempData["Discount"].GetType() != typeof(string) && TempData["PromotionCode"] != null)
             {
-                TempData["IntoMoney"] = GetTotalPrice();
-            }          
+                cartInfo.PromotionCode = TempData["PromotionCode"].ToString();
+                cartInfo.Discount = Convert.ToInt32(TempData["Discount"]);
+                cartInfo.IntoMoney = cartInfo.CartTotalPrice - cartInfo.Discount;
+            }
+            else
+            {
+                cartInfo.Discount = 0;
+                cartInfo.IntoMoney = cartInfo.CartTotalPrice;
+            }
+            ViewBag.CartInfo = cartInfo;
             return View(cartItems);
         }
         public List<CartItem> GetCart()
         {
             List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
-            if(cartItems == null)
+            if (cartItems == null)
             {
                 cartItems = new List<CartItem>();
                 Session["Cart"] = cartItems;
@@ -38,23 +47,23 @@ namespace CellphoneStore.Controllers
             return cartItems;
         }
         public ActionResult AddProductToCart(string productVersionID, bool buynow)
-        {   
-            if(GetTotalPrice() > maxOrderValue)
+        {
+            if (GetTotalPrice() > maxOrderValue)
             {
                 TempData["WarningMessage"] = "Đơn hàng vượt quá giá trị tối đa";
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
             List<CartItem> cartItems = GetCart();
             CartItem cartItem = cartItems.FirstOrDefault(c => c.ProductVersionID == productVersionID);
-            if(cartItem == null)
+            if (cartItem == null)
             {
                 CartItem newItem = new CartItem(productVersionID);
                 cartItems.Add(newItem);
                 TempData["InfoMessage"] = "Đã thêm vào giỏ hàng";
             }
-            else if(cartItem.Amount > 2)
-            {          
-                TempData["WarningMessage"] = "Số lượng được mua tối đa là 3";                           
+            else if (cartItem.Amount > 2)
+            {
+                TempData["WarningMessage"] = "Số lượng được mua tối đa là 3";
             }
             else
             {
@@ -69,13 +78,13 @@ namespace CellphoneStore.Controllers
             {
                 Session["Amount"] = GetItemAmount();
                 return Redirect(this.Request.UrlReferrer.ToString());
-            }          
+            }
         }
         public ActionResult ReduceProductFromCart(string productVersionID)
         {
             List<CartItem> cartItems = GetCart();
             CartItem cartItem = cartItems.FirstOrDefault(c => c.ProductVersionID == productVersionID);
-            if(cartItem != null && cartItem.Amount > 1)
+            if (cartItem != null && cartItem.Amount > 1)
             {
                 cartItem.Amount--;
             }
@@ -95,7 +104,7 @@ namespace CellphoneStore.Controllers
         {
             int totalAmount = 0;
             List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
-            if(cartItems != null)
+            if (cartItems != null)
             {
                 totalAmount = cartItems.Sum(c => c.Amount);
             }
@@ -111,32 +120,42 @@ namespace CellphoneStore.Controllers
             }
             return totalPrice;
         }
-        public ActionResult GetResultUsingPromotionCode(PromotionCodeMapped prmCode)
+        public dynamic GetPromotionCodeValue(string prmCode)
         {
             if (Session["Account"] == null)
             {
-                TempData["WarningMessage"] = "Bạn chưa đăng nhập";
-                return RedirectToAction("Cart", "Cart");
+                return -1;
             }
             else
             {
-                var url = "api/API_Cart/GetResultUsingPromotionCode/" + prmCode.Code + "/" + Session["Account"].ToString() + "/" + GetTotalPrice();
+                var url = "api/API_Cart/GetResultUsingPromotionCode/" + prmCode + "/" + Session["Account"].ToString() + "/" + GetTotalPrice();
                 response = serviceObj.GetResponse(url);
                 if (response.IsSuccessStatusCode)
                 {
                     dynamic result = response.Content.ReadAsAsync<dynamic>().Result;
-                    if(result.GetType() == typeof(string))
-                    {
-                        TempData["WarningMessage"] = result;
-                    }
-                    else
-                    {
-                        TempData["Discount"] = result;
-                        TempData["IntoMoney"] = GetTotalPrice() - result;
-                    }                  
+                    return result;
                 }
             }
-            return RedirectToAction("Cart", "Cart");
+            return -2;
+        }
+        public ActionResult GetResultUsingPromotionCode(PromotionCodeMapped prmCode)
+        {
+            dynamic promotionCodeValue = GetPromotionCodeValue(prmCode.Code);
+            if (promotionCodeValue.GetType() == typeof(string))
+            {
+                TempData["WarningMessage"] = promotionCodeValue;
+            }
+            else if (promotionCodeValue == -1)
+            {
+                TempData["WarningMessage"] = "Bạn chưa đăng nhập";
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Đã áp dụng mã giảm giá";
+                TempData["PromotionCode"] = prmCode.Code;
+                TempData["Discount"] = promotionCodeValue;
+            }
+            return RedirectToActionPermanent("Cart", "Cart");
         }
         public ActionResult GetShipmentDetails(string username)
         {
