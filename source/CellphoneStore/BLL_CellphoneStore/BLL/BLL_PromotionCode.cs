@@ -71,5 +71,17 @@ namespace BLL_CellPhoneStore.BLL
             }            
             return result;
         }
+        public bool AddPromotionCodeUsed(PromotionCodeUsedMapped promotionCodeUsedMapped)
+        {
+            try
+            {
+                dalPromotionCode.AddPromotionCodeUsed(promotionCodeUsedMapped.Code, promotionCodeUsedMapped.Username);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

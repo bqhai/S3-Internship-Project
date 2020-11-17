@@ -43,9 +43,16 @@ namespace CellphoneStore.Controllers
             CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
             return customerMapped.CustomerID;
         }
+        //public bool AddPromotionCodeUsed()
+        //{
+        //    AccountMapped accountMapped = new AccountMapped() { Username = Session["Account"].ToString()};
+        //    PromotionCodeMapped promotionCodeMapped 
+        //    response = serviceObj.PostResponse("api/API_Payment/AddPromotionCodeUsed/" + )
+        //}
         [HttpPost]
         public ActionResult ProcessOrder()
         {
+            //Add new order
             OrderMapped orderMapped = new OrderMapped()
             {
                 Delivery = Request.Form["Delivery"],
@@ -60,6 +67,7 @@ namespace CellphoneStore.Controllers
 
             if (resultAddOrder)
             {
+                //Add orderdetail to order
                 List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
                 foreach (var item in cartItems)
                 {
@@ -76,6 +84,7 @@ namespace CellphoneStore.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
+                
                 TempData["SuccessMessage"] = "Đặt mua thành công";
                 Session.Remove("Cart");
             }

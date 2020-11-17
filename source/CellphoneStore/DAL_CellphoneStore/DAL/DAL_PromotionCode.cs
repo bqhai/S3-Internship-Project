@@ -30,5 +30,14 @@ namespace DAL_CellPhoneStore.DAL
                 return false;
             }
         }           
+        public void AddPromotionCodeUsed(string code, string username)
+        {
+            PromotionCodeUsed promotionCodeUsed = new PromotionCodeUsed()
+            {
+                Code = code,
+                Username = username,
+                UsedDate = DateTime.Now
+            };
+        }
     }
 }
