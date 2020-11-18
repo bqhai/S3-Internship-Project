@@ -15,8 +15,8 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_ProductVersion
     {
         DAL_ProductVesion dalProductVersion = new DAL_ProductVesion();
-        EntityMapper<ProductVersion, ProductVersionMapped> prdvToPrdvMapped = new EntityMapper<ProductVersion, ProductVersionMapped>();
-        EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> prdvToPrdvMappedInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
+        EntityMapper<ProductVersion, ProductVersionMapped> convertToPrdvMapped = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> convertToPrdvMappedInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
         public BLL_ProductVersion()
         {
 
@@ -28,20 +28,20 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
         public ProductVersionInfoMapped GetInfoProductVersionByID(string productVersionID)
         {          
             ProductVersionInfo productVersionInfo = dalProductVersion.GetInfoProductVersionByID(productVersionID);
-            ProductVersionInfoMapped productVersionInfoMapped = prdvToPrdvMappedInfo.Translate(productVersionInfo);
+            ProductVersionInfoMapped productVersionInfoMapped = convertToPrdvMappedInfo.Translate(productVersionInfo);
             return productVersionInfoMapped;
         }
         public ProductVersionMapped GetProductVersionByID(string productVersionID)
         {
             ProductVersion productVersion = dalProductVersion.GetProductVersionByID(productVersionID);
-            ProductVersionMapped productVersionMapped = prdvToPrdvMapped.Translate(productVersion);
+            ProductVersionMapped productVersionMapped = convertToPrdvMapped.Translate(productVersion);
             return productVersionMapped;
         }
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
@@ -50,7 +50,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -60,7 +60,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -70,7 +70,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -80,7 +80,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -90,7 +90,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -100,7 +100,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -110,7 +110,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -120,7 +120,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }
@@ -130,7 +130,7 @@ namespace BLL_CellPhoneStore.BLL
             List<ProductVersionMapped> productVersionMappeds = new List<ProductVersionMapped>();
             foreach (var item in productVersions)
             {
-                productVersionMappeds.Add(prdvToPrdvMapped.Translate(item));
+                productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
         }

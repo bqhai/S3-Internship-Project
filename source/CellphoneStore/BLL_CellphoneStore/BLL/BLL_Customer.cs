@@ -14,8 +14,8 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_Customer
     {
         DAL_Customer dalCustomer = new DAL_Customer();
-        EntityMapper<Customer, CustomerMapped> cusToCusMapped = new EntityMapper<Customer, CustomerMapped>();
-        EntityMapper<CustomerMapped, Customer> cusMappedToCus = new EntityMapper<CustomerMapped, Customer>();
+        EntityMapper<Customer, CustomerMapped> convertToCusMapped = new EntityMapper<Customer, CustomerMapped>();
+        EntityMapper<CustomerMapped, Customer> convertToCus = new EntityMapper<CustomerMapped, Customer>();
         public BLL_Customer()
         {
 
@@ -29,7 +29,7 @@ namespace BLL_CellPhoneStore.BLL
                 {
                     string customerID = AutoGen.CreateID("CUS", lastCustomerID);
                     customerMapped.CustomerID = customerID;
-                    Customer cus = cusMappedToCus.Translate(customerMapped);
+                    Customer cus = convertToCus.Translate(customerMapped);
                     dalCustomer.AddNewCustomer(cus);
                     return true;
                 }
@@ -44,7 +44,7 @@ namespace BLL_CellPhoneStore.BLL
         {
             try
             {
-                Customer cus = cusMappedToCus.Translate(customerMapped);
+                Customer cus = convertToCus.Translate(customerMapped);
                 dalCustomer.UpdateCustomerInfo(cus);
                 return true;
             }
@@ -57,7 +57,7 @@ namespace BLL_CellPhoneStore.BLL
         {
             try
             {
-                Customer cus = cusMappedToCus.Translate(customerMapped);
+                Customer cus = convertToCus.Translate(customerMapped);
                 dalCustomer.UpdateCustomerAddress(cus);
                 return true;
             }
@@ -69,21 +69,21 @@ namespace BLL_CellPhoneStore.BLL
         public CustomerMapped GetCustomerByUsername(string username)
         {
             Customer customer = dalCustomer.GetCustomerByUsername(username);
-            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            CustomerMapped customerMapped = convertToCusMapped.Translate(customer);
             return customerMapped;
 
         }
         public CustomerMapped GetCustomerByEmail(string email)
         {
             Customer customer = dalCustomer.GetCustomerByEmail(email);
-            CustomerMapped customerMapped = cusToCusMapped.Translate(customer);
+            CustomerMapped customerMapped = convertToCusMapped.Translate(customer);
             return customerMapped;
         }
         public bool AddResetPasswordCode(CustomerMapped customerMapped)
         {
             try
             {
-                Customer cus = cusMappedToCus.Translate(customerMapped);
+                Customer cus = convertToCus.Translate(customerMapped);
                 dalCustomer.AddResetPasswordCode(cus);
                 return true;
             }

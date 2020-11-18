@@ -55,6 +55,9 @@ namespace Model_CellphoneStore.Repository
             Mapper.CreateMap<OrderDetailInfoMapped, OrderDetailInfo>();
             Mapper.CreateMap<OrderDetailInfo, OrderDetailInfoMapped>();
 
+            Mapper.CreateMap<EmployeeMapped, Employee>();
+            Mapper.CreateMap<Employee, EmployeeMapped>();
+
         }
         public TDestination Translate(TSource obj)
         {

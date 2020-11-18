@@ -18,7 +18,7 @@ namespace DAL_CellPhoneStore.DAL
         {
             //var query = from prov in db.Provinces
             //            select new Province
-            //            { 
+            //            {
             //                Id = prov.Id,
             //                Name = prov.Name,
             //                Type = prov.Type

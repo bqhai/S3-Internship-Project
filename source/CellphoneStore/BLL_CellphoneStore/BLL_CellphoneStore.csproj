@@ -55,6 +55,7 @@
     <Compile Include="BLL\BLL_Address.cs" />
     <Compile Include="BLL\BLL_Brand.cs" />
     <Compile Include="BLL\BLL_Customer.cs" />
+    <Compile Include="BLL\BLL_Employee.cs" />
     <Compile Include="BLL\BLL_Order.cs" />
     <Compile Include="BLL\BLL_Product.cs" />
     <Compile Include="BLL\BLL_ProductIntroduce.cs" />

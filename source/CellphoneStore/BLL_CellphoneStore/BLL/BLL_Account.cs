@@ -14,7 +14,7 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_Account
     {
         DAL_Account dalAccount = new DAL_Account();
-        EntityMapper<AccountMapped, Account> accMappedToAcc = new EntityMapper<AccountMapped, Account>();
+        EntityMapper<AccountMapped, Account> convertToAcc = new EntityMapper<AccountMapped, Account>();
         public BLL_Account()
         {
 
@@ -57,7 +57,7 @@ namespace BLL_CellPhoneStore.BLL
             try
             {
                 accountMapped.Password = MD5_Encryptor.HashMD5(accountMapped.Password);
-                Account acc = accMappedToAcc.Translate(accountMapped);
+                Account acc = convertToAcc.Translate(accountMapped);
                 dalAccount.AddNewUserAccount(acc);
                 return true;
             }

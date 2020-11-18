@@ -70,3 +70,19 @@
 .fa{
     width: 15px;
 }
+.emp-table{
+    margin-left: 50px;
+}
+.emp-table table th{
+    padding: 10px;
+}
+.emp-table table td {
+    padding: 10px;
+    min-width: 180px;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+}
+.emp-header{
+    text-align: center;
+}

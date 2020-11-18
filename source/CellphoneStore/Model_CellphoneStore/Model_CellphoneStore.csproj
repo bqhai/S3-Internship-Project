@@ -49,6 +49,7 @@
     <Compile Include="BrandMapped.cs" />
     <Compile Include="CustomerMapped.cs" />
     <Compile Include="DistrictMapped.cs" />
+    <Compile Include="EmployeeMapped.cs" />
     <Compile Include="OrderDetailInfoMapped.cs" />
     <Compile Include="OrderDetailMapped.cs" />
     <Compile Include="OrderInfoMapped.cs" />
