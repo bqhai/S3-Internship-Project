@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL_CellPhoneStore.Model;
+using DAL_CellPhoneStore.MappingClass;
 
 namespace BLL_CellPhoneStore.BLL
 {
     public class BLL_Order
     {
         DAL_Order dalOrder = new DAL_Order();
-        EntityMapper<Order, OrderMapped> convertToOrdMapped = new EntityMapper<Order, OrderMapped>();
         EntityMapper<OrderMapped, Order> convverToOrd = new EntityMapper<OrderMapped, Order>();
-
-        EntityMapper<OrderDetail, OrderDetailMapped> convertToOrdDetailMapped = new EntityMapper<OrderDetail, OrderDetailMapped>();
         EntityMapper<OrderDetailMapped, OrderDetail> convertToOrdDetail = new EntityMapper<OrderDetailMapped, OrderDetail>();
+        EntityMapper<OrderInfo, OrderInfoMapped> convertToOrdInfoMapped = new EntityMapper<OrderInfo, OrderInfoMapped>();
+        EntityMapper<OrderDetailInfo, OrderDetailInfoMapped> convertToOrdDeInfoMapped = new EntityMapper<OrderDetailInfo, OrderDetailInfoMapped>();       
         public BLL_Order()
         {
 
@@ -58,6 +58,25 @@ namespace BLL_CellPhoneStore.BLL
                 return false;
             }
         }
-
+        public List<OrderInfoMapped> GetListOrderByUserName(string username)
+        {
+            IEnumerable<OrderInfo> orderInfos = dalOrder.GetListOrderByUserName(username);
+            List<OrderInfoMapped> orderInfoMappeds = new List<OrderInfoMapped>();
+            foreach (var item in orderInfos)
+            {
+                orderInfoMappeds.Add(convertToOrdInfoMapped.Translate(item));
+            }
+            return orderInfoMappeds.OrderByDescending(ordi => ordi.OrderDate).ToList();
+        }
+        public List<OrderDetailInfoMapped> GetListOrderDetailByOrderID(string orderID)
+        {
+            IEnumerable<OrderDetailInfo> orderDetailInfos = dalOrder.GetListOrderDetailByOrderID(orderID);
+            List<OrderDetailInfoMapped> orderDetailInfoMappeds = new List<OrderDetailInfoMapped>();
+            foreach (var item in orderDetailInfos)
+            {
+                orderDetailInfoMappeds.Add(convertToOrdDeInfoMapped.Translate(item));
+            }
+            return orderDetailInfoMappeds;
+        }
     }
 }

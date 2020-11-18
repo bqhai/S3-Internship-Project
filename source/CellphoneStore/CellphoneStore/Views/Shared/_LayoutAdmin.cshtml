@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CSS/admin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="view-port">
+        <div id="side-bar">
+            <header>
+                <a href="#">
+                    <img src="~/Content/Logo/logo_cps.png" />
+                    Cellphones
+                </a>
+            </header>
+            <ul class="nav">
+                <li>
+                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i>Nhân viên</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users" aria-hidden="true"></i>Khách hàng</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Sản phẩm</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-list" aria-hidden="true"></i>Đơn hàng</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i>Thống kê</a>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li><a href="#">Test User</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

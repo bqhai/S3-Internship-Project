@@ -49,13 +49,16 @@
     <Compile Include="BrandMapped.cs" />
     <Compile Include="CustomerMapped.cs" />
     <Compile Include="DistrictMapped.cs" />
+    <Compile Include="OrderDetailInfoMapped.cs" />
     <Compile Include="OrderDetailMapped.cs" />
+    <Compile Include="OrderInfoMapped.cs" />
     <Compile Include="OrderMapped.cs" />
     <Compile Include="ProductIntroduceMapped.cs" />
     <Compile Include="ProductMapped.cs" />
     <Compile Include="ProductVersionMapped.cs" />
     <Compile Include="ProductVersionInfoMapped.cs" />
     <Compile Include="PromotionCodeMapped.cs" />
+    <Compile Include="PromotionCodeUsedMapped.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceMapped.cs" />
     <Compile Include="Repository\EntityMapper.cs" />

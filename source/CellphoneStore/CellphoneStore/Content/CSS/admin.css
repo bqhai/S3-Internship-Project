@@ -1,0 +1,72 @@
+﻿body {
+    overflow-x: hidden;
+    padding-top: 0px !important;
+}
+
+#view-port {
+    padding-left: 250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#side-bar {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #37474F;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+    #side-bar header {
+        background-color: #263238;
+        font-size: 20px;
+    }
+
+        #side-bar header a {
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+            #side-bar header a img {
+                width: 50px;
+                height: 50px;
+                margin-right: 15px;
+
+            }
+            #side-bar header a:hover {
+                color: #fff;
+            }
+#side-bar .nav a {
+    background: none;
+    border-bottom: 1px solid #455A64;
+    color: #CFD8DC;
+    font-size: 14px;
+    padding: 16px 24px;
+}
+
+    #side-bar .nav a:hover {
+        background: none;
+        color: orangered;
+    }
+
+    #side-bar .nav a i {
+        margin-right: 16px;
+    }
+#content {
+    width: 100%;
+    position: relative;
+    margin-right: 0;
+}
+.fa{
+    width: 15px;
+}

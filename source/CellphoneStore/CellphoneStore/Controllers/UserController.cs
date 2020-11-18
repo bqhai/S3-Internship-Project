@@ -35,11 +35,11 @@ namespace CellphoneStore.Controllers
                 TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                 if (accountType == 1)
                 {
-                    return Redirect(this.Request.UrlReferrer.ToString());
+                    return RedirectToAction("Index", "Admin");
                 }
                 else if (accountType == 2)
                 {
-                    return Redirect(this.Request.UrlReferrer.ToString());
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
@@ -125,6 +125,36 @@ namespace CellphoneStore.Controllers
         public ActionResult Notification()
         {
             return PartialView();
+        }
+        public ActionResult OrderInfo()
+        {
+            if (Session["Account"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var url = "api/API_User/GetListOrderByUserName/" + Session["Account"].ToString();
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                List<OrderInfoMapped> orderInfoMappeds = response.Content.ReadAsAsync<List<OrderInfoMapped>>().Result;
+                return PartialView(orderInfoMappeds);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult OrderDetailInfo(string orderID)
+        {
+            if (Session["Account"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var url = "api/API_User/GetListOrderDetailByOrderID/" + orderID;
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                List<OrderDetailInfoMapped> orderDetailInfoMappeds = response.Content.ReadAsAsync<List<OrderDetailInfoMapped>>().Result;
+                return PartialView(orderDetailInfoMappeds);
+            }
+            return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public int GetAccountType(string username)
@@ -334,8 +364,6 @@ namespace CellphoneStore.Controllers
             }
             return PartialView();
         }
-        
-
 
     }
 }

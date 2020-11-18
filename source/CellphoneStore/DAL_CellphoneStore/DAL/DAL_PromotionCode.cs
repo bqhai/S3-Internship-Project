@@ -38,6 +38,8 @@ namespace DAL_CellPhoneStore.DAL
                 Username = username,
                 UsedDate = DateTime.Now
             };
+            db.PromotionCodeUseds.Add(promotionCodeUsed);
+            db.SaveChanges();
         }
     }
 }

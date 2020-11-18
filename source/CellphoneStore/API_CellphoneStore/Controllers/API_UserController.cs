@@ -16,6 +16,7 @@ namespace API_CellphoneStore.Controllers
         BLL_Account bllAccount = new BLL_Account();
         BLL_Customer bllCustomer = new BLL_Customer();
         BLL_Address bllAddress = new BLL_Address();
+        BLL_Order bllOrder = new BLL_Order();
         //[EnableCors(origins: "*", headers: "*", methods: "*")]
 
         [HttpGet]
@@ -163,6 +164,20 @@ namespace API_CellphoneStore.Controllers
         public List<WardMapped> GetWardsByDistrictID(int districtID)
         {
             return bllAddress.GetWardsByDistrictID(districtID);
+        }
+
+        [HttpGet]
+        [Route("GetListOrderByUserName/{username}")]
+        public List<OrderInfoMapped> GetListOrderByUserName(string username)
+        {
+            return bllOrder.GetListOrderByUserName(username);
+        }
+
+        [HttpGet]
+        [Route("GetListOrderDetailByOrderID/{orderID}")]
+        public List<OrderDetailInfoMapped> GetListOrderDetailByOrderID(string orderID)
+        {
+            return bllOrder.GetListOrderDetailByOrderID(orderID);
         }
 
     }

@@ -1,0 +1,9 @@
+﻿@model List<Model_CellphoneStore.OrderDetailInfoMapped>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("ProductDetails", "Product", new { productVersionID = item.ProductVersionID})" style="color: black">
+        <p><strong>@item.Amount x </strong>@item.ProductVersionName</p>
+    </a>
+    
+}

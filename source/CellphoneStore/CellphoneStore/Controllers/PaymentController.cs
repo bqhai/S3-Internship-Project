@@ -19,8 +19,8 @@ namespace CellphoneStore.Controllers
         {
             if (Session["Account"] == null)
             {
-                TempData["WarningMessage"] = "Bạn chưa đăng nhập";
-                return RedirectToAction("Cart", "Cart");
+                TempData["WarningMessage"] = "Phiên làm việc hết hạn";
+                return RedirectToAction("Index", "Home");
             }
             List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
             //ViewBag.TotalPrice = totalPrice;
@@ -43,15 +43,31 @@ namespace CellphoneStore.Controllers
             CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
             return customerMapped.CustomerID;
         }
-        //public bool AddPromotionCodeUsed()
-        //{
-        //    AccountMapped accountMapped = new AccountMapped() { Username = Session["Account"].ToString()};
-        //    PromotionCodeMapped promotionCodeMapped 
-        //    response = serviceObj.PostResponse("api/API_Payment/AddPromotionCodeUsed/" + )
-        //}
+        public int AddPromotionCodeUsed()
+        {
+            if(TempData["PromotionCode"] != null && Session["Account"] != null)
+            {
+                PromotionCodeUsedMapped promotionCodeUsedMapped = new PromotionCodeUsedMapped()
+                {
+                    Code = TempData["PromotionCode"].ToString(),
+                    Username = Session["Account"].ToString()
+                };
+                response = serviceObj.PostResponse("api/API_payment/AddPromotionCodeUsed/", promotionCodeUsedMapped);
+                var result = response.Content.ReadAsAsync<bool>().Result;
+                if (result)
+                {
+                    return 1; // Add Success
+                }
+                else
+                {
+                    return -1;// Add Fail
+                }
+            }
+            return 0;// Nothing to add
+        }
         [HttpPost]
         public ActionResult ProcessOrder()
-        {
+        {          
             //Add new order
             OrderMapped orderMapped = new OrderMapped()
             {
@@ -59,7 +75,6 @@ namespace CellphoneStore.Controllers
                 Payment = Request.Form["Payment"],
                 IntoMoney = Convert.ToInt32(TempData["IntoMoney"]),
                 CustomerID = GetCustomerID()
-
             };
                       
             response = serviceObj.PostResponse("api/API_Payment/AddNewOrder/", orderMapped);
@@ -84,9 +99,17 @@ namespace CellphoneStore.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                
-                TempData["SuccessMessage"] = "Đặt mua thành công";
-                Session.Remove("Cart");
+                //Add promotion code used
+                var addCodeUsed = AddPromotionCodeUsed();
+                if(addCodeUsed != -1)
+                {
+                    TempData["SuccessMessage"] = "Đặt mua thành công";
+                    Session.Remove("Cart");
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Có lỗi xảy ra trong quá trình đặt mua";
+                }
             }
             else
             {

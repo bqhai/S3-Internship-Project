@@ -29,7 +29,7 @@ namespace API_CellphoneStore.Controllers
         }
 
         [HttpPost]
-        [Route("AddPromotionCodeUsed/")]
+        [Route("AddPromotionCodeUsed")]
         public bool AddPromotionCodeUsed(PromotionCodeUsedMapped promotionCodeUsedMapped)
         {
             return bllPromotionCode.AddPromotionCodeUsed(promotionCodeUsedMapped);

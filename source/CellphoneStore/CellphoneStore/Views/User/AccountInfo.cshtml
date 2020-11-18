@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="@Url.Action("AccountInfo", "User", new { chooseOption = 3 })">
                         <div class="icon">
                             <i class="fa fa-list-alt" aria-hidden="true"></i>
                         </div>                       
@@ -71,9 +71,9 @@
             {
                 @Html.Action("CustomerAddress", "User")
             }
-            else
+            else if (Convert.ToInt32(TempData["ChooseOption"]) == 3)
             {
-
+                @Html.Action("OrderInfo", "User")
             }
         </div>
     </div>

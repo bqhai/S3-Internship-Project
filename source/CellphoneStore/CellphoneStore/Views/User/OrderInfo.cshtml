@@ -1,0 +1,32 @@
+﻿@model List<Model_CellphoneStore.OrderInfoMapped>
+<h4>Thông tin đơn hàng</h4>
+<div class="order-info">
+    <table>
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Ngày mua</th>
+                <th>Sản phẩm</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái thanh toán</th>
+                <th>Trạng thái vận chuyển</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderID</td>
+                    <td>@item.OrderDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @Html.Action("OrderDetailInfo", "User", new { orderID = item.OrderID })
+                    </td>
+                    <td>@item.IntoMoney VNĐ</td>
+                    <td>@item.OrderDescription</td>
+                    <td>@item.DeliveryDescription</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
