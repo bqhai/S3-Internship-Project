@@ -22,6 +22,11 @@ namespace CellphoneStore.Controllers
                 TempData["WarningMessage"] = "Phiên làm việc hết hạn";
                 return RedirectToAction("Index", "Home");
             }
+            else if (CheckNullAddress())
+            {
+                TempData["WarningMessage"] = "Địa chỉ giao hàng trống, vui lòng cập nhật";
+                return RedirectToAction("Cart", "Cart");
+            }
             List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
             //ViewBag.TotalPrice = totalPrice;
             //ViewBag.Discount = discount;
@@ -42,6 +47,17 @@ namespace CellphoneStore.Controllers
             response = serviceObj.GetResponse(url);
             CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
             return customerMapped.CustomerID;
+        }
+        public bool CheckNullAddress()
+        {
+            var url = "api/API_User/GetCustomerByUsername/" + Session["Account"].ToString();
+            response = serviceObj.GetResponse(url);
+            CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
+            if(customerMapped.Address == null)
+            {
+                return true;
+            }
+            return false;
         }
         public int AddPromotionCodeUsed()
         {

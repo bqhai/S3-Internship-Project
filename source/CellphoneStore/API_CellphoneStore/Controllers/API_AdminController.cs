@@ -13,11 +13,37 @@ namespace API_CellphoneStore.Controllers
     public class API_AdminController : ApiController
     {
         BLL_Employee bllEmployee = new BLL_Employee();
+        BLL_Customer bllCustomer = new BLL_Customer();
+
+        #region Employee Management
         [HttpGet]
         [Route("GetAllEmployee")]
         public List<EmployeeMapped> GetAllEmployee()
         {
             return bllEmployee.GetAllEmployee();
         }
+
+        [HttpPost]
+        [Route("AddNewEmployee")]
+        public bool AddNewEmployee(EmployeeMapped employeeMapped)
+        {
+            return bllEmployee.AddNewEmployee(employeeMapped);
+        }
+
+        [HttpPut]
+        [Route("UpdateEmployee")]
+        public bool UpdateEmployee(EmployeeMapped employeeMapped)
+        {
+            return bllEmployee.UpdateEmployee(employeeMapped);
+        }
+        #endregion
+        #region Customer Managerment
+        [HttpGet]
+        [Route("GetAllCustomer")]
+        public List<CustomerMapped> GetAllCustomer()
+        {
+            return bllCustomer.GetAllCustomer();
+        }
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using DAL_CellPhoneStore.DAL;
+﻿using BLL_CellPhoneStore.Lib;
+using DAL_CellPhoneStore.DAL;
 using DAL_CellPhoneStore.Model;
 using Model_CellphoneStore;
 using Model_CellphoneStore.Repository;
@@ -19,6 +20,7 @@ namespace BLL_CellPhoneStore.BLL
         {
 
         }
+        
         public List<EmployeeMapped> GetAllEmployee()
         {
             IEnumerable<Employee> employees = dalEmployee.GetAllEmployee();
@@ -28,6 +30,36 @@ namespace BLL_CellPhoneStore.BLL
                 employeeMappeds.Add(convertToEmpMapped.Translate(item));
             }
             return employeeMappeds;
+        }
+        public bool AddNewEmployee(EmployeeMapped employeeMapped)
+        {
+            string lastEmployeeID = dalEmployee.GetTheLastEmployeeID();
+            try
+            {
+                string employeeID = AutoGen.CreateID("EMP", lastEmployeeID);
+                employeeMapped.EmployeeID = employeeID;
+                Employee emp = convertToEmp.Translate(employeeMapped);
+                dalEmployee.AddNewEmployee(emp);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool UpdateEmployee(EmployeeMapped employeeMapped)
+        {
+            try
+            {
+                Employee emp = convertToEmp.Translate(employeeMapped);
+                dalEmployee.UpdateEmployee(emp);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
     }

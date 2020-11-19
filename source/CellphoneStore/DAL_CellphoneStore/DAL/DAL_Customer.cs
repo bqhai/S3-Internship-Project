@@ -24,18 +24,14 @@ namespace DAL_CellPhoneStore.DAL
             }
             return customer.CustomerID;
         }
-        public bool AddNewCustomer(Customer customer)
+        public IEnumerable<Customer> GetAllCustomer()
         {
-            try
-            {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return db.Customers.Select(cus => cus);
+        }
+        public void AddNewCustomer(Customer customer)
+        {
+            db.Customers.Add(customer);
+            db.SaveChanges();            
         }
         public Customer GetCustomerByUsername(string username)
         {
@@ -45,55 +41,30 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Customers.SingleOrDefault(cus => cus.Email == email);
         }
-        public bool UpdateCustomerInfo(Customer customer)
+        public void UpdateCustomerInfo(Customer customer)
         {
             Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
             if (cus != null)
             {
-                try
-                {
-                    cus.Name = customer.Name;
-                    cus.PhoneNumber = customer.PhoneNumber;
-                    cus.Email = customer.Email;
-                    cus.DateOfBirth = customer.DateOfBirth;
-                    cus.Gender = customer.Gender;
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-        public bool UpdateCustomerAddress(Customer customer)
-        {
-            try
-            {
-                Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
-                cus.Address = customer.Address;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
+                cus.Name = customer.Name;
+                cus.PhoneNumber = customer.PhoneNumber;
+                cus.Email = customer.Email;
+                cus.DateOfBirth = customer.DateOfBirth;
+                cus.Gender = customer.Gender;
+                db.SaveChanges();               
             }
         }
-        public bool AddResetPasswordCode(Customer customer)
+        public void UpdateCustomerAddress(Customer customer)
         {
-            try
-            {
-                Customer cus = db.Customers.SingleOrDefault(c => c.Email == customer.Email);
-                cus.ResetPasswordCode = customer.ResetPasswordCode;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Customer cus = db.Customers.SingleOrDefault(c => c.Username == customer.Username);
+            cus.Address = customer.Address;
+            db.SaveChanges();         
+        }
+        public void AddResetPasswordCode(Customer customer)
+        {
+            Customer cus = db.Customers.SingleOrDefault(c => c.Email == customer.Email);
+            cus.ResetPasswordCode = customer.ResetPasswordCode;
+            db.SaveChanges();         
         }
     }
 }

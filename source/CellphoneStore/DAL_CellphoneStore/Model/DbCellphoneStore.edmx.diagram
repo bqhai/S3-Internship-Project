@@ -10,17 +10,17 @@
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Brand" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Country" Width="1.5" PointX="10.75" PointY="12.875" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Customer" Width="1.5" PointX="5.25" PointY="8.25" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.DeliveryState" Width="1.5" PointX="8.25" PointY="15.875" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.DeliveryState" Width="1.5" PointX="8.25" PointY="2.25" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.District" Width="1.5" PointX="15.25" PointY="13.75" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Employee" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.Employee" Width="1.5" PointX="5.25" PointY="12.25" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.HotSale" Width="1.5" PointX="9.75" PointY="5.125" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderDetail" Width="1.5" PointX="12.75" PointY="8.875" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Order" Width="1.5" PointX="10.5" PointY="8.125" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderState" Width="1.5" PointX="8.25" PointY="2.25" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.OrderState" Width="1.5" PointX="8.25" PointY="15.875" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Product" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductIntroduce" Width="1.5" PointX="7.5" PointY="22.875" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductIntroduce" Width="1.5" PointX="7.5" PointY="19.875" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.ProductVersion" Width="1.5" PointX="7.5" PointY="7.875" />
-        <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCode" Width="1.5" PointX="6" PointY="19.375" />
+        <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCode" Width="1.5" PointX="6" PointY="16.375" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.PromotionCodeUsed" Width="1.5" PointX="8.25" PointY="12.75" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Province" Width="1.5" PointX="13" PointY="13.625" />
         <EntityTypeShape EntityType="DbCellPhoneStoreModel.Ward" Width="1.5" PointX="17.5" PointY="13.875" />

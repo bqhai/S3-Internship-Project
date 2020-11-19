@@ -12344,6 +12344,7 @@ INSERT INTO Account VALUES(N'dtqnhu2601', N'83aaba297dfb1be50320eb4c6501c8ac', 3
 INSERT INTO Account VALUES(N'ntttu1707', N'c6f8ff3d0c8a588e4f879df8a4062855', 3, 5000, 1)
 INSERT INTO Account VALUES(N'pvquan2603', N'54b23fafc398665880ba4889183e8d1a', 3, 4500, 1)
 INSERT INTO Account VALUES(N'toan123', N'54b23fafc398665880ba4889183e8d1a', 3, 2000, 1)
+INSERT INTO Account VALUES(N'ttmthu', N'54b23fafc398665880ba4889183e8d1a', 3, 0, 1)
 
 GO
 --Employee--
@@ -12364,6 +12365,7 @@ INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu26
 INSERT INTO Customer VALUES(N'CUS10001', N'Nguyễn Thị Thanh Tú', N'ntttu1707', N'dtqnhu1707@gmail.com', N'Hóc Môn, TPHCM', N'0979510948', N'Nữ', N'07-17-1999', NULL)
 INSERT INTO Customer VALUES(N'CUS10002', N'Phạm Văn Quân', N'pvquan2603', N'pvquan2603@gmail.com', N'Bình Chánh, TPHCM', N'0979510949', N'Nam', N'03-26-1999', NULL)
 INSERT INTO Customer VALUES(N'CUS10003', N'Toàn đầu moi', N'toan123', N'toan123@gmail.com', NULL, N'0979510950', N'Nam', N'03-26-1999', NULL)
+INSERT INTO Customer VALUES(N'CUS10004', N'Trần Thị Minh Thư', N'ttmthu', N'ttmthu@gmail.com', N'Bình Chánh, TPHCM', N'0979510960', N'Nữ', N'03-26-1999', NULL)
 
 GO
 --Brand--

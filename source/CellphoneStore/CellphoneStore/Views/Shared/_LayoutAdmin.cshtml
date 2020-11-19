@@ -5,11 +5,37 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/CSS/admin.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/CSS/layout.css" rel="stylesheet" />
+    <script src="~/Content/JS/alert.js"></script>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (TempData["DangerMessage"] != null)
+    {
+        <div class="alert-message" role="alert">
+            <strong>Thông báo!</strong> @TempData["DangerMessage"]
+        </div>
+    }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert-message success" role="alert">
+            <strong>Thông báo!</strong> @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["WarningMessage"] != null)
+    {
+        <div class="alert-message warning" role="alert">
+            <strong>Thông báo!</strong> @TempData["WarningMessage"]
+        </div>
+    }
+    @if (TempData["InfoMessage"] != null)
+    {
+        <div class="alert-message info" role="alert">
+            <strong>Thông báo!</strong> @TempData["InfoMessage"]
+        </div>
+    }
     <div id="view-port">
         <div id="side-bar">
             <header>

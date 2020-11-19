@@ -19,21 +19,13 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Accounts.SingleOrDefault(acc => acc.Username == username);
         }
-        public bool AddNewUserAccount(Account account)
+        public void AddNewUserAccount(Account account)
         {
-            try
-            {
-                account.AccountTypeID = 3;
-                account.Status = true;
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
+            account.AccountTypeID = 3;
+            account.Status = true;
+            account.Coin = 0;
+            db.Accounts.Add(account);
+            db.SaveChanges();          
         }
         public void UpdateAccount(string username, string newPassword)
         {
