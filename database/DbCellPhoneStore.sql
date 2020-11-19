@@ -12150,7 +12150,7 @@ CREATE TABLE Employee
 (
 	EmployeeID NVARCHAR(50) PRIMARY KEY,
 	Name NVARCHAR(100),
-	Username NVARCHAR(50) UNIQUE,
+	Username NVARCHAR(50) NULL,
 	Email NVARCHAR(100) UNIQUE,
 	Address NVARCHAR(500),
 	PhoneNumber NVARCHAR(50) UNIQUE,
@@ -12160,6 +12160,12 @@ CREATE TABLE Employee
 	FOREIGN KEY(Username) REFERENCES Account(Username)
 )
 GO
+
+CREATE UNIQUE INDEX idx_Username_notnull
+ON Employee(Username)
+WHERE Username IS NOT NULL;
+GO
+
 CREATE TABLE Brand
 (
 	BrandID NVARCHAR(50) PRIMARY KEY,
@@ -12343,6 +12349,15 @@ GO
 --Employee--
 INSERT INTO Employee VALUES(N'EMP10000', N'Bùi Quang Hải', N'bqhai1205', N'bqhai@gmail.com', N'Dĩ An, Bình Dương', N'0979510945', N'Nam', N'05-12-1999', 1)
 INSERT INTO Employee VALUES(N'EMP10001', N'Hồ Đức Hiếu', N'hdhieu2610', N'hdhieu@gmail.com', N'Q12, TPHCM', N'0979510946', N'Nam', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10002', N'Trịnh Nhật Hào', NULL, N'tnhao@gmail.com', N'Q1, TPHCM', N'0979510951', N'Nam', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10003', N'Nguyễn Hoài Sang', NULL, N'nhsang@gmail.com', N'Q2, TPHCM', N'0979510952', N'Nam', N'10-26-1999', 0)
+INSERT INTO Employee VALUES(N'EMP10004', N'Nguyễn Thị Phương Uyên', NULL, N'ntpuyen@gmail.com', N'Bình Tân, TPHCM', N'0979510953', N'Nữ', N'01-17-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10005', N'Phan Đức Tài', NULL, N'pdtai@gmail.com', N'Q4, TPHCM', N'0979510954', N'Nam', N'10-26-1999', 0)
+INSERT INTO Employee VALUES(N'EMP10006', N'Nông Ngọc Hoàng', NULL, N'nnhoang@gmail.com', N'Tân Phú, TPHCM', N'0979510955', N'Nam', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10007', N'Nguyễn Ngọc Khánh Hà', NULL, N'nnkha@gmail.com', N'Q10, TPHCM', N'0979510956', N'Nữ', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10008', N'Đinh Hoàng Hiếu', NULL, N'dhhieu@gmail.com', N'Dầu Tiếng, Bình Dương', N'0979510957', N'Nam', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10009', N'Nguyễn Lê Tín', NULL, N'nltin@gmail.com', N'Q5, TPHCM', N'0979510958', N'Nam', N'10-26-1999', 1)
+INSERT INTO Employee VALUES(N'EMP10010', N'Dương Hoàng Phong', NULL, N'dhphong@gmail.com', N'Q7, TPHCM', N'0979510959', N'Nam', N'10-26-1999', 1)
 GO
 --Customer--
 INSERT INTO Customer VALUES(N'CUS10000', N'Đỗ Thị Quỳnh Như', N'dtqnhu2601', N'dtqnhu2610@gmail.com', N'Q12, TPHCM', N'0979510947', N'Nữ', N'01-26-1999', NULL)

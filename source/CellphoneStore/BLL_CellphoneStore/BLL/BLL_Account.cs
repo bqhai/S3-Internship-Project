@@ -58,8 +58,8 @@ namespace BLL_CellPhoneStore.BLL
             {
                 accountMapped.Password = MD5_Encryptor.HashMD5(accountMapped.Password);
                 Account acc = convertToAcc.Translate(accountMapped);
-                dalAccount.AddNewUserAccount(acc);
-                return true;
+                bool result = dalAccount.AddNewUserAccount(acc);
+                return result;
             }
             catch (Exception)
             {

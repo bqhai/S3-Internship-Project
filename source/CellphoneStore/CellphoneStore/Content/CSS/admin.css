@@ -46,6 +46,7 @@
             #side-bar header a:hover {
                 color: #fff;
             }
+
 #side-bar .nav a {
     background: none;
     border-bottom: 1px solid #455A64;
@@ -71,18 +72,47 @@
     width: 15px;
 }
 .emp-table{
-    margin-left: 50px;
+    margin-left: 40px;
 }
 .emp-table table th{
     padding: 10px;
 }
 .emp-table table td {
     padding: 10px;
-    min-width: 180px;
+    min-width: 170px;
     font-size: 13px;
     font-weight: 400;
     text-align: left;
 }
-.emp-header{
+#col-actions {
+    min-width: 50px;
+}
+.emp-header {
     text-align: center;
+}
+.modal .modal-dialog {
+    max-width: 340px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+    padding: 20px 30px;
+}
+.modal .modal-content {
+    border-radius: 3px;
+}
+.modal .modal-footer {
+    background: #ecf0f1;
+    border-radius: 0 0 3px 3px;
+}
+
+.modal .modal-title {
+    display: inline-block;
+}
+.modal .form-control {
+    border-radius: 2px;
+    box-shadow: none;
+    border-color: #dddddd;
+}
+
+.modal textarea.form-control {
+    resize: vertical;
 }

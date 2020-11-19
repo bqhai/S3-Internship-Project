@@ -294,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__Userna__2A4B4B5E">
+        <Association Name="FK__Employee__Userna__29572725">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Favorite__Custom__398D8EEE">
+        <Association Name="FK__Favorite__Custom__38996AB5">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +318,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Favorite__Produc__3A81B327">
+        <Association Name="FK__Favorite__Produc__398D8EEE">
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
           <End Role="Favorite" Type="Self.Favorite" Multiplicity="*" />
           <ReferentialConstraint>
@@ -330,7 +330,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HotSale__Product__36B12243">
+        <Association Name="FK__HotSale__Product__35BCFE0A">
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
           <End Role="HotSale" Type="Self.HotSale" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -342,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__45F365D3">
+        <Association Name="FK__OrderDeta__Order__44FF419A">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -354,7 +354,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Produ__46E78A0C">
+        <Association Name="FK__OrderDeta__Produ__45F365D3">
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Customer__412EB0B6">
+        <Association Name="FK__Orders__Customer__403A8C7D">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -378,7 +378,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Delivery__4316F928">
+        <Association Name="FK__Orders__Delivery__4222D4EF">
           <End Role="DeliveryState" Type="Self.DeliveryState" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -390,7 +390,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__OrderSta__4222D4EF">
+        <Association Name="FK__Orders__OrderSta__412EB0B6">
           <End Role="OrderState" Type="Self.OrderState" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -402,7 +402,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__BrandID__30F848ED">
+        <Association Name="FK__Product__BrandID__300424B4">
           <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -414,7 +414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductIn__Produ__4F7CD00D">
+        <Association Name="FK__ProductIn__Produ__4E88ABD4">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="ProductIntroduce" Type="Self.ProductIntroduce" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -426,7 +426,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductVe__Produ__33D4B598">
+        <Association Name="FK__ProductVe__Produ__32E0915F">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="ProductVersion" Type="Self.ProductVersion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -438,7 +438,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promotion__Usern__4BAC3F29">
+        <Association Name="FK__Promotion__Usern__4AB81AF0">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="PromotionCodeUsed" Type="Self.PromotionCodeUsed" Multiplicity="*" />
           <ReferentialConstraint>
@@ -450,7 +450,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PromotionC__Code__4CA06362">
+        <Association Name="FK__PromotionC__Code__4BAC3F29">
           <End Role="PromotionCode" Type="Self.PromotionCode" Multiplicity="1" />
           <End Role="PromotionCodeUsed" Type="Self.PromotionCodeUsed" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,59 +529,59 @@
             <End Role="Account" EntitySet="Account" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__Userna__2A4B4B5E" Association="Self.FK__Employee__Userna__2A4B4B5E">
+          <AssociationSet Name="FK__Employee__Userna__29572725" Association="Self.FK__Employee__Userna__29572725">
             <End Role="Account" EntitySet="Account" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Favorite__Custom__398D8EEE" Association="Self.FK__Favorite__Custom__398D8EEE">
+          <AssociationSet Name="FK__Favorite__Custom__38996AB5" Association="Self.FK__Favorite__Custom__38996AB5">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Favorite" EntitySet="Favorite" />
           </AssociationSet>
-          <AssociationSet Name="FK__Favorite__Produc__3A81B327" Association="Self.FK__Favorite__Produc__3A81B327">
+          <AssociationSet Name="FK__Favorite__Produc__398D8EEE" Association="Self.FK__Favorite__Produc__398D8EEE">
             <End Role="ProductVersion" EntitySet="ProductVersion" />
             <End Role="Favorite" EntitySet="Favorite" />
           </AssociationSet>
-          <AssociationSet Name="FK__HotSale__Product__36B12243" Association="Self.FK__HotSale__Product__36B12243">
+          <AssociationSet Name="FK__HotSale__Product__35BCFE0A" Association="Self.FK__HotSale__Product__35BCFE0A">
             <End Role="ProductVersion" EntitySet="ProductVersion" />
             <End Role="HotSale" EntitySet="HotSale" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__45F365D3" Association="Self.FK__OrderDeta__Order__45F365D3">
+          <AssociationSet Name="FK__OrderDeta__Order__44FF419A" Association="Self.FK__OrderDeta__Order__44FF419A">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__46E78A0C" Association="Self.FK__OrderDeta__Produ__46E78A0C">
+          <AssociationSet Name="FK__OrderDeta__Produ__45F365D3" Association="Self.FK__OrderDeta__Produ__45F365D3">
             <End Role="ProductVersion" EntitySet="ProductVersion" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Customer__412EB0B6" Association="Self.FK__Orders__Customer__412EB0B6">
+          <AssociationSet Name="FK__Orders__Customer__403A8C7D" Association="Self.FK__Orders__Customer__403A8C7D">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Delivery__4316F928" Association="Self.FK__Orders__Delivery__4316F928">
+          <AssociationSet Name="FK__Orders__Delivery__4222D4EF" Association="Self.FK__Orders__Delivery__4222D4EF">
             <End Role="DeliveryState" EntitySet="DeliveryState" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__OrderSta__4222D4EF" Association="Self.FK__Orders__OrderSta__4222D4EF">
+          <AssociationSet Name="FK__Orders__OrderSta__412EB0B6" Association="Self.FK__Orders__OrderSta__412EB0B6">
             <End Role="OrderState" EntitySet="OrderState" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__BrandID__30F848ED" Association="Self.FK__Product__BrandID__30F848ED">
+          <AssociationSet Name="FK__Product__BrandID__300424B4" Association="Self.FK__Product__BrandID__300424B4">
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductIn__Produ__4F7CD00D" Association="Self.FK__ProductIn__Produ__4F7CD00D">
+          <AssociationSet Name="FK__ProductIn__Produ__4E88ABD4" Association="Self.FK__ProductIn__Produ__4E88ABD4">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductIntroduce" EntitySet="ProductIntroduce" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductVe__Produ__33D4B598" Association="Self.FK__ProductVe__Produ__33D4B598">
+          <AssociationSet Name="FK__ProductVe__Produ__32E0915F" Association="Self.FK__ProductVe__Produ__32E0915F">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductVersion" EntitySet="ProductVersion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promotion__Usern__4BAC3F29" Association="Self.FK__Promotion__Usern__4BAC3F29">
+          <AssociationSet Name="FK__Promotion__Usern__4AB81AF0" Association="Self.FK__Promotion__Usern__4AB81AF0">
             <End Role="Account" EntitySet="Account" />
             <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUsed" />
           </AssociationSet>
-          <AssociationSet Name="FK__PromotionC__Code__4CA06362" Association="Self.FK__PromotionC__Code__4CA06362">
+          <AssociationSet Name="FK__PromotionC__Code__4BAC3F29" Association="Self.FK__PromotionC__Code__4BAC3F29">
             <End Role="PromotionCode" EntitySet="PromotionCode" />
             <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUsed" />
           </AssociationSet>
@@ -630,15 +630,15 @@
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__Userna__2A4B4B5E" Association="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E">
+          <AssociationSet Name="FK__Employee__Userna__29572725" Association="DbCellPhoneStoreModel.FK__Employee__Userna__29572725">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promotion__Usern__4BAC3F29" Association="DbCellPhoneStoreModel.FK__Promotion__Usern__4BAC3F29">
+          <AssociationSet Name="FK__Promotion__Usern__4AB81AF0" Association="DbCellPhoneStoreModel.FK__Promotion__Usern__4AB81AF0">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUseds" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__BrandID__30F848ED" Association="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED">
+          <AssociationSet Name="FK__Product__BrandID__300424B4" Association="DbCellPhoneStoreModel.FK__Product__BrandID__300424B4">
             <End Role="Brand" EntitySet="Brands" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
@@ -646,11 +646,11 @@
             <End Role="Country" EntitySet="Countries" />
             <End Role="Province" EntitySet="Provinces" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Customer__412EB0B6" Association="DbCellPhoneStoreModel.FK__Orders__Customer__412EB0B6">
+          <AssociationSet Name="FK__Orders__Customer__403A8C7D" Association="DbCellPhoneStoreModel.FK__Orders__Customer__403A8C7D">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__Delivery__4316F928" Association="DbCellPhoneStoreModel.FK__Orders__Delivery__4316F928">
+          <AssociationSet Name="FK__Orders__Delivery__4222D4EF" Association="DbCellPhoneStoreModel.FK__Orders__Delivery__4222D4EF">
             <End Role="DeliveryState" EntitySet="DeliveryStates" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
@@ -662,31 +662,31 @@
             <End Role="District" EntitySet="Districts" />
             <End Role="Ward" EntitySet="Wards" />
           </AssociationSet>
-          <AssociationSet Name="FK__HotSale__Product__36B12243" Association="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243">
+          <AssociationSet Name="FK__HotSale__Product__35BCFE0A" Association="DbCellPhoneStoreModel.FK__HotSale__Product__35BCFE0A">
             <End Role="ProductVersion" EntitySet="ProductVersions" />
             <End Role="HotSale" EntitySet="HotSales" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__45F365D3" Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__45F365D3">
+          <AssociationSet Name="FK__OrderDeta__Order__44FF419A" Association="DbCellPhoneStoreModel.FK__OrderDeta__Order__44FF419A">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__46E78A0C" Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__46E78A0C">
+          <AssociationSet Name="FK__OrderDeta__Produ__45F365D3" Association="DbCellPhoneStoreModel.FK__OrderDeta__Produ__45F365D3">
             <End Role="ProductVersion" EntitySet="ProductVersions" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__OrderSta__4222D4EF" Association="DbCellPhoneStoreModel.FK__Orders__OrderSta__4222D4EF">
+          <AssociationSet Name="FK__Orders__OrderSta__412EB0B6" Association="DbCellPhoneStoreModel.FK__Orders__OrderSta__412EB0B6">
             <End Role="OrderState" EntitySet="OrderStates" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductIn__Produ__4F7CD00D" Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__4F7CD00D">
+          <AssociationSet Name="FK__ProductIn__Produ__4E88ABD4" Association="DbCellPhoneStoreModel.FK__ProductIn__Produ__4E88ABD4">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductIntroduce" EntitySet="ProductIntroduces" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductVe__Produ__33D4B598" Association="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598">
+          <AssociationSet Name="FK__ProductVe__Produ__32E0915F" Association="DbCellPhoneStoreModel.FK__ProductVe__Produ__32E0915F">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductVersion" EntitySet="ProductVersions" />
           </AssociationSet>
-          <AssociationSet Name="FK__PromotionC__Code__4CA06362" Association="DbCellPhoneStoreModel.FK__PromotionC__Code__4CA06362">
+          <AssociationSet Name="FK__PromotionC__Code__4BAC3F29" Association="DbCellPhoneStoreModel.FK__PromotionC__Code__4BAC3F29">
             <End Role="PromotionCode" EntitySet="PromotionCodes" />
             <End Role="PromotionCodeUsed" EntitySet="PromotionCodeUseds" />
           </AssociationSet>
@@ -706,8 +706,8 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AccountType" Relationship="DbCellPhoneStoreModel.FK__Account__Account__1ED998B2" FromRole="Account" ToRole="AccountType" />
           <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Account" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Account" ToRole="Employee" />
-          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__4BAC3F29" FromRole="Account" ToRole="PromotionCodeUsed" />
+          <NavigationProperty Name="Employees" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__29572725" FromRole="Account" ToRole="Employee" />
+          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__4AB81AF0" FromRole="Account" ToRole="PromotionCodeUsed" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -724,7 +724,7 @@
           <Property Name="BrandID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" FromRole="Brand" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__300424B4" FromRole="Brand" ToRole="Product" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -764,7 +764,7 @@
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="ResetPasswordCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Customer__Userna__24927208" FromRole="Customer" ToRole="Account" />
-          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__412EB0B6" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__403A8C7D" FromRole="Customer" ToRole="Order" />
           <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="Customer" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="DeliveryState">
@@ -773,7 +773,7 @@
           </Key>
           <Property Name="DeliveryStateID" Type="Int32" Nullable="false" />
           <Property Name="DeliveryDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Delivery__4316F928" FromRole="DeliveryState" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__Delivery__4222D4EF" FromRole="DeliveryState" ToRole="Order" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -803,14 +803,14 @@
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__2A4B4B5E" FromRole="Employee" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Employee__Userna__29572725" FromRole="Employee" ToRole="Account" />
         </EntityType>
         <EntityType Name="HotSale">
           <Key>
             <PropertyRef Name="ProductVersionID" />
           </Key>
           <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" FromRole="HotSale" ToRole="ProductVersion" />
+          <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__35BCFE0A" FromRole="HotSale" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -820,8 +820,8 @@
           <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductVersionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__45F365D3" FromRole="OrderDetail" ToRole="Order" />
-          <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__46E78A0C" FromRole="OrderDetail" ToRole="ProductVersion" />
+          <NavigationProperty Name="Order" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__44FF419A" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="ProductVersion" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__45F365D3" FromRole="OrderDetail" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -836,10 +836,10 @@
           <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OrderStateID" Type="Int32" Nullable="false" />
           <Property Name="DeliveryStateID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__412EB0B6" FromRole="Order" ToRole="Customer" />
-          <NavigationProperty Name="DeliveryState" Relationship="DbCellPhoneStoreModel.FK__Orders__Delivery__4316F928" FromRole="Order" ToRole="DeliveryState" />
-          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__45F365D3" FromRole="Order" ToRole="OrderDetail" />
-          <NavigationProperty Name="OrderState" Relationship="DbCellPhoneStoreModel.FK__Orders__OrderSta__4222D4EF" FromRole="Order" ToRole="OrderState" />
+          <NavigationProperty Name="Customer" Relationship="DbCellPhoneStoreModel.FK__Orders__Customer__403A8C7D" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="DeliveryState" Relationship="DbCellPhoneStoreModel.FK__Orders__Delivery__4222D4EF" FromRole="Order" ToRole="DeliveryState" />
+          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Order__44FF419A" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="OrderState" Relationship="DbCellPhoneStoreModel.FK__Orders__OrderSta__412EB0B6" FromRole="Order" ToRole="OrderState" />
         </EntityType>
         <EntityType Name="OrderState">
           <Key>
@@ -847,7 +847,7 @@
           </Key>
           <Property Name="OrderStateID" Type="Int32" Nullable="false" />
           <Property Name="OrderDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__OrderSta__4222D4EF" FromRole="OrderState" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="DbCellPhoneStoreModel.FK__Orders__OrderSta__412EB0B6" FromRole="OrderState" ToRole="Order" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -877,9 +877,9 @@
           <Property Name="Sensor" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Battery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Brand" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__30F848ED" FromRole="Product" ToRole="Brand" />
-          <NavigationProperty Name="ProductIntroduce" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__4F7CD00D" FromRole="Product" ToRole="ProductIntroduce" />
-          <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="Product" ToRole="ProductVersion" />
+          <NavigationProperty Name="Brand" Relationship="DbCellPhoneStoreModel.FK__Product__BrandID__300424B4" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="ProductIntroduce" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__4E88ABD4" FromRole="Product" ToRole="ProductIntroduce" />
+          <NavigationProperty Name="ProductVersions" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__32E0915F" FromRole="Product" ToRole="ProductVersion" />
         </EntityType>
         <EntityType Name="ProductIntroduce">
           <Key>
@@ -911,7 +911,7 @@
           <Property Name="Image7" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FooterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__4F7CD00D" FromRole="ProductIntroduce" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductIn__Produ__4E88ABD4" FromRole="ProductIntroduce" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductVersion">
           <Key>
@@ -928,9 +928,9 @@
           <Property Name="QuantityInStock" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HotSale" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__36B12243" FromRole="ProductVersion" ToRole="HotSale" />
-          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__46E78A0C" FromRole="ProductVersion" ToRole="OrderDetail" />
-          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__33D4B598" FromRole="ProductVersion" ToRole="Product" />
+          <NavigationProperty Name="HotSale" Relationship="DbCellPhoneStoreModel.FK__HotSale__Product__35BCFE0A" FromRole="ProductVersion" ToRole="HotSale" />
+          <NavigationProperty Name="OrderDetails" Relationship="DbCellPhoneStoreModel.FK__OrderDeta__Produ__45F365D3" FromRole="ProductVersion" ToRole="OrderDetail" />
+          <NavigationProperty Name="Product" Relationship="DbCellPhoneStoreModel.FK__ProductVe__Produ__32E0915F" FromRole="ProductVersion" ToRole="Product" />
           <NavigationProperty Name="Customers" Relationship="DbCellPhoneStoreModel.Favorite" FromRole="ProductVersion" ToRole="Customer" />
         </EntityType>
         <EntityType Name="PromotionCode">
@@ -944,7 +944,7 @@
           <Property Name="Require" Type="Int32" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__4CA06362" FromRole="PromotionCode" ToRole="PromotionCodeUsed" />
+          <NavigationProperty Name="PromotionCodeUseds" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__4BAC3F29" FromRole="PromotionCode" ToRole="PromotionCodeUsed" />
         </EntityType>
         <EntityType Name="PromotionCodeUsed">
           <Key>
@@ -954,8 +954,8 @@
           <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UsedDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__4BAC3F29" FromRole="PromotionCodeUsed" ToRole="Account" />
-          <NavigationProperty Name="PromotionCode" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__4CA06362" FromRole="PromotionCodeUsed" ToRole="PromotionCode" />
+          <NavigationProperty Name="Account" Relationship="DbCellPhoneStoreModel.FK__Promotion__Usern__4AB81AF0" FromRole="PromotionCodeUsed" ToRole="Account" />
+          <NavigationProperty Name="PromotionCode" Relationship="DbCellPhoneStoreModel.FK__PromotionC__Code__4BAC3F29" FromRole="PromotionCodeUsed" ToRole="PromotionCode" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -1012,7 +1012,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__Userna__2A4B4B5E">
+        <Association Name="FK__Employee__Userna__29572725">
           <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="0..1" />
           <End Type="DbCellPhoneStoreModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1024,7 +1024,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promotion__Usern__4BAC3F29">
+        <Association Name="FK__Promotion__Usern__4AB81AF0">
           <End Type="DbCellPhoneStoreModel.Account" Role="Account" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.PromotionCodeUsed" Role="PromotionCodeUsed" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1036,7 +1036,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__BrandID__30F848ED">
+        <Association Name="FK__Product__BrandID__300424B4">
           <End Type="DbCellPhoneStoreModel.Brand" Role="Brand" Multiplicity="0..1" />
           <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1062,7 +1062,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Customer__412EB0B6">
+        <Association Name="FK__Orders__Customer__403A8C7D">
           <End Type="DbCellPhoneStoreModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1074,7 +1074,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__Delivery__4316F928">
+        <Association Name="FK__Orders__Delivery__4222D4EF">
           <End Type="DbCellPhoneStoreModel.DeliveryState" Role="DeliveryState" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1110,7 +1110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HotSale__Product__36B12243">
+        <Association Name="FK__HotSale__Product__35BCFE0A">
           <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.HotSale" Role="HotSale" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1122,7 +1122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__45F365D3">
+        <Association Name="FK__OrderDeta__Order__44FF419A">
           <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1134,7 +1134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Produ__46E78A0C">
+        <Association Name="FK__OrderDeta__Produ__45F365D3">
           <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1146,7 +1146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__OrderSta__4222D4EF">
+        <Association Name="FK__Orders__OrderSta__412EB0B6">
           <End Type="DbCellPhoneStoreModel.OrderState" Role="OrderState" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1158,7 +1158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductIn__Produ__4F7CD00D">
+        <Association Name="FK__ProductIn__Produ__4E88ABD4">
           <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.ProductIntroduce" Role="ProductIntroduce" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1170,7 +1170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductVe__Produ__33D4B598">
+        <Association Name="FK__ProductVe__Produ__32E0915F">
           <End Type="DbCellPhoneStoreModel.Product" Role="Product" Multiplicity="0..1" />
           <End Type="DbCellPhoneStoreModel.ProductVersion" Role="ProductVersion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1182,7 +1182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PromotionC__Code__4CA06362">
+        <Association Name="FK__PromotionC__Code__4BAC3F29">
           <End Type="DbCellPhoneStoreModel.PromotionCode" Role="PromotionCode" Multiplicity="1" />
           <End Type="DbCellPhoneStoreModel.PromotionCodeUsed" Role="PromotionCodeUsed" Multiplicity="*" />
           <ReferentialConstraint>

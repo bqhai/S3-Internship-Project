@@ -18,5 +18,13 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Employees.Select(emp => emp);
         }
+        public void UpdateEmployee(Employee employee)
+        {
+            Employee emp = db.Employees.SingleOrDefault(e => e.EmployeeID == employee.EmployeeID);
+            if (emp != null)
+            {
+
+            }
+        }
     }
 }

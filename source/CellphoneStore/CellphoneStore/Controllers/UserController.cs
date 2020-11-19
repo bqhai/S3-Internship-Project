@@ -31,8 +31,7 @@ namespace CellphoneStore.Controllers
             if (resultLogin)
             {
                 int accountType = GetAccountType(accountMapped.Username);
-                Session["Account"] = accountMapped.Username;
-                TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
+                Session["Account"] = accountMapped.Username;               
                 if (accountType == 1)
                 {
                     return RedirectToAction("Index", "Admin");
@@ -43,6 +42,7 @@ namespace CellphoneStore.Controllers
                 }
                 else
                 {
+                    TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
             }
@@ -282,11 +282,11 @@ namespace CellphoneStore.Controllers
                 }
                 else
                 {
-                    TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+                    TempData["DangerMessage"] = "Số điện thoại hoặc email đã tồn tại";
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
-            TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+            TempData["DangerMessage"] = "Kết nối server thất bại";
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         [HttpPost]
@@ -309,14 +309,15 @@ namespace CellphoneStore.Controllers
                 var resultUpdateAddress = response.Content.ReadAsAsync<bool>().Result;
                 if (resultUpdateAddress)
                 {
-                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công";
+                    TempData["SuccessMessage"] = "Cập nhật địa chỉ thành công";
                 }
                 else
                 {
-                    TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+                    TempData["DangerMessage"] = "Cập nhật địa chỉ thất bại";
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
+            TempData["DangerMessage"] = "Kết nối server thất bại";
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         [HttpPost]
@@ -347,6 +348,7 @@ namespace CellphoneStore.Controllers
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
+            TempData["DangerMessage"] = "Kết nối server thất bại";
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         public ActionResult CustomerAddress()

@@ -25,18 +25,11 @@ namespace BLL_CellPhoneStore.BLL
             string lastCustomerID = dalCustomer.GetTheLastCustomerID();
             if (lastCustomerID != null)
             {
-                try
-                {
-                    string customerID = AutoGen.CreateID("CUS", lastCustomerID);
-                    customerMapped.CustomerID = customerID;
-                    Customer cus = convertToCus.Translate(customerMapped);
-                    dalCustomer.AddNewCustomer(cus);
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                string customerID = AutoGen.CreateID("CUS", lastCustomerID);
+                customerMapped.CustomerID = customerID;
+                Customer cus = convertToCus.Translate(customerMapped);
+                bool result = dalCustomer.AddNewCustomer(cus);
+                return result;
             }
             return false;
         }
@@ -45,8 +38,8 @@ namespace BLL_CellPhoneStore.BLL
             try
             {
                 Customer cus = convertToCus.Translate(customerMapped);
-                dalCustomer.UpdateCustomerInfo(cus);
-                return true;
+                bool result = dalCustomer.UpdateCustomerInfo(cus);
+                return result;
             }
             catch (Exception)
             {
@@ -55,16 +48,9 @@ namespace BLL_CellPhoneStore.BLL
         }
         public bool UpdateCustomerAddress(CustomerMapped customerMapped)
         {
-            try
-            {
-                Customer cus = convertToCus.Translate(customerMapped);
-                dalCustomer.UpdateCustomerAddress(cus);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Customer cus = convertToCus.Translate(customerMapped);
+            bool result = dalCustomer.UpdateCustomerAddress(cus);
+            return result;
         }
         public CustomerMapped GetCustomerByUsername(string username)
         {
@@ -81,16 +67,9 @@ namespace BLL_CellPhoneStore.BLL
         }
         public bool AddResetPasswordCode(CustomerMapped customerMapped)
         {
-            try
-            {
-                Customer cus = convertToCus.Translate(customerMapped);
-                dalCustomer.AddResetPasswordCode(cus);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Customer cus = convertToCus.Translate(customerMapped);
+            bool result = dalCustomer.AddResetPasswordCode(cus);
+            return result;
         }
 
     }
