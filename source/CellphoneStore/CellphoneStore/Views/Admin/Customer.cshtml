@@ -3,6 +3,94 @@
     ViewBag.Title = "Customer";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@model List<Model_CellphoneStore.CustomerMapped>
 
-<h2>Khách hàng</h2>
+<div class="container-fluid">
+    <div>
+        <h2>Khách hàng</h2>
+    </div>
+    <div>
+        <div class="cus-table">
+            <table class="table-bordered table-hover" `>
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Xem thêm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td id="name">@item.Name</td>
+                            <td>@item.Username</td>
+                            <td>@item.Email</td>
+                            <td id="phone-number">@item.PhoneNumber</td>
+                            <td id="col-actions">
+                                <a href="#@item.CustomerID" data-toggle="modal"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div id="@item.CustomerID" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thông tin khách hàng</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Mã khách hàng: </label>
+                                <p>@item.CustomerID</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên đăng nhập: </label>
+                                <p>@item.Username</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Họ Tên: </label>
+                                <p>@item.Name</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <p>@item.Email</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại: </label>
+                                <p>@item.PhoneNumber</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Ngày sinh: </label>
+                                <p>
+                                    @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính: </label>
+                                <p>@item.Gender</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ: </label>
+                                <p>@item.Address</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Đóng">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 

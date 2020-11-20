@@ -19,8 +19,8 @@ namespace CellphoneStore.Controllers
         {
             if (Session["Account"] == null)
             {
-                TempData["WarningMessage"] = "Phiên làm việc hết hạn";
-                return RedirectToAction("Index", "Home");
+                TempData["WarningMessage"] = "Bạn chưa đăng nhập";
+                return RedirectToAction("Cart", "Cart");
             }
             else if (CheckNullAddress())
             {
@@ -28,10 +28,6 @@ namespace CellphoneStore.Controllers
                 return RedirectToAction("Cart", "Cart");
             }
             List<CartItem> cartItems = Session["Cart"] as List<CartItem>;
-            //ViewBag.TotalPrice = totalPrice;
-            //ViewBag.Discount = discount;
-            //ViewBag.IntoMoney = intoMoney;
-            ViewBag.PaymentInfo = TempData["CartInfo"];
             ViewBag.Coin = GetCoin();
             return View(cartItems);
         }
@@ -61,11 +57,12 @@ namespace CellphoneStore.Controllers
         }
         public int AddPromotionCodeUsed()
         {
-            if(TempData["PromotionCode"] != null && Session["Account"] != null)
+            if(((CartInfo)Session["CartInfo"]).PromotionCode != null && Session["Account"] != null)
             {
+                
                 PromotionCodeUsedMapped promotionCodeUsedMapped = new PromotionCodeUsedMapped()
                 {
-                    Code = TempData["PromotionCode"].ToString(),
+                    Code = ((CartInfo)Session["CartInfo"]).PromotionCode,
                     Username = Session["Account"].ToString()
                 };
                 response = serviceObj.PostResponse("api/API_payment/AddPromotionCodeUsed/", promotionCodeUsedMapped);
@@ -89,7 +86,7 @@ namespace CellphoneStore.Controllers
             {
                 Delivery = Request.Form["Delivery"],
                 Payment = Request.Form["Payment"],
-                IntoMoney = Convert.ToInt32(TempData["IntoMoney"]),
+                IntoMoney = ((CartInfo)Session["CartInfo"]).IntoMoney,
                 CustomerID = GetCustomerID()
             };
                       
@@ -121,6 +118,8 @@ namespace CellphoneStore.Controllers
                 {
                     TempData["SuccessMessage"] = "Đặt mua thành công";
                     Session.Remove("Cart");
+                    Session.Remove("CartInfo");
+                    Session.Remove("Amount");
                 }
                 else
                 {

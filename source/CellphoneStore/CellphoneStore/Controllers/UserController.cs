@@ -26,31 +26,36 @@ namespace CellphoneStore.Controllers
         {
             var url = "api/API_User/ProcessLogin/" + accountMapped.Username + "/" + accountMapped.Password;
             response = serviceObj.GetResponse(url);
-            response.EnsureSuccessStatusCode();
-            var resultLogin = response.Content.ReadAsAsync<bool>().Result;
-            if (resultLogin)
+            if (response.IsSuccessStatusCode)
             {
-                int accountType = GetAccountType(accountMapped.Username);
-                Session["Account"] = accountMapped.Username;               
-                if (accountType == 1)
+                var resultLogin = response.Content.ReadAsAsync<bool>().Result;
+                if (resultLogin)
                 {
-                    return RedirectToAction("Index", "Admin");
-                }
-                else if (accountType == 2)
-                {
-                    return RedirectToAction("Index", "Admin");
+                    int accountType = GetAccountType(accountMapped.Username);
+                    Session["Account"] = accountMapped.Username;
+                    if (accountType == 1)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else if (accountType == 2)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
+                        return Redirect(this.Request.UrlReferrer.ToString());
+                    }
                 }
                 else
                 {
-                    TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
+                    TempData["DangerMessage"] = "Tài khoản hoặc mật khẩu không chính xác";
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
             }
-            else
-            {
-                TempData["DangerMessage"] = "Tài khoản hoặc mật khẩu không chính xác";
-                return Redirect(this.Request.UrlReferrer.ToString());
-            }
+            TempData["DangerMessage"] = "Kết nối server thất bại";
+            return Redirect(this.Request.UrlReferrer.ToString());
+
         }
         public ActionResult ProcessLogout()
         {

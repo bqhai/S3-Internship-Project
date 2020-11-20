@@ -10,7 +10,7 @@
     <div class="form-inline">
         <label class="col-sm-2 control-label" for="phoneNumber">Số điện thoại</label>
         <div>
-            <input class="form-control" type="tel" id="phoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="Nhập số điện thoại" style="width:300px" autofocus required />
+            <input class="form-control" type="tel" id="phoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" pattern="^[0-9]{10}$" placeholder="Nhập số điện thoại" style="width:300px" autofocus required />
         </div>
     </div>
     <div class="form-inline">
@@ -22,7 +22,7 @@
     <div class="form-inline">
         <label class="col-sm-2 control-label" for="birthDate">Ngày sinh</label>
         <div>
-            <input type="date" id="birthDate" name="DateOfBirth" class="form-control" style="width:300px" required>
+            <input type="date" id="birthDate" name="DateOfBirth" class="form-control" value="@Convert.ToDateTime(Model.DateOfBirth).ToString("yyyy-MM-dd")" style="width:300px" required>
         </div>
     </div>
     <div class="form-inline">

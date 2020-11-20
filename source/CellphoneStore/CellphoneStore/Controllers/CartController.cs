@@ -33,7 +33,7 @@ namespace CellphoneStore.Controllers
                 cartInfo.Discount = 0;
                 cartInfo.IntoMoney = cartInfo.CartTotalPrice;
             }
-            ViewBag.CartInfo = cartInfo;
+            Session["CartInfo"] = cartInfo;
             return View(cartItems);
         }
         public List<CartItem> GetCart()
@@ -155,7 +155,7 @@ namespace CellphoneStore.Controllers
                 TempData["PromotionCode"] = prmCode.Code;
                 TempData["Discount"] = promotionCodeValue;
             }
-            return RedirectToActionPermanent("Cart", "Cart");
+            return RedirectToAction("Cart", "Cart");
         }
         public ActionResult GetShipmentDetails(string username)
         {

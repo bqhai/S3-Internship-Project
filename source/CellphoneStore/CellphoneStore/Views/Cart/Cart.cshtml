@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    CellphoneStore.Models.CartInfo cartInfo = Session["CartInfo"] as CellphoneStore.Models.CartInfo;
 
 }
 @model List<CellphoneStore.Models.CartItem>
@@ -91,25 +92,22 @@
                 <ul class="cart-price">
                     <li class="cart-price-item">
                         <span>Tạm tính</span>
-                        <span>@ViewBag.CartInfo.CartTotalPrice VNĐ</span>
+                        <span>@cartInfo.CartTotalPrice VNĐ</span>
                     </li>
                     <li class="cart-price-item">
                         <span>Giảm giá</span>
-                        <span>@ViewBag.CartInfo.Discount VNĐ</span>
+                        <span>@cartInfo.Discount VNĐ</span>
                     </li>
 
                 </ul>
                 <p class="cart-price cart-price-item">
                     <span class="cart-total-price">Thành tiền</span>
-                    <span class="cart-total-price">@ViewBag.CartInfo.IntoMoney VNĐ</span>
+                    <span class="cart-total-price">@cartInfo.IntoMoney VNĐ</span>
                 </p>
                 <p class="cart-price" style="margin-left: 75px">Đã bao gồm VAT(nếu có)</p>
             </div>
-            <div class="cart-gotopayment">
-                @{
-                    TempData["CartInfo"] = ViewBag.CartInfo;
-                } 
-                <a href="@Url.Action("Payment", "Payment", new { cartInfo = ViewBag.CartInfo })"><input class="btn btn-warning" type="button" value="Tiến hành đặt hàng" style="width: 100%" /></a>                
+            <div class="cart-gotopayment">                
+                <a href="@Url.Action("Payment", "Payment")"><input class="btn btn-warning" type="button" value="Tiến hành đặt hàng" style="width: 100%" /></a>                
             </div>
         </div>
     }
