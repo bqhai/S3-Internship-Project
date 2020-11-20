@@ -154,6 +154,7 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CartInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Message.cs" />
     <Compile Include="Repository\ServiceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +356,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Employee.cshtml" />
     <Content Include="Views\Admin\Customer.cshtml" />
+    <Content Include="Views\Admin\Product.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

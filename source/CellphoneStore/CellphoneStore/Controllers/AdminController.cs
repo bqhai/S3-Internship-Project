@@ -84,7 +84,33 @@ namespace CellphoneStore.Controllers
                 List<CustomerMapped> customerMappeds = response.Content.ReadAsAsync<List<CustomerMapped>>().Result;
                 return View(customerMappeds);
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
+            TempData["DangerMessage"] = Message.ConnectFail();
+            return RedirectToAction("Index", "Admin");
+        }
+        #endregion
+        #region Product Management
+        public ActionResult Product()
+        {
+            var url = "api/API_Admin/GetAllProduct";
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                List<ProductInfoMapped> productInfoMappeds = response.Content.ReadAsAsync<List<ProductInfoMapped>>().Result;
+                return View(productInfoMappeds);
+            }
+            TempData["DangerMessage"] = Message.ConnectFail();
+            return RedirectToAction("Index", "Admin");
+        }
+        public ActionResult ProductVersion(string productID)
+        {
+            var url = "api/API_Admin/GetListProductVersionByProductID/" + productID;
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+                return PartialView(productVersionMappeds);
+            }
+            TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Admin");
         }
         #endregion

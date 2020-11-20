@@ -65,6 +65,7 @@
     <Compile Include="DAL\DAL_Address.cs" />
     <Compile Include="MappingClass\OrderDetailInfo.cs" />
     <Compile Include="MappingClass\OrderInfo.cs" />
+    <Compile Include="MappingClass\ProductInfo.cs" />
     <Compile Include="MappingClass\ProductVersionInfo.cs" />
     <Compile Include="Model\Account.cs">
       <DependentUpon>DbCellphoneStore.tt</DependentUpon>

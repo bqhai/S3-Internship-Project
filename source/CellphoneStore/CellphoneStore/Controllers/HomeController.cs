@@ -17,10 +17,18 @@ namespace CellphoneStore.Controllers
         {
             var url = "api/API_Product/GetListHotSale";
             response = serviceObj.GetResponse(url);
-            response.EnsureSuccessStatusCode();
-            List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
-            ViewBag.Title = "All Products";
-            return View(productVersionMappeds);
+            if (response.IsSuccessStatusCode)
+            {
+                List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
+                ViewBag.Title = "All Products";
+                return View(productVersionMappeds);
+            }
+            return RedirectToAction("Error", "Home");
+           
+        }
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

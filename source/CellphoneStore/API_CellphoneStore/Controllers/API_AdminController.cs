@@ -14,6 +14,8 @@ namespace API_CellphoneStore.Controllers
     {
         BLL_Employee bllEmployee = new BLL_Employee();
         BLL_Customer bllCustomer = new BLL_Customer();
+        BLL_Product bllProduct = new BLL_Product();
+        BLL_ProductVersion bllProductVersion = new BLL_ProductVersion();
 
         #region Employee Management
         [HttpGet]
@@ -43,6 +45,19 @@ namespace API_CellphoneStore.Controllers
         public List<CustomerMapped> GetAllCustomer()
         {
             return bllCustomer.GetAllCustomer();
+        }
+        #endregion
+        #region Product Management
+        [HttpGet]
+        [Route("GetAllProduct")]
+        public List<ProductInfoMapped> GetAllProduct()
+        {
+            return bllProduct.GetAllProduct();
+        }
+        [Route("GetListProductVersionByProductID/{productID}")]
+        public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
+        {
+            return bllProductVersion.GetListProductVersionByProductID(productID);
         }
         #endregion
     }

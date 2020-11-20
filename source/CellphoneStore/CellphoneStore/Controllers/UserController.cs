@@ -24,15 +24,14 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult ProcessLogin(AccountMapped accountMapped)
         {
-            var url = "api/API_User/ProcessLogin/" + accountMapped.Username + "/" + accountMapped.Password;
+            var url = "api/API_User/ProcessLogin/" + accountMapped.Username + "/" + accountMapped.Password + "/";
             response = serviceObj.GetResponse(url);
             if (response.IsSuccessStatusCode)
             {
                 var resultLogin = response.Content.ReadAsAsync<bool>().Result;
-                if (resultLogin)
-                {
-                    int accountType = GetAccountType(accountMapped.Username);
-                    Session["Account"] = accountMapped.Username;
+                int accountType = GetAccountType(accountMapped.Username);
+                if (resultLogin && accountType != -1)
+                {                                    
                     if (accountType == 1)
                     {
                         return RedirectToAction("Index", "Admin");
@@ -43,17 +42,18 @@ namespace CellphoneStore.Controllers
                     }
                     else
                     {
+                        Session["Account"] = accountMapped.Username;
                         TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                         return Redirect(this.Request.UrlReferrer.ToString());
                     }
                 }
                 else
                 {
-                    TempData["DangerMessage"] = "Tài khoản hoặc mật khẩu không chính xác";
+                    TempData["DangerMessage"] = Message.AuthenticateFail();
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
+            TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
 
         }
@@ -71,39 +71,42 @@ namespace CellphoneStore.Controllers
         public ActionResult ProcessRegister(AccountMapped accountMapped, CustomerMapped customerMapped)
         {
             response = serviceObj.GetResponse("api/API_User/AccountAlreadyExists/" + accountMapped.Username);
-            var resultCheck = response.Content.ReadAsAsync<bool>().Result;
-            if (!resultCheck)
+            if (response.IsSuccessStatusCode)
             {
-                HttpResponseMessage resAddAcc = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);
-                var resultAddAcc = resAddAcc.Content.ReadAsAsync<bool>().Result;
-
-                if (resultAddAcc)
+                var resultCheck = response.Content.ReadAsAsync<bool>().Result;
+                if (!resultCheck)
                 {
-                    HttpResponseMessage resAddCus = serviceObj.PostResponse("api/API_User/AddNewCustomer/", customerMapped);
-                    var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
-                    if (resultAddCus)
+                    HttpResponseMessage resAddAcc = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);
+                    var resultAddAcc = resAddAcc.Content.ReadAsAsync<bool>().Result;
+
+                    if (resultAddAcc)
                     {
-                        TempData["SuccessMessage"] = "Đăng ký thành công!";
-                        return RedirectToAction("Index", "Home");
+                        HttpResponseMessage resAddCus = serviceObj.PostResponse("api/API_User/AddNewCustomer/", customerMapped);
+                        var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
+                        if (resultAddCus)
+                        {
+                            TempData["SuccessMessage"] = Message.RegisterSuccess();
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            TempData["DangerMessage"] = Message.RegisterFail();
+                            return RedirectToAction("Register", "User");
+                        }
                     }
                     else
                     {
-                        TempData["DangerMessage"] = "Đăng ký thất bại";
+                        TempData["DangerMessage"] = Message.RegisterFail();
                         return RedirectToAction("Register", "User");
                     }
                 }
                 else
                 {
-                    TempData["DangerMessage"] = "Đăng ký thất bại";
+                    TempData["DangerMessage"] = Message.UserAlreadyExists();
                     return RedirectToAction("Register", "User");
                 }
-            }
-            else
-            {
-                TempData["DangerMessage"] = "Tài khoản này đã tồn tại";
-                return RedirectToAction("Register", "User");
-            }
-
+            }           
+            return RedirectToAction("Register", "User");
         }
         #endregion
 
@@ -125,7 +128,8 @@ namespace CellphoneStore.Controllers
                 CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
                 return PartialView(customerMapped);
             }
-            return PartialView();
+            TempData["DangerMessage"] = Message.ConnectFail();
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Notification()
         {
@@ -144,6 +148,7 @@ namespace CellphoneStore.Controllers
                 List<OrderInfoMapped> orderInfoMappeds = response.Content.ReadAsAsync<List<OrderInfoMapped>>().Result;
                 return PartialView(orderInfoMappeds);
             }
+            TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Home");
         }
         public ActionResult OrderDetailInfo(string orderID)
@@ -159,6 +164,7 @@ namespace CellphoneStore.Controllers
                 List<OrderDetailInfoMapped> orderDetailInfoMappeds = response.Content.ReadAsAsync<List<OrderDetailInfoMapped>>().Result;
                 return PartialView(orderDetailInfoMappeds);
             }
+            TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
@@ -166,9 +172,12 @@ namespace CellphoneStore.Controllers
         {
             var url = "api/API_User/GetAccountType/" + username;
             response = serviceObj.GetResponse(url);
-            response.EnsureSuccessStatusCode();
-            var accountType = response.Content.ReadAsAsync<int>().Result;
-            return accountType;
+            if (response.IsSuccessStatusCode)
+            {
+                var accountType = response.Content.ReadAsAsync<int>().Result;
+                return accountType;
+            }
+            return -1;
         }
         public ActionResult ForgotPassword()
         {
@@ -181,33 +190,47 @@ namespace CellphoneStore.Controllers
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
             var url = "api/API_User/GetCustomerByEmail/" + email + "/";
             response = serviceObj.GetResponse(url);
-            CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
-            if (customerMapped != null)
+            if (response.IsSuccessStatusCode)
             {
-                customerMapped.ResetPasswordCode = resetCode;
-                response = serviceObj.PutResponse("api/API_User/AddResetPasswordCode/", customerMapped);
-                var resultAddCode = response.Content.ReadAsAsync<bool>().Result;
-                if (resultAddCode)
+                CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
+                if (customerMapped != null)
                 {
-                    var subject = "Yêu cầu cấp lại mật khẩu";
-                    var body = "Xin chào " + customerMapped.Name + ", "
-                        + "<br/> Bạn vừa gửi yêu cầu cấp lại mật khẩu mới.! "
-                        + "<br/> Mã xác thực của bạn là: " + resetCode + "<br/>"
-                        + "Nếu bạn không gửi yêu cầu này, vui lòng bỏ qua email này hoặc thông báo lại với chúng tôi!<br/><br/> Thank you";
-                    SendEmail(customerMapped.Email, body, subject);
-                    TempData["SuccessMessage"] = "Yêu cầu cấp lại mật khẩu đã được gửi tới email của bạn.";
-                    Session["EmailForResetPass"] = email;
-                    return RedirectToAction("ResetPassword", "User");
+                    customerMapped.ResetPasswordCode = resetCode;
+                    response = serviceObj.PutResponse("api/API_User/AddResetPasswordCode/", customerMapped);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var resultAddVerifyCode = response.Content.ReadAsAsync<bool>().Result;
+                        if (resultAddVerifyCode)
+                        {
+                            var subject = "Yêu cầu cấp lại mật khẩu";
+                            var body = "Xin chào " + customerMapped.Name + ", "
+                                + "<br/> Bạn vừa gửi yêu cầu cấp lại mật khẩu mới.! "
+                                + "<br/> Mã xác thực của bạn là: " + resetCode + "<br/>"
+                                + "Nếu bạn không gửi yêu cầu này, vui lòng bỏ qua email này hoặc thông báo lại với chúng tôi!<br/><br/> Thank you";
+                            SendEmail(customerMapped.Email, body, subject);
+                            TempData["SuccessMessage"] = "Yêu cầu cấp lại mật khẩu đã được gửi tới email của bạn.";
+                            Session["EmailForResetPass"] = email;
+                            return RedirectToAction("ResetPassword", "User");
+                        }
+                        else
+                        {
+                            TempData["DangerMessage"] = Message.SendVerifyCodeFail();
+                            return RedirectToAction("ForgotPassword", "User");
+                        }
+                    }
+                    else
+                    {
+                        TempData["DangerMessage"] = Message.ConnectFail();
+                        return RedirectToAction("ForgotPassword", "User");
+                    }
                 }
                 else
                 {
-                    TempData["DangerMessage"] = "Lỗi gửi mã xác thực.";
-                }               
+                    TempData["DangerMessage"] = Message.EmailNotExists();
+                    return RedirectToAction("ForgotPassword", "User");
+                }
             }
-            else
-            {
-                TempData["DangerMessage"] = "Email không tồn tại";
-            }
+            TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("ForgotPassword", "User");
         }
         public ActionResult ResetPassword()
@@ -223,31 +246,40 @@ namespace CellphoneStore.Controllers
             var resetCode = Request.Form["ResetCode"];
             var url = "api/API_User/GetCustomerByEmail/" + Session["EmailForResetPass"].ToString() + "/";
             response = serviceObj.GetResponse(url);
-            CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
-            if(customerMapped != null)
+            if (response.IsSuccessStatusCode)
             {
-                if(customerMapped.ResetPasswordCode == resetCode)
+                CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
+                if (customerMapped != null)
                 {
-                    accountMapped.Username = customerMapped.Username;
-                    response = serviceObj.PutResponse("api/API_User/ResetPassword/", accountMapped);
-                    var resultResetPass = response.Content.ReadAsAsync<bool>().Result;
-                    if (resultResetPass)
+                    if (customerMapped.ResetPasswordCode == resetCode)
                     {
-                        TempData["SuccessMessage"] = "Đổi mật khẩu thành công";
-                        Session.Remove("EmailForResetPass");
-                        return RedirectToAction("Index", "Home");
+                        accountMapped.Username = customerMapped.Username;
+                        response = serviceObj.PutResponse("api/API_User/ResetPassword/", accountMapped);
+                        var resultResetPass = response.Content.ReadAsAsync<bool>().Result;
+                        if (resultResetPass)
+                        {
+                            TempData["SuccessMessage"] = "Đổi mật khẩu thành công";
+                            Session.Remove("EmailForResetPass");
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            TempData["DangerMessage"] = "Thất bại";
+                            return Redirect(this.Request.UrlReferrer.ToString());
+                        }
                     }
                     else
                     {
-                        TempData["DangerMessage"] = "Thất bại";
+                        TempData["DangerMessage"] = "Mã xác thực không đúng";
+                        return Redirect(this.Request.UrlReferrer.ToString());
                     }
-                }
-                else
-                {
-                    TempData["DangerMessage"] = "Mã xác thực không đúng";                   
-                }
 
-            }          
+                }
+            }
+            else
+            {
+                TempData["DangerMessage"] = Message.ConnectFail();               
+            }
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         private void SendEmail(string receiveEmail, string body, string subject)
@@ -291,7 +323,7 @@ namespace CellphoneStore.Controllers
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
+            TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         [HttpPost]
@@ -322,7 +354,7 @@ namespace CellphoneStore.Controllers
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
+            TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         [HttpPost]
@@ -353,7 +385,7 @@ namespace CellphoneStore.Controllers
                 }
                 return Redirect(this.Request.UrlReferrer.ToString());
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
+            TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
         }
         public ActionResult CustomerAddress()
@@ -369,8 +401,8 @@ namespace CellphoneStore.Controllers
                 CustomerMapped customerMapped = response.Content.ReadAsAsync<CustomerMapped>().Result;
                 return PartialView(customerMapped);
             }
-            return PartialView();
+            TempData["DangerMessage"] = Message.ConnectFail();
+            return RedirectToAction("Index", "Home");
         }
-
     }
 }

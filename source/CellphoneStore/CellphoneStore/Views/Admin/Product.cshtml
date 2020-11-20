@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<Model_CellphoneStore.ProductInfoMapped>
+
+<div class="container-fluid">
+    <div class="row adm-header">
+        <div class="col-sm-6 adm-title">
+            <h2>Sản phẩm</h2>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+    <div class="prd-content">
+        <div class="prd-table">
+            <table class="table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Thương hiệu</th>
+                        <th>Hệ điều hành</th>
+                        <th>Chi tiết</th>
+                        <th>Phiên bản</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td id="product-id">@item.ProductID</td>
+                            <td id="product-name">@item.ProductName</td>
+                            <td id="brand-name">@item.BrandName</td>
+                            <td id="os">@item.OperatingSystem</td>
+                            <td id="col-actions">
+                                <a href="#@item.ProductID" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                            </td>
+                            <td id="col-actions">
+                                <a href="#@item.ProductID" data-toggle="collapse"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                        <tr id="SMP10000" class="collapse">
+                            <td>- child row</td>
+                            <td>data 1</td>
+                            <td>data 1</td>
+                            <td>data 1</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

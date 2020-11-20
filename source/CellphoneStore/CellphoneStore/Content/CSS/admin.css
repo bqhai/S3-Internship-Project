@@ -74,15 +74,15 @@
     width: 15px;
 }
 
-.emp-table, .cus-table {
+.emp-table, .cus-table, .prd-table {
     margin-left: 40px;
 }
 
-    .emp-table table th, .cus-table table th {
+    .emp-table table th, .cus-table table th, .prd-table table th {
         padding: 10px;
     }
 
-    .emp-table table td, .cus-table table td {
+    .emp-table table td, .cus-table table td, .prd-table table td {
         padding: 10px;
         min-width: 170px;
         font-size: 13px;
@@ -102,16 +102,20 @@
     #add-employee, #col-actions, #status {
         text-align: center;
     }
+    #product-id{
+        min-width: 110px;
+    }
+
 
 #col-actions {
     min-width: 50px;
 }
 
-.emp-header .emp-title {
+.adm-header .adm-title {
     padding-left: 55px;
 }
 
-.emp-header .add-employee {
+.adm-header .add-employee {
     margin-top: 20px;
     text-align: center;
 }

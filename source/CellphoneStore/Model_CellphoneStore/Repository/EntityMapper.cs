@@ -19,6 +19,9 @@ namespace Model_CellphoneStore.Repository
             Mapper.CreateMap<BrandMapped, Brand>();
             Mapper.CreateMap<Brand, BrandMapped>();
 
+            Mapper.CreateMap<ProductInfoMapped, ProductInfo>();
+            Mapper.CreateMap<ProductInfo, ProductInfoMapped>();
+
             Mapper.CreateMap<ProductVersionMapped, ProductVersion>();
             Mapper.CreateMap<ProductVersion, ProductVersionMapped>();
 

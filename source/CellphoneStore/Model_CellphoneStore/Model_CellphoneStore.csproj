@@ -54,6 +54,7 @@
     <Compile Include="OrderDetailMapped.cs" />
     <Compile Include="OrderInfoMapped.cs" />
     <Compile Include="OrderMapped.cs" />
+    <Compile Include="ProductInfoMapped.cs" />
     <Compile Include="ProductIntroduceMapped.cs" />
     <Compile Include="ProductMapped.cs" />
     <Compile Include="ProductVersionMapped.cs" />
