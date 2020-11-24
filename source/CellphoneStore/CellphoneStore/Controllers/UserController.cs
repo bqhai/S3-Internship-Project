@@ -30,10 +30,13 @@ namespace CellphoneStore.Controllers
             {
                 var resultLogin = response.Content.ReadAsAsync<bool>().Result;
                 int accountType = GetAccountType(accountMapped.Username);
+                //string token = GetAPIToken(accountMapped.Username);
+                //HttpCookie cookie = new HttpCookie("Token", token);
+                //Response.Cookies.Add(cookie);
                 if (resultLogin && accountType != -1)
                 {                                    
                     if (accountType == 1)
-                    {
+                    {                      
                         return RedirectToAction("Index", "Admin");
                     }
                     else if (accountType == 2)
@@ -55,7 +58,16 @@ namespace CellphoneStore.Controllers
             }
             TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
-
+        }
+        public string GetAPIToken(string username)
+        {
+            var url = "api/API_User/GenToken/" + username;
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                return response.Content.ReadAsAsync<string>().Result;               
+            }
+            return null;
         }
         public ActionResult ProcessLogout()
         {

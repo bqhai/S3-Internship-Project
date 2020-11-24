@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using BLL_CellPhoneStore.BLL;
 using Model_CellphoneStore;
+using API_CellphoneStore.TokenAPI;
 
 namespace API_CellphoneStore.Controllers
 {
@@ -23,9 +24,15 @@ namespace API_CellphoneStore.Controllers
         [Route("ProcessLogin/{username}/{password}")]
         public bool ProcessLogin(string username, string password)
         {
+            
             return bllAccount.ProcessLogin(username, password);
         }
-
+        [HttpGet]
+        [Route("GenToken/{username}")]
+        public string GenToken(string username)
+        {
+            return TokenManager.GenerateToken(username);
+        }
         [HttpGet]
         [Route("GetAccountType/{username}")]
         public int GetAccountType(string username)

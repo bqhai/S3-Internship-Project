@@ -21,7 +21,7 @@ namespace CellphoneStore.Controllers
         HttpResponseMessage response;
         public ActionResult AllProduct(int pageIndex = 1, int pageSize = 15)
         {
-            var url = "api/API_Product/GetAllProductVersion";
+            var url = "api/API_Product/GetAllProductVersion/";
             response = serviceObj.GetResponse(url);
             if (response.IsSuccessStatusCode)
             {

@@ -10,6 +10,8 @@ using System.Web.Http.Cors;
 using System.Web.Http.Results;
 using Model_CellphoneStore.Repository;
 using System.Collections;
+using API_CellphoneStore.TokenAPI;
+using System.Security.Claims;
 
 namespace API_CellphoneStore.Controllers
 {
@@ -19,18 +21,23 @@ namespace API_CellphoneStore.Controllers
         BLL_ProductVersion bllProductVersion = new BLL_ProductVersion();
         BLL_Brand bllBrand = new BLL_Brand();
         BLL_ProductIntroduce bllProductIntroduce = new BLL_ProductIntroduce();
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+
+        [AllowAnonymous]
         [Route("GetAllBrand")]
         public List<BrandMapped> GetAllBrand()
         {
             return bllBrand.GetAllBrand();
         }
 
+
+        [HttpGet]
         [Route("GetAllProductVersion")]
         public List<ProductVersionMapped> GetAllProductVersion()
         {
+
             return bllProductVersion.GetAllProductVersion();
         }
+
 
         [Route("GetListProductVersionByProductID/{productID}")]
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
@@ -108,5 +115,7 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProductVersion.SearchProductVersion(keyWord);
         } 
+        
+
     }
 }
