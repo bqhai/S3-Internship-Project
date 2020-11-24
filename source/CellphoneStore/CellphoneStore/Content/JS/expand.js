@@ -62,3 +62,18 @@ function expandChangeAddress() {
     var content = document.querySelector("#change-address");
     content.style.display = "block";
 }
+
+function expandProductVersion(productID) {
+    var content = document.querySelectorAll("#" + productID);
+    var arrow = document.querySelector("#arrow-down-" + productID);
+    for (var item in content) {
+        if (content[item].style.display == "none") {
+            content[item].style.display = "table-row";
+            arrow.className = "fa fa-arrow-up";
+        }
+        else {
+            content[item].style.display = "none";
+            arrow.className = "fa fa-arrow-down";
+        }
+    }
+}

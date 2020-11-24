@@ -59,17 +59,17 @@ namespace API_CellphoneStore.Controllers
             return false;
         }
 
-        [HttpPost]
-        [Route("AddNewCustomer")]
-        public bool AddNewCustomer(CustomerMapped customerMapped)
-        {
-            if (ModelState.IsValid)
-            {
-                bool addCustomer = bllCustomer.AddNewCustomer(customerMapped);
-                return addCustomer;
-            }
-            return false;
-        }
+        //[HttpPost]
+        //[Route("AddNewCustomer")]
+        //public bool AddNewCustomer(CustomerMapped customerMapped)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        bool addCustomer = bllCustomer.AddNewCustomer(customerMapped);
+        //        return addCustomer;
+        //    }
+        //    return false;
+        //}
 
         [HttpGet]
         [Route("GetCustomerByUsername/{username}")]

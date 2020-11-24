@@ -23,7 +23,7 @@
                         <th>Tên sản phẩm</th>
                         <th>Thương hiệu</th>
                         <th>Hệ điều hành</th>
-                        <th>Chi tiết</th>
+                        <th>Chỉnh sửa</th>
                         <th>Phiên bản</th>
                     </tr>
                 </thead>
@@ -36,22 +36,162 @@
                             <td id="brand-name">@item.BrandName</td>
                             <td id="os">@item.OperatingSystem</td>
                             <td id="col-actions">
-                                <a href="#@item.ProductID" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                <a href="#edit-@item.ProductID" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             </td>
                             <td id="col-actions">
-                                <a href="#@item.ProductID" data-toggle="collapse"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <button onclick="expandProductVersion('@item.ProductID')"><i id="arrow-down-@item.ProductID" class="fa fa-arrow-down" aria-hidden="true"></i></button>
                             </td>
                         </tr>
-                        <tr id="SMP10000" class="collapse">
-                            <td>- child row</td>
-                            <td>data 1</td>
-                            <td>data 1</td>
-                            <td>data 1</td>
+                        <tr id="@item.ProductID" style="display: none">
+                            <td colspan="6">
+                                <div>
+                                    <table class="table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th id="prdv-ram">RAM</th>
+                                                <th id="prdv-rom">ROM</th>
+                                                <th id="prdv-color">Màu sắc</th>
+                                                <th id="prdv-list-price">Giá đề nghị</th>
+                                                <th id="prdv-price">Giá bán lẻ</th>
+                                                <th id="prdv-quantity">Số lượng tồn</th>
+                                                <th id="prdv-status">Tình trạng</th>
+                                                <th id="prdv-col-actions">Chỉnh sửa</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </td>
                         </tr>
+                        @Html.Action("ProductVersion", "Admin", new { productID = item.ProductID })
+
                     }
+
                 </tbody>
             </table>
         </div>
     </div>
+    @foreach (var item in Model)
+    {
+        <div id="edit-@item.ProductID" class="modal fade">
+            <div class="modal-dialog" style="max-width: 800px">
+                <div class="modal-content" style="width: 800px">
+                    <form method="post" action="#">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cập nhật thông tin sản phẩm</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>ID</label>
+                                        <input type="text" class="form-control" name="ProductVersionID" value="@item.ProductID" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tên sản phẩm</label>
+                                        <input type="text" class="form-control" name="ProductName" value="@item.ProductName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thương hiệu</label>
+                                        <select class="form-control" name="BrandID" autofocus required>
+                                            @Html.Action("Brand", "Admin")
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kích thước</label>
+                                        <input type="text" class="form-control" name="Size" value="@item.Size" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Trọng lượng</label>
+                                        <input type="text" class="form-control" name="Weight" value="@item.Weight" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>SIM</label>
+                                        <input type="text" class="form-control" name="SIM" value="@item.SIM" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Thẻ nhớ</label>
+                                        <input type="text" class="form-control" name="SDCard" value="@item.SDCard" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Loại màn hình</label>
+                                        <input type="text" class="form-control" name="ScreenType" value="@item.ScreenType" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Kích thước màn hình</label>
+                                        <input type="text" class="form-control" name="ScreenSize" value="@item.ScreenSize" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Độ phân giải</label>
+                                        <input type="text" class="form-control" name="ScreenResolution" value="@item.ScreenResolution" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Hệ điều hành</label>
+                                        <input type="text" class="form-control" name="OperatingSystem" value="@item.OperatingSystem" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Chipset</label>
+                                        <input type="text" class="form-control" name="Chipset" value="@item.Chipset" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>CPU</label>
+                                        <input type="text" class="form-control" name="CPU" value="@item.CPU" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>GPU</label>
+                                        <input type="text" class="form-control" name="GPU" value="@item.GPU" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>USB</label>
+                                        <input type="text" class="form-control" name="USB" value="@item.USB" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Camera sau</label>
+                                        <input type="text" class="form-control" name="BackCamera" value="@item.BackCamera" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Camera trước</label>
+                                        <input type="text" class="form-control" name="FrontCamera" value="@item.FrontCamera" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cảm biến</label>
+                                        <input type="text" class="form-control" name="Sensor" value="@item.Sensor" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pin</label>
+                                        <input type="text" class="form-control" name="Battery" value="@item.Battery" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>WLAN</label>
+                                        <input type="text" class="form-control" name="WLAN" value="@item.WLAN" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bluetooth</label>
+                                        <input type="text" class="form-control" name="Bluetooth" value="@item.Bluetooth" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>GPS</label>
+                                        <input type="text" class="form-control" name="GPS" value="@item.GPS" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>NFC</label>
+                                        <input type="text" class="form-control" name="NFC" value="@item.NFC" required>
+                                    </div>
+                                </div>                              
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
+                            <input type="submit" class="btn btn-success" value="Lưu">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 

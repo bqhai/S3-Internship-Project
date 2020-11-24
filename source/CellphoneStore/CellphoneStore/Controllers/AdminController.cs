@@ -113,6 +113,19 @@ namespace CellphoneStore.Controllers
             TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Admin");
         }
+        public ActionResult Brand()
+        {
+            var url = "api/API_Product/GetAllBrand";
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
+                List<BrandMapped> brandMappeds = response.Content.ReadAsAsync<List<BrandMapped>>().Result;
+                return PartialView(brandMappeds);
+            }
+            TempData["DangerMessage"] = Message.ConnectFail();
+            return RedirectToAction("Index", "Admin");
+        }
+        
         #endregion
     }
 }

@@ -90,26 +90,54 @@
         text-align: left;
     }
 
-    #status {
-        min-width: 130px;
-    }
-    #name {
-        min-width: 250px;
-    }
-    #phone-number {
-        min-width: 120px;
-    }
-    #add-employee, #col-actions, #status {
-        text-align: center;
-    }
-    #product-id{
-        min-width: 110px;
-    }
+#status {
+    min-width: 130px;
+}
+
+#name {
+    min-width: 250px;
+}
+
+#phone-number {
+    min-width: 120px;
+}
+
+#add-employee, #col-actions, #status, #prdv-col-actions {
+    text-align: center;
+}
+
+#product-id {
+    min-width: 110px;
+}
+
+#product-name {
+    min-width: 280px;
+}
+#prdv-ram, #prdv-rom {
+    min-width: 70px;
+}
+#prdv-quantity{
+    min-width: 104px;
+}
+#prdv-list-price, #prdv-price, #prdv-color {
+    min-width: 138px;
+}
+#prdv-status{
+    min-width: 120px;
+}
+#prdv-col-actions {
+    min-width: 86px;
+}
+.prdv-row{
+    display: none;
+}
+
 
 
 #col-actions {
     min-width: 50px;
 }
+
 
 .adm-header .adm-title {
     padding-left: 55px;

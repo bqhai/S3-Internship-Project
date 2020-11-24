@@ -1,0 +1,116 @@
+﻿@model List<Model_CellphoneStore.ProductVersionMapped>
+@foreach (var item in Model)
+{
+    <tr id="@item.ProductID" style="display: none">
+        <td colspan="6">
+            <div class="prdv-table">
+                <table class="table-hover">               
+                    <tbody>
+                        <tr>
+                            <td id="prdv-ram">@item.RAM</td>
+                            <td id="prdv-rom">@item.ROM</td>
+                            <td id="prdv-color">@item.Color</td>
+                            <td id="prdv-list-price">@item.ListPrice VNĐ</td>
+                            <td id="prdv-price">@item.Price VNĐ</td>
+                            <td id="prdv-quantity">@item.QuantityInStock</td>
+                            @if (item.Status)
+                            {
+                                <td id="prdv-status">Đang bán</td>
+                            }
+                            else
+                            {
+                                <td id="prdv-status">Hết hàng</td>
+                            }
+                            <td id="prdv-col-actions">
+                                <a href="#@item.ProductVersionID" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <div id="@item.ProductVersionID" class="modal fade">
+        <div class="modal-dialog" style="max-width: 800px">
+            <div class="modal-content" style="width: 800px">
+                <form method="post" action="#">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cập nhật thông tin phiên bản</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>ID</label>
+                                    <input type="text" class="form-control" name="ProductVersionID" value="@item.ProductVersionID" disabled>
+                                </div>
+                                <img src="~/Content/Images/Product/@item.Image" width="230" height="230" />
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Tên phiên bản</label>
+                                    <input type="text" class="form-control" name="ProductVersionName" value="@item.ProductVersionName" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>RAM</label>
+                                    <input type="text" class="form-control" name="RAM" value="@item.RAM" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ROM</label>
+                                    <input type="text" class="form-control" name="ROM" value="@item.ROM" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Màu sắc</label>
+                                    <input type="text" class="form-control" name="Color" value="@item.Color" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>Giá đề nghị</label>
+                                    <input type="text" class="form-control" name="ListPrice" value="@item.ListPrice" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Giá bán lẻ</label>
+                                    <input type="text" class="form-control" name="Price" value="@item.Price" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Số lượng tồn</label>
+                                    <input type="text" class="form-control" name="QuantityInStock" value="@item.QuantityInStock" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <div class="form-inline">
+                                        @if (item.Status)
+                                        {
+                                            <label class="radio-inline">
+                                                <input type="radio" class="radio-inline" name="Status" value="True" checked />Đang bán
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" class="radio-inline" name="Status" value="False" />Hết hàng
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label class="radio-inline">
+                                                <input type="radio" class="radio-inline" name="Status" value="True" />Đang bán
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" class="radio-inline" name="Status" value="False" checked />Hết hàng
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                                                                                        
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
+                        <input type="submit" class="btn btn-success" value="Lưu">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -14,6 +14,7 @@ namespace BLL_CellPhoneStore.BLL
     public class BLL_Account
     {
         DAL_Account dalAccount = new DAL_Account();
+        DAL_Customer dalCustomer = new DAL_Customer();
         EntityMapper<AccountMapped, Account> convertToAcc = new EntityMapper<AccountMapped, Account>();
         public BLL_Account()
         {
@@ -54,12 +55,24 @@ namespace BLL_CellPhoneStore.BLL
         }
         public bool AddNewAccount(AccountMapped accountMapped)
         {
+            string lastCustomerID = dalCustomer.GetTheLastCustomerID();
             try
             {
                 accountMapped.Password = MD5_Encryptor.HashMD5(accountMapped.Password);
                 Account acc = convertToAcc.Translate(accountMapped);
-                dalAccount.AddNewUserAccount(acc);
-                return true;
+
+                string customerID = AutoGen.CreateID("CUS", lastCustomerID);
+                Customer cus = new Customer()
+                {
+                    CustomerID = customerID,
+                    Name = accountMapped.Name,
+                    Username = accountMapped.Username,
+                    PhoneNumber = accountMapped.PhoneNumber,
+                    Email = accountMapped.Email,
+                    DateOfBirth = accountMapped.DateOfBirth,
+                    Gender = accountMapped.Gender
+                };
+                return  dalAccount.AddNewUserAccount(acc, cus);             
             }
             catch (Exception)
             {

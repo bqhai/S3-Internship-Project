@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,30 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.Accounts.SingleOrDefault(acc => acc.Username == username);
         }
-        public void AddNewUserAccount(Account account)
+        public bool AddNewUserAccount(Account account, Customer customer)
         {
-            account.AccountTypeID = 3;
-            account.Status = true;
-            account.Coin = 0;
-            db.Accounts.Add(account);
-            db.SaveChanges();          
+            using (DbContextTransaction transaction = db.Database.BeginTransaction())
+            {
+
+                try
+                {
+                    account.AccountTypeID = 3;
+                    account.Status = true;
+                    account.Coin = 0;
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    return false;
+                }
+            }
         }
         public void UpdateAccount(string username, string newPassword)
         {

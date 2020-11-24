@@ -76,27 +76,17 @@ namespace CellphoneStore.Controllers
                 var resultCheck = response.Content.ReadAsAsync<bool>().Result;
                 if (!resultCheck)
                 {
-                    HttpResponseMessage resAddAcc = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);
-                    var resultAddAcc = resAddAcc.Content.ReadAsAsync<bool>().Result;
-
+                    response = serviceObj.PostResponse("api/API_User/AddNewAccount/", accountMapped);
+                    var resultAddAcc = response.Content.ReadAsAsync<bool>().Result;
+                   
                     if (resultAddAcc)
                     {
-                        HttpResponseMessage resAddCus = serviceObj.PostResponse("api/API_User/AddNewCustomer/", customerMapped);
-                        var resultAddCus = resAddCus.Content.ReadAsAsync<bool>().Result;
-                        if (resultAddCus)
-                        {
-                            TempData["SuccessMessage"] = Message.RegisterSuccess();
-                            return RedirectToAction("Index", "Home");
-                        }
-                        else
-                        {
-                            TempData["DangerMessage"] = Message.RegisterFail();
-                            return RedirectToAction("Register", "User");
-                        }
+                        TempData["SuccessMessage"] = Message.RegisterSuccess();
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        TempData["DangerMessage"] = Message.RegisterFail();
+                        TempData["DangerMessage"] = Message.RegisterFail() + "Vui lòng kiểm tra lại email và số điện thoại";
                         return RedirectToAction("Register", "User");
                     }
                 }
