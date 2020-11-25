@@ -30,13 +30,15 @@ namespace CellphoneStore.Controllers
             {
                 var resultLogin = response.Content.ReadAsAsync<bool>().Result;
                 int accountType = GetAccountType(accountMapped.Username);
-                //string token = GetAPIToken(accountMapped.Username);
-                //HttpCookie cookie = new HttpCookie("Token", token);
-                //Response.Cookies.Add(cookie);
+                string token = GetAPIToken(accountMapped.Username);
+                HttpCookie cookie = new HttpCookie("Token", token);
+                Response.Cookies.Add(cookie);
+
                 if (resultLogin && accountType != -1)
-                {                                    
+                {
+                    Session["Account"] = accountMapped.Username;
                     if (accountType == 1)
-                    {                      
+                    {
                         return RedirectToAction("Index", "Admin");
                     }
                     else if (accountType == 2)
@@ -45,7 +47,7 @@ namespace CellphoneStore.Controllers
                     }
                     else
                     {
-                        Session["Account"] = accountMapped.Username;
+                        
                         TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                         return Redirect(this.Request.UrlReferrer.ToString());
                     }

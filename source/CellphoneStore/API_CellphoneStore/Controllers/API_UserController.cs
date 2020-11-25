@@ -31,7 +31,12 @@ namespace API_CellphoneStore.Controllers
         [Route("GenToken/{username}")]
         public string GenToken(string username)
         {
-            return TokenManager.GenerateToken(username);
+            int type = bllAccount.GetAccountType(username);
+            if (type == 1)
+            {
+                return TokenManager.GenerateToken(username);
+            }
+            return null;
         }
         [HttpGet]
         [Route("GetAccountType/{username}")]
@@ -64,19 +69,7 @@ namespace API_CellphoneStore.Controllers
                 return addAccount;
             }
             return false;
-        }
-
-        //[HttpPost]
-        //[Route("AddNewCustomer")]
-        //public bool AddNewCustomer(CustomerMapped customerMapped)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        bool addCustomer = bllCustomer.AddNewCustomer(customerMapped);
-        //        return addCustomer;
-        //    }
-        //    return false;
-        //}
+        }    
 
         [HttpGet]
         [Route("GetCustomerByUsername/{username}")]

@@ -18,8 +18,7 @@ namespace API_CellphoneStore.TokenAPI
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] {
-                      new Claim(ClaimTypes.Name, username),
-                      new Claim(ClaimTypes.Role, "admin"),
+                      new Claim(ClaimTypes.Name, username),                     
                       //new Claim(username, password)
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
@@ -76,5 +75,6 @@ namespace API_CellphoneStore.TokenAPI
             username = usernameClaim.Value;
             return username;
         }
+        
     }
 }

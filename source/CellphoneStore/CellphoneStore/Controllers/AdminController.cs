@@ -14,22 +14,31 @@ namespace CellphoneStore.Controllers
         ServiceRepository serviceObj = new ServiceRepository();
         HttpResponseMessage response;
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(string username)
         {
             return View();
         }
         #region Employee Management
         public ActionResult Employee()
         {
-            var url = "api/API_Admin/GetAllEmployee";
-            response = serviceObj.GetResponse(url);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                List<EmployeeMapped> employeeMappeds = response.Content.ReadAsAsync<List<EmployeeMapped>>().Result;
-                return View(employeeMappeds);
+                string username = Session["Account"].ToString();
+                string token = Request.Cookies["Token"].Value.ToString();              
+                var url = "api/API_Admin/GetAllEmployee/" + username + "/" + token + "/";
+                response = serviceObj.GetResponse(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    List<EmployeeMapped> employeeMappeds = response.Content.ReadAsAsync<List<EmployeeMapped>>().Result;
+                    return View(employeeMappeds);
+                }
+                TempData["DangerMessage"] = "Kết nối server thất bại";
+                return RedirectToAction("Index", "Admin");
             }
-            TempData["DangerMessage"] = "Kết nối server thất bại";
-            return RedirectToAction("Index", "Admin");
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
         }
         [HttpPost]
         public ActionResult AddNewEmployee(EmployeeMapped employeeMapped)

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BLL_CellPhoneStore.BLL;
 using Model_CellphoneStore;
+using API_CellphoneStore.TokenAPI;
 
 namespace API_CellphoneStore.Controllers
 {
@@ -19,11 +20,17 @@ namespace API_CellphoneStore.Controllers
 
         #region Employee Management
         [HttpGet]
-        [Route("GetAllEmployee")]
-        public List<EmployeeMapped> GetAllEmployee()
+        [Route("GetAllEmployee/{username}/{token}")]
+        public List<EmployeeMapped> GetAllEmployee(string username, string token)
         {
-            return bllEmployee.GetAllEmployee();
+            string tokenUsername = TokenManager.ValidateToken(token);
+            if (username.Equals(tokenUsername))
+            {
+                return bllEmployee.GetAllEmployee();
+            }
+            return null;
         }
+
 
         [HttpPost]
         [Route("AddNewEmployee")]
