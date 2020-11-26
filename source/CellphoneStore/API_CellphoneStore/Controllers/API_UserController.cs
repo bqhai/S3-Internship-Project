@@ -23,8 +23,7 @@ namespace API_CellphoneStore.Controllers
         [HttpGet]
         [Route("ProcessLogin/{username}/{password}")]
         public bool ProcessLogin(string username, string password)
-        {
-            
+        {     
             return bllAccount.ProcessLogin(username, password);
         }
         [HttpGet]

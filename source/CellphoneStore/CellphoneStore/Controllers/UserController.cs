@@ -33,6 +33,7 @@ namespace CellphoneStore.Controllers
                 string token = GetAPIToken(accountMapped.Username);
                 HttpCookie cookie = new HttpCookie("Token", token);
                 Response.Cookies.Add(cookie);
+                //Response.Headers.Add("Token", token);
 
                 if (resultLogin && accountType != -1)
                 {
@@ -46,8 +47,7 @@ namespace CellphoneStore.Controllers
                         return RedirectToAction("Index", "Admin");
                     }
                     else
-                    {
-                        
+                    {                       
                         TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                         return Redirect(this.Request.UrlReferrer.ToString());
                     }

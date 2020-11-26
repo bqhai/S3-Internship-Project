@@ -28,10 +28,6 @@ namespace CellphoneStore.Repository
         {
             return Client.PostAsJsonAsync(url, model).Result;
         }
-        public HttpResponseMessage PostResponse(string url, List<object> lstmodel)
-        {
-            return Client.PostAsJsonAsync(url, lstmodel).Result;
-        }
         public HttpResponseMessage DeleteResponse(string url)
         {
             return Client.DeleteAsync(url).Result;

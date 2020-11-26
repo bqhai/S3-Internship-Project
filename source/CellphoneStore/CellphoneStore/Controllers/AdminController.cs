@@ -1,4 +1,5 @@
 ﻿using CellphoneStore.Repository;
+using log4net;
 using Model_CellphoneStore;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,18 @@ namespace CellphoneStore.Controllers
 {
     public class AdminController : Controller
     {
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         ServiceRepository serviceObj = new ServiceRepository();
         HttpResponseMessage response;
         // GET: Admin
-        public ActionResult Index(string username)
+        public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult ProcessLogout()
+        {
+            Session.Remove("Account");
+            return RedirectToAction("Index", "Home");
         }
         #region Employee Management
         public ActionResult Employee()
@@ -24,20 +31,18 @@ namespace CellphoneStore.Controllers
             try
             {
                 string username = Session["Account"].ToString();
-                string token = Request.Cookies["Token"].Value.ToString();              
+                string token = Request.Cookies["Token"].Value.ToString();
+                //string token = Request.Headers.Get("Token").ToString();
                 var url = "api/API_Admin/GetAllEmployee/" + username + "/" + token + "/";
                 response = serviceObj.GetResponse(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    List<EmployeeMapped> employeeMappeds = response.Content.ReadAsAsync<List<EmployeeMapped>>().Result;
-                    return View(employeeMappeds);
-                }
-                TempData["DangerMessage"] = "Kết nối server thất bại";
-                return RedirectToAction("Index", "Admin");
+                List<EmployeeMapped> employeeMappeds = response.Content.ReadAsAsync<List<EmployeeMapped>>().Result;
+                return View(employeeMappeds);           
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return RedirectToAction("Index", "Admin");
+                Log.Error("Error", ex);
+                TempData["DangerMessage"] = "Kết nối server thất bại";
+                return RedirectToAction("Index", "Home");
             }
         }
         [HttpPost]

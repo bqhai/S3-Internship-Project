@@ -21,7 +21,7 @@ namespace API_CellphoneStore.TokenAPI
                       new Claim(ClaimTypes.Name, username),                     
                       //new Claim(username, password)
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(securityKey,
                 SecurityAlgorithms.HmacSha256Signature)
             };
