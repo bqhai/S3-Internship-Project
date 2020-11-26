@@ -33,7 +33,7 @@
     <div id="@item.ProductVersionID" class="modal fade">
         <div class="modal-dialog" style="max-width: 800px">
             <div class="modal-content" style="width: 800px">
-                <form method="post" action="#">
+                <form method="post" action="@Url.Action("UpdateProductVersion", "Admin", new { productVersionID = item.ProductVersionID})">
                     <div class="modal-header">
                         <h4 class="modal-title">Cập nhật thông tin phiên bản</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

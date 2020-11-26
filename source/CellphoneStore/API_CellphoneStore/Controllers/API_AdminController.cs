@@ -73,10 +73,17 @@ namespace API_CellphoneStore.Controllers
         {
             return bllProduct.GetAllProduct();
         }
+        [HttpGet]
         [Route("GetListProductVersionByProductID/{productID}")]
         public List<ProductVersionMapped> GetListProductVersionByProductID(string productID)
         {
             return bllProductVersion.GetListProductVersionByProductID(productID);
+        }
+        [HttpPut]
+        [Route("UpdateProductVersion")]
+        public bool UpdateProductVersion(ProductVersionMapped productVersionMapped)
+        {
+            return bllProductVersion.UpdateProductVersion(productVersionMapped);
         }
         #endregion
     }

@@ -139,7 +139,27 @@ namespace CellphoneStore.Controllers
             TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Admin");
         }
-        
+        [HttpPost]
+        public ActionResult UpdateProductVersion(ProductVersionMapped productVersionMapped, string productVersionID)
+        {
+            productVersionMapped.ProductVersionID = productVersionID;
+            response = serviceObj.PutResponse("api/API_Admin/UpdateProductVersion/", productVersionMapped);
+            if (response.IsSuccessStatusCode)
+            {
+                var resultUpdatePrdv = response.Content.ReadAsAsync<bool>().Result;
+                if (resultUpdatePrdv)
+                {
+                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công";
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Cập nhật thông tin thất bại";
+                }
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+            TempData["DangerMessage"] = "Kết nối server thất bại";
+            return Redirect(this.Request.UrlReferrer.ToString());
+        }
         #endregion
     }
 }

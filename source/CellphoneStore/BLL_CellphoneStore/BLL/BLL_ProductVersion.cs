@@ -16,6 +16,7 @@ namespace BLL_CellPhoneStore.BLL
     {
         DAL_ProductVesion dalProductVersion = new DAL_ProductVesion();
         EntityMapper<ProductVersion, ProductVersionMapped> convertToPrdvMapped = new EntityMapper<ProductVersion, ProductVersionMapped>();
+        EntityMapper<ProductVersionMapped, ProductVersion> convertToPrdv = new EntityMapper<ProductVersionMapped, ProductVersion>();
         EntityMapper<ProductVersionInfo, ProductVersionInfoMapped> convertToPrdvMappedInfo = new EntityMapper<ProductVersionInfo, ProductVersionInfoMapped>();
         public BLL_ProductVersion()
         {
@@ -133,6 +134,19 @@ namespace BLL_CellPhoneStore.BLL
                 productVersionMappeds.Add(convertToPrdvMapped.Translate(item));
             }
             return productVersionMappeds;
+        }
+        public bool UpdateProductVersion(ProductVersionMapped productVersionMapped)
+        {
+            try
+            {
+                ProductVersion prdv = convertToPrdv.Translate(productVersionMapped);
+                dalProductVersion.UpdateProductVersion(prdv);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

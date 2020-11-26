@@ -124,5 +124,22 @@ namespace DAL_CellPhoneStore.DAL
         {
             return db.ProductVersions.Where(prdv => prdv.ProductVersionName.Contains(keyWord));
         }
+        public void UpdateProductVersion(ProductVersion productVersion)
+        {
+            ProductVersion prdv = db.ProductVersions.SingleOrDefault(p => p.ProductVersionID == productVersion.ProductVersionID);
+            if(prdv != null)
+            {
+                prdv.ProductVersionName = productVersion.ProductVersionName;
+                prdv.RAM = productVersion.RAM;
+                prdv.ROM = productVersion.ROM;
+                prdv.Color = productVersion.Color;
+                prdv.ListPrice = productVersion.ListPrice;
+                prdv.Price = productVersion.Price;
+                prdv.QuantityInStock = productVersion.QuantityInStock;
+                prdv.Status = productVersion.Status;
+
+                db.SaveChanges();
+            }
+        }
     }
 }
