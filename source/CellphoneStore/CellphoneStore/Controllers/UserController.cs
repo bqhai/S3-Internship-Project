@@ -1,4 +1,5 @@
 ﻿using CellphoneStore.Repository;
+using log4net;
 using Microsoft.Ajax.Utilities;
 using Model_CellphoneStore;
 using System;
@@ -15,6 +16,7 @@ namespace CellphoneStore.Controllers
     public class UserController : Controller
     {
         // GET: User
+        private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         ServiceRepository serviceObj = new ServiceRepository();
         HttpResponseMessage response;
         #region Login/Logout/Register
@@ -24,40 +26,48 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult ProcessLogin(AccountMapped accountMapped)
         {
+            Log.Info("Start process login");
             var url = "api/API_User/ProcessLogin/" + accountMapped.Username + "/" + accountMapped.Password + "/";
+            Log.Info("Call api login");
             response = serviceObj.GetResponse(url);
+            Log.Info("Status code: " + response.StatusCode);
             if (response.IsSuccessStatusCode)
             {
                 var resultLogin = response.Content.ReadAsAsync<bool>().Result;
-                int accountType = GetAccountType(accountMapped.Username);
-                string token = GetAPIToken(accountMapped.Username);
-                HttpCookie cookie = new HttpCookie("Token", token);
-                Response.Cookies.Add(cookie);
-                //Response.Headers.Add("Token", token);
+                int accountType = GetAccountType(accountMapped.Username);             
 
                 if (resultLogin && accountType != -1)
                 {
+                    Log.Info("Get api token for " + accountMapped.Username);
+                    string token = GetAPIToken(accountMapped.Username);
+                    HttpCookie cookie = new HttpCookie("Token", token);
+                    Response.Cookies.Add(cookie);
                     Session["Account"] = accountMapped.Username;
                     if (accountType == 1)
                     {
+                        Log.Info("Login successfully with role admin");
                         return RedirectToAction("Index", "Admin");
                     }
                     else if (accountType == 2)
                     {
+                        Log.Info("Login successfully with role employee");
                         return RedirectToAction("Index", "Admin");
                     }
                     else
-                    {                       
+                    {
+                        Log.Info("Login successfully with role user");                      
                         TempData["SuccessMessage"] = "Xin chào" + "  " + accountMapped.Username;
                         return Redirect(this.Request.UrlReferrer.ToString());
                     }
                 }
                 else
                 {
+                    Log.Info("Login failed, wrong username or password");
                     TempData["DangerMessage"] = Message.AuthenticateFail();
                     return Redirect(this.Request.UrlReferrer.ToString());
                 }
             }
+            Log.Error("Connect failed");
             TempData["DangerMessage"] = Message.ConnectFail();
             return Redirect(this.Request.UrlReferrer.ToString());
         }
@@ -73,9 +83,12 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult ProcessLogout()
         {
+            Log.Info("Start process logout");
+            Log.Info("Remove Session Account/Cart/Amount");
             Session.Remove("Account");
             Session.Remove("Cart");
             Session.Remove("Amount");
+            Log.Info("Logout successfully, redirect to Index-Home");
             return RedirectToAction("Index", "Home");
         }
         public ActionResult Register()
