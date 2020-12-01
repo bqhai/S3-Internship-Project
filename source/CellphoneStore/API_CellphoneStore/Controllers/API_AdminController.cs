@@ -30,19 +30,6 @@ namespace API_CellphoneStore.Controllers
             }
             return null;
         }
-        //[HttpGet]
-        //[Route("GetAllEmployee/{username}")]
-        //public List<EmployeeMapped> GetAllEmployee(string username)
-        //{
-        //    string token = Request.Headers.GetValues("Token").ToString();
-        //    string tokenUsername = TokenManager.ValidateToken(token);
-        //    if (username.Equals(tokenUsername))
-        //    {
-        //        return bllEmployee.GetAllEmployee();
-        //    }
-        //    return null;
-        //}
-
 
         [HttpPost]
         [Route("AddNewEmployee")]

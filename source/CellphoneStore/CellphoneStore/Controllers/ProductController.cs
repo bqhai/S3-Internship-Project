@@ -42,8 +42,16 @@ namespace CellphoneStore.Controllers
             {
                 ViewBag.Title = "Product details";
                 var productVersionInfo = response.Content.ReadAsAsync<ProductVersionInfoMapped>().Result;
-                return View(productVersionInfo);
-            }      
+                if(productVersionInfo != null)
+                {
+                    return View(productVersionInfo);
+                }
+                else
+                {
+                    TempData["DangerMessage"] = "Mã sản phẩm không tồn tại";
+                    return RedirectToAction("Index", "Home");
+                }
+            }
             TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Home");
         }
@@ -67,7 +75,7 @@ namespace CellphoneStore.Controllers
             {
                 List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
                 return PartialView(productVersionMappeds);
-            }          
+            }
             TempData["DangerMessage"] = Message.ConnectFail();
             return RedirectToAction("Index", "Home");
         }
@@ -179,7 +187,7 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult FilterProductVersionByPrice(int minPrice, int maxPrice, int pageIndex = 1, int pageSize = 15)
         {
-            var url = "api/API_Product/FilterProductVersionByPrice/" + minPrice + "/" + maxPrice +"/";
+            var url = "api/API_Product/FilterProductVersionByPrice/" + minPrice + "/" + maxPrice + "/";
             response = serviceObj.GetResponse(url);
             if (response.IsSuccessStatusCode)
             {
@@ -195,11 +203,11 @@ namespace CellphoneStore.Controllers
         public ActionResult SearchProductVersion(string keyWord, int pageIndex = 1, int pageSize = 15)
         {
             var url = "api/API_Product/SearchProductVersion/" + keyWord;
-            response = serviceObj.GetResponse(url);         
-            if(response.IsSuccessStatusCode)
-            {      
+            response = serviceObj.GetResponse(url);
+            if (response.IsSuccessStatusCode)
+            {
                 List<ProductVersionMapped> productVersionMappeds = response.Content.ReadAsAsync<List<ProductVersionMapped>>().Result;
-                if(productVersionMappeds.Count > 0)
+                if (productVersionMappeds.Count > 0)
                 {
                     ViewData["State"] = "Search";
                     ViewData["Option"] = keyWord;
@@ -212,7 +220,7 @@ namespace CellphoneStore.Controllers
             {
                 TempData["WarningMessage"] = "Không tìm thấy sản phẩm";
                 return Redirect(this.Request.UrlReferrer.ToString());
-            }            
+            }
         }
 
     }

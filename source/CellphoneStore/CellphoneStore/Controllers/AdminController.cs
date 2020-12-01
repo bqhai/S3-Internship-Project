@@ -28,6 +28,7 @@ namespace CellphoneStore.Controllers
         #region Employee Management
         public ActionResult Employee()
         {
+            Log.Info("Access Employee management");
             try
             {
                 string username = Session["Account"].ToString();
@@ -38,10 +39,10 @@ namespace CellphoneStore.Controllers
                 List<EmployeeMapped> employeeMappeds = response.Content.ReadAsAsync<List<EmployeeMapped>>().Result;
                 return View(employeeMappeds);           
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Log.Error("Error", ex);
-                TempData["DangerMessage"] = "Kết nối server thất bại";
+                Log.Error("Error! Access denined");
+                TempData["DangerMessage"] = "Truy cập bị từ chối";
                 return RedirectToAction("Index", "Home");
             }
         }

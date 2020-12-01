@@ -78,9 +78,9 @@
         <div class="col-sm-3 borderbox" style="margin-left: 90px">
             @if (Session["Account"] != null)
             {
-                <div class="address">
-                    @Html.Action("GetShipmentDetails", "Cart", new { username = Session["Account"] })
-                </div>
+            <div class="address">
+                @Html.Action("GetShipmentDetails", "Cart", new { username = Session["Account"] })         
+            </div>
             }
             <div class="promotion-code">
                 <form class="form-inline" method="post" action="@Url.Action("GetResultUsingPromotionCode", "Cart")">
