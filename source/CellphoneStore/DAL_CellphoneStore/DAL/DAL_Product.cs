@@ -50,5 +50,13 @@ namespace DAL_CellPhoneStore.DAL
                         };
             return query;
         }
+        //public void UpdateProduct(Product product)
+        //{
+        //    Product prd = db.Products.SingleOrDefault(p => p.ProductID == product.ProductID);
+        //    if(prd != null)
+        //    {
+
+        //    }
+        //}
     }
 }

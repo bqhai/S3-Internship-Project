@@ -169,7 +169,7 @@
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByROM", "Product", new { pageIndex, rom = ViewData["Option"] }))</li>
                     }
-                    else if (ViewData["State"].Equals("FilterByOS"))
+                    else if (ViewData["State"].Equals("FilterByOs"))
                     {
                         <li>@Html.PagedListPager(Model, pageIndex => Url.Action("FilterProductVersionByOS", "Product", new { pageIndex, os = ViewData["Option"] }))</li>
                     }

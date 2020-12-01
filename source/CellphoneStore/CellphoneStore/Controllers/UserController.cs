@@ -252,6 +252,10 @@ namespace CellphoneStore.Controllers
         }
         public ActionResult ResetPassword()
         {
+            if (Session["EmailForResetPass"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         public ActionResult ProcessResetPassword(AccountMapped accountMapped)
