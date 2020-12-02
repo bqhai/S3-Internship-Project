@@ -66,7 +66,7 @@ namespace BLL_CellPhoneStore.BLL
             {
                 orderInfoMappeds.Add(convertToOrdInfoMapped.Translate(item));
             }
-            return orderInfoMappeds.OrderByDescending(ordi => ordi.OrderDate).ToList();
+            return orderInfoMappeds.OrderByDescending(ordi => ordi.OrderDate).ThenByDescending(ordi => ordi.OrderID).ToList();
         }
         public List<OrderDetailInfoMapped> GetListOrderDetailByOrderID(string orderID)
         {

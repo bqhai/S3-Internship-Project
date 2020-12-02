@@ -22,10 +22,10 @@ namespace CellphoneStore.Controllers
             Session["Amount"] = GetItemAmount();
             CartInfo cartInfo = new CartInfo();
             cartInfo.CartTotalPrice = GetTotalPrice();        
-            if (TempData["Discount"] != null && TempData["Discount"].GetType() != typeof(string) && TempData["PromotionCode"] != null)
+            if (Session["Discount"] != null && Session["Discount"].GetType() != typeof(string) && Session["PromotionCode"] != null)
             {
-                cartInfo.PromotionCode = TempData["PromotionCode"].ToString();
-                cartInfo.Discount = Convert.ToInt32(TempData["Discount"]);
+                cartInfo.PromotionCode = Session["PromotionCode"].ToString();
+                cartInfo.Discount = Convert.ToInt32(Session["Discount"]);
                 cartInfo.IntoMoney = cartInfo.CartTotalPrice - cartInfo.Discount;
             }
             else
@@ -152,8 +152,8 @@ namespace CellphoneStore.Controllers
             else
             {
                 TempData["SuccessMessage"] = "Đã áp dụng mã giảm giá";
-                TempData["PromotionCode"] = prmCode.Code;
-                TempData["Discount"] = promotionCodeValue;
+                Session["PromotionCode"] = prmCode.Code;
+                Session["Discount"] = promotionCodeValue;
             }
             return RedirectToAction("Cart", "Cart");
         }

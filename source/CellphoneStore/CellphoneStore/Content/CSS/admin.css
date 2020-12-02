@@ -77,7 +77,6 @@
 .emp-table, .cus-table, .prd-table {
     margin-left: 40px;
 }
-
     .emp-table table th, .cus-table table th, .prd-table table th {
         padding: 10px;
     }

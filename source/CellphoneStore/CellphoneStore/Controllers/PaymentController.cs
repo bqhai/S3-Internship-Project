@@ -120,6 +120,8 @@ namespace CellphoneStore.Controllers
                     Session.Remove("Cart");
                     Session.Remove("CartInfo");
                     Session.Remove("Amount");
+                    Session.Remove("Discount");
+                    Session.Remove("PromotionCode");
                 }
                 else
                 {
