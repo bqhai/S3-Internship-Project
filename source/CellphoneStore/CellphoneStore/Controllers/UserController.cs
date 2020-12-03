@@ -200,9 +200,10 @@ namespace CellphoneStore.Controllers
         {
             return View();
         }
+        
         public ActionResult ProcessForgotPassword(string email)
         {
-            string resetCode = Guid.NewGuid().ToString();
+            string resetCode = Common.AutoGenVerifyCode();
             var verifyUrl = "/User/ResetPassword/";
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
             var url = "api/API_User/GetCustomerByEmail/" + email + "/";
@@ -222,7 +223,7 @@ namespace CellphoneStore.Controllers
                             var subject = "Yêu cầu cấp lại mật khẩu";
                             var body = "Xin chào " + customerMapped.Name + ", "
                                 + "<br/> Bạn vừa gửi yêu cầu cấp lại mật khẩu mới.! "
-                                + "<br/> Mã xác thực của bạn là: " + resetCode + "<br/>"
+                                + "<br/> Mã xác thực của bạn là: " + "<strong>" + resetCode + "</strong>" + "<br/>"
                                 + "Nếu bạn không gửi yêu cầu này, vui lòng bỏ qua email này hoặc thông báo lại với chúng tôi!<br/><br/> Thank you";
                             SendEmail(customerMapped.Email, body, subject);
                             TempData["SuccessMessage"] = "Yêu cầu cấp lại mật khẩu đã được gửi tới email của bạn.";
