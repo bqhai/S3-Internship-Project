@@ -2,7 +2,8 @@
     var province = $('#province');
     province.append($("<option></option>").val('').html('Chọn Tỉnh/Thành phố'));
     $.ajax({
-        url: 'https://localhost:44356/api/API_User/GetProvinces',
+        //url: 'https://localhost:44356/api/API_User/GetProvinces',
+        url: 'http://cellphonesapi.somee.com/api/API_User/GetProvinces',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -21,7 +22,8 @@
             district.empty();
             district.append($("<option></option>").val('').html('Vui lòng đợi . . .'));
             $.ajax({
-                url: 'https://localhost:44356/api/API_User/GetDistrictsByProvinceID/' + provinceId,
+                //url: 'https://localhost:44356/api/API_User/GetDistrictsByProvinceID/' + provinceId,
+                url: 'http://cellphonesapi.somee.com/api/API_User/GetDistrictsByProvinceID/' + provinceId,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
@@ -44,7 +46,8 @@
             ward.empty();
             ward.append($("<option></option>").val('').html('Vui lòng đợi . . .'));
             $.ajax({
-                url: 'https://localhost:44356/api/API_User/GetWardsByDistrictID/' + districtId,
+                //url: 'https://localhost:44356/api/API_User/GetWardsByDistrictID/' + districtId,
+                url: 'http://cellphonesapi.somee.com/api/API_User/GetWardsByDistrictID/' + districtId,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

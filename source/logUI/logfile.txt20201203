@@ -1,0 +1,46 @@
+2020-12-03 11:58:27,575 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 11:58:27,675 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 11:58:27,748 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 11:58:27,802 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for pvquan2603
+2020-12-03 11:58:27,827 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role user
+2020-12-03 13:17:08,237 |INFO| CellphoneStore.Controllers.AdminController [Employee] - Access Employee management
+2020-12-03 13:17:19,732 |ERROR| CellphoneStore.Controllers.AdminController [Employee] - Error! Access denined
+2020-12-03 13:17:41,044 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 13:17:41,045 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 13:17:41,132 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 13:17:41,162 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for pvquan2603
+2020-12-03 13:17:41,188 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role user
+2020-12-03 13:27:28,066 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Start process logout
+2020-12-03 13:27:28,067 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Remove Session Account/Cart/Amount
+2020-12-03 13:27:28,067 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Logout successfully, redirect to Index-Home
+2020-12-03 13:27:32,195 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 13:27:32,195 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 13:27:32,223 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 13:27:32,245 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for bqhai1205
+2020-12-03 13:27:32,403 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role admin
+2020-12-03 13:27:33,831 |INFO| CellphoneStore.Controllers.AdminController [Employee] - Access Employee management
+2020-12-03 13:34:05,024 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 13:34:05,024 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 13:34:05,054 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 13:34:05,080 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for pvquan2603
+2020-12-03 13:34:05,103 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role user
+2020-12-03 13:56:01,274 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Start process logout
+2020-12-03 13:56:01,275 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Remove Session Account/Cart/Amount
+2020-12-03 13:56:01,275 |INFO| CellphoneStore.Controllers.UserController [ProcessLogout] - Logout successfully, redirect to Index-Home
+2020-12-03 13:56:10,344 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 13:56:10,344 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 13:56:10,372 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 13:56:10,397 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for bqhai1205
+2020-12-03 13:56:10,420 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role admin
+2020-12-03 17:08:01,495 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 17:08:01,542 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 17:08:01,621 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 17:08:01,657 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for bqhai1205
+2020-12-03 17:08:01,816 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role admin
+2020-12-03 17:08:10,038 |INFO| CellphoneStore.Controllers.AdminController [Employee] - Access Employee management
+2020-12-03 17:08:13,340 |INFO| CellphoneStore.Controllers.AdminController [Employee] - Access Employee management
+2020-12-03 18:00:13,812 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Start process login
+2020-12-03 18:00:13,840 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Call api login
+2020-12-03 18:00:13,869 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Status code: OK
+2020-12-03 18:00:13,901 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Get api token for dtqnhu2601
+2020-12-03 18:00:13,928 |INFO| CellphoneStore.Controllers.UserController [ProcessLogin] - Login successfully with role user

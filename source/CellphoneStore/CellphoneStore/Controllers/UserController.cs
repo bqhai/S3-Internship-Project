@@ -204,8 +204,8 @@ namespace CellphoneStore.Controllers
         public ActionResult ProcessForgotPassword(string email)
         {
             string resetCode = Common.AutoGenVerifyCode();
-            var verifyUrl = "/User/ResetPassword/";
-            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
+            //var verifyUrl = "/User/ResetPassword/";
+            //var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
             var url = "api/API_User/GetCustomerByEmail/" + email + "/";
             response = serviceObj.GetResponse(url);
             if (response.IsSuccessStatusCode)
